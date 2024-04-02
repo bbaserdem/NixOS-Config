@@ -17,8 +17,8 @@ Personal configuration of my page.
   - [🤰 Umay](hosts/umay) Virtual box.
   - [🔥 Od İyesi](hosts/od-iyesi) Live USB
   - [🌳 Yertengri](hosts/yertengri) Home PC
-  - [🌊 Su İyesi][hosts/su-iyesi) Work computer
-  - [🎐 Yel Ana][hosts/yel-ana) Laptop
+  - [🌊 Su İyesi](hosts/su-iyesi) Work computer
+  - [🎐 Yel Ana](hosts/yel-ana) Laptop
 
 ## Inspirations
 

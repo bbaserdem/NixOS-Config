@@ -22,6 +22,7 @@
     bundles.home-manager.enable = true;
     #power-management.enable = true;
     #sops.enable = false;
+    features.sddm.enable = false;
 
     #virtualization.enable = lib.mkDefault true;
 
