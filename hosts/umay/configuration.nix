@@ -35,15 +35,9 @@
         };
       };
     };
-  
-  myNixOS.userName = "batuhan";
-  myNixOS.userConfig = ./home.nix;
-  myNixOS.userNixosSettings = {
-    extraGroups = 
   };
 
   networking.hostName = "umay";
-
     
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -64,4 +58,5 @@
     home-manager
     btop
   ];
+
 }
