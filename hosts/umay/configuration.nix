@@ -18,7 +18,7 @@
   # Modules options
   myNixOS = {
     #bundles.general-desktop.enable = true;
-    bundles.users.enable = true;
+    #bundles.users.enable = true;
     bundles.home-manager.enable = true;
     #power-management.enable = true;
     #sops.enable = false;
