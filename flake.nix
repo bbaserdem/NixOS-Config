@@ -59,7 +59,7 @@
       inherit system;
       config.allowUnfree = true;
     });
-    forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
+    forAllSystems = f: lib.genAttrs systems (system: f pkgsFor.${system});
     # Templates for machine and user configs
     mkSystem = name:
       nixpkgs.lib.nixosSystem {
