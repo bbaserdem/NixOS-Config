@@ -79,8 +79,8 @@
   in {
     inherit lib;
     
-    nixosModule.default = ./modules/nixos;
-    homeManagerModules.default = ./modules/home-manager;
+    nixosModule = import ./modules/nixos;
+    homeManagerModules = import ./modules/home-manager;
     #templates = import ./templates;
 
     overlays = import ./overlays {inherit inputs;};
