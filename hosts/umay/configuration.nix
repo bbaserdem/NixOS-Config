@@ -10,18 +10,12 @@
 }: {
   # You can import other NixOS modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/nixos):
-    # outputs.nixosModules.example
+    outputs.nixosModules.default
+    ./hardware-configuration.nix
 
-    # Or modules from other flakes (such as nixos-hardware):
+    # Modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
   ];
 
   nixpkgs = {
@@ -71,42 +65,37 @@
     auto-optimise-store = true;
   };
 
-  # FIXME: Add the rest of your current configuration
+  networking.hostName = "umay";
 
-  # TODO: Set your hostname
-  networking.hostName = "your-hostname";
-
-  # TODO: This is just an example, be sure to use whatever bootloader you prefer
-  boot.loader.systemd-boot.enable = true;
-
-  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
-    # FIXME: Replace with your username
-    your-username = {
-      # TODO: You can set an initial password for your user.
-      # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-      # Be sure to change it (using passwd) after rebooting!
-      initialPassword = "correcthorsebatterystaple";
+    batuhan = {
+      initialPassword = "12345";
       isNormalUser = true;
-      openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-      ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel"];
+      extraGroups = ["wheel" "docker" "networkmanager"];
     };
   };
 
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
-  services.openssh = {
-    enable = true;
-    settings = {
-      # Forbid root login through SSH.
-      PermitRootLogin = "no";
-      # Use keys only. Remove if you want to SSH using password (not recommended)
-      PasswordAuthentication = false;
-    };
-  };
+  # Manually enable these for now 
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+  # Enable gnome
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  # Enable automatic login for the user.
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = "batuhan";
+  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
+  # Packages to install 
+  environment.systemPackages = with pkgs; [
+    neovim
+    wget
+    git
+    home-manager
+    btop
+  ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";

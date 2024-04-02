@@ -64,19 +64,23 @@
     mkSystem = name:
       nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs outputs; };
-        modules = [ ./hosts/${name} ];
+        modules = [
+          ./hosts/${name}
+        ];
       };
     mkHome = sys: name: host:
       home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.${sys};
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [ ./home/${name}/${host}.nix ];
+        modules = [
+          ./home/${name}/${host}.nix
+        ];
       };
   in {
     inherit lib;
     
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
+    nixosModule.default = ./modules/nixos;
+    homeManagerModules.default = ./modules/home-manager;
     #templates = import ./templates;
 
     overlays = import ./overlays {inherit inputs;};
