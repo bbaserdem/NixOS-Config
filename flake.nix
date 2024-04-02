@@ -79,7 +79,7 @@
   in {
     inherit lib;
     
-    nixosModule = import ./modules/nixos;
+    nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
     #templates = import ./templates;
 
