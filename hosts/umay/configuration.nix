@@ -30,7 +30,7 @@
     home-users = {
       "batuhan" = {
         userConfig = ./home.nix;
-        userNixosSettings = {
+        userSettings = {
           extraGroups = ["wheel" "docker" "networkmanager"];
         };
       };
