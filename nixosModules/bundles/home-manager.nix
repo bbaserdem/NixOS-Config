@@ -12,7 +12,7 @@ in {
     };
 
     userConfig = lib.mkOption {
-      default = ./../../home-manager/work.nix;
+      default = ./../../hosts/umay/home.nix;
       description = ''
         home-manager config path
       '';
