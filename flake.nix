@@ -20,7 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Setup for impermanence
-    impermanence.url = "github:nix-community/impermanence"
+    impermanence.url = "github:nix-community/impermanence";
     # Color themes for entirety of nix
     nix-colors.url = "github:misterio77/nix-colors";
   };
