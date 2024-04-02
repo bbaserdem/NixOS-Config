@@ -30,19 +30,19 @@
   in with myLib; {
 
     nixosConfigurations = {
-      umay      = mkSystem ./hosts/umay;
-      #od-iyesi  = mkSystem ./hosts/od-iyesi;
-      #yertengri = mkSystem ./hosts/yertengri;
-      #su-iyesi  = mkSystem ./hosts/su-iyesi;
-      #yel-ana   = mkSystem ./hosts/yel-ana;
+      umay      = mkSystem ./hosts/umay/configuration.nix;
+      #od-iyesi  = mkSystem ./hosts/od-iyesi/configuration.nix;
+      #yertengri = mkSystem ./hosts/yertengri/configuration.nix;
+      #su-iyesi  = mkSystem ./hosts/su-iyesi/configuration.nix;
+      #yel-ana   = mkSystem ./hosts/yel-ana/configuration.nix;
     };
 
     homeConfigurations = {
-      "batuhan@umay"      = mkHome "x86_64-linux" ./hosts/umay;
-      #"batuhan@od-iyesi"  = mkHome "x86_64-linux" ./hosts/od-iyesi;
-      #"batuhan@yertengri" = mkHome "x86_64-linux" ./hosts/yertengri;
-      #"batuhan@su-iyesi"  = mkHome "x86_64-linux" ./hosts/su-iyesi;
-      #"batuhan@yel-ana"   = mkHome "x86_64-linux" ./hosts/yel-ana;
+      "batuhan@umay"      = mkHome "x86_64-linux" ./hosts/umay/home.nix;
+      #"batuhan@od-iyesi"  = mkHome "x86_64-linux" ./hosts/od-iyesi/home.nix;
+      #"batuhan@yertengri" = mkHome "x86_64-linux" ./hosts/yertengri/home.nix;
+      #"batuhan@su-iyesi"  = mkHome "x86_64-linux" ./hosts/su-iyesi/home.nix;
+      #"batuhan@yel-ana"   = mkHome "x86_64-linux" ./hosts/yel-ana/home.nix;
     };
 
     homeManagerModules.default  = ./homeManagerModules;
