@@ -10,7 +10,6 @@
 }: {
   # You can import other NixOS modules here
   imports = [
-    outputs.nixosModules.default
     ./hardware-configuration.nix
 
     # Modules from other flakes (such as nixos-hardware):

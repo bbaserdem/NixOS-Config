@@ -4,8 +4,7 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    archives.enable = 
-      lib.mkEnableOption "Enables archives";
+    archives.enable = lib.mkEnableOption "Enables installing archives";
   };
 
   config = lib.mkIf config.archives.enable {
