@@ -9,7 +9,7 @@
   };
 
   config = lib.mkIf config.archives.enable {
-    environment.systemPackages = with pkgs [
+    environment.systemPackages = with pkgs; [
       patool
       zip
       bzip2
