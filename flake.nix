@@ -66,7 +66,6 @@
         specialArgs = { inherit inputs outputs; };
         modules = [
           ./hosts/${name}
-          ./modules/nixos
         ];
       };
     mkHome = sys: name: host:

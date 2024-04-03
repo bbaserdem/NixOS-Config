@@ -15,7 +15,7 @@
     # Modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
-  ];
+  ] ++ (builtins.attrValues outputs.nixosModules);
 
   nixpkgs = {
     # You can add overlays here
@@ -75,7 +75,7 @@
   };
 
   # My module toggles
-  archives.enable = true;
+  config.bundles.archives.enable = true;
 
   # Manually enable these for now 
 

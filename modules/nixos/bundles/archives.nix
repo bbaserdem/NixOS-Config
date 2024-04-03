@@ -1,13 +1,16 @@
 # archives.nix
 # A program list of archiving utilities
 
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, ... }: 
+with lib;
+let cfg = config.bundles.archives;
+in {
 
-  options = {
-    archives.enable = lib.mkEnableOption "Enables installing archives";
+  options.bundles.archive = {
+    enable = lib.mkEnableOption "Enables installing archives";
   };
 
-  config = lib.mkIf config.archives.enable {
+  config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       patool
       zip
