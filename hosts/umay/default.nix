@@ -75,6 +75,9 @@
     };
   };
 
+  # My module toggles
+  archives.enable = true;
+
   # Manually enable these for now 
 
   # Enable the X11 windowing system.
