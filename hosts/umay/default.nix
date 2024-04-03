@@ -29,7 +29,7 @@
     };
     # Services
     services = {
-      satisfactory = false;
+      satisfactory.enable = false;
     };
   };
 
