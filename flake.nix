@@ -5,8 +5,8 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
     home-manager = {
@@ -26,6 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Firefox addons from NUR
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,54 +41,38 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
+
+    # Future desktop
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  let
+    myLib = import ./myLib/default.nix {inherit inputs; rootPath = ./.;};
     inherit (self) outputs;
-    # Quick access to library functions, home-manager overrides
-    lib = nixpkgs.lib // home-manager.lib;
-    # Supported systems for your flake packages, shell, etc.
-    systems = [ "x86_64-linux" ];
-    # This is a function that generates an attribute by calling a function you
-    # pass to it, with each system as an argument
-    pkgsFor = lib.genAttrs systems (system: import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    });
-    forAllSystems = f: lib.genAttrs systems (system: f pkgsFor.${system});
-    # Templates for machine and user configs
-    mkSystem = name:
-      nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
-        modules = [
-          ./hosts/${name}
-        ];
-      };
-    mkHome = sys: name: host:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgsFor.${sys};
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home/${name}/${host}.nix
-        ];
-      };
-  in {
-    inherit lib;
-    
-    nixosModules.default = ./modules/nixos;
-    homeManagerModules.default = ./modules/home-manager;
-    #templates = import ./templates;
+  in with myLib; {
 
-    overlays = import ./overlays {inherit inputs;};
+    # Module directories
+    nixosModules.default = ./nixosModules;
+    homeManagerModules.default = ./homeManagerModules;
 
+    # Custom packages
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-    #devShells = forAllSystems (system: import ./shell.nix nixpkgs.legacyPackages.${system});
+    # Formatter to use with nix fmt command
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    # Overlays to the package list
+    overlays = import ./overlays {inherit inputs myLib;};
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'

@@ -3,14 +3,16 @@
 
 { pkgs, lib, config, ... }: 
 with lib;
-let cfg = config.bundles.archives;
+let cfg = config.myNixOS.bundles.archives;
 in {
-
-  options.bundles.archive = {
-    enable = lib.mkEnableOption "Enables installing archives";
+  options.myNixOS = {
+    # option = lib.mkOption {
+    #   default = "";
+    # description = "Some option";
+    # };
   };
-
-  config = mkIf cfg.enable {
+  # Install archiving tools into userspace 
+  config = {
     environment.systemPackages = with pkgs; [
       patool
       zip
@@ -27,5 +29,4 @@ in {
       zstd
     ];
   };
-
 }
