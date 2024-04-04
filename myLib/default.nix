@@ -34,7 +34,7 @@ in rec {
   mkSystem = name:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs outputs myLib;
+        inherit inputs outputs myLib rootPath;
       };
       modules = [
         ( rootPath + /hosts/${name} )
@@ -47,7 +47,7 @@ in rec {
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = pkgsFor sys;
       extraSpecialArgs = {
-        inherit inputs outputs myLib;
+        inherit inputs outputs myLib rootPath;
       };
       modules = [
         ( rootPath + /home/${name}/${host}.nix )
