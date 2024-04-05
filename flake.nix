@@ -62,10 +62,6 @@
     inherit (self) outputs;
   in with myLib; {
 
-    # Module directories
-    nixosModules.default = ./nixosModules;
-    homeManagerModules.default = ./homeManagerModules;
-
     # Custom packages
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     # Formatter to use with nix fmt command
@@ -92,5 +88,9 @@
       #"batuhan@su-iyesi"  = mkHome "x86_64-linux" "batuhan" "su-iyesi";
       #"batuhan@yel-ana"   = mkHome "x86_64-linux" "batuhan" "yel-ana";
     };
+
+    # Module directories
+    nixosModules.default = ./nixosModules;
+    homeManagerModules.default = ./homeManagerModules;
   };
 }
