@@ -12,7 +12,7 @@
     lm_sensors        # Sensors readout
     gparted           # Partition manager, gui
     snapper           # Snapshot manager
-    pkgs.btrfs-assistant # Snapshot manager, gui
+    unstable.btrfs-assistant # Snapshot manager, gui
     udisks            # Storage device manager
     lshw              # Hardware utility
   ];
