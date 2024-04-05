@@ -14,26 +14,19 @@
   # You can import other NixOS modules here
   imports = [
     ./hardware-configuration.nix
+    ../default.nix
 
     # Modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
   ];
+  
 
   # My module toggles
   myNixOS = {
     # Features 
     #sddm.enable = false;
     gnome.enable = true;
-    # Bundles
-    bundles = {
-      archives.enable = true;
-      utils.enable = true;
-    };
-    # Services
-    services = {
-      satisfactory.enable = false;
-    };
     # Enable default user generation
     default-user.enable = true;
     userName = "batuhan";
