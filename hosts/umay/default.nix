@@ -28,6 +28,7 @@
     # Bundles
     bundles = {
       archives.enable = true;
+      utils.enable = true;
     };
     # Services
     services = {
