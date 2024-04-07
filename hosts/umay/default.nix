@@ -29,7 +29,7 @@
     gnome.enable = true;
     # Services
     services = {
-      virtualization.enable = true;
+      virtualization.enable = false;
     };
     # Enable default user generation
     default-user.enable = true;
@@ -39,6 +39,9 @@
 
   # Set our name 
   networking.hostName = "umay";
+
+  # Enable guest services
+  services.qemuGuest.enable = true;
 
   # Manually enable these for now 
   # Packages to install 
