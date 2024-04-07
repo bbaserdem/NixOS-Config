@@ -27,6 +27,10 @@
     # Features 
     #sddm.enable = false;
     gnome.enable = true;
+    # Services
+    services = {
+      virtualization.enable = true;
+    };
     # Enable default user generation
     default-user.enable = true;
     userName = "batuhan";
