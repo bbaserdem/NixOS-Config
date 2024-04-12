@@ -2,7 +2,12 @@
 # Taken from the stater config here;
 # https://github.com/Misterio77/nix-starter-configs
 
-{inputs, myLib, ...}: with myLib; {
+{
+  inputs,
+  myLib,
+  config,
+  ...
+}: with myLib; {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs {pkgs = final;};
 
@@ -13,6 +18,9 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
+    sleek-grub-theme = final.sleek-grub-theme.overrideAttr {
+      withStyle = config.myNixOS.sharedSettings.grubTheme;
+    };
     # sonarr = final.unstable.sonarr;
     # radarr = final.unstable.radarr.overrideAttrs (oldAttrs: rec {
     #   version = "4.4.2.6956";

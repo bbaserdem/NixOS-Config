@@ -30,6 +30,7 @@
     bluetooth.enable = false;
     virtualization.enable = false;
     consolefont.enable = true;
+    grub = true;
     # Services
     services = {
       earlyoom.enable = true;
