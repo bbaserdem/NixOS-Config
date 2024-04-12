@@ -27,13 +27,14 @@
     # Features 
     #sddm.enable = false;
     gnome.enable = true;
+    bluetooth.enable = false;
+    virtualization.enable = false;
     # Services
     services = {
-      virtualization.enable = false;
       earlyoom.enable = true;
       samba.enable = false;
       mariadb.enable = true;
-      bluetooth.enable = false;
+      nm.enable = true;
     };
     # Enable default user generation
     default-user.enable = true;
