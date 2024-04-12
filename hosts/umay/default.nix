@@ -30,6 +30,7 @@
     # Services
     services = {
       virtualization.enable = false;
+      earlyoom.enable = true;
     };
     # Enable default user generation
     default-user.enable = true;
