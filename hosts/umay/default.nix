@@ -31,6 +31,9 @@
     services = {
       virtualization.enable = false;
       earlyoom.enable = true;
+      samba.enable = false;
+      mariadb.enable = true;
+      bluetooth.enable = false;
     };
     # Enable default user generation
     default-user.enable = true;
