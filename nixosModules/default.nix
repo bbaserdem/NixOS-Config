@@ -31,7 +31,7 @@
       configExtension = config: (lib.mkIf cfg.bundles.${name}.enable config);
     })
     (myLib.filesIn ./bundles);
-  # GRab all modules in services and add enables to them
+  # Grab all modules in services and add enables to them
   services =
     myLib.extendModules
     (name: {
@@ -54,7 +54,7 @@ in {
   options.myNixOs = {
     sharedSettings = {
       hyprland.enable = lib.mkEnableOption "Enable Hyprland";
-      grubTheme = lib.mkOptionDefault "bigSur";
+      #grubTheme = lib.mkOptionDefault "bigSur";
     };
   };
 
