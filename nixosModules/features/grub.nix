@@ -7,5 +7,5 @@
     useOSProber = true;
     memtest86.enable = true;
     theme = pkgs.sleek-grub-theme;
-  }
+  };
 }
