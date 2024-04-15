@@ -19,7 +19,8 @@
     # ...
     # });
     sleek-grub-theme = final.sleek-grub-theme.overrideAttr {
-      withStyle = config.myNixOS.sharedSettings.grubTheme;
+      #withStyle = config.myNixOS.sharedSettings.grubTheme;
+      withStyle = "orange";
     };
     # sonarr = final.unstable.sonarr;
     # radarr = final.unstable.radarr.overrideAttrs (oldAttrs: rec {
