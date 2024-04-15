@@ -35,5 +35,6 @@ with lib; {
   environment.systemPackages = with pkgs; [
     virtio-win
     docker-client
+    virt-manager
   ];
 }
