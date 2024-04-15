@@ -59,42 +59,39 @@
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
     let
       myLib = import ./myLib/default.nix {inherit inputs; rootPath = ./.;};
+      config = nixpkgs.config;
       inherit (self) outputs;
-      # config = nixpkgs.config;
     in with myLib; {
-      # Custom packages
-      packages = forAllSystems (
-        system: import ./pkgs nixpkgs.legacyPackages.${system}
-      );
-      # Formatter to use with nix fmt command
-      formatter = forAllSystems (
-        system: nixpkgs.legacyPackages.${system}.alejandra
-      );
-      # Overlays to the package list
-      overlays = import ./overlays { inherit inputs myLib; } #config; };
 
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {
-        umay      = mkSystem "umay";
-        #od-iyesi  = mkSystem "od-iyesi";
-        #yertengri = mkSystem "yertengri";
-        #su-iyesi  = mkSystem "su-iyesi";
-        #yel-ana   = mkSystem "yel-ana";
-      };
+    # Custom packages
+    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    # Formatter to use with nix fmt command
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    # Overlays to the package list
+    overlays = import ./overlays {inherit inputs myLib config;};
 
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        "batuhan@umay"      = mkHome "x86_64-linux" "batuhan" "umay";
-        #"batuhan@od-iyesi"  = mkHome "x86_64-linux" "batuhan" "od-iyesi";
-        #"batuhan@yertengri" = mkHome "x86_64-linux" "batuhan" "yertengri";
-        #"batuhan@su-iyesi"  = mkHome "x86_64-linux" "batuhan" "su-iyesi";
-        #"batuhan@yel-ana"   = mkHome "x86_64-linux" "batuhan" "yel-ana";
-      };
-
-      # Module directories
-      nixosModules.default = ./nixosModules;
-      homeManagerModules.default = ./homeManagerModules;
+    # NixOS configuration entrypoint
+    # Available through 'nixos-rebuild --flake .#your-hostname'
+    nixosConfigurations = {
+      umay      = mkSystem "umay";
+      #od-iyesi  = mkSystem "od-iyesi";
+      #yertengri = mkSystem "yertengri";
+      #su-iyesi  = mkSystem "su-iyesi";
+      #yel-ana   = mkSystem "yel-ana";
     };
+
+    # Standalone home-manager configuration entrypoint
+    # Available through 'home-manager --flake .#your-username@your-hostname'
+    homeConfigurations = {
+      "batuhan@umay"      = mkHome "x86_64-linux" "batuhan" "umay";
+      #"batuhan@od-iyesi"  = mkHome "x86_64-linux" "batuhan" "od-iyesi";
+      #"batuhan@yertengri" = mkHome "x86_64-linux" "batuhan" "yertengri";
+      #"batuhan@su-iyesi"  = mkHome "x86_64-linux" "batuhan" "su-iyesi";
+      #"batuhan@yel-ana"   = mkHome "x86_64-linux" "batuhan" "yel-ana";
+    };
+
+    # Module directories
+    nixosModules.default = ./nixosModules;
+    homeManagerModules.default = ./homeManagerModules;
+  };
 }
