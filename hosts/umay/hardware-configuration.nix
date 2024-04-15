@@ -20,7 +20,7 @@
     loader.grub.device = "/dev/vda";
   };
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/8921eca4-50bc-4f87-b124-9dfb84672aab";
+    device = "/dev/disk/by-uuid/ed12e573-834b-4813-bbbe-ff06094be883";
     fsType = "ext4";
   };
   swapDevices = [ ];
