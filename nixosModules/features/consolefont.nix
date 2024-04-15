@@ -9,6 +9,5 @@
       pkgs.terminus_font
       pkgs.powerline-fonts
     ];
-    keyMap = "dvorak";
   };
 }

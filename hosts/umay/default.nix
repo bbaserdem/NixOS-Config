@@ -21,6 +21,8 @@
     # inputs.hardware.nixosModules.common-ssd
   ];
   
+  # Set our name 
+  networking.hostName = "umay";
 
   # My module toggles
   myNixOS = {
@@ -31,6 +33,7 @@
     virtualization.enable = false;
     consolefont.enable = true;
     grub.enable = true;
+    keymap.enable = true;
     # Services
     services = {
       earlyoom.enable = false;
@@ -47,8 +50,6 @@
     userDesktop = "gnome";
   };
 
-  # Set our name 
-  networking.hostName = "umay";
 
   # Enable guest services
   services.qemuGuest.enable = true;

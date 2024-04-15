@@ -5,9 +5,6 @@
 {
   imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
   boot = {
-    loader.grub.device = "/dev/vda";
-    kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
     initrd = {
       availableKernelModules = [
         "ahci"
@@ -18,12 +15,16 @@
       ];
       kernelModules = [ ];
     };
+    kernelModules = [ "kvm-amd" ];
+    extraModulePackages = [ ];
+    loader.grub.device = "/dev/vda";
   };
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/8921eca4-50bc-4f87-b124-9dfb84672aab";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/8921eca4-50bc-4f87-b124-9dfb84672aab";
+    fsType = "ext4";
+  };
   swapDevices = [ ];
+  # For simple networking
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
