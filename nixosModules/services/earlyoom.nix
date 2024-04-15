@@ -19,6 +19,6 @@ with lib; {
       "-g"
       "--prefer '(^|/)(java|chromium)$'"
       "--avoid '(^|/)(rsync)$'"
-    ]
+    ];
   };
 }
