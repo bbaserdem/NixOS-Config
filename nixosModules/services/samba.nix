@@ -13,7 +13,7 @@ with lib; {
     openFirewall = true;
     extraConfig = ''
       workgroup = WORKGROUP
-      server string = Samba server on ${networking.hostName}
+      server string = Samba server on ${config.networking.hostName}
       netbios name = smbnix
       security = user 
       #use sendfile = yes
