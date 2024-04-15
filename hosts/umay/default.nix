@@ -28,7 +28,7 @@
     #sddm.enable = false;
     gnome.enable = true;
     #bluetooth.enable = false;
-    #virtualization.enable = false;
+    virtualization.enable = false;
     #consolefont.enable = false;
     #grub.enable = false;
     # Services

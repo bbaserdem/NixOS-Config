@@ -7,7 +7,7 @@
 with lib; {
   # Enable libvirtd
   virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
+  # programs.virt-manager.enable = true;
 
   # Enable docker
   virtualisation.docker = {
