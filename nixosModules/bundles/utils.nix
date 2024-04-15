@@ -11,8 +11,6 @@
     nethogs           # Network usage monitor
     lm_sensors        # Sensors readout
     gparted           # Partition manager, gui
-    snapper           # Snapshot manager
-    unstable.btrfs-assistant # Snapshot manager, gui
     udisks            # Storage device manager
     lshw              # Hardware utility
     polkit            # Privilege utility
