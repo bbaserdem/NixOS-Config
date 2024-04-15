@@ -14,7 +14,8 @@ with lib; {
     allowFrom = [ "all" ];
     browsing = true;
     defaultShared = true;
-    openFirewall = true;
+    # For some reason, this isn't working
+    #openFirewall = true;
   };
 }
 
