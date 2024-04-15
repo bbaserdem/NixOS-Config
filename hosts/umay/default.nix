@@ -29,17 +29,17 @@
     gnome.enable = true;
     bluetooth.enable = false;
     virtualization.enable = false;
-    consolefont.enable = true;
-    grub.enable = true;
+    consolefont.enable = false;
+    grub.enable = false;
     # Services
     services = {
       earlyoom.enable = false;
       samba.enable = false;
-      mariadb.enable = true;
-      nm.enable = true;
-      avahi.enable = true;
-      cups.enable = true;
-      media.enable = true;
+      mariadb.enable = false;
+      nm.enable = false;
+      avahi.enable = false;
+      cups.enable = false;
+      media.enable = false;
     };
     # Enable default user generation
     default-user.enable = true;
