@@ -2,7 +2,7 @@
 # A program list of utility programs that needs to be system wide installed
 
 { pkgs, lib, config, ... }: {
-  # Install archiving tools into userspace 
+  # Install archiving tools into userspace
   environment.systemPackages = with pkgs; [
     light             # Backlight
     smartmontools     # Harddrive health
@@ -15,5 +15,8 @@
     unstable.btrfs-assistant # Snapshot manager, gui
     udisks            # Storage device manager
     lshw              # Hardware utility
+    polkit            # Privilege utility
+    sudo              # Privilege escalation
+    inotify-tools     # File watching
   ];
 }

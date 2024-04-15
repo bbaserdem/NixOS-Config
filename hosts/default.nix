@@ -44,6 +44,8 @@
     bundles = {
       archives.enable = true;
       utils.enable = true;
+      tools.enable = true;
+      filesystems.enable = true;
     };
     # Services
     services = {

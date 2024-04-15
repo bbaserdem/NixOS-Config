@@ -33,12 +33,13 @@
     grub = true;
     # Services
     services = {
-      earlyoom.enable = true;
+      earlyoom.enable = false;
       samba.enable = false;
       mariadb.enable = true;
       nm.enable = true;
       avahi.enable = true;
       cups.enable = true;
+      media.enable = true;
     };
     # Enable default user generation
     default-user.enable = true;

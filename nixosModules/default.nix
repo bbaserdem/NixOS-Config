@@ -54,6 +54,7 @@ in {
   options.myNixOs = {
     sharedSettings = {
       hyprland.enable = lib.mkEnableOption "Enable Hyprland";
+      grubTheme = lib.mkOptionDefault "bigSur";
     };
   };
 
