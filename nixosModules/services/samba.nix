@@ -10,7 +10,8 @@ with lib; {
   services.samba = {
     enable = true;
     securityType = "user";
-    openFirewall = true;
+    # Doesn't work for some reason
+    #openFirewall = true;
     extraConfig = ''
       workgroup = WORKGROUP
       server string = Samba server on ${networking.hostName}
