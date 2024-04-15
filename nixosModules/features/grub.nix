@@ -6,7 +6,7 @@
     enable = true;
     useOSProber = true;
     memtest86.enable = true;
-    theme = pkgs.unstable.sleek-grub-theme;
+    #theme = pkgs.unstable.sleek-grub-theme;
   };
   environment.systemPackages = [
     pkgs.unstable.sleek-grub-theme

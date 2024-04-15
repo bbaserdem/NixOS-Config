@@ -17,10 +17,10 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
-    #sleek-grub-theme = final.sleek-grub-theme.overrideAttr {
+    sleek-grub-theme = final.sleek-grub-theme.overrideAttr {
     #  #withStyle = config.myNixOS.sharedSettings.grubTheme;
-    #  withStyle = "bigSur";
-    #};
+      withStyle = "bigSur";
+    };
     # sonarr = final.unstable.sonarr;
     # radarr = final.unstable.radarr.overrideAttrs (oldAttrs: rec {
     #   version = "4.4.2.6956";
