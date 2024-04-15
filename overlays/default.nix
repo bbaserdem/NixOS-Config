@@ -5,7 +5,6 @@
 {
   inputs,
   myLib,
-  config,
   ...
 }: with myLib; {
   # This one brings our custom packages from the 'pkgs' directory

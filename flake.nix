@@ -59,7 +59,6 @@
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
     let
       myLib = import ./myLib/default.nix {inherit inputs; rootPath = ./.;};
-      config = nixpkgs.config;
       inherit (self) outputs;
     in with myLib; {
 
@@ -68,7 +67,7 @@
     # Formatter to use with nix fmt command
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
     # Overlays to the package list
-    overlays = import ./overlays {inherit inputs myLib config;};
+    overlays = import ./overlays {inherit inputs myLib;};
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
