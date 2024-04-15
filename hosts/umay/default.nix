@@ -27,19 +27,19 @@
     # Features 
     #sddm.enable = false;
     gnome.enable = true;
-    #bluetooth.enable = false;
+    bluetooth.enable = false;
     virtualization.enable = false;
-    #consolefont.enable = false;
-    #grub.enable = false;
+    consolefont.enable = false;
+    grub.enable = false;
     # Services
     services = {
-      #earlyoom.enable = false;
-      #samba.enable = false;
-      #mariadb.enable = false;
-      #nm.enable = false;
-      #avahi.enable = false;
-      #cups.enable = false;
-      #media.enable = false;
+      earlyoom.enable = false;
+      samba.enable = false;
+      mariadb.enable = false;
+      nm.enable = false;
+      avahi.enable = false;
+      cups.enable = false;
+      media.enable = false;
     };
     # Enable default user generation
     default-user.enable = true;
