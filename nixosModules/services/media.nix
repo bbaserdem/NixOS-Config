@@ -6,6 +6,9 @@
   config,
   ...
 }: {
+  # Using PipeWire as the sound server conflicts with PulseAudio.
+  # This option requires `hardware.pulseaudio.enable` to be set to false.
+  hardware.pulseaudio.enable = false;
   # Recommended to have rtkit enabled
   security.rtkit.enable = true;
   # Main enabling script
