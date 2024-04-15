@@ -60,7 +60,7 @@
     let
       myLib = import ./myLib/default.nix {inherit inputs; rootPath = ./.;};
       inherit (self) outputs;
-      config = nixpkgs.config;
+      # config = nixpkgs.config;
     in with myLib; {
       # Custom packages
       packages = forAllSystems (
@@ -71,7 +71,7 @@
         system: nixpkgs.legacyPackages.${system}.alejandra
       );
       # Overlays to the package list
-      overlays = import ./overlays { inherit inputs myLib config; };
+      overlays = import ./overlays { inherit inputs myLib; } #config; };
 
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
