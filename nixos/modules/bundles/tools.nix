@@ -1,5 +1,5 @@
 # tools.nix
-# A program list of tools that's needed systemwide
+# A program list of tools that are needed systemwide
 
 { pkgs, lib, config, ... }: {
   # Install archiving tools into userspace 

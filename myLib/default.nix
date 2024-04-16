@@ -13,7 +13,7 @@ in rec {
   # ================================================================ #
 
   # ============================ Systems =========================== #
-  
+
   # List of systems that our nix flake will build for
   systems = [
     "aarch64-linux"
@@ -37,7 +37,7 @@ in rec {
         inherit inputs outputs myLib rootPath;
       };
       modules = [
-        ( rootPath + /hosts/${name} )
+        ( rootPath + /nixos/hosts/${name} )
         outputs.nixosModules.default
       ];
     };
@@ -50,7 +50,7 @@ in rec {
         inherit inputs outputs myLib rootPath;
       };
       modules = [
-        ( rootPath + /home/${name}/${host}.nix )
+        ( rootPath + /home/users/${name}/${host}.nix )
         outputs.homeManagerModules.default
       ];
     };
@@ -89,12 +89,10 @@ in rec {
     imports =
       (eval.imports or [])
       ++ extra;
-
     options =
       if builtins.hasAttr "optionsExtension" args
       then (args.optionsExtension (eval.options or {}))
       else (eval.options or {});
-
     config =
       if builtins.hasAttr "configExtension" args
       then (args.configExtension (eval.config or evalNoImports))

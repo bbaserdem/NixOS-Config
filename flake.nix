@@ -90,7 +90,7 @@
     };
 
     # Module directories
-    nixosModules.default = ./nixosModules;
-    homeManagerModules.default = ./homeManagerModules;
+    nixosModules.default = ./nixos/modules;
+    homeManagerModules.default = ./home/modules;
   };
 }

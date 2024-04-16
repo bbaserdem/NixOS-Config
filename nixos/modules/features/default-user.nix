@@ -1,6 +1,15 @@
-# NixOS: nixosModules/features/default-user.nix
+# File to setup the default user
 
-{ lib, config, inputs, outputs, myLib, pkgs, rootPath, ... }: let
+{
+  lib,
+  config,
+  inputs,
+  outputs,
+  myLib,
+  pkgs,
+  rootPath,
+  ... 
+}: let
   cfg = config.myNixOS;
 in {
   options.myNixOS = {

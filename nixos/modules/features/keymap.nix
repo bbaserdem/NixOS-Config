@@ -1,4 +1,4 @@
-# Module that sets consolefonts
+# Module that sets preferred x layout everywhere
 
 { pkgs, lib, ... }: {
   # Xserver keymap

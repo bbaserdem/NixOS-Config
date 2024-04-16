@@ -15,19 +15,15 @@
   imports = [
     ./hardware-configuration.nix
     ../default.nix
-
-    # Modules from other flakes (such as nixos-hardware):
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
   ];
   
   # Set our name 
   networking.hostName = "umay";
 
-  # My module toggles
+  # Module toggles
   myNixOS = {
     # Features 
-    #sddm.enable = false;
+    sddm.enable = false;
     gnome.enable = true;
     bluetooth.enable = false;
     virtualization.enable = false;
@@ -50,17 +46,4 @@
     userDesktop = "gnome";
   };
 
-
-  # Enable guest services
-  services.qemuGuest.enable = true;
-
-  # Manually enable these for now 
-  # Packages to install 
-  #environment.systemPackages = with pkgs; [
-  #  neovim
-  #  wget
-  #  git
-  #  home-manager
-  #  btop
-  #];
 }

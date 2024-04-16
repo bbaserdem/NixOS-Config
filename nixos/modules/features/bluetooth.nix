@@ -1,5 +1,4 @@
-# Configuring mysql
-
+# Configuring bluetooth
 {
   config,
   pkgs,
