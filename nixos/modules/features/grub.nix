@@ -17,7 +17,7 @@ in {
     # Make package with override of theme
     # This override is here instead of overrides cause it needs to be changed
     # using system config options
-    grub-theme = pkgs.sleek-grub-theme-unstable.override {
+    grub-theme = pkgs.unstable.sleek-grub-theme.override {
       withStyle = cfg.grub.style;
     };
   in {
