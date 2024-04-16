@@ -17,10 +17,6 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
-    sleek-grub-theme = prev.sleek-grub-theme.override {
-      # use override to specify; | white | dark | orange | bigSur
-      withStyle = "bigSur";
-    };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
