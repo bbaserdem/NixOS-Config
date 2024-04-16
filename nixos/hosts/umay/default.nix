@@ -28,7 +28,10 @@
     bluetooth.enable = false;
     virtualization.enable = false;
     consolefont.enable = true;
-    grub.enable = true;
+    grub = {
+      enable = true;
+      flavor = "bigSur";
+    };
     keymap.enable = true;
     # Services
     services = {

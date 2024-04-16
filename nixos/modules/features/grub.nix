@@ -18,7 +18,7 @@ in {
     # This override is here instead of overrides cause it needs to be changed
     # using system config options
     grub-theme = pkgs.unstable.sleek-grub-theme.override {
-      withStyle = cfg.grub.style;
+      withStyle = cfg.grub.flavor;
     };
   in {
 
