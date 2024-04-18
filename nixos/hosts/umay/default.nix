@@ -45,7 +45,7 @@
       cups.enable = false;
       media.enable = true;
       tlp.enable = false;
-      geoclue = false;
+      geoclue.enable = false;
       udev.enable = true;
       udisks.enable = true;
     };
