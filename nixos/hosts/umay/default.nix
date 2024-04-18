@@ -28,6 +28,8 @@
     bluetooth.enable = false;
     virtualization.enable = false;
     consolefont.enable = true;
+    fonts.enable = true;
+    polkit.enable = true;
     grub = {
       enable = true;
       flavor = "bigSur";
@@ -42,6 +44,10 @@
       avahi.enable = true;
       cups.enable = false;
       media.enable = true;
+      tlp.enable = false;
+      geoclue = false;
+      udev.enable = true;
+      udisks.enable = true;
     };
     # Enable default user generation
     default-user.enable = true;

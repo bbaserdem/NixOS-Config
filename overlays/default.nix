@@ -14,6 +14,10 @@
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
+    # Standalone version of Nerd Fonts 
+    nerdfont-standalone = prev.nerdfonts.override {
+      fonts = [ "NerdFontsSymbolsOnly" ];
+    };
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
