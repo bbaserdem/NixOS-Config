@@ -4,7 +4,7 @@
   security.polkit = {
     enable = true;
     # Enable users group to boot the system
-    security.polkit.extraConfig = ''
+    extraConfig = ''
       polkit.addRule(function(action, subject) {
         if (
           subject.isInGroup("users")
