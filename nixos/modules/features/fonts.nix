@@ -6,8 +6,8 @@
     # Fonts we will use
     packages = with pkgs; [
       nerdfont-standalone         # Defined in overlays, glyphs
-      #noto-fonts-monochrome-emoji # Emoji fonts
-      noto-fonts-color-emoji
+      unstable.noto-fonts-monochrome-emoji # Emoji fonts
+      unstable.noto-fonts-color-emoji
       _3270font                   # Monospace
       fira-code                   # Monospace with ligatures
       liberation_ttf              # Windows compat.
