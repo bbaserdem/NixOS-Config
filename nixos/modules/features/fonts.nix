@@ -2,7 +2,7 @@
 
 { pkgs, lib, ... }: {
   fonts = {
-    enableDefaultPackages = true;
+    #enableDefaultPackages = true;
     # Fonts we will use
     packages = with pkgs; [
       nerdfonts-standalone        # Defined in overlays, glyphs
