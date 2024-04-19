@@ -5,6 +5,8 @@
   lib,
   config,
   pkgs,
+  myLib,
+  rootPath,
   ...
 }: {
   # You can import other home-manager modules here
