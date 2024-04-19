@@ -37,6 +37,7 @@ in rec {
         inherit inputs outputs myLib rootPath;
       };
       modules = [
+        ( rootPath + /nixos )
         ( rootPath + /nixos/hosts/${name} )
         outputs.nixosModules.default
       ];
@@ -50,7 +51,7 @@ in rec {
         inherit inputs outputs myLib rootPath;
       };
       modules = [
-        ( rootPath + /home/users/${name}/${host}.nix )
+        ( rootPath + /home-manager/${name}/${host}.nix )
         outputs.homeManagerModules.default
       ];
     };

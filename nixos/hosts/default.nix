@@ -13,13 +13,13 @@
   # Nixpkgs options
   nixpkgs = {
     overlays = [
-      #outputs.overlays.additions
+      outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
     ];
   };
 
-  # Personal module toggles
+  # Generalized Personal module toggles
   myNixOS = {
     # Bundles
     bundles = {
@@ -33,4 +33,15 @@
       satisfactory.enable = false;
     };
   };
+  
+  # Nix settings
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    auto-optimise-store = true;
+  };
+  programs.nix-ld.enable = true;
+  nixpkgs.config.allowUnfree = true;
+
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  system.stateVersion = "23.05";
 }

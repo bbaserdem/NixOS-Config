@@ -54,19 +54,7 @@ in {
   options.myNixOS = {
     sharedSettings = {
       hyprland.enable = lib.mkEnableOption "Enable Hyprland";
-      grubTheme = lib.mkOptionDefault "bigSur";
     };
   };
 
-  config = {
-    nix.settings = {
-      experimental-features = ["nix-command" "flakes"];
-      auto-optimise-store = true;
-    };
-    programs.nix-ld.enable = true;
-    nixpkgs.config.allowUnfree = true;
-
-    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    system.stateVersion = "23.05";
-  };
 }

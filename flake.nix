@@ -48,12 +48,13 @@
     };
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
-      inputs.nixpkgs.follows = "hyprland";
+      inputs.hyprland.follows = "hyprland";
     };
+
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
@@ -68,6 +69,10 @@
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
     # Overlays to the package list
     overlays = import ./overlays {inherit inputs myLib;};
+
+    # Module directories
+    nixosModules.default = ./modules/nixos;
+    homeManagerModules.default = ./modules/home-manager;
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -88,9 +93,5 @@
       #"batuhan@su-iyesi"  = mkHome "x86_64-linux" "batuhan" "su-iyesi";
       #"batuhan@yel-ana"   = mkHome "x86_64-linux" "batuhan" "yel-ana";
     };
-
-    # Module directories
-    nixosModules.default = ./nixos/modules;
-    homeManagerModules.default = ./home/modules;
   };
 }
