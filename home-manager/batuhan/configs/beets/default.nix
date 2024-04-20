@@ -8,7 +8,7 @@
   myLib,
   rootPath,
   ...
-}: {
+}: rec {
   # Link our plugins from the correct folder
   home.file.".local/share/beets/beetsplug".source = ./beetsplug;
 
@@ -21,7 +21,7 @@
     };
     settings = {
       directory = config.xdg.userDirs.music;
-      library = "${config.programs.beets.settings.directory}/Beets_Library.db";
+      library = "${programs.beets.settings.directory}/Beets_Library.db";
       ignore_hidden = false;
       asciify_paths = false;
       path_sep_replace = "⌿";
@@ -201,8 +201,8 @@
       };
       smartplaylist = {
         auto = true;
-        playlist_dir = config.programs.beets.settings.playlist.playlist_dir;
-        relative_to = config.programs.beets.settings.directory;
+        playlist_dir = programs.beets.settings.playlist.playlist_dir;
+        relative_to = programs.beets.settings.directory;
         playlists = [ 
           ({
             name = "JoeyFavs.m3u";
