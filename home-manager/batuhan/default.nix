@@ -20,7 +20,8 @@
     ./configs/beets
   ];
 
-  # TODO: Set your usernam  home = {
+  # TODO: Set your username
+  home = {
     username = "batuhan";
     homeDirectory = "/home/batuhan";
   };
