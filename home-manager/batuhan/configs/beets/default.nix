@@ -197,7 +197,7 @@
       };
       playlist = {
         auto = true;
-        playlist_dir = "~/Media/Music/Playlists"
+        playlist_dir = "~/Media/Music/Playlists";
       };
       smartplaylist = {
         auto = true;
