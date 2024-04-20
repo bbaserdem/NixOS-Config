@@ -4,6 +4,7 @@
 { pkgs, lib, config, ... }: {
   # Install archiving tools into userspace
   environment.systemPackages = with pkgs; [
+    home-manager      # Home-manager
     light             # Backlight
     smartmontools     # Harddrive health
     kmon              # Kernel module checker
