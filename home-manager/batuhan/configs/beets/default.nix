@@ -215,7 +215,7 @@
             name = "Mood-Microtonal.m3u";
             album_query = "mood:microtonal";
           }) ({
-            name: "Mood-Affirmation.m3u";
+            name = "Mood-Affirmation.m3u";
             album_query = "mood:affirmation";
           }) ({
             name = "Mood-Heavy.m3u";
