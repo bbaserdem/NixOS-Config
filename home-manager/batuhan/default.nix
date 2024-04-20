@@ -12,7 +12,7 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
 
-    ./configs/beets
+    #./configs/beets
   ];
 
   # System setup

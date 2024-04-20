@@ -1,5 +1,4 @@
 # Beets configuration
-# TODO: Use variable substitution rather than coded paths using $config.
 {
   inputs,
   outputs,
@@ -11,7 +10,7 @@
   ...
 }: {
   # Link our plugins from the correct folder
-  #home.file.".local/share/beets/beetsplug".source = ./beetsplug;
+  home.file.".local/share/beets/beetsplug".source = ./beetsplug;
 
   # Beets config
   programs.beets = {
