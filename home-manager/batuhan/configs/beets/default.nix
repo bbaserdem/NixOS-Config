@@ -9,16 +9,9 @@
   myLib,
   rootPath,
   ...
-}: let
-  beetsPluginPath = "${config.xdg.dataHome}/beets/beetsplug";
-in {
-  # Put our plugins in the correct folder
-  home.file = {
-    ".local/share/beets/beetsplug" = {
-      enable = true;
-      source = ./beetsplug;
-    };
-  };
+}: {
+  # Link our plugins from the correct folder
+  home.file.".local/share/beets/beetsplug".source = ./beetsplug;
 
   # Beets config
   programs.beets = {
@@ -110,7 +103,7 @@ in {
         singleton = "[\${initial}]/%tdot{%the{\${albumartist}}}/%if{$date,[\${date}] }\${title} - \${artist}";
       };
       # Plugins
-      pluginpath = beetsPluginPath;
+      pluginpath = "${config.xdg.dataHome}/beets/beetsplug";
       plugins = [
         "badfiles"
         "convert"
