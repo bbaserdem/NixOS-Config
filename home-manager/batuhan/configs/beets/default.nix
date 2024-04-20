@@ -11,7 +11,7 @@
   ...
 }: {
   # Link our plugins from the correct folder
-  home.file.".local/share/beets/beetsplug".source = ./beetsplug;
+  #home.file.".local/share/beets/beetsplug".source = ./beetsplug;
 
   # Beets config
   programs.beets = {
