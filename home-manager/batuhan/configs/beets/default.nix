@@ -9,7 +9,17 @@
   myLib,
   rootPath,
   ...
-}: {
+}: let
+  beetsPluginPath = "${config.xdg.dataHome}/beets/beetsplug";
+in {
+  # Put our plugins in the correct folder
+  home.file = {
+    ".local/share/beets/beetsplug" = {
+      enable = true;
+      source = ./beetsplug;
+    };
+  };
+
   # Beets config
   programs.beets = {
     enable = true;
@@ -18,8 +28,8 @@
       enableUpdate = true;
     };
     settings = {
-      directory = "~/Media/Music";
-      library = "~/Media/Music/Beets_Library.db";
+      directory = config.xdg.userDirs.music;
+      library = "${config.programs.beets.settings.directory}/Beets_Library.db";
       ignore_hidden = false;
       asciify_paths = false;
       path_sep_replace = "⌿";
@@ -64,7 +74,7 @@
         from_scratch = false;
         quiet = false;
         quiet_fallback = "asis";
-        log = "~/.cache/beets/log";
+        log = "${config.xdg.cacheHome}/beets/log";
         default_action = "skip";
         languages = [
           "en"
@@ -100,7 +110,7 @@
         singleton = "[\${initial}]/%tdot{%the{\${albumartist}}}/%if{$date,[\${date}] }\${title} - \${artist}";
       };
       # Plugins
-      pluginpath = "~/.config/beets/beetsplug";
+      pluginpath = beetsPluginPath;
       plugins = [
         "badfiles"
         "convert"
@@ -113,12 +123,10 @@
         "importadded"
         "lyrics"
         "mbsync"
-        "mpdstats"
         "replaygain"
         "zero"
         "playlist"
         "smartplaylist"
-        "mpdupdate"
         "the"
         "thumbnails"
         "types"
@@ -131,7 +139,7 @@
         auto = false;
         copy_album_art = true;
         album_art_maxwidth = 256;
-        dest = "~/Media/Music (Lossy)";
+        dest = "${config.home.homeDirectory}/Media/Music (Lossy)";
         never_convert_lossy_files = true;
         embed = true;
         delete_originals = false;
@@ -197,12 +205,12 @@
       };
       playlist = {
         auto = true;
-        playlist_dir = "~/Media/Music/Playlists";
+        playlist_dir = "${config.xdg.userDirs.music}/Playlists";
       };
       smartplaylist = {
         auto = true;
-        playlist_dir = "~/Media/Music/Playlists";
-        relative_to = "~/Media/Music";
+        playlist_dir = config.programs.beets.settings.playlist.playlist_dir;
+        relative_to = config.programs.beets.settings.directory;
         playlists = [ 
           ({
             name = "JoeyFavs.m3u";
@@ -262,7 +270,7 @@
       };
       alternatives = {
         phone = {
-          directory = "/home/sbp/Shared/Android/Music";
+          directory = "${config.xdg.userDirs.extraConfig.XDG_PHONE_DIR}/Music";
           formats = [
             "opus"
             "mp3"
