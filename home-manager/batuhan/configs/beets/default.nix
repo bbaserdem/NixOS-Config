@@ -11,7 +11,7 @@
   ...
 }: {
   # Beets config
-  program.beets = {
+  programs.beets = {
     enable = true;
     mpdIntegration = {
       enableStats = true;
