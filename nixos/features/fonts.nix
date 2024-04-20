@@ -2,10 +2,9 @@
 
 { pkgs, lib, ... }: {
   fonts = {
-    #enableDefaultPackages = true;
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
     # Fonts we will use
-    fonts = with pkgs; [
+    packages = with pkgs; [
       nerdfont-standalone         # Defined in overlays, glyphs
       unstable.noto-fonts-monochrome-emoji # Emoji fonts
       unstable.noto-fonts-color-emoji
