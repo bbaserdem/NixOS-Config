@@ -32,6 +32,8 @@
     services = {
       satisfactory.enable = false;
     };
+    # Features
+    zsh.enable = true;
   };
   
   # Nix settings
