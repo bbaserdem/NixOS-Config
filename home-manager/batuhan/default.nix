@@ -20,6 +20,7 @@
     ./configs/keyboard
     ./configs/kitty
     ./configs/music
+    ./configs/nnn
     ./configs/paths
     ./configs/theming
     ./configs/videoRip
