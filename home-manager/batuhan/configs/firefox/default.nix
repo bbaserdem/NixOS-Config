@@ -1,4 +1,5 @@
 # Setup browsers to be used
+# TODO: Zotero connector as addon, and vdhcoapp as package
 {
   inputs,
   outputs,
@@ -33,7 +34,7 @@
         sponsorblock
         ublock-origin
         video-downloadhelper
-        zotero-connector
+        #zotero-connector
       ];
       search = {
         default = "Google";
@@ -69,54 +70,14 @@
         };
       };
       containers = {
-        personal = {
-          name = "Personal";
-          id = 0;
-          icon = "tree";
-          color = "blue";
-        };
-        work = {
-          name = "Work";
-          id = 1;
-          icon = "briefcase";
-          color = "turquoise";
-        };
-        banking = {
-          name = "Finance";
-          id = 2;
-          icon = "dollar";
-          color = "green";
-        };
-        shopping = {
-          name = "Shopping";
-          id = 3;
-          icon = "cart";
-          color = "yellow";
-        };
-        porn = {
-          name = "Explicit";
-          id = 4;
-          icon = "pet";
-          color = "orange";
-        };
-        media = {
-          name = "Media";
-          id = 5;
-          icon = "fruit";
-          color = "red";
-        };
-        productivity = {
-          name = "Organization";
-          id = 6;
-          icon = "fence";
-          color = "pink";
-        };
-        programming = {
-          name = "Programming";
-          id = 7;
-          icon = "fingerprint";
-          color = "purple";
-        };
+        personal      = { name = "Personal";    id = 0; icon = "tree";        color = "blue";     };
+        work          = { name = "Work";        id = 1; icon = "briefcase";   color = "turquoise";};
+        banking       = { name = "Finance";     id = 2; icon = "dollar";      color = "green";    };
+        shopping      = { name = "Shopping";    id = 3; icon = "cart";        color = "yellow";   };
+        porn          = { name = "Explicit";    id = 4; icon = "pet";         color = "orange";   };
+        media         = { name = "Media";       id = 5; icon = "fruit";       color = "red";      };
+        productivity  = { name = "Organization";id = 6; icon = "fence";       color = "pink";     };
+        programming   = { name = "Programming"; id = 7; icon = "fingerprint"; color = "purple";   };
       };
     };
   };

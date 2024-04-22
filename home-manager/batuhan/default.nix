@@ -14,8 +14,9 @@
     inputs.sops-nix.homeManagerModules.sops
 
     ./configs/beets
-    ./configs/browser
+    ./configs/firefox
     ./configs/git
+    ./configs/gnupg
     ./configs/keyboard
     ./configs/paths
     ./configs/theming
