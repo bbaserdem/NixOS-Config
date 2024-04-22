@@ -119,7 +119,7 @@
       };
     };
   };
-  home.packages = with nixpkgs; [
+  home.packages = with pkgs; [
     #unstable.vdhcoapp
   ];
 }

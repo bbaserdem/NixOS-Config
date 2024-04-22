@@ -49,7 +49,10 @@
     config = {
       allowUnfree = true;
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "vscode"
+        "betterttv"
+        "enhanced-github"
+        "notion-web-clipper"
+        "video-downloadhelper"
       ];
     };
   };
