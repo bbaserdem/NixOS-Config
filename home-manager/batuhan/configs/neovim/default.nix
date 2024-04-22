@@ -26,7 +26,7 @@ in {
   # Send in the needed config files
   xdg.configFile."nvim" = {
     enable = true;
-    source = ./nvimConfiguration;
+    source = ./nvim;
     recursive = true;
   };
 }
