@@ -27,6 +27,7 @@
       utils.enable = true;
       tools.enable = true;
       filesystems.enable = true;
+      nix.enable = true;
     };
     # Services
     services = {
