@@ -22,6 +22,13 @@
     yt-dlp = prev.yt-dlp.override { withAlias = true; };
     # Make NNN use nerdfont symbols
     nnn = prev.nnn.override { withNerdIcons = true; };
+    # Add features to ncmpcpp
+    ncmpcpp = prev.ncmpcpp.override {
+      outputsSupport = true;
+      visualizerSupport = true;
+      clockSupport = true;
+      taglibSupport = true;
+    };
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
