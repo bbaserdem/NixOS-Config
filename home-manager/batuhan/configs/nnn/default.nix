@@ -52,6 +52,6 @@ in {
   home.sessionVariables = {
     NNN_OPTS = "adD";
     NNN_COLORS = "6423";
-    NNN_TMPFILE = '/tmp/.lastd';
+    NNN_TMPFILE = "/tmp/.lastd";
   };
 }
