@@ -36,7 +36,7 @@
       }
     ];
     # Prompt theme 
-    initExtra = "source ${XDG_CONFIG_HOME}/powerlevel10k/config.zsh";
+    initExtra = "source ${config.xdg.configHome}/powerlevel10k/config.zsh";
     ''
       if [[ -r "''${XDG_CONFIG_HOME}/powerlevel10k/config.zsh" ]]; then
         source "''${XDG_CONFIG_HOME}/powerlevel10k/config.zsh"
