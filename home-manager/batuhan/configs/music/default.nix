@@ -88,8 +88,8 @@
       visualizer_look = "▊▊";
       visualizer_color = "magenta, blue, cyan, green, yellow, red";
       # Main UI
-      startup_screen = "visualizer";
-      startup_slave_screen = "playlist";
+      startup_screen = "playlist";
+      startup_slave_screen = "visualizer";
       song_window_title_format = "NCMPCPP: ♪ {%A - }{%t}{ (%b)}|{%f}";
       user_interface = "alternative";
       header_visibility = true;

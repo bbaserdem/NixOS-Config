@@ -18,6 +18,7 @@
     ./configs/git
     ./configs/gnupg
     ./configs/keyboard
+    ./configs/kitty
     ./configs/music
     ./configs/paths
     ./configs/theming
