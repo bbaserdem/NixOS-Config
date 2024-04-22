@@ -119,4 +119,6 @@
       };
     };
   };
+  # Let us grab unfree addons
+  inputs.firefox-addons.config.allowUnfree = true;
 }
