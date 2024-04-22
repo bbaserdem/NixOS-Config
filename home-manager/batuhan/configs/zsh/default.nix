@@ -29,10 +29,19 @@
       path = "${config.xdg.cacheHome}/zsh/history";
       share = true;
     };
-    plugins = [
-      { name = "powerlevel10k";
+    plugins = [ {
+        name = "powerlevel10k";
         src = pkgs.zsh-powerlevel10k;
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      } {
+        name = "zsh-completions";
+        src = pkgs.zsh-completions;
+      } {
+        name = "nix-zsh-completions";
+        src = pkgs.nix-zsh-completions;
+      } {
+        name = "zsh-history-substring-search";
+        src = pkgs.zsh-history-substring-search;
       }
     ];
     # Prompt theme 
