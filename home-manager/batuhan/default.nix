@@ -48,6 +48,8 @@
     ];
     config = {
       allowUnfree = true;
+      # This is a bug workaround for now
+      allowUnfreePredicate = (_: true);
     };
   };
 
