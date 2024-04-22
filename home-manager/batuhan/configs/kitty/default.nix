@@ -73,9 +73,9 @@ in {
       color7 = "#${color.base05}";
       color15 = "#${color.base06}";
       # scrollback_pager = ''nvim -c "set signcolumn=no showtabline=0" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "'';
-      allow_remote_control = "yes";
+      allow_remote_control = true;
       listen_on = "unix:/tmp/kitty";
-      shell_integration = "enabled";
+      shell_integration = true;
     };
     extraConfig = ''
       font_family         Iosevka Light
