@@ -24,8 +24,8 @@ in {
       force_ltr = false;
       enable_audio_bell = false;
       cursor_shape = "block";
-      cursor_blink_interval = 0.5;
-      cursor_stop_blinking_after = 0.5;
+      cursor_blink_interval = "0.5";
+      cursor_stop_blinking_after = 0;
       scrollback_lines = 5000;
       url_style = "curly";
       open_url_modifiers = "kitty_mod";
