@@ -18,6 +18,7 @@
     ./configs/git
     ./configs/gnupg
     ./configs/keyboard
+    ./configs/music
     ./configs/paths
     ./configs/theming
     ./configs/videoRip
