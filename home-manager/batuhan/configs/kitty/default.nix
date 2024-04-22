@@ -18,7 +18,7 @@ in {
       name = "Iosevka";
       size = 15;
       package = pkgs.iosevka;
-    }
+    };
     settings = {
       disable_ligatures = "cursor";
       force_ltr = false;
