@@ -44,11 +44,14 @@
         src = pkgs.zsh-history-substring-search;
       }
     ];
-    # Prompt theme 
     initExtra = ''
+      # Prompt theme 
       if [[ -r "${config.xdg.configHome}/powerlevel10k/config.zsh" ]]; then
         source "${config.xdg.configHome}/powerlevel10k/config.zsh"
       fi
+      # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
+      bindkey '^[[A' history-substring-search-up
+      bindkey '^[[B' history-substring-search-down
     '';
     # For powerlevel10k instant prompt
     initExtraFirst = ''
