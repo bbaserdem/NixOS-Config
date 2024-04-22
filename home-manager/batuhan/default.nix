@@ -14,12 +14,14 @@
     inputs.sops-nix.homeManagerModules.sops
 
     ./configs/beets
+    ./configs/calendar
     ./configs/firefox
     ./configs/git
     ./configs/gnupg
     ./configs/keyboard
     ./configs/kitty
     ./configs/music
+    ./configs/neovim
     ./configs/nnn
     ./configs/paths
     ./configs/theming

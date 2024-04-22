@@ -140,4 +140,5 @@
       use_console_editor = true;
     };
   };
+  xdg.dataFile."ncmpcpp/lyrics/.nomedia".text = "Placeholder for directory creation";
 }

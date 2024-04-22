@@ -33,8 +33,13 @@
     publicShare = "${config.home.homeDirectory}/Shared/Public";
     download =    "${config.home.homeDirectory}/Sort/Downloads";
     extraConfig = {
+      XDG_PROJECTS_DIR = "${config.home.homeDirectory}/Projects";
       XDG_STAGING_DIR = "${config.home.homeDirectory}/Sort";
       XDG_PHONE_DIR = "${config.home.homeDirectory}/Shared/Android";
     };
+  };
+  # My flake directory
+  home.sessionVariables = {
+    FLAKE = "${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}";
   };
 }
