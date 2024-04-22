@@ -13,9 +13,8 @@
 in {
   programs.kitty = {
     enable = true;
-    font = "Iosevka";
-    font.size = 15;
     shellIntegration.enableZshIntegration = true;
+    font.size = 15;
     settings = {
       disable_ligatures = "cursor";
       force_ltr = false;
