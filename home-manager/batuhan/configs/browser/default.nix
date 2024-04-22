@@ -119,4 +119,7 @@
       };
     };
   };
+  home.packages = with nixpkgs; [
+    #unstable.vdhcoapp
+  ];
 }
