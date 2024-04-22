@@ -45,7 +45,7 @@
                 template = "https://search.nixos.org/packages";
                 params = [
                   { name = "type"; value = "packages"; }
-                  #{ name = "channel"; value = "packages"; }
+                  { name = "channel"; value = pkgs.system; }
                   { name = "query"; value = "{searchTerms}"; }
                 ];
               }

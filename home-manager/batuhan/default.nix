@@ -45,6 +45,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      outputs.overlays.firefox-addon-packages
     ];
     config = {
       allowUnfree = true;    };
