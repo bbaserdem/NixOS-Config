@@ -14,7 +14,7 @@
     enable = true;
     profiles.batuhan = {
       isDefault = true;
-      extensions = with inputs.firefox-addons.packages."${pkgs.system}"; [
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         aria2-integration
         automatic-dark
         batchcamp

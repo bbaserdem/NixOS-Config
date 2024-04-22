@@ -45,15 +45,10 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      inputs.nur.overlay
     ];
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "betterttv"
-        "enhanced-github"
-        "notion-web-clipper"
-        "video-downloadhelper"
-      ];
     };
   };
 
