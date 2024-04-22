@@ -52,9 +52,16 @@
       if [[ -r "${config.xdg.configHome}/powerlevel10k/config.zsh" ]]; then
         source "${config.xdg.configHome}/powerlevel10k/config.zsh"
       fi
+      # Set editor default keymap to vi (`-v`) or emacs (`-e`)
+      bindkey -v
       # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
       bindkey '^[[A' history-substring-search-up
       bindkey '^[[B' history-substring-search-down
+      zmodload -F zsh/terminfo +p:terminfo
+      if [[ -n ${terminfo[kcuu1]} && -n ${terminfo[kcud1]} ]]; then
+        bindkey ${terminfo[kcuu1]} history-substring-search-up
+        bindkey ${terminfo[kcud1]} history-substring-search-down
+      fi
     '';
     # For powerlevel10k instant prompt
     initExtraFirst = ''
