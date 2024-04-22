@@ -18,11 +18,13 @@
     autosuggestions = {
       enable = true;
       strategy = [
-        "match_prev_cmd"
         "completion"
+        "match_prev_cmd"
       ];
     };
     enableCompletion = true;
     enableBashCompletion = true;
   };
+  # Let zsh find system-based apps
+  environment.pathsToLink = [ "/share/zsh" ];
 }

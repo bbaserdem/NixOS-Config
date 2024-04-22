@@ -36,12 +36,15 @@
       } {
         name = "zsh-completions";
         src = pkgs.zsh-completions;
+        file = "share/zsh-completions/zsh-completions";
       } {
         name = "nix-zsh-completions";
         src = pkgs.nix-zsh-completions;
+        file = "share/zsh/plugins/nix/nix-zsh-completions.plugin.nix";
       } {
         name = "zsh-history-substring-search";
         src = pkgs.zsh-history-substring-search;
+        file = "share/zsh-history-substring-search/zsh-history-substring-search.zsh";
       }
     ];
     initExtra = ''
