@@ -36,12 +36,11 @@
       }
     ];
     # Prompt theme 
-    initExtra = "source ${config.xdg.configHome}/powerlevel10k/config.zsh";
-    ''
-      if [[ -r "''${XDG_CONFIG_HOME}/powerlevel10k/config.zsh" ]]; then
-        source "''${XDG_CONFIG_HOME}/powerlevel10k/config.zsh"
+    initExtra = ''
+      if [[ -r "${config.xdg.configHome}/powerlevel10k/config.zsh" ]]; then
+        source "${config.xdg.configHome}/powerlevel10k/config.zsh"
       fi
-    ''
+    '';
     # For powerlevel10k instant prompt
     initExtraFirst = ''
       if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
