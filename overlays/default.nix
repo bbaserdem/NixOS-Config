@@ -35,4 +35,13 @@
       config.allowUnfree = true;
     };
   };
+
+  # Will make firefox addons available through pkgs.firefox-addons
+  # and should make unfree packages available.
+  firefox-addon-packages = final: _prev: {
+    firefox-addons = import inputs.firefox-addons {
+      system = final.system;
+      config.allowUnfree = true;
+    };
+  };
 }
