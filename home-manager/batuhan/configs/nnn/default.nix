@@ -29,7 +29,7 @@ in {
         F = "fzcd";
         o = "fzopen";
         "+" = "fzplug";
-        r = "gitroot";
+        R = "gitroot";
         e = "gpge";
         v = "imgview";
         " " = "launch";
