@@ -9,6 +9,24 @@
   rootPath,
   ...
 }: let
-  colors = config.colorScheme.colors;
+  colors = config.colorScheme.palette;
 in {
+  programs.neovim = {
+    enable = true;
+    # Aliases 
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    # Configure nvim as the default editor
+    defaultEditor = true;
+    # Needed software to run nvim
+    extraPackages = with pkgs; [
+    ];
+  };
+  # Send in the needed config files
+  xdg.configFile."nvim" = {
+    enable = true;
+    source = ./nvimConfiguration;
+    recursive = true;
+  };
 }
