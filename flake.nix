@@ -27,10 +27,7 @@
     };
 
     # Nix user repository
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nur.url = "github:nix-community/NUR";
 
     # Eventually want to set up disk impermanence
     impermanence.url = "github:nix-community/impermanence";
