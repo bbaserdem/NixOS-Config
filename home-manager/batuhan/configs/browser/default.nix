@@ -33,6 +33,7 @@
         sponsorblock
         ublock-origin
         video-downloadhelper
+        zotero-connector
       ];
       search = {
         default = "Google";
