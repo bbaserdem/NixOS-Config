@@ -4,22 +4,27 @@ Personal configuration of my page.
 
 ## Notable Features
 
+[*] 📁 Modular and toggleable config
 [ ] 🔒 Luks disk encryption with btrfs
 [ ] 🖥️ Wayland desktop
-[ ] 📃 Neovim setup
+[ ] 📃 Neovim setup using external plugin management
 [ ] 🤫 Secrets
 
 ## Contents
 
 - ** modules** Modularized NixOS config
-  - [ home-manager](homeManagerModules) Home manager config, standalone
-  - [ nixos](nixosModules) General NixOS config
-- [󱩊 hosts](hosts) Different systems, named after gods of Tengrism
-  - [🤰 Umay](hosts/umay) Virtual box
-  - [🔥 Od İyesi](hosts/od-iyesi) Live USB
-  - [🌳 Yertengri](hosts/yertengri) Home PC
-  - [🌊 Su İyesi](hosts/su-iyesi) Work computer
-  - [🎐 Yel Ana](hosts/yel-ana) Laptop
+  - [ home-manager](home-manager) Home manager config, standalone
+  - [ nixos](nixos) Systemwide NixOS config
+- [󱩊 hosts](nixos/hosts) Different systems, named after gods of Tengrism
+  - [🤰 Umay](nixos/hosts/umay) Virtual box
+  - [🔥 Od İyesi](nixos/hosts/od-iyesi) Live USB
+  - [🌳 Yertengri](nixos/hosts/yertengri) Home PC
+  - [🌊 Su İyesi](nixos/hosts/su-iyesi) Work computer
+  - [🎐 Yel Ana](nixos/hosts/yel-ana) Laptop
+  - [🧟 Erlik] Phone (not configured here, but might be referenced)
+- [ users](home-manager/users) Different users, named after themselves
+  - [🔪👑 batuhan](home-manager/users/batuhan) My user account
+  - [🧙🐭 joeysaur](home-manager/users/joeysaur) Husband's user account (future)
 
 ## Inspirations
 

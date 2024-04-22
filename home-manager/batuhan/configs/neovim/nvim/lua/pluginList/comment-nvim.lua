@@ -7,10 +7,11 @@
 
 local M = {
     "numToStr/Comment.nvim",
+    --[[
     opts = {
-        mappings = true,
         -- mappings = true,
     },
+    --]]
     lazy = false,
 }
 
