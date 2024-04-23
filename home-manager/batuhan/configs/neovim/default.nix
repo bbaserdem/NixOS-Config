@@ -21,6 +21,7 @@ in {
     defaultEditor = true;
     # Needed software to run nvim
     extraPackages = with pkgs; [
+      lua-language-server
     ];
   };
   # Send in the needed config files
