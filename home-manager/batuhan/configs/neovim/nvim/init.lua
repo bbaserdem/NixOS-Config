@@ -23,7 +23,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Load plugin manager first, since which-key depends on the plugins
-require("lazy-plugin")
+require("plugins")
 
 -- Load options
 require("options")

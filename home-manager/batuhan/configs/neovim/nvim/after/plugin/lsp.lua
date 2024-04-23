@@ -25,9 +25,20 @@ local on_attach = function(_, bufnr)
     end, {})
 end
 
+-- Load cmp capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-require('lspconfig').lua_ls.setup {
+-- Force load neodev if the path contains our NixOS configuration
+require("neodev").setup({
+    override = function(root_dir, library)
+        if root_dir:find("configs/neovim/nvim", 1, true) then
+            library.enabled = true
+            library.plugins = true
+        end
+    end,
+})
+require("lspconfig").lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     Lua = {
