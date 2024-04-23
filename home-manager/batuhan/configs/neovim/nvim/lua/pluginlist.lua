@@ -27,6 +27,20 @@ return {
             },
         },
     },
+    -- Telescope
+    {   "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "stevearc/aerial.nvim",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
+        },
+    }
+    -- Treesitter
+    {   "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+    },
     -- Comments
     {   "numToStr/Comment.nvim",
         lazy = false,
