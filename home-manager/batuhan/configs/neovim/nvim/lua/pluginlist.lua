@@ -36,7 +36,7 @@ return {
             "stevearc/aerial.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
         },
-    }
+    },
     -- Treesitter
     {   "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
