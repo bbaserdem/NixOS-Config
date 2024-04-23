@@ -25,7 +25,6 @@ require("lazy").setup("pluginList", {
     defaults = { lazy = true, },
     -- lockfile generated after running update.
     lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
-    -- install = { colorscheme = { "dracula", "tokyonight" } },
     checker = { enabled = true },
     dev = {
         path = vim.fn.stdpath("data") .. "/projects",
