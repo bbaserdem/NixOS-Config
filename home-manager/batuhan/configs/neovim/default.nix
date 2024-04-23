@@ -22,6 +22,8 @@ in {
     # Needed software to run nvim
     extraPackages = with pkgs; [
       lua-language-server
+      gnumake
+      clang
     ];
   };
   # Send in the needed config files
