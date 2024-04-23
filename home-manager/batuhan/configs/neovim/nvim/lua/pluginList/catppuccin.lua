@@ -19,7 +19,7 @@ local M = {
     },
     config = function(_plugin, _opts)
         require("catppuccin").setup(_opts)
-        vim.cmd("colorscheme catppuccin")
+        --vim.cmd("colorscheme catppuccin")
     end,
 }
 
