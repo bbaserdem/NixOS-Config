@@ -1,5 +1,5 @@
 -------------------------------------------------
--- name : gruvbox for nvim
+-- name : Gruvbox for nvim
 -- url  : https://github.com/ellisonleao/gruvbox.nvim
 ---------------------------------------------------
 -- Comment out blocks of text

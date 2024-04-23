@@ -1,5 +1,5 @@
 -------------------------------------------------
--- name : catppuccin for nvim
+-- name : Catppuccin for nvim
 -- url  : https://github.com/catppuccin/nvim
 ---------------------------------------------------
 -- Comment out blocks of text
