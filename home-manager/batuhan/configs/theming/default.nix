@@ -14,6 +14,13 @@
     variant = "Mocha";
   };
 in {
+  # Set our cursor
+  home.pointerCursor = {
+    name = "Bibata-Modern-Ice";
+    package = pkgs.bibata-cursors;
+    x11.enable = true;
+    gtk.enable = true;
+  };
   # Setup our gtk options
   gtk = {
     enable = true;
@@ -28,10 +35,10 @@ in {
       };
     };
     # Cursor on gtk
-    cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-    };
+    #cursorTheme = {
+    #  name = "Bibata-Modern-Ice";
+    #  package = pkgs.bibata-cursors;
+    #};
     # Icons on gtk
     iconTheme = {
       name = "Qogir";

@@ -20,7 +20,7 @@
     ./configs/gnupg
     ./configs/keyboard
     ./configs/kitty
-    ./configs/music
+    ./configs/mpd
     ./configs/neovim
     ./configs/nnn
     ./configs/paths
