@@ -5,7 +5,7 @@
   ...
 }: {
   programs.btop = {
-    enable = lib.mkOptionDefault true;
+    enable = lib.mkDefault true;
     package = pkgs.btop;
     settings = {
       color_theme = "Default";

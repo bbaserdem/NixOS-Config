@@ -45,5 +45,5 @@
     baobab
   ];
   # Common services
-  services.blueman-applet.enable = lib.mkOptionDefault true;
+  services.blueman-applet.enable = lib.mkDefault true;
 }

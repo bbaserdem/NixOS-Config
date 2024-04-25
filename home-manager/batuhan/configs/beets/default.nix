@@ -10,7 +10,7 @@
 
   # Beets config
   programs.beets = {
-    enable = lib.mkOptionDefault true;
+    enable = lib.mkDefault true;
     mpdIntegration = {
       enableStats = true;
       enableUpdate = true;
