@@ -30,7 +30,7 @@
     ./configs/nnn
     ./configs/paths
     ./configs/pass
-    ./configs/remmina
+    # ./configs/remmina on unstable branch
     ./configs/syncthing
     ./configs/texlive
     ./configs/theming
