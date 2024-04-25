@@ -1,7 +1,16 @@
 -- nvim/lua/options.lua
 -- Global behavior options
 
-local options = {
+-- Options outside vim.opt scope
+vim.wo.number = true
+vim.wo.colorcolumn = '80'
+
+local helper_vimopt = function(_opts)
+    for _key, _value in pairs(_opts) do
+        vim.opt[_key] = _value
+    end
+end
+helper_vimopt({
     ------------------------------
     ---- Indentation  options ----
     ------------------------------
@@ -82,11 +91,4 @@ local options = {
     backup = false, -- creates a backup file
     -- clipboard = "unnamedplus", -- allows neovim to access the system clipboard
     completeopt = "menuone,noselect", -- mostly just for cmp
-}
-
-for _key, _value in pairs(options) do
-    vim.opt[_key] = _value
-end
-
-vim.wo.number = true
-vim.wo.colorcolumn = '80'
+})

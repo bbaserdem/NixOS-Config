@@ -20,7 +20,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 -- Load plugins
-require("lazy").setup("pluginlist", {
+require("lazy").setup("lazy-plugins", {
     -- Plugins SHOULD be lazy-loaded by default
     defaults = { lazy = true, },
     -- lockfile generated after running update.

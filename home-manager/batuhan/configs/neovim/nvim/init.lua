@@ -5,7 +5,6 @@
  / /|  /| |/ / / / / / / /  / /___/ /_/ / / / / __/ / /_/ /
 /_/ |_/ |___/_/_/ /_/ /_/   \____/\____/_/ /_/_/ /_/\__, /
                                                    /____/
-from https://patorjk.com/software/taag/#p=display&h=3&f=Slant
 --]]
 
 -- Do framebuffer detection
@@ -15,7 +14,7 @@ else
     vim.g.isFramebuffer = false
 end
 
--- Set leader key at earliest possible
+-- Set leader key, other plugins need this ASAP
 -- The plugin which-key needs this setup ASAP
 local keymap = vim.api.nvim_set_keymap
 keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
@@ -23,7 +22,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Load plugin manager first, since which-key depends on the plugins
-require("plugins")
+require("lazy-init")
 
--- Load options
+-- Load our own options
 require("options")
