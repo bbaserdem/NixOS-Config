@@ -27,4 +27,5 @@ in {
     source = ./nvim;
     recursive = true;
   };
+  programs.zsh.shellAliases.nvim-test = "nvim -u \"\${FLAKE}/home-manager/batuhan/configs/neovim/nvim/init.lua\"";
 }
