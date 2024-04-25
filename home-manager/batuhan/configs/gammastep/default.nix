@@ -1,10 +1,11 @@
 # Screen dimmer
 {
   pkgs,
+  lib,
   ...
 }: {
   services.gammastep = {
-    enable = true;
+    enable = lib.mkOptionDefault true;
     package = pkgs.gammastep;
     latitude = "30.3";
     longitude = "-97.7";

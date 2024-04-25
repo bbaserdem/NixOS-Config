@@ -1,10 +1,11 @@
 # Setup btop
 {
   pkgs,
+  lib,
   ...
 }: {
   programs.btop = {
-    enable = true;
+    enable = lib.mkOptionDefault true;
     package = pkgs.btop;
     settings = {
       color_theme = "Default";

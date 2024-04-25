@@ -1,6 +1,7 @@
 # List of userspace applications
 {
   pkgs,
+  lib,
   ...
 }: {
   home.packages = with pkgs; [
@@ -44,5 +45,5 @@
     baobab
   ];
   # Common services
-  services.blueman-applet.enable = true;
+  services.blueman-applet.enable = lib.mkOptionDefault true;
 }

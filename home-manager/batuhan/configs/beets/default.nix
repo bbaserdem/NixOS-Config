@@ -2,6 +2,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: rec {
   # Link our plugins from the correct folder
@@ -9,7 +10,7 @@
 
   # Beets config
   programs.beets = {
-    enable = true;
+    enable = lib.mkOptionDefault true;
     mpdIntegration = {
       enableStats = true;
       enableUpdate = true;
