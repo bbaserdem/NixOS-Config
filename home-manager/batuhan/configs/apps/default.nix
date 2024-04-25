@@ -34,7 +34,7 @@
     hunspell
     hunspellDicts.en_US
     # hunspellDicts.tr_TR not available
-    obsidian
+    unstable.obsidian
     zotero
     # Programming
     octaveFull
