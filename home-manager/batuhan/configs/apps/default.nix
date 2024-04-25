@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     # Image editing
     darktable
-    inscape
+    inkscape
     gimp-with-plugins
     vimiv-qt
     qimgv
