@@ -30,7 +30,10 @@
     zoom-us
     # Documents
     calibre
-    libreoffice
+    libreoffice-fresh
+    hunspell
+    hunspellDicts.en_US
+    # hunspellDicts.tr_TR not available
     obsidian
     zotero
     # Programming
