@@ -31,7 +31,7 @@
     };
     libreoffice = prev.libreoffice.override {
       variant = "fresh";
-      langs = [ "en-US" "tr" ]
+      langs = [ "en-US" "tr" ];
     };
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
