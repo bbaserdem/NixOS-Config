@@ -5,6 +5,6 @@
 }: {
   programs.texlive = {
     enable = true;
-    packageSet = pkgs.texlive.combined.scheme-full;
+    packageSet = pkgs.texliveFull;
   };
 }
