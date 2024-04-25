@@ -13,7 +13,7 @@
       exts.pass-update
     ]);
     settings = {
-      PASSWORD_STORE_DIR = "${config.xdg.dataDir}/password-store";
+      PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store";
       PASSWORD_STORE_CLIP_TIME = "30";
       PASSWORD_STORE_GENERATED_LENGTH = "16";
     };
