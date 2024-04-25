@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  services.password-store = {
+  programs.password-store = {
     enable = true;
     package = pkgs.pass.withExtensions (exts: [
       exts.pass-checkup
