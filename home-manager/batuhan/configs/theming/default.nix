@@ -13,6 +13,7 @@
     accent = "Sapphire";
     variant = "Mocha";
   };
+  colors = config.colorScheme.palette;
 in {
   # Set our cursor
   home.pointerCursor = {

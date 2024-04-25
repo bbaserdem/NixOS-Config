@@ -16,7 +16,6 @@
     profiles.batuhan = {
       isDefault = true;
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        aria2-integration
         automatic-dark
         batchcamp
         behind-the-overlay-revival

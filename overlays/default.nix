@@ -29,6 +29,10 @@
       clockSupport = true;
       taglibSupport = true;
     };
+    libreoffice = prev.libreoffice.override {
+      variant = "fresh";
+      langs = [ "en-US" "tr" ]
+    };
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });

@@ -13,19 +13,32 @@
     inputs.nix-colors.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
 
+    ./configs/apps
+    ./configs/autorandr
     ./configs/beets
+    ./configs/btop
     ./configs/calendar
     ./configs/firefox
+    ./configs/fluidsynth
+    ./configs/gammastep
     ./configs/git
     ./configs/gnupg
     ./configs/keyboard
     ./configs/kitty
     ./configs/mpd
+    ./configs/mpv
     ./configs/neovim
+    ./configs/newsboat
     ./configs/nnn
     ./configs/paths
+    ./configs/pass
+    ./configs/remmina
+    ./configs/syncthing
+    ./configs/texlive
     ./configs/theming
-    ./configs/videoRip
+    ./configs/tmux
+    ./configs/udiskie
+    ./configs/yt-dlp
     ./configs/zathura
     ./configs/zsh
   ];
