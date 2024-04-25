@@ -1,12 +1,6 @@
 # Language and keyboard settings 
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   home = {

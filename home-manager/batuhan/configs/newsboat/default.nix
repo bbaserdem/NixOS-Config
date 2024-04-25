@@ -1,12 +1,6 @@
 # Configuring Newsboat
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   programs.newsboat = {

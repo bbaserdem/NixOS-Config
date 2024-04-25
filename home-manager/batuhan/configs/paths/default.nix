@@ -1,12 +1,7 @@
 # 
 {
-  inputs,
-  outputs,
-  lib,
   config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   # Local binaries

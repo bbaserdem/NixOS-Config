@@ -1,12 +1,7 @@
 # Configuring kitty
 {
-  inputs,
-  outputs,
-  lib,
   config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: let
   color = config.colorScheme.palette;

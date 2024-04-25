@@ -1,12 +1,6 @@
 # Configuring lazygit
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   programs.lazygit = {

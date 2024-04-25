@@ -1,12 +1,6 @@
-# Configuring autorandr
+# Autorandr config
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: let
   edid = import ./edid-list.nix;

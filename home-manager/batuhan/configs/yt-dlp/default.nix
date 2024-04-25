@@ -1,12 +1,7 @@
 # YT-DLP config
 {
-  inputs,
-  outputs,
-  lib,
   config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   # YT-DLP settings

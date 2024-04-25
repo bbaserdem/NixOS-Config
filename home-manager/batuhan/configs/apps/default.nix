@@ -1,12 +1,6 @@
 # List of userspace applications
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   home.packages = with pkgs; [

@@ -1,12 +1,6 @@
 # Setup btop
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   programs.btop = {
@@ -16,4 +10,5 @@
       color_theme = "Default";
       proc_sorting = "cpu lazy";
     };
+  };
 }

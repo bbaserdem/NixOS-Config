@@ -1,6 +1,5 @@
 # MIDI synthesizer
 {
-  inputs,
   config,
   pkgs,
   ...

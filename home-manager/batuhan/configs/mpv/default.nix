@@ -1,12 +1,6 @@
 # Configuring MPV
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   programs.mpv = {

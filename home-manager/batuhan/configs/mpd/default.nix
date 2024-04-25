@@ -1,12 +1,7 @@
 # Configuring MPD
 {
-  inputs,
-  outputs,
-  lib,
   config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   services.mpd = {

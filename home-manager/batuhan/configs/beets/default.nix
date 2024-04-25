@@ -1,12 +1,7 @@
 # Beets configuration
 {
-  inputs,
-  outputs,
-  lib,
   config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: rec {
   # Link our plugins from the correct folder

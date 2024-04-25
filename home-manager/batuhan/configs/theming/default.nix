@@ -1,12 +1,7 @@
 # Desktop theming related things
 {
-  inputs,
-  outputs,
-  lib,
   config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: let
   catppuccin-kvantum = pkgs.unstable.catppuccin-kvantum.override {

@@ -1,12 +1,6 @@
 # Screen dimmer
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   services.gammastep = {

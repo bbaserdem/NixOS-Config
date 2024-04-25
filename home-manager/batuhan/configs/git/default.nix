@@ -1,12 +1,6 @@
 # Configuring git 
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   programs.git = {

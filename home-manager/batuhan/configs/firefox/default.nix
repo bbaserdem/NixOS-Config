@@ -1,13 +1,8 @@
 # Setup browsers to be used
 # TODO: Zotero connector as addon, and vdhcoapp as package
 {
-  inputs,
-  outputs,
-  lib,
   config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   # Firefox settings

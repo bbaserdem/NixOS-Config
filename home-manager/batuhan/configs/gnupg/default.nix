@@ -1,12 +1,6 @@
 # Configuring GPG
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   services.gpg-agent = {

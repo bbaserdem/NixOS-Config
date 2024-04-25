@@ -1,12 +1,7 @@
 # ZSH config 
 {
-  inputs,
-  outputs,
-  lib,
   config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   # We will put the config file for powerlevel10k in it's own directory

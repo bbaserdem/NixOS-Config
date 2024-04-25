@@ -5,8 +5,6 @@
   lib,
   config,
   pkgs,
-  myLib,
-  rootPath,
   ...
 }: {
   imports = [
@@ -59,7 +57,7 @@
   systemd.user.startServices = "sd-switch";
 
   nixpkgs = {
-    # My overlays/etc
+    # My overlays
     overlays = [
       outputs.overlays.additions
       outputs.overlays.modifications
