@@ -25,11 +25,12 @@
     ./configs/kitty
     ./configs/mpd
     ./configs/mpv
+    ./configs/neomutt
     ./configs/neovim
     ./configs/newsboat
     ./configs/nnn
-    ./configs/paths
     ./configs/pass
+    ./configs/paths
     # ./configs/remmina on unstable branch
     ./configs/syncthing
     ./configs/texlive
