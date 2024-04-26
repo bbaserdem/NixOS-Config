@@ -12,6 +12,8 @@ local M = {
         "nvim-telescope/telescope-fzf-native.nvim",
     },
     branch = "0.1.x",
+    -- For nvim notify
+    lazy = false,
 }
 
 return M

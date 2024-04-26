@@ -24,6 +24,8 @@ in {
       # Dependencies
       fd            # File finder
       tree-sitter   # CLI tools for tree-sitter
+      glow          # Markdown typesetting
+      pplatex       # Latex log parsing
     ];
   };
   # Send in the needed config files

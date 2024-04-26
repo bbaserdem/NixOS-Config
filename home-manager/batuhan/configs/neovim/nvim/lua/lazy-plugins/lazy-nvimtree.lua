@@ -1,7 +1,7 @@
 -------------------------------------------------
 -- name : Nvim Tree
 -- url  : https://github.com/nvim-tree/nvim-tree.lua
----------------------------------------------------
+-------------------------------------------------
 -- Functions to manipulate code commenting
 
 local M = {

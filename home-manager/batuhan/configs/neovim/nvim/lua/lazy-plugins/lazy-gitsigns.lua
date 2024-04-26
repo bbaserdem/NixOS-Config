@@ -1,20 +1,18 @@
 -------------------------------------------------
--- name : Comment.nvim
--- url  : https://github.com/numToStr/Comment.nvim
+-- name : Git Signs
+-- url  : https://github.com/lewis6991/gitsigns.nvim
 -------------------------------------------------
--- Functions to manipulate code commenting
+-- Decorates sidebar, and allows selective git commands to blocks
 
 local M = {
-    "numToStr/Comment.nvim",
+    "lewis6991/gitsigns.nvim",
     dependencies = {
         "neovim/nvim-lspconfig",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
     },
-    opts = {
-        mappings = false,
-    },
+    lazy = false,
 }
 
 return M
