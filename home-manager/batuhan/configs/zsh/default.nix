@@ -58,6 +58,8 @@
         bindkey ''${terminfo[kcuu1]} history-substring-search-up
         bindkey ''${terminfo[kcud1]} history-substring-search-down
       fi
+      # Recommended by p10k to add this after enabling spaceship theme globally
+      (( ! ''${+functions[p10k]} )) || p10k finalize
     '';
     # For powerlevel10k instant prompt
     initExtraFirst = ''

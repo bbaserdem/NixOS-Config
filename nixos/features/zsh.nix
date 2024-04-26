@@ -36,7 +36,7 @@
   users.users.root.shell = pkgs.zsh;
   # Let zsh find system-based apps
   environment.pathsToLink = [ "/share/zsh" ];
-  environment.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     spaceship-prompt
   ];
 }
