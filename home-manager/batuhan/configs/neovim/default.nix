@@ -1,5 +1,6 @@
 # Neovim config
 {
+  inputs,
   config,
   pkgs,
   ...
@@ -38,4 +39,13 @@ in {
   };
   # Command to test nvim setup without changing home-manager config
   programs.zsh.shellAliases.nvim-test = "nvim -u \"\${FLAKE}/home-manager/batuhan/configs/neovim/nvim/init.lua\"";
+  # Fetch language files
+  xdg.dataFile = {
+    "nvim/site/spell/tr.utf-8.spl" = {
+      source = inputs.vimspell-tr;
+    };
+    "nvim/site/spell/en.utf-8.spl" = {
+      source = inputs.vimspell-en;
+    };
+  };
 }
