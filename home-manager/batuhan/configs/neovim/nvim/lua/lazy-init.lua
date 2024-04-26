@@ -30,6 +30,10 @@ require("lazy").setup("lazy-plugins", {
         path = vim.fn.stdpath("data") .. "/projects",
         fallback = false,
     },
+    git = {
+        log = { "-5" },
+        url_format = "https://github.com/%s.git",
+    },
     performance = {
         cache = { enabled = true, },
         rtp = {
