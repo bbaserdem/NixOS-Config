@@ -16,7 +16,7 @@ local M = {
         ensure_installed = {
             "bash", "make", "ini", "json", "toml",
             "c", "python",
-            "lua", "luadoc", "lua patterns", "vim", "vimdoc",
+            "lua", "luadoc", "luap", "vim", "vimdoc",
             "nix",
             "git_config", "git_rebase",
             "gitattributes",
