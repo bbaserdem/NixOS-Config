@@ -21,11 +21,13 @@ in {
       # Needed for plugin compilation
       gnumake
       clang
+      nodejs
       # Dependencies
       fd            # File finder
       tree-sitter   # CLI tools for tree-sitter
       glow          # Markdown typesetting
       pplatex       # Latex log parsing
+      neovim-remote # Clientserver for vimtex to run latexmk
     ];
   };
   # Send in the needed config files
