@@ -45,6 +45,7 @@
     initExtra = ''
       # Prompt theme 
       if [[ -r "${config.xdg.configHome}/powerlevel10k/config.zsh" ]]; then
+        prompt off
         source "${config.xdg.configHome}/powerlevel10k/config.zsh"
       fi
       # Set editor default keymap to vi (`-v`) or emacs (`-e`)
