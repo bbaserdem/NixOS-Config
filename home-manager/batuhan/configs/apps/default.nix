@@ -25,6 +25,7 @@
     droidcam
     handbrake
     flowblade
+    freetube
     # Communication
     signal-desktop
     ferdium
