@@ -9,8 +9,8 @@
 -- Filetype detection
 vim.filetype.add({
     extension = {
-        sty = 'latex',
-        cls = 'latex',
+        sty = 'tex',
+        cls = 'tex',
     },
     filename = {
         ['sway/config'] = 'sway',
