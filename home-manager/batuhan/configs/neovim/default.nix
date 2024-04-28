@@ -29,6 +29,10 @@ in {
       glow          # Markdown typesetting
       pplatex       # Latex log parsing
       neovim-remote # Clientserver for vimtex to run latexmk
+      ripgrep       # For filesearch capabilities in Obsidian
+      xclip         # Copy-paste in X
+      wl-clipboard  # Copy-paste in wayland
+      libnotify     # Send notifications to DBus for pomodoro timer
     ];
   };
   # Send in the needed config files
