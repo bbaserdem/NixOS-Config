@@ -7,7 +7,7 @@
 local M = {
     "nvim-tree/nvim-tree.lua",
     -- Need to reenable netrw to download spell dicts
-    enabled = false,
+    enabled = true,
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },

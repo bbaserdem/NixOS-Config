@@ -1,3 +1,4 @@
+-- General completion
 -- nvim/after/plugin/cmp.lua
 
 local cmp = require("cmp")
