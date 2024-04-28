@@ -67,7 +67,15 @@ cmp.setup {
         end, { "i", "s", } ),
     },
     sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "spell", 
+            option = {
+                keep_all_entries = false,
+                enable_in _context = function()
+                    return require("cmp.config.context").in_treesitter_capture("spell")
+                end,
+            },
+        },
     },
 }

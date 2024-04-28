@@ -12,6 +12,7 @@ local M = {
         -- Completion sources
         "saadparwaiz1/cmp_luasnip",         -- Luasnip sources
         "hrsh7th/cmp-nvim-lsp",             -- LSP sources
+        "f3fora/cmp-spell",                 -- Spelling suggestions
     },
 }
 
