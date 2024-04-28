@@ -26,7 +26,7 @@ cmp.setup {
             ellipsis_char = '...',
             show_labelDetails = true,
         }),
-    }
+    },
     -- Snippets engine
     snippet = {
         expand = function(args)
