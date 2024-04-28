@@ -14,6 +14,7 @@ local M = {
         "hrsh7th/cmp-nvim-lsp",     -- LSP sources
         "f3fora/cmp-spell",         -- Spelling suggestions
         "hrsh7th/cmp-path",         -- Filesystem path
+        { url = "https://codeberg.org/FelipeLema/cmp-async-path.git" },
     },
 }
 
