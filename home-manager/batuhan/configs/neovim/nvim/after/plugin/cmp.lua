@@ -3,7 +3,6 @@
 
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
 
 -- Needed for friendly snippets
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -18,15 +17,6 @@ end
 
 -- Completion engine setup
 cmp.setup {
-    -- Formatting the appearance
-    formatting = {
-        format = lspkind.cmp_format({
-            mode = 'symbol'
-            maxwidth = 50,
-            ellipsis_char = '...',
-            show_labelDetails = true,
-        }),
-    },
     -- Snippets engine
     snippet = {
         expand = function(args)
