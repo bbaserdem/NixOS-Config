@@ -11,7 +11,8 @@ local M = {
         "L3MON4D3/LuaSnip",
         -- Completion sources
         "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lsp"
+        "hrsh7th/cmp-nvim-lsp",
+        "onsails/lspkind.nvim",
     },
 }
 
