@@ -77,5 +77,6 @@ cmp.setup {
                 end,
             },
         },
+        { name = "path" },
     },
 }
