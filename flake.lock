@@ -194,7 +194,9 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "vimspell-en": "vimspell-en",
+        "vimspell-tr": "vimspell-tr"
       }
     },
     "sops-nix": {
@@ -216,6 +218,30 @@
         "owner": "mic92",
         "repo": "sops-nix",
         "type": "github"
+      }
+    },
+    "vimspell-en": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-D7PU4+gCrrshtSQTg3WGzk0UaD9mzpb1EdjW5/O13nM=",
+        "type": "file",
+        "url": "https://ftp.nluug.nl/pub/vim/runtime/spell/en.utf-8.spl"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://ftp.nluug.nl/pub/vim/runtime/spell/en.utf-8.spl"
+      }
+    },
+    "vimspell-tr": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-ATNWP7SlcKhkTVSywfOoKg9PdiRJym3H3Ncg9Gaudr8=",
+        "type": "file",
+        "url": "https://ftp.nluug.nl/pub/vim/runtime/spell/tr.utf-8.spl"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://ftp.nluug.nl/pub/vim/runtime/spell/tr.utf-8.spl"
       }
     }
   },
