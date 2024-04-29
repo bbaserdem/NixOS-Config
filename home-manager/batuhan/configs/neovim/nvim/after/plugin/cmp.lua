@@ -79,5 +79,7 @@ cmp.setup {
         },
         { name = "async_path" },
         { name = "vimtex" },
+        { name = "emoji" },
+        { name = "nerdfont" },
     },
 }

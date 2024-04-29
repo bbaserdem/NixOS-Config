@@ -16,7 +16,8 @@ local M = {
         -- Filesystem path
         { url = "https://codeberg.org/FelipeLema/cmp-async-path.git" },
         "micangl/cmp-vimtex",       -- Vimtex support
-
+        "hrsh7th/cmp-emoji",        -- Emoji completion
+        "chrisgrieser/cmp-nerdfont",-- Nerdfont icons
     },
 }
 
