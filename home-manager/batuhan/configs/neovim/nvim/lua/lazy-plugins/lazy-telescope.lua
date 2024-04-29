@@ -14,6 +14,22 @@ local M = {
     branch = "0.1.x",
     -- For nvim notify
     lazy = false,
+    opts = {
+        extensions = {
+            fzf = {
+                fuzzy = true,
+                override_generic_sorter = true,
+                override_file_sorter = true,
+                case_mode = "smart_case",
+            },
+        },
+    },
+    config = function(_lazyplug, _opts)
+        local tel = require("telescope")
+        tel.setup(_opts)
+        -- Load fuzzyfinder plugin too
+        tel.load_extension("fzf")
+    end,
 }
 
 return M
