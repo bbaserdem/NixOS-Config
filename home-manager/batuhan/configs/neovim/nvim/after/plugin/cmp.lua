@@ -77,6 +77,7 @@ cmp.setup {
                 end,
             },
         },
-        { name = "path" },
+        { name = "async_path" },
+        { name = "vimtex" },
     },
 }
