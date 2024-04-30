@@ -15,7 +15,7 @@ local M = {
     opts = {
         ensure_installed = {
             "bash", "make", "ini", "json", "toml",
-            "c", "python",
+            "c", "cpp", "python",
             "lua", "luadoc", "luap", "vim", "vimdoc", "markdown", "latex",
             "nix",
             "git_config", "git_rebase",
@@ -24,6 +24,7 @@ local M = {
             "gitignore",
             "regex"
         },
+        auto_install = true,
         -- Treesitter with latex causes vimtex to malfunction
         -- however, I still want to use latex ts highlighter in markdown
         -- for the nabla plugin.
@@ -32,10 +33,17 @@ local M = {
             enable = true,
             disable = function(_lang, _buf)
                 -- Disable if language is latex
-                if (_lang == "latex") or (_lang == "tex") or (_lang == "bib") then
+                if (_lang == "latex")   or
+                    (_lang == "tex")    or
+                    (_lang == "bib")    or
+                    (_lang == "plaintex")
+                then
                     return true
                 end
             end,
+        },
+        indent = {
+            enable = true,
         },
         sync_install = true,
     },

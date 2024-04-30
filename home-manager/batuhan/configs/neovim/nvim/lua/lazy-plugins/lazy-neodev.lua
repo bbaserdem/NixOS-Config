@@ -9,6 +9,8 @@ local M = {
     dependencies = {
         "neovim/nvim-lspconfig",
     },
+    -- Load neodev if the path contains our NixOS configuration
+    ft = { "lua", },
     opts = {
         -- Override directory detection to edit files in flake
         override = function(_rootdir, _library)
