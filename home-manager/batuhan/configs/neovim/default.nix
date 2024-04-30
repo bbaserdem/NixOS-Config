@@ -17,13 +17,14 @@ in {
     defaultEditor = true;
     # Needed software to run nvim
     extraPackages = with pkgs; [
-      # LSP's
+      # LSP's, they are here for now instead of mason
       lua-language-server
       # Needed for plugin compilation
       gnumake
       clang
       nodejs
       # Dependencies
+      python311Packages.pynvim    # Python communicator
       fd            # File finder
       tree-sitter   # CLI tools for tree-sitter
       glow          # Markdown typesetting

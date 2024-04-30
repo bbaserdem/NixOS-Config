@@ -26,3 +26,6 @@ require("lazy-init")
 
 -- Load our own options
 require("options")
+
+-- Load common lsp commands own options
+require("lsp-common")
