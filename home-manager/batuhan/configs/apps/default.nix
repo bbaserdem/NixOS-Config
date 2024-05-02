@@ -44,6 +44,9 @@
     cinnamon.nemo-with-extensions
     virt-manager
     baobab
+    # Gaming
+    lutris
+    heroic
   ];
   # Common services
   services.blueman-applet.enable = lib.mkDefault true;
