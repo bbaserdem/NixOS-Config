@@ -8,9 +8,12 @@
   ...
 }: {
   imports = [
+    # External imports
+    inputs.ags.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
 
+    ./configs/ags
     ./configs/apps
     ./configs/autorandr
     ./configs/beets
