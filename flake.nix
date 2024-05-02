@@ -49,18 +49,18 @@
     };
 
     # Future desktop
-    #hyprland = {
-    #  url = "github:hyprwm/hyprland";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
-    #hyprland-contrib = {
-    #  url = "github:hyprwm/contrib";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
-    #hyprland-plugins = {
-    #  url = "github:hyprwm/hyprland-plugins";
-    #  inputs.hyprland.follows = "hyprland";
-    #};
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
 
   };
 
