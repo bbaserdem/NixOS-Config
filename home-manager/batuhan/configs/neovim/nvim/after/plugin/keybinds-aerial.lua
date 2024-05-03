@@ -7,40 +7,31 @@ local ae = require("aerial")
 wk.register({
     a = {
         name = "Aerial (outline)",
-        ["<Space>"] = {
-            ae.toggle,
+        ["<Space>"] = { ae.toggle,
             "Toggle outline menu",
         },
-        o = {
-            function() ae.open({focus = false}) end,
+        o = { function() ae.open({focus = false}) end,
             "Open in background",
         },
-        O = {
-            ae.open_all,
+        O = { ae.open_all,
             "Open for all windows",
         },
-        x = {
-            ae.close,
+        x = { ae.close,
             "Close window",
         },
-        X = {
-            ae.close_all,
+        X = { ae.close_all,
             "Close all windows",
         },
-        n = {
-            ae.next,
+        n = { ae.next,
             "Jump to next symbol",
-        },
-        n = {
+        }, n = {
             ae.prev,
             "Jump to prev symbol",
         },
-        ["?"] = {
-            ae.info,
+        ["?"] = { ae.info,
             "Debug menu",
         },
-        n = {
-            ae.nav_toggle,
+        n = { ae.nav_toggle,
             "Toggle navigation menu",
         },
     },

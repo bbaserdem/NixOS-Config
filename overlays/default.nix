@@ -36,7 +36,7 @@
     # Compile waybar with experimental support built in
     waybar = prev.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    })
+    });
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
