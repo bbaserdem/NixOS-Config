@@ -2,7 +2,7 @@
 -- Lua lsp config
 
 -- Load cmp capabilities
-local lsp_common = require("lsp_common")
+local lsp_common = require("lsp-common")
 
 require("lspconfig").lua_ls.setup {
     -- on_attach = <function>,
