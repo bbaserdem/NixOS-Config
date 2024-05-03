@@ -7,7 +7,7 @@
   edid = import ./edid-list.nix;
 in {
   # Enable autorandr systemd service
-  services.autorandr.enable = lib.mkDefault true;
+  services.autorandr.enable = lib.mkOptionDefault true;
   # Autorandr configuration
   programs.autorandr = {
     enable = true;
