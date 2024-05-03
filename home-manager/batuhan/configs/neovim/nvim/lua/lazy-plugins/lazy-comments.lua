@@ -12,9 +12,6 @@ local M = {
         "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
     },
-    opts = {
-        mappings = false,
-    },
 }
 
 return M
