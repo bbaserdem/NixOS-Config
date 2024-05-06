@@ -17,5 +17,5 @@
   environment.systemPackages = with pkgs; [
     mangohud
     protonup
-  ]
+  ];
 }
