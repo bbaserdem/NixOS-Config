@@ -20,12 +20,6 @@
     # Nixifying themes
     nix-colors.url = "github:misterio77/nix-colors";
 
-    # Eventually will use disko to declore partitioning 
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Nix user repository
     nur.url = "github:nix-community/NUR";
 
