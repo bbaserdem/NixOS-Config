@@ -23,7 +23,7 @@
   # Module toggles
   myNixOS = {
     # Features 
-    sddm.enable = true;
+    sddm.enable = false;
     gnome.enable = true;
     bluetooth.enable = false;
     virtualization.enable = false;
