@@ -24,10 +24,10 @@
     # Bundles
     bundles = {
       archives.enable = true;
-      utils.enable = true;
-      tools.enable = true;
       filesystems.enable = true;
       nix.enable = true;
+      tools.enable = true;
+      utils.enable = true;
     };
     # Services
     services = {

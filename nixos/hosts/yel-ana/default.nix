@@ -1,14 +1,11 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
+# Laptop system configuration file.
 {
   inputs,
   outputs,
-  myLib,
   lib,
   config,
   pkgs,
   system,
-  rootPath,
   ...
 }: {
   # You can import other NixOS modules here
@@ -18,34 +15,38 @@
   ];
   
   # Set our name 
-  networking.hostName = "umay";
+  networking.hostName = "yel-ana";
 
   # Module toggles
   myNixOS = {
     # Features 
-    sddm.enable = false;
-    gnome.enable = true;
-    bluetooth.enable = false;
-    virtualization.enable = false;
+    bluetooth.enable = true;
     consolefont.enable = true;
+    droidcam.enable = true;
     fonts.enable = true;
-    polkit.enable = true;
+    gnome.enable = true;
     grub = {
       enable = true;
       flavor = "bigSur";
     };
+    hyprland.enable = true;
     keymap.enable = true;
+    polkit.enable = true;
+    sddm.enable = false;
+    steam.enable = true;
+    virtualization.enable = true;
     # Services
     services = {
-      earlyoom.enable = false;
-      samba.enable = true;
-      mariadb.enable = true;
-      nm.enable = true;
       avahi.enable = true;
-      cups.enable = false;
+      cups.enable = true;
+      earlyoom.enable = true;
+      geoclue.enable = true;
+      mariadb.enable = true;
       media.enable = true;
-      tlp.enable = false;
-      geoclue.enable = false;
+      nm.enable = true;
+      rasdaemon.enable = true;
+      samba.enable = true;
+      tlp.enable = true;
       udev.enable = true;
       udisks.enable = true;
     };
@@ -54,5 +55,4 @@
     userName = "batuhan";
     userDesktop = "gnome";
   };
-
 }

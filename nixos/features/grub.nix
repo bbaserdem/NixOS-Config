@@ -14,14 +14,10 @@ in {
   };
 
   config = let
-    # Make package with override of theme
-    # This override is here instead of overrides cause it needs to be changed
-    # using system config options
     grub-theme = pkgs.unstable.sleek-grub-theme.override {
       withStyle = cfg.grub.flavor;
     };
   in {
-
     # Configure the boot menu
     boot.loader.grub = {
       enable = true;
