@@ -22,7 +22,7 @@
         "sd_mod"
       ];
       kernelModules = [ ];
-      luks.devices."Yel-Ana_NixOS".device = "/dev/disk/by-partlabel/Crypt_Yel-Ana_NixOS";
+      luks.devices."Yel-Ana_Linux".device = "/dev/disk/by-partlabel/Crypt_Yel-Ana_Linux";
     };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
@@ -44,7 +44,7 @@
   fileSystems = {
     # BTRFS main partition mount points 
     "/" = {
-      label = "Yel-Ana_NixOS";
+      label = "Yel-Ana_Linux";
       fsType = "btrfs";
       options = [
         "subvol=@nixos-root"
@@ -53,7 +53,7 @@
       ];
     };
     "/nix" = {
-      label = "Yel-Ana_NixOS";
+      label = "Yel-Ana_Linux";
       fsType = "btrfs";
       options = [
         "subvol=@nixos-store"
@@ -62,7 +62,7 @@
       ];
     };
     "/persist" = {
-      label = "Yel-Ana_NixOS";
+      label = "Yel-Ana_Linux";
       fsType = "btrfs";
       options = [
         "subvol=@nixos-persist"
@@ -72,7 +72,7 @@
       ];
     };
     "/var/log" = {
-      label = "Yel-Ana_NixOS";
+      label = "Yel-Ana_Linux";
       fsType = "btrfs";
       options = [
         "subvol=@nixos-log"
@@ -82,7 +82,7 @@
       ];
     };
     "/var/lib/machines" = {
-      label = "Yel-Ana_NixOS";
+      label = "Yel-Ana_Linux";
       fsType = "btrfs";
       options = [
         "subvol=@nixos-machines"
@@ -91,7 +91,7 @@
       ];
     };
     "/var/lib/portables" = {
-      label = "Yel-Ana_NixOS";
+      label = "Yel-Ana_Linux";
       fsType = "btrfs";
       options = [
         "subvol=@nixos-portables"
@@ -100,7 +100,7 @@
       ];
     };
     "/home" = {
-      label = "Yel-Ana_NixOS";
+      label = "Yel-Ana_Linux";
       fsType = "btrfs";
       options = [
         "subvol=@home"
@@ -122,7 +122,7 @@
     "/boot" = { label = "Yel-Ana_ESP"; };
   };
   swapDevices = [
-    { label = "Yel-Ana_NixOS_S"; }
+    { label = "Yel-Ana_NixSwap"; }
   ];
 
   # System options

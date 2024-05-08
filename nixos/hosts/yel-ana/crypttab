@@ -4,6 +4,6 @@
 # Put the keyfiles needed in /etc/cryptsetup-keys.d/<name>.key
 
 # <name>            <device>                            <password>  <options>
-Yel-Ana_NixOS       PARTLABEL=Crypt_Yel-Ana_NixOS       none        luks,timeout=0,x-systemd.device-timeout=0
-#Yel-Ana_NixOS_Swap  PARTLABEL=Crypt_Yel-Ana_NixOS_Swap  -           luks,timeout=180
+#Yel-Ana_NixSwap     PARTLABEL=Crypt_Yel-Ana_NixSwap     -           luks,timeout=180
 Yel-Ana_Data        PARTLABEL=Crypt_Yel-Ana_Data        -           luks,timeout=180
+#Yel-Ana_Linux       PARTLABEL=Crypt_Yel-Ana_Linux       none        luks,timeout=0,x-systemd.device-timeout=0
