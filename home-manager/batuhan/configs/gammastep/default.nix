@@ -9,7 +9,7 @@
     package = pkgs.gammastep;
     latitude = "30.3";
     longitude = "-97.7";
-    provider = "geoclue2";
+    provider = "manual";
     tray = true;
   };
 }
