@@ -9,7 +9,7 @@
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    inputs.nixos-hardware.nixosModules.framework-13-inch-7040-amd
+    inputs.hardware.nixosModules.framework-13-inch-7040-amd
   ];
 
   boot = {
