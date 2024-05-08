@@ -86,7 +86,7 @@
       #od-iyesi  = mkSystem "od-iyesi";
       #yertengri = mkSystem "yertengri";
       #su-iyesi  = mkSystem "su-iyesi";
-      #yel-ana   = mkSystem "yel-ana";
+      yel-ana   = mkSystem "yel-ana";
     };
 
     # Standalone home-manager configuration entrypoint
