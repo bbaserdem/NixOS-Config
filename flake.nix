@@ -96,7 +96,7 @@
       #"batuhan@od-iyesi"  = mkHome "x86_64-linux" "batuhan" "od-iyesi";
       #"batuhan@yertengri" = mkHome "x86_64-linux" "batuhan" "yertengri";
       #"batuhan@su-iyesi"  = mkHome "x86_64-linux" "batuhan" "su-iyesi";
-      #"batuhan@yel-ana"   = mkHome "x86_64-linux" "batuhan" "yel-ana";
+      "batuhan@yel-ana"   = mkHome "x86_64-linux" "batuhan" "yel-ana";
     };
   };
 }
