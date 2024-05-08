@@ -5,7 +5,7 @@
   ...
 }: {
   services.gammastep = {
-    enable = lib.mkOptionDefault true;
+    enable = lib.mkDefault true;
     package = pkgs.gammastep;
     latitude = "30.3";
     longitude = "-97.7";
