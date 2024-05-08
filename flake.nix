@@ -57,6 +57,11 @@
     };
     # AGS: Aylur's GTK Shell
     ags.url = "github:Aylur/ags";
+    # Matlab shell
+    nix-matlab = {
+      url = "gitlab:doronbehar/nix-matlab";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 

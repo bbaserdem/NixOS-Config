@@ -8,7 +8,6 @@
   system,
   ...
 }: {
-  # You can import other NixOS modules here
   imports = [
     ./hardware-configuration.nix
     ../default.nix
@@ -31,6 +30,7 @@
     };
     hyprland.enable = true;
     keymap.enable = true;
+    matlab.enable = true;
     polkit.enable = true;
     sddm.enable = false;
     steam.enable = true;
