@@ -31,7 +31,6 @@
     };
     # Services
     services = {
-      satisfactory.enable = false;
       sunshine.enable = false;
     };
     # Features
