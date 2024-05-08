@@ -21,6 +21,7 @@ in {
     # Configure the boot menu
     boot.loader.grub = {
       enable = true;
+      efiSupport = true;
       useOSProber = true;
       memtest86.enable = true;
       theme = grub-theme;

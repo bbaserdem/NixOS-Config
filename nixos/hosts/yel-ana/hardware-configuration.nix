@@ -22,17 +22,23 @@
         "sd_mod"
       ];
       kernelModules = [ ];
+      luks.devices."Yel-Ana_NixOS".device = "/dev/disk/by-partlabel/Crypt_Yel-Ana_NixOS";
     };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     loader = {
-      efi.canTouchEfiVariables = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
       grub = {
-        efiSupport = true;
+        # For EFI support
         device = "nodev";
       };
     };
   };
+  # Use crypttab to unlock partition after init
+  environment.etc.crypttab.source = ./crypttab;
 
   # File system layout
   fileSystems = {
@@ -121,10 +127,7 @@
   swapDevices = [
     { label = "Yel-Ana_NixOS_S"; }
   ];
-  # Use initrd to unlock our root device
-  boot.initrd.luks.devices."Yel-Ana_NixOS".device = "/dev/disk/by-partlabel/Crypt_Yel-Ana_NixOS";
-  # Use crypttab to unlock partition after init
-  environment.etc.crypttab.source = ./crypttab;
+
   # System options
   networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
