@@ -41,6 +41,7 @@
       cups.enable = true;
       earlyoom.enable = true;
       geoclue.enable = true;
+      fingerprint.enable = true;
       mariadb.enable = true;
       media.enable = true;
       nm.enable = true;
