@@ -7,6 +7,8 @@
   ...
 }:
 with lib; {
+  # Disable power profiles daemon in favor of tlp
+  services.power-profiles-daemon.enable = false;
   # Enable TLP
   services.tlp = {
     enable = true;
