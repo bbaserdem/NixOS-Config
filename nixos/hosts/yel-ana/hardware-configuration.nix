@@ -109,11 +109,6 @@
         "lazytime"
       ];
     };
-    # ESP
-    "/boot" = {
-      label = "Yel-Ana_ESP";
-      fsType = "exfat";
-    };
     # Data partition
     "/home/data" = {
       label = "Yel-Ana_Data";
@@ -123,6 +118,8 @@
         "lazytime"
       ];
     };
+    # ESP
+    "/boot" = { label = "Yel-Ana_ESP"; };
   };
   swapDevices = [
     { label = "Yel-Ana_NixOS_S"; }
