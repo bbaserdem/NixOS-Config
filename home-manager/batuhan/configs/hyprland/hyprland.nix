@@ -10,7 +10,7 @@
   rgba = {
     color,
     alpha ? "ff"
-  }: "rgba(${col}${alpha})";
+  }: "rgba(${color}${alpha})";
   grad = {
     color1,
     color2,

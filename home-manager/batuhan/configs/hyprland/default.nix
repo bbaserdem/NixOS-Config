@@ -2,11 +2,10 @@
 {
   inputs,
   pkgs,
-  lib,
   config,
   ...
 }: let
-  hplug = inputs.hyprland-plugins.packages.${pkgs.system};
+  plugpkgs = inputs.hyprland-plugins.packages.${pkgs.system};
 in {
 
   # Hyprland configuration
@@ -14,9 +13,9 @@ in {
     enable = true;
     xwayland.enable = true;
     plugins = [
-      hplug.hyprbars
-      hplug.hyprexpo
-      hplug.hyprtrails
+      #plugpkgs.hyprbars
+      #plugpkgs.hyprexpo
+      #plugpkgs.hyprtrails
     ];
     # Main config for hyprland
     settings = import ./hyprland.nix { colors = config.colorScheme.palette; };

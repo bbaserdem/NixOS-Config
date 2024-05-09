@@ -44,7 +44,7 @@
 
     # Future desktop
     hyprland = {
-      url = "github:hyprwm/hyprland";
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-contrib = {
