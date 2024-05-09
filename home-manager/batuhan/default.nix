@@ -13,7 +13,6 @@
     inputs.nix-colors.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
 
-    ./configs/ags
     ./configs/apps
     ./configs/autorandr
     ./configs/beets
@@ -24,6 +23,7 @@
     ./configs/gammastep
     ./configs/git
     ./configs/gnupg
+    ./configs/hyprland
     ./configs/keyboard
     ./configs/kitty
     ./configs/mpd
