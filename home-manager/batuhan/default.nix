@@ -31,6 +31,7 @@
     ./configs/neomutt
     ./configs/neovim
     ./configs/newsboat
+    ./configs/nixshells
     ./configs/nnn
     ./configs/pass
     ./configs/paths
