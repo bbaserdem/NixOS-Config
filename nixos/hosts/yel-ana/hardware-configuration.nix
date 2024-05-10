@@ -109,6 +109,14 @@
         "lazytime"
       ];
     };
+    "/mnt/filesystem" = {
+      label = "Yel-Ana_Linux";
+      fsType = "btrfs";
+      options = [
+        "compress=zstd"
+        "strictatime"
+        "lazytime"
+      ];
     # Data partition
     "/home/data" = {
       label = "Yel-Ana_Data";
@@ -121,9 +129,7 @@
     # ESP
     "/boot" = { label = "Yel-Ana_ESP"; };
   };
-  swapDevices = [
-    { label = "Yel-Ana_NixSwap"; }
-  ];
+  swapDevices = [ ];
 
   # System options
   networking.useDHCP = lib.mkDefault true;
