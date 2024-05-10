@@ -18,7 +18,10 @@ in {
       #plugpkgs.hyprtrails
     ];
     # Main config for hyprland
-    settings = import ./hyprland.nix { colors = config.colorScheme.palette; };
+    settings = import ./hyprland.nix {
+      colors = config.colorScheme.palette;
+      xkbConf = config.home.keyboard;
+    };
   };
 
   # Aylur's GTK shell, decoration config
