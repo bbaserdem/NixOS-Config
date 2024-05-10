@@ -21,7 +21,7 @@
 
   # Globally wanted modules
   imports = [
-    inputs.sops-nix-nixosModules.sops
+    inputs.sops-nix.nixosModules.sops
   ];
 
   # Generalized Personal module toggles
