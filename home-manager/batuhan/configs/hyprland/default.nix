@@ -20,7 +20,7 @@ in {
     # Main config for hyprland
     settings = import ./hyprland.nix {
       colors = config.colorScheme.palette;
-      xkbConf = config.home.keyboard;
+      xkbConfig = config.home.keyboard;
     };
   };
 
