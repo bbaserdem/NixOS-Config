@@ -10,5 +10,8 @@
     snapper
     e2fsprogs
     ntfs3g
+    parted
+    gparted
+    gptfdisk
   ];
 }

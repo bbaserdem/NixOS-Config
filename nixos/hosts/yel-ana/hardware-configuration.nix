@@ -117,6 +117,7 @@
         "strictatime"
         "lazytime"
       ];
+    };
     # Data partition
     "/home/data" = {
       label = "Yel-Ana_Data";
