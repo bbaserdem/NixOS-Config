@@ -13,7 +13,7 @@ creation_rules:
     - age:
       - *user_batuhan
       - *host_umay
-  - path_regex: nixos/hosts/yel-ana/[^/]+\.(yaml|json|env|ini)$
+  - path_regex: nixos/hosts/yel-ana/[^/]+\.(yaml|json|key)$
     key_groups:
     - age:
       - *user_batuhan
