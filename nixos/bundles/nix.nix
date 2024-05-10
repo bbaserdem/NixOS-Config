@@ -4,5 +4,6 @@
     unstable.nh
     nix-output-monitor
     nvd
+    sops
   ];
 }
