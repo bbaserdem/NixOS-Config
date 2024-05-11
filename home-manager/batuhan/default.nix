@@ -12,6 +12,7 @@
     inputs.ags.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
+    inputs.xremap-flake.homeManagerModules.default
 
     ./configs/apps
     ./configs/autorandr
