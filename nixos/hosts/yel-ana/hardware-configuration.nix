@@ -52,6 +52,15 @@
         "noatime"
       ];
     };
+    "/swap" = {
+      label = "Yel-Ana_Linux";
+      fsType = "btrfs";
+      options = [
+        "subvol=@nixos-swap"
+        "compress=zstd"
+        "noatime"
+      ];
+    };
     "/nix" = {
       label = "Yel-Ana_Linux";
       fsType = "btrfs";
@@ -130,7 +139,15 @@
     # ESP
     "/boot" = { label = "Yel-Ana_ESP"; };
   };
-  swapDevices = [ ];
+
+  # Systemd bug
+  systemd.services.systemd-logind.environment = {
+    SYSTEMD_BYPASS_HIBERNATION_MEMORY_CHECK = "1";
+  };
+  boot.initrd.systemd.enable = true;
+  swapDevices = [
+    { device = "/swap/swapfile"; }
+  ];
 
   # System options
   networking.useDHCP = lib.mkDefault true;
