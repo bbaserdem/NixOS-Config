@@ -57,8 +57,6 @@
     };
     # AGS: Aylur's GTK Shell
     ags.url = "github:Aylur/ags";
-    # Xremap: platform agnostic key remapping
-    xremap-flake.url = "github:xremap/nix-flake";
     # Matlab shell
     nix-matlab = {
       url = "gitlab:doronbehar/nix-matlab";

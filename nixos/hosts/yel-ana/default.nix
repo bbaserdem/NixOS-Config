@@ -35,7 +35,6 @@
     sddm.enable = false;
     steam.enable = true;
     virtualization.enable = true;
-    xremap.enable = true;
     # Services
     services = {
       avahi.enable = true;
