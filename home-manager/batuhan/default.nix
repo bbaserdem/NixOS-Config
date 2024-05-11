@@ -37,6 +37,7 @@
     ./configs/pass
     ./configs/paths
     # ./configs/remmina on unstable branch
+    ./configs/sops
     ./configs/syncthing
     ./configs/texlive
     ./configs/theming

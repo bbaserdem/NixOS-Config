@@ -8,11 +8,10 @@ keys:
   - &host_od-iyesi  age1xjnzlm6gg65dzlccld5qfy7kzqfzjfdxwd40snepgvkr9e3wegnqqzp6f8
   - &host_su-iyesi  age1w7hp5jwl8pzz3vk42d24vth6ady3r9gtq76svhqj5c47fd7paceszxyq9p
 creation_rules:
-  - path_regex: nixos/hosts/umay/[^/]+\.(yaml|json|env|ini)$
+  - path_regex: home-manager/batuhan/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
       - *user_batuhan
-      - *host_umay
   - path_regex: nixos/hosts/yel-ana/[^/]+\.(yaml|json|key)$
     key_groups:
     - age:

@@ -24,6 +24,7 @@
       kernelModules = [ ];
       luks.devices."Yel-Ana_Linux".device = "/dev/disk/by-partlabel/Crypt_Yel-Ana_Linux";
     };
+    kernel.sysctl = { "vm.swappiness" = 0; };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     loader = {
