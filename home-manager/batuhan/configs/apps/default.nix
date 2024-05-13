@@ -41,6 +41,7 @@
     zotero
     # Programming
     octaveFull
+    conda
     # Utilities
     cinnamon.nemo-with-extensions
     virt-manager
