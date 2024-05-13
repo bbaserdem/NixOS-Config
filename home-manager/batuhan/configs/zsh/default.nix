@@ -60,6 +60,8 @@
       fi
       # Recommended by p10k to add this after enabling spaceship theme globally
       (( ! ''${+functions[p10k]} )) || p10k finalize
+      # Run arbitrary binaries, needed for mason nvim
+      export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
     '';
     # For powerlevel10k instant prompt
     initExtraFirst = ''
