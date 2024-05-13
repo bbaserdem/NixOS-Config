@@ -7,6 +7,9 @@
 }: let
   plugpkgs = inputs.hyprland-plugins.packages.${pkgs.system};
 in {
+  imports = [
+    ./hyprpaper.nix
+  ];
 
   # Hyprland configuration
   wayland.windowManager.hyprland = {
@@ -25,6 +28,8 @@ in {
   };
 
   # Aylur's GTK shell, decoration config
+  # AGS can;
+  # - Do notifications   
   programs.ags = {
     enable = true;
     extraPackages = with pkgs; [
@@ -33,4 +38,18 @@ in {
       accountsservice
     ];
   };
+
+  # Tools specific for this desktop
+  home.packages = with pkgs; [
+    libsForQt5.polkit-kde-agent   # Privilege escalator prompt
+    libsForQt5.qt5.qtwayland
+    qt6.qtwayland
+    swww                          # Smooth wallpaper switching daemon
+    nwg-drawer                    # Gnome-like app drawer
+    hyprshade                     # Screen blue-light filter
+    kanshi                        # Dynamic display manager
+    wlogout                       # Simple logout gui
+    cliphist                      # Clipboard manager
+    hyprpicker                    # Color picker
+  ];
 }
