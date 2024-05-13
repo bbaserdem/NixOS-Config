@@ -20,7 +20,6 @@
     ./configs/calendar
     ./configs/firefox
     ./configs/fluidsynth
-    ./configs/gammastep
     ./configs/git
     ./configs/gnupg
     ./configs/hyprland
