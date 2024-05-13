@@ -7,7 +7,7 @@
                                                    /____/
 --]]
 
--- Do framebuffer detection
+-- Do frame-buffer detection
 if vim.env.TERM == 'linux' then
     vim.g.isFramebuffer = true
 else
@@ -27,5 +27,5 @@ require("lazy-init")
 -- Load our own options
 require("options")
 
--- Load common lsp commands own options
+-- Load common LSP commands own options
 require("lsp-common")
