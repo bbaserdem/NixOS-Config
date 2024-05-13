@@ -8,7 +8,12 @@
   plugpkgs = inputs.hyprland-plugins.packages.${pkgs.system};
 in {
   imports = [
-    ./hyprpaper.nix
+    # ./ags.nix         # Notifications, bars and widgets
+    # ./cliphist.nix    # Clipboard manager
+    # ./hyprshade.nix   # Screen dimmer
+    # ./kanshi.nix      # Auto layout for hotplugging monitors
+    # ./nwg-drawer.nix  # App launcher/drawer
+    # ./swww.nix        # Wallpaper manager
   ];
 
   # Hyprland configuration
