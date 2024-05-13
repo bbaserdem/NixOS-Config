@@ -9,7 +9,6 @@
 in {
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
     # Aliases 
     viAlias = true;
     vimAlias = true;
