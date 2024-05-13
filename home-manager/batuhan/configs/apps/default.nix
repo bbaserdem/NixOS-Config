@@ -30,6 +30,7 @@
     signal-desktop
     ferdium
     zoom-us
+    webcord-vencord
     # Documents
     calibre
     libreoffice-fresh
