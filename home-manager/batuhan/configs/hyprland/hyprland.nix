@@ -149,4 +149,9 @@ in {
   # Keybinds, in another function
   bind = import ./keybinds.nix;
 
+  # Debug stuff
+  debug = {
+    disable_logs = false;
+  };
+
 }
