@@ -7,10 +7,15 @@
 
 local M = {
     "williamboman/mason.nvim",
-    enabled = false,
+    enabled = true,
+    dependencies = {
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    },
     opts = {
         PATH = "skip",
     },
+    lazy = false,
 }
 
 return M

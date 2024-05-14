@@ -18,8 +18,8 @@ in {
     # Needed software to run nvim
     extraPackages = with pkgs; [
       # LSP's, they are here for now instead of mason
-      lua-language-server
-      clang-tools
+      # lua-language-server
+      # clang-tools
       # Needed for plugin compilation
       gnumake
       clang
