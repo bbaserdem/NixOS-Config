@@ -8,8 +8,11 @@
   plugpkgs = inputs.hyprland-plugins.packages.${pkgs.system};
 in {
   imports = [
+    ./hyprland.nix
+    ./keybinds.nix
     # ./ags.nix         # Notifications, bars and widgets
     # ./cliphist.nix    # Clipboard manager
+    # ./ags.nix         # Notifications, bars and widgets
     # ./hyprshade.nix   # Screen dimmer
     # ./kanshi.nix      # Auto layout for hotplugging monitors
     # ./nwg-drawer.nix  # App launcher/drawer
@@ -25,11 +28,6 @@ in {
       #plugpkgs.hyprexpo
       #plugpkgs.hyprtrails
     ];
-    # Main config for hyprland
-    settings = import ./hyprland.nix {
-      colors = config.colorScheme.palette;
-      xkbConfig = config.home.keyboard;
-    };
   };
 
   # Aylur's GTK shell, decoration config
@@ -53,8 +51,22 @@ in {
     nwg-drawer                    # Gnome-like app drawer
     hyprshade                     # Screen blue-light filter
     kanshi                        # Dynamic display manager
-    wlogout                       # Simple logout gui
     cliphist                      # Clipboard manager
     hyprpicker                    # Color picker
+    gnome.gnome-control-center    # Control center, stealing from gnome
+    playerctl                     # mpdris controller tool
+    brightnessctl                 # lights controller
+    pactl                         # Volume adjustments
   ];
+
+  # Add gnome settings since it's nice
+  xdg.desktopEntries."org.gnome.Settings" = {
+    name = "Settings";
+    comment = "Gnome Control Center";
+    icon = "org.gnome.Settings";
+    exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome.gnome-control-center}/bin/gnome-control-center";
+    categories = ["X-Preferences"];
+    terminal = false;
+  };
+
 }
