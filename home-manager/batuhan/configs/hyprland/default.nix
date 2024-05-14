@@ -56,7 +56,7 @@ in {
     gnome.gnome-control-center    # Control center, stealing from gnome
     playerctl                     # mpdris controller tool
     brightnessctl                 # lights controller
-    pactl                         # Volume adjustments
+    pulseaudioFull                # Volume adjustments
   ];
 
   # Add gnome settings since it's nice

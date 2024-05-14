@@ -59,8 +59,8 @@ in {
 
     # Mouse resize/drag
     bindm = [
-      (binding "$mod" "movewindow"    "mouse:272", "")
-      (binding "$mod" "resizewindow"  "mouse:273", "")
+      (binding "$mod" "movewindow"    "mouse:272" "")
+      (binding "$mod" "resizewindow"  "mouse:273" "")
     ];
 
     # Media and volume controls
