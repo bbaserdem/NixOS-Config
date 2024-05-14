@@ -52,7 +52,7 @@ in {
     kb_layout = xkbConfig.layout;
     kb_variant = xkbConfig.variant;
     kb_options = xkbConfig.options;
-    # Use dvorak always by default
+    # Use dvorak always
     resolve_binds_by_sym = false;
     # Touchpad
     scroll_method = "2fg";
@@ -146,26 +146,7 @@ in {
   # Define super key as main modifier key
   "$mod" = "SUPER";
   
-  bind = [
-    # Example: launch firefox
-    "$mod, F, exec, firefox"
-    # Example: launch screenshot
-    ", Print, exec, grimblast copy area"
-  ]
-  # Define workspace movements
-  ++ (
-    builtins.concatLists (builtins.genList (
-      x: let
-        ws = let
-          c = (x + 1) / 10;
-        in
-          builtins.toString (x + 1 - (c * 10));
-      in [
-        "$mod, ${ws}, workspace, ${toString (x + 1)}"
-        "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-      ]
-    )
-    10)
-  );
+  # Keybinds, in another function
+  bind = import ./keybinds.nix;
 
 }
