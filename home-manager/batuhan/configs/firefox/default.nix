@@ -25,6 +25,7 @@
         mullvad
         multi-account-containers
         notion-web-clipper
+        reddit-enhancement-suite
         sponsorblock
         ublock-origin
         video-downloadhelper
