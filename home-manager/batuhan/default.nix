@@ -42,6 +42,7 @@
     ./configs/theming
     ./configs/tmux
     ./configs/udiskie
+    ./configs/vifm
     ./configs/yt-dlp
     ./configs/zathura
     ./configs/zsh
