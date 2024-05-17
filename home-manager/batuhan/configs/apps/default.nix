@@ -42,6 +42,7 @@
     # Programming
     octaveFull
     conda
+    pipx
     # Utilities
     cinnamon.nemo-with-extensions
     virt-manager
