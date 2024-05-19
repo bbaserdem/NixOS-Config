@@ -9,10 +9,16 @@
     source = ./powerlevel10k_config.zsh;
     executable = false;
   };
-  # We want fzf for our fuzzy completion menu
+  # We want FZF for our fuzzy completion menu
   programs.fzf = {
     enable = true;
     package = pkgs.fzf;
+    enableZshIntegration = true;
+  };
+  # Installing Zoxide
+  programs.zoxide = {
+    enable = true;
+    package = pkgs.zoxide;
     enableZshIntegration = true;
   };
   # Setup zsh, only plugin i need is powerlevel10k honestly
@@ -75,6 +81,7 @@
       # Disable native menu in favor of fzf menu, and get directory previews
       zstyle ':completion:*' menu no
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+      zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
       # Run arbitrary binaries, needed for mason nvim
       export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
