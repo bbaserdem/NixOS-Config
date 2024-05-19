@@ -9,6 +9,12 @@
     source = ./powerlevel10k_config.zsh;
     executable = false;
   };
+  # We want fzf for our fuzzy completion menu
+  programs.fzf = {
+    enable = true;
+    package = pkgs.fzf;
+    enableZshIntegration = true;
+  };
   # Setup zsh, only plugin i need is powerlevel10k honestly
   programs.zsh = {
     enable = true;
@@ -45,6 +51,9 @@
         name = "zsh-history-substring-search";
         src = pkgs.zsh-history-substring-search;
         file = "share/zsh-history-substring-search/zsh-history-substring-search.zsh";
+      } {
+        name = "fzf-tab";
+        src = pkgs.zsh-fzf-tab;
       }
     ];
     initExtra = ''
