@@ -12,7 +12,7 @@ in {
   ];
   # Configure the package
   xdg.configFile."vifm/vifmrc".source = ./vifmrc;
-  xdg.configFile."vifm/colorschemes/Default.vifm".text = ''
+  xdg.configFile."vifm/colors/Default.vifm".text = ''
     highlight Win cterm=none ctermfg=white ctermbg=black
     highlight Directory cterm=bold ctermfg=cyan ctermbg=default
     highlight Link cterm=bold ctermfg=yellow ctermbg=default
