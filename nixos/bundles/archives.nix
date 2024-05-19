@@ -1,8 +1,12 @@
 # archives.nix
 # A program list of archiving utilities
-
-{ pkgs, lib, config, ... }: {
-  # Install archiving tools into userspace 
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  # Install archiving tools into userspace
   environment.systemPackages = with pkgs; [
     patool
     zip

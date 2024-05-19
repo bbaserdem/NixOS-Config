@@ -1,8 +1,5 @@
-# Configuring git 
-{
-  pkgs,
-  ...
-}: {
+# Configuring git
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     userName = "bbaserdem";
@@ -30,7 +27,7 @@
     settings = {
       git = {
         commit.autoWrapWidth = 80;
-        mainBranches = [ "main" "master" ];
+        mainBranches = ["main" "master"];
         parseEmoji = true;
       };
     };

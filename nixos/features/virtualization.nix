@@ -18,8 +18,8 @@ with lib; {
     };
   };
 
-  # Add our user to docker group 
-  users.extraGroups.docker.members = [ config.myNixOS.userName ];
+  # Add our user to docker group
+  users.extraGroups.docker.members = [config.myNixOS.userName];
 
   # Example docker as systemd service
   #virtualisation.oci-containers = {

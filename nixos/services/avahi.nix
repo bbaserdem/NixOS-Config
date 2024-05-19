@@ -1,5 +1,4 @@
-# Configuring discovery 
-
+# Configuring discovery
 {
   config,
   pkgs,

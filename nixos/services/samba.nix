@@ -1,5 +1,4 @@
 # Configuring samba
-
 {
   config,
   pkgs,
@@ -15,7 +14,7 @@ with lib; {
       workgroup = WORKGROUP
       server string = Samba server on ${config.networking.hostName}
       netbios name = smbnix
-      security = user 
+      security = user
       #use sendfile = yes
       #max protocol = smb2
       # note: localhost is the ipv6 localhost ::1

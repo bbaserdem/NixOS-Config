@@ -1,5 +1,4 @@
 # Configuring Udev
-
 {
   config,
   pkgs,
@@ -7,7 +6,7 @@
   ...
 }:
 with lib; {
-  # Enable Udev 
+  # Enable Udev
   services.udev.enable = true;
   # Enable qmk access
   hardware.keyboard.qmk.enable = true;

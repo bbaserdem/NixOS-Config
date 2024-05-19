@@ -1,8 +1,12 @@
 # tools.nix
 # A program list of tools that are needed systemwide
-
-{ pkgs, lib, config, ... }: {
-  # Install archiving tools into userspace 
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  # Install archiving tools into userspace
   environment.systemPackages = with pkgs; [
     git
     jq

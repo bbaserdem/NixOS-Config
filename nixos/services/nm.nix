@@ -1,5 +1,4 @@
 # Configuring network manager
-
 {
   config,
   pkgs,

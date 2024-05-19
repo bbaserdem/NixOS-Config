@@ -42,7 +42,7 @@
     # Features
     zsh.enable = true;
   };
-  
+
   # Nix settings
   nix = {
     settings = {
@@ -50,7 +50,7 @@
       auto-optimise-store = true;
     };
     # Need to provide $NIX_PATH for nixd (lsp)
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
   programs.nix-ld.enable = true;
   nixpkgs.config.allowUnfree = true;

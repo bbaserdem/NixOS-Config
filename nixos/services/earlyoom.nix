@@ -1,5 +1,4 @@
 # Earlyoom; daemon that shuts down apps before they can create OOM
-
 {
   config,
   pkgs,
@@ -12,7 +11,7 @@ with lib; {
     enable = true;
     # Enable d-bus notifications
     enableNotifications = true;
-    # Main threshold of %free for SIGTERM, kill is for SIGKILL 
+    # Main threshold of %free for SIGTERM, kill is for SIGKILL
     freeMemThreshold = 7;
     freeMemKillThreshold = 3;
     extraArgs = [

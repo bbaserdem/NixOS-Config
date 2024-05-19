@@ -5,11 +5,11 @@ Currently migrating from Archlinux to NixOS, but some archlinux stuff might rema
 
 # WIP
 
-[*] 📁 Modular and toggleable config
+[X] 📁 Modular and toggleable config
 [ ] 🔒 Luks disk encryption with btrfs
 [ ] 🖥️ Wayland desktop
 [ ] 📃 Neovim setup using external plugin management
-[ ] 🤫 Secrets
+[X] 🤫 Secrets
 
 ## Contents
 

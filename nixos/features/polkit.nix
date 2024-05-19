@@ -1,6 +1,9 @@
 # Module that configures polkit
-
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   security.polkit = {
     enable = true;
     # Enable users group to boot the system

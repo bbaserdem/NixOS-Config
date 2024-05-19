@@ -12,13 +12,13 @@
     ./hardware-configuration.nix
     ../default.nix
   ];
-  
-  # Set our name 
+
+  # Set our name
   networking.hostName = "yel-ana";
 
   # Module toggles
   myNixOS = {
-    # Features 
+    # Features
     bluetooth.enable = true;
     consolefont.enable = true;
     droidcam.enable = true;
@@ -59,7 +59,7 @@
 
   # Secrets management
   sops.defaultSopsFile = ./secrets.yaml;
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   sops.secrets = {
     crypt-data = {
       format = "binary";

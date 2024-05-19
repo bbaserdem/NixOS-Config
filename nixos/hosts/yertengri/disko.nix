@@ -1,6 +1,5 @@
 # umay disk setup
 # https://github.com/nix-community/disko/blob/master/example/luks-btrfs-subvolumes.nix
-
 {
   main-device ? throw "Set this to your OS disk device, e.g. /dev/sda",
   data-device ? throw "Set this to your data disk device, e.g. /dev/sda",
@@ -21,7 +20,7 @@
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
-              mountOptions = [ "defaults" ];
+              mountOptions = ["defaults"];
             };
           };
           # Swap partition in separate LUKS as swapfiles are not preferred
@@ -42,8 +41,8 @@
             content = {
               type = "luks";
               name = "Crypt-Home-Main";
-                # disable settings.keyFile if you want to use interactive password entry
-                #passwordFile = "/tmp/secret.key"; # Interactive
+              # disable settings.keyFile if you want to use interactive password entry
+              #passwordFile = "/tmp/secret.key"; # Interactive
               settings = {
                 allowDiscards = true;
                 #keyFile = "/tmp/secret.key";
@@ -51,38 +50,38 @@
               #additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
+                extraArgs = ["-f"];
                 subvolumes = {
-                    "/@nix-root" = {
-                      mountpoint = "/";
-                      mountOptions = [ "compress=zstd" "lazytime" "strictatime" ];
-                    };
-                    "/@home" = {
-                      mountpoint = "/home";
-                      mountOptions = [
-                        "compress=zstd"
-                        "lazytime"
-                        "strictatime"
-                        "user_subvol_rm_allowed"
-                      ];
-                    };
-                    "/@nix-store" = {
-                      mountpoint = "/nix";
-                      mountOptions = [
-                        "compress=zstd"
-                        "lazytime"
-                        "strictatime"
-                      ];
-                    };
-                    "/@nix-snapshots" = {
-                      mountpoint = "/.snapshots";
-                      mountOptions = [
-                        "compress=zstd"
-                        "lazytime"
-                        "strictatime"
-                      ];
-                    };
+                  "/@nix-root" = {
+                    mountpoint = "/";
+                    mountOptions = ["compress=zstd" "lazytime" "strictatime"];
                   };
+                  "/@home" = {
+                    mountpoint = "/home";
+                    mountOptions = [
+                      "compress=zstd"
+                      "lazytime"
+                      "strictatime"
+                      "user_subvol_rm_allowed"
+                    ];
+                  };
+                  "/@nix-store" = {
+                    mountpoint = "/nix";
+                    mountOptions = [
+                      "compress=zstd"
+                      "lazytime"
+                      "strictatime"
+                    ];
+                  };
+                  "/@nix-snapshots" = {
+                    mountpoint = "/.snapshots";
+                    mountOptions = [
+                      "compress=zstd"
+                      "lazytime"
+                      "strictatime"
+                    ];
+                  };
+                };
                 mountpoint = "/mnt/filesystem";
                 mountOptions = [
                   "compress=zstd"
@@ -101,7 +100,7 @@
       content = {
         type = "gpt";
         partitions = {
-          # This is for the LUKS space 
+          # This is for the LUKS space
           Luks = {
             size = "1.5T";
             content = {

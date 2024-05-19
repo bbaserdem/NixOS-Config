@@ -8,7 +8,7 @@
   modulesPath,
   ...
 }: {
-  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
+  imports = [(modulesPath + "/profiles/qemu-guest.nix")];
   boot = {
     initrd = {
       availableKernelModules = [
@@ -18,17 +18,17 @@
         "sr_mod"
         "virtio_blk"
       ];
-      kernelModules = [ ];
+      kernelModules = [];
     };
-    kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
+    kernelModules = ["kvm-amd"];
+    extraModulePackages = [];
     loader.grub.device = "/dev/vda";
   };
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/ed12e573-834b-4813-bbbe-ff06094be883";
     fsType = "ext4";
   };
-  swapDevices = [ ];
+  swapDevices = [];
   # For simple networking
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;

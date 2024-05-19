@@ -1,5 +1,4 @@
 # Configuring Udisks
-
 {
   config,
   pkgs,

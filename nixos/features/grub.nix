@@ -1,5 +1,4 @@
 # Module that configures grub
-
 {
   pkgs,
   lib,

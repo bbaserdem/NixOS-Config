@@ -1,5 +1,4 @@
 # batuhan@umay home configuration
-
 {
   inputs,
   outputs,
@@ -10,7 +9,7 @@
   rootPath,
   ...
 }: {
-  # Just default to regular now 
+  # Just default to regular now
   imports = [
     ./default.nix
   ];

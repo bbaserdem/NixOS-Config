@@ -2,7 +2,7 @@
 {
   pkgs,
   lib,
-  ... 
+  ...
 }: {
   # Enable steam
   programs.steam = {

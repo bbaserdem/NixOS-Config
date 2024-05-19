@@ -1,8 +1,10 @@
 # My library of stuff to cut out boilerplate
 # Mostly from https://github.com/vimjoyer/nixconf/tree/main/myLib
 # Wants the rootpath variable to simplify path input to this function
-
-{inputs, rootPath}: let
+{
+  inputs,
+  rootPath,
+}: let
   # Make ourselves available so these functions can be used in further modules
   myLib = (import ./default.nix) {inherit inputs rootPath;};
   # Make ourselves available so these functions can be used in further modules
@@ -37,8 +39,8 @@ in rec {
         inherit inputs outputs myLib rootPath;
       };
       modules = [
-        ( rootPath + /nixos )
-        ( rootPath + /nixos/hosts/${name} )
+        (rootPath + /nixos)
+        (rootPath + /nixos/hosts/${name})
         outputs.nixosModules.default
       ];
     };
@@ -51,7 +53,7 @@ in rec {
         inherit inputs outputs myLib rootPath;
       };
       modules = [
-        ( rootPath + /home-manager/${name}/${host}.nix )
+        (rootPath + /home-manager/${name}/${host}.nix)
         outputs.homeManagerModules.default
       ];
     };
@@ -111,6 +113,7 @@ in rec {
     modules;
 
   # ============================ Shell ============================= #
-  pkgsForAllSystems = pkgs: forAllSystems
+  pkgsForAllSystems = pkgs:
+    forAllSystems
     (system: pkgs inputs.nixpkgs.legacyPackages.${system});
 }

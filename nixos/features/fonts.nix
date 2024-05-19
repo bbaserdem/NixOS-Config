@@ -1,25 +1,28 @@
 # Module that brings in fonts
-
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   fonts = {
     enableDefaultPackages = true;
     # Fonts we will use
     packages = with pkgs; [
-      nerdfont-standalone         # Defined in overlays, glyphs
+      nerdfont-standalone # Defined in overlays, glyphs
       unstable.noto-fonts-monochrome-emoji # Emoji fonts
       unstable.noto-fonts-color-emoji
-      _3270font                   # Monospace
-      fira-code                   # Monospace with ligatures
-      liberation_ttf              # Windows compat.
-      caladea                     #   Office fonts alternative
-      carlito                     #   Calibri/georgia alternative
-      inconsolata                 # Monospace font, for prints
-      iosevka                     # Monospace font, for terminal mostly
-      jetbrains-mono              # Readable monospace font
+      _3270font # Monospace
+      fira-code # Monospace with ligatures
+      liberation_ttf # Windows compat.
+      caladea #   Office fonts alternative
+      carlito #   Calibri/georgia alternative
+      inconsolata # Monospace font, for prints
+      iosevka # Monospace font, for terminal mostly
+      jetbrains-mono # Readable monospace font
       noto-fonts
       source-serif-pro
       source-sans-pro
-      curie                       # Bitmap fonts
+      curie # Bitmap fonts
       tamsyn
     ];
 

@@ -1,5 +1,4 @@
 # Configuring Tools for Laptop Power (TLP)
-
 {
   config,
   pkgs,

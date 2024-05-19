@@ -21,12 +21,12 @@
         "uas"
         "sd_mod"
       ];
-      kernelModules = [ ];
+      kernelModules = [];
       luks.devices."Yel-Ana_Linux".device = "/dev/disk/by-partlabel/Crypt_Yel-Ana_Linux";
     };
-    kernel.sysctl = { "vm.swappiness" = 0; };
-    kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
+    kernel.sysctl = {"vm.swappiness" = 0;};
+    kernelModules = ["kvm-amd"];
+    extraModulePackages = [];
     loader = {
       efi = {
         canTouchEfiVariables = true;
@@ -43,7 +43,7 @@
 
   # File system layout
   fileSystems = {
-    # BTRFS main partition mount points 
+    # BTRFS main partition mount points
     "/" = {
       label = "Yel-Ana_Linux";
       fsType = "btrfs";
@@ -138,7 +138,7 @@
       ];
     };
     # ESP
-    "/boot" = { label = "Yel-Ana_ESP"; };
+    "/boot" = {label = "Yel-Ana_ESP";};
   };
 
   # Systemd bug
@@ -147,7 +147,7 @@
   };
   boot.initrd.systemd.enable = true;
   swapDevices = [
-    { device = "/swap/swapfile"; }
+    {device = "/swap/swapfile";}
   ];
 
   # System options

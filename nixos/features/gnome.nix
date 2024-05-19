@@ -1,6 +1,14 @@
 # NixOS: nixosModules/features/gnome.nix
-
-{ lib, config, inputs, outputs, myLib, pkgs, rootPath, ... }: {
+{
+  lib,
+  config,
+  inputs,
+  outputs,
+  myLib,
+  pkgs,
+  rootPath,
+  ...
+}: {
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;

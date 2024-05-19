@@ -1,12 +1,12 @@
 # This file defines overlays
 # Taken from the stater config here;
 # https://github.com/Misterio77/nix-starter-configs
-
 {
   inputs,
   myLib,
   ...
-}: with myLib; {
+}:
+with myLib; {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs {pkgs = final;};
 
@@ -14,14 +14,14 @@
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
-    # Standalone version of Nerd Fonts 
+    # Standalone version of Nerd Fonts
     nerdfont-standalone = prev.nerdfonts.override {
-      fonts = [ "NerdFontsSymbolsOnly" ];
+      fonts = ["NerdFontsSymbolsOnly"];
     };
     # Create yt-dlp aliases for overrides
-    yt-dlp = prev.yt-dlp.override { withAlias = true; };
+    yt-dlp = prev.yt-dlp.override {withAlias = true;};
     # Make NNN use nerdfont symbols
-    nnn = prev.nnn.override { withNerdIcons = true; };
+    nnn = prev.nnn.override {withNerdIcons = true;};
     # Add features to ncmpcpp
     ncmpcpp = prev.ncmpcpp.override {
       outputsSupport = true;
@@ -31,11 +31,11 @@
     };
     libreoffice = prev.libreoffice.override {
       variant = "fresh";
-      langs = [ "en-US" "tr" ];
+      langs = ["en-US" "tr"];
     };
     # Compile waybar with experimental support built in
     waybar = prev.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     });
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...

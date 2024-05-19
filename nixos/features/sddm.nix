@@ -1,6 +1,9 @@
 # Module that enables logging in with SDDM
-
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   # Enable xserver so that SDDM can be run
   services.xserver = {
     enable = true;

@@ -1,8 +1,5 @@
 # Texlive
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.texlive = {
     enable = true;
   };

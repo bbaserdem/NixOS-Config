@@ -1,6 +1,9 @@
 # Module that enables a default zsh shell
-
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   # Enable xserver so that SDDM can be run
   programs.zsh = {
     enable = true;
@@ -35,7 +38,7 @@
   # Make root user default shell as zsh
   users.users.root.shell = pkgs.zsh;
   # Let zsh find system-based apps
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = ["/share/zsh"];
   environment.systemPackages = with pkgs; [
     spaceship-prompt
   ];

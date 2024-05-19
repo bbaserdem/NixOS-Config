@@ -1,5 +1,4 @@
 # File to setup the default user
-
 {
   lib,
   config,
@@ -8,7 +7,7 @@
   myLib,
   pkgs,
   rootPath,
-  ... 
+  ...
 }: let
   cfg = config.myNixOS;
 in {
@@ -34,18 +33,20 @@ in {
 
     services.xserver.displayManager.defaultSession = cfg.userDesktop;
 
-    users.users.${cfg.userName} = {
-      isNormalUser = true;
-      initialPassword = "12345";
-      description = cfg.userName;
-      shell = pkgs.zsh;
-      extraGroups = [
-        "wheel"
-        "networkmanager"
-        "docker"
-        "libvirtd"
-        "libvirtd-qemu"
-      ];
-    } // cfg.userNixosSettings;
+    users.users.${cfg.userName} =
+      {
+        isNormalUser = true;
+        initialPassword = "12345";
+        description = cfg.userName;
+        shell = pkgs.zsh;
+        extraGroups = [
+          "wheel"
+          "networkmanager"
+          "docker"
+          "libvirtd"
+          "libvirtd-qemu"
+        ];
+      }
+      // cfg.userNixosSettings;
   };
 }

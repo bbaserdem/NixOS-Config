@@ -16,13 +16,13 @@
     ./hardware-configuration.nix
     ../default.nix
   ];
-  
-  # Set our name 
+
+  # Set our name
   networking.hostName = "umay";
 
   # Module toggles
   myNixOS = {
-    # Features 
+    # Features
     sddm.enable = false;
     gnome.enable = true;
     bluetooth.enable = false;
@@ -54,5 +54,4 @@
     userName = "batuhan";
     userDesktop = "gnome";
   };
-
 }

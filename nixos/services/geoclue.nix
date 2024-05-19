@@ -1,5 +1,4 @@
 # Configuring Geoclue
-
 {
   config,
   pkgs,

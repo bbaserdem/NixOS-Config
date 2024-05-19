@@ -1,6 +1,9 @@
 # Module that sets preferred x layout everywhere
-
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   # Xserver keymap
   services.xserver = {
     layout = "us";
