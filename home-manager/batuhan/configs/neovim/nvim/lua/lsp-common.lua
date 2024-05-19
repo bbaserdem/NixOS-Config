@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             "LSP symbols")
         bufmap("<leader>lS", require("telescope.builtin").lsp_dynamic_workspace_symbols,
             "LSP symbols (workspace)")
-        
+
         bufmap("K", vim.lsp.buf.hover, "LSP hover menu")
 
         vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
@@ -43,6 +43,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, {})
     end,
 })
+require("which-key").register(
+    {
+        l = {
+            name = "LSP functions",
+        },
+    }, { prefix = "<leader>", }
+)
 
 -- Load cmp capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()

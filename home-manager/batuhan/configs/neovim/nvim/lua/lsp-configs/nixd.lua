@@ -4,7 +4,8 @@
 -- Load cmp capabilities
 local lspc = require("lsp-common")
 
-require("lspconfig").nixd.setup {
+require("lspconfig").nixd.setup({
+    cmd = { "nixd" },
     -- on_attach = <function>,
     capabilities = lspc.capabilities_with_cmp,
     -- Global config options
@@ -14,7 +15,7 @@ require("lspconfig").nixd.setup {
                 expr = "import (builtins.getFlake \"/home/batuhan/Projects/NixOS\").inputs.nixpkgs { }",
             },
             formatting = {
-                command = { "nixpkgs-fmt" },
+                command = { "nix", "fmt" },
             },
             options = {
                 nixos = {
@@ -26,4 +27,4 @@ require("lspconfig").nixd.setup {
             },
         },
     },
-}
+})

@@ -29,3 +29,4 @@ require("options")
 
 -- Load common LSP commands own options
 require("lsp-common")
+require("lsp-configs")

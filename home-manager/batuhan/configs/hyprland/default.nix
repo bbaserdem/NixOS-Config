@@ -52,6 +52,7 @@ in {
     hyprshade # Screen blue-light filter
     kanshi # Dynamic display manager
     cliphist # Clipboard manager
+    wl-clipboard
     hyprpicker # Color picker
     gnome.gnome-control-center # Control center, stealing from gnome
     playerctl # mpdris controller tool
