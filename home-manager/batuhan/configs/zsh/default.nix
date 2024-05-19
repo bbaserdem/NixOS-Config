@@ -59,9 +59,18 @@
       # Set editor default keymap to vi (`-v`) or emacs (`-e`)
       bindkey -v
 
+      # Make completion case-insensitive
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+      # Get colored ls completions, needs also ls alias
+      zstyle ':completion:*' list-colors  "''${(s.:.)LS_COLORS}"
+
       # Run arbitrary binaries, needed for mason nvim
       export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
     '';
+    shellAliases = {
+      ls = "ls --color";
+      ll = "ls -l";
+    };
     # For powerlevel10k instant prompt
     initExtraFirst = ''
       if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
