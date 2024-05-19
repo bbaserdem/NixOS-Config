@@ -22,6 +22,7 @@
   # Globally wanted modules
   imports = [
     inputs.sops-nix.nixosModules.sops
+    inputs.nix-index-database.nixosModules.nix-index
   ];
 
   # Generalized Personal module toggles

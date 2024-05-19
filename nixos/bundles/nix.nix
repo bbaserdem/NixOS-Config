@@ -5,5 +5,6 @@
     nix-output-monitor
     nvd
     sops
+    nix-index
   ];
 }
