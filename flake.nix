@@ -26,7 +26,7 @@
     # Sets up nix database
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
-      nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Eventually want to set up disk impermanence
