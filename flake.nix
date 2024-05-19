@@ -23,6 +23,12 @@
     # Nix user repository
     nur.url = "github:nix-community/NUR";
 
+    # Sets up nix database
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      nixpkgs.follows = "nixpkgs";
+    };
+
     # Eventually want to set up disk impermanence
     impermanence.url = "github:nix-community/impermanence";
 
