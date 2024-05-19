@@ -24,6 +24,11 @@
       path = "${config.xdg.cacheHome}/zsh/history";
       share = true;
     };
+    historySubstringSearch = {
+      enable = true;
+      searchDownKey = [ "^[[B" "\${terminfo[kcud1]}" ];
+      searchUpKey =   [ "^[[A" "\${terminfo[kcuu1]}" ];
+    };
     plugins = [ {
         name = "powerlevel10k";
         src = pkgs.zsh-powerlevel10k;
@@ -48,18 +53,12 @@
         prompt off
         source "${config.xdg.configHome}/powerlevel10k/config.zsh"
       fi
-      # Set editor default keymap to vi (`-v`) or emacs (`-e`)
-      bindkey -v
-      # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
-      bindkey '^[[A' history-substring-search-up
-      bindkey '^[[B' history-substring-search-down
-      zmodload -F zsh/terminfo +p:terminfo
-      if [[ -n ''${terminfo[kcuu1]} && -n ''${terminfo[kcud1]} ]]; then
-        bindkey ''${terminfo[kcuu1]} history-substring-search-up
-        bindkey ''${terminfo[kcud1]} history-substring-search-down
-      fi
       # Recommended by p10k to add this after enabling spaceship theme globally
       (( ! ''${+functions[p10k]} )) || p10k finalize
+
+      # Set editor default keymap to vi (`-v`) or emacs (`-e`)
+      bindkey -v
+
       # Run arbitrary binaries, needed for mason nvim
       export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
     '';
