@@ -22,22 +22,22 @@
       asciify_paths = false;
       path_sep_replace = "⌿";
       replace = {
-        "^-" = "_";           # Replace leading dash
-        "^/"= "";             # Remove leading directory creator
-        "^\\."= "";           # Remove leading dots
-        "^\\s+"= "";          # remove trailing white-space
-        "\\s+\$"= "";         # remove ending white-space
-        "[\\x00-\\x1f]"= "";  # Remove control characters
-        "<"=  "＜";           # Windows/Android restricted characters
-        ">"=  "＞";
-        ":"=  "∶";
-        "\""=  "″";
-        "\\?"= "⁇";
-        "\\*"= "✱";
-        "\\|"= "￨";
-        "\\\\"= "⍀";
-        "\\.\\.\\."= "…";      # Other replacements
-        "&"=  "＆";
+        "^-" = "_"; # Replace leading dash
+        "^/" = ""; # Remove leading directory creator
+        "^\\." = ""; # Remove leading dots
+        "^\\s+" = ""; # remove trailing white-space
+        "\\s+\$" = ""; # remove ending white-space
+        "[\\x00-\\x1f]" = ""; # Remove control characters
+        "<" = "＜"; # Windows/Android restricted characters
+        ">" = "＞";
+        ":" = "∶";
+        "\"" = "″";
+        "\\?" = "⁇";
+        "\\*" = "✱";
+        "\\|" = "￨";
+        "\\\\" = "⍀";
+        "\\.\\.\\." = "…"; # Other replacements
+        "&" = "＆";
       };
       threaded = true;
       sort_item = [
@@ -89,7 +89,7 @@
       };
       # Autotagger matching
       match = {
-          strong_rec_thresh = 0.04;
+        strong_rec_thresh = 0.04;
       };
       # Path specifications
       paths = {
@@ -169,7 +169,7 @@
       lyrics = {
         auto = true;
         force = false;
-        sources = [ "lrclib" "genius" ];
+        sources = ["lrclib" "genius"];
         synced = true;
       };
       mpd = {
@@ -199,48 +199,60 @@
         auto = true;
         playlist_dir = programs.beets.settings.playlist.playlist_dir;
         relative_to = programs.beets.settings.directory;
-        playlists = [ 
-          ({
+        playlists = [
+          {
             name = "JoeyFavs.m3u";
-            album_query = "introducer:Joseph Hirsh"; 
+            album_query = "introducer:Joseph Hirsh";
             query = "introducer:Joseph Hirsh";
-          }) ({
+          }
+          {
             name = "Mood-Instrumental.m3u";
             album_query = "mood:instrumental";
-          }) ({
+          }
+          {
             name = "Mood-Microtonal.m3u";
             album_query = "mood:microtonal";
-          }) ({
+          }
+          {
             name = "Mood-Affirmation.m3u";
             album_query = "mood:affirmation";
-          }) ({
+          }
+          {
             name = "Mood-Heavy.m3u";
             album_query = "mood:heavy";
-          }) ({
+          }
+          {
             name = "Mood-Turkish.m3u";
             album_query = "mood:turkish";
-          }) ({
+          }
+          {
             name = "Mood-Japanese.m3u";
             album_query = "mood:japanese";
-          }) ({
+          }
+          {
             name = "Mood-Ambient.m3u";
             album_query = "mood:ambient";
-          }) ({
+          }
+          {
             name = "Mood-Electronic.m3u";
             album_query = "mood:electronic";
-          }) ({
+          }
+          {
             name = "Mood-Space.m3u";
             album_query = "mood:space";
-          }) ({
+          }
+          {
             name = "Mood-Phonk.m3u";
             album_query = "mood:phonk";
-          }) ({
+          }
+          {
             name = "Mood-Trippy.m3u";
             album_query = "mood:trippy";
-          }) ({
+          }
+          {
             name = "Mood-Gag.m3u";
             album_query = "mood:gag";
-          })
+          }
         ];
       };
       thumbnails = {

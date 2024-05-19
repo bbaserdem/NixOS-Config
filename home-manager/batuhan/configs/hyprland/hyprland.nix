@@ -11,39 +11,39 @@
   # Functions to generate color and gradient strings
   rgba = {
     color,
-    alpha ? "ff"
+    alpha ? "ff",
   }: "rgba(${color}${alpha})";
   grad = {
     color1,
     color2,
     alpha1 ? "ff",
     alpha2 ? "ff",
-    degree ? "0"
+    degree ? "0",
   }: "rgba(${color1}${alpha1}) rgba(${color2}${alpha2}) ${degree}deg";
   # Color definitions for legibility
-  black =         config.colorScheme.palette.base00;
-  background =    config.colorScheme.palette.base01;
-  selection_bg =  config.colorScheme.palette.base02;
-  comment =       config.colorScheme.palette.base03;
-  foreground =    config.colorScheme.palette.base04;
-  text =          config.colorScheme.palette.base05;
-  bright =        config.colorScheme.palette.base06;
-  white =         config.colorScheme.palette.base07;
-  red =           config.colorScheme.palette.base08;
-  orange =        config.colorScheme.palette.base09;
-  yellow =        config.colorScheme.palette.base0A;
-  green =         config.colorScheme.palette.base0B;
-  cyan =          config.colorScheme.palette.base0C;
-  indigo =        config.colorScheme.palette.base0D;
-  magenta =       config.colorScheme.palette.base0E;
-  brown =         config.colorScheme.palette.base0F;
+  black = config.colorScheme.palette.base00;
+  background = config.colorScheme.palette.base01;
+  selection_bg = config.colorScheme.palette.base02;
+  comment = config.colorScheme.palette.base03;
+  foreground = config.colorScheme.palette.base04;
+  text = config.colorScheme.palette.base05;
+  bright = config.colorScheme.palette.base06;
+  white = config.colorScheme.palette.base07;
+  red = config.colorScheme.palette.base08;
+  orange = config.colorScheme.palette.base09;
+  yellow = config.colorScheme.palette.base0A;
+  green = config.colorScheme.palette.base0B;
+  cyan = config.colorScheme.palette.base0C;
+  indigo = config.colorScheme.palette.base0D;
+  magenta = config.colorScheme.palette.base0E;
+  brown = config.colorScheme.palette.base0F;
   # Transparency points
-  opaque =            "ff"; # 1
-  solid =             "e6"; # 0.9
-  semi-transparent =  "cd"; # 0.8
-  half =              "80"; # 0.5
-  translucent =       "40"; # 0.25
-  tinge =             "1a"; # 0.1
+  opaque = "ff"; # 1
+  solid = "e6"; # 0.9
+  semi-transparent = "cd"; # 0.8
+  half = "80"; # 0.5
+  translucent = "40"; # 0.25
+  tinge = "1a"; # 0.1
 in {
   # HYPRLAND CONFIG
   wayland.windowManager.hyprland.settings = {
@@ -81,15 +81,15 @@ in {
     general = {
       # Layout
       layout = "dwindle";
-      # Window borders 
+      # Window borders
       border_size = 2;
       no_border_on_floating = false;
       resize_on_border = true;
       extend_border_grab_area = 5;
-      "col.inactive_border" =       rgba { color = red;     };
-      "col.active_border" =         rgba { color = white;   };
-      "col.nogroup_border" =        rgba { color = orange;  };
-      "col.nogroup_border_active" = rgba { color = yellow;  };
+      "col.inactive_border" = rgba {color = red;};
+      "col.active_border" = rgba {color = white;};
+      "col.nogroup_border" = rgba {color = orange;};
+      "col.nogroup_border_active" = rgba {color = yellow;};
       # Gaps
       gaps_in = 5;
       gaps_out = 20;
@@ -113,8 +113,14 @@ in {
       drop_shadow = true;
       shadow_range = 8;
       shadow_render_power = 2;
-      "col.shadow" =          rgba { color = black; alpha = translucent; };
-      "col.shadow_inactive" = rgba { color = black; alpha = translucent; };
+      "col.shadow" = rgba {
+        color = black;
+        alpha = translucent;
+      };
+      "col.shadow_inactive" = rgba {
+        color = black;
+        alpha = translucent;
+      };
       # Dimming
       dim_inactive = true;
       active_opacity = 1.0;
@@ -142,7 +148,5 @@ in {
     debug = {
       disable_logs = false;
     };
-
   };
-
 }

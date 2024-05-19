@@ -24,9 +24,9 @@ in {
     theme = {
       name = "Catppuccin-Mocha-Compact-Sapphire-Dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "sapphire" ];
+        accents = ["sapphire"];
         size = "compact";
-        tweaks = [ "rimless" "black" ];
+        tweaks = ["rimless" "black"];
         variant = "mocha";
       };
     };

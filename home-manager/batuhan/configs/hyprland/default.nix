@@ -32,7 +32,7 @@ in {
 
   # Aylur's GTK shell, decoration config
   # AGS can;
-  # - Do notifications   
+  # - Do notifications
   programs.ags = {
     enable = true;
     extraPackages = with pkgs; [
@@ -44,19 +44,19 @@ in {
 
   # Tools specific for this desktop
   home.packages = with pkgs; [
-    libsForQt5.polkit-kde-agent   # Privilege escalator prompt
+    libsForQt5.polkit-kde-agent # Privilege escalator prompt
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
-    swww                          # Smooth wallpaper switching daemon
-    nwg-drawer                    # Gnome-like app drawer
-    hyprshade                     # Screen blue-light filter
-    kanshi                        # Dynamic display manager
-    cliphist                      # Clipboard manager
-    hyprpicker                    # Color picker
-    gnome.gnome-control-center    # Control center, stealing from gnome
-    playerctl                     # mpdris controller tool
-    brightnessctl                 # lights controller
-    pulseaudioFull                # Volume adjustments
+    swww # Smooth wallpaper switching daemon
+    nwg-drawer # Gnome-like app drawer
+    hyprshade # Screen blue-light filter
+    kanshi # Dynamic display manager
+    cliphist # Clipboard manager
+    hyprpicker # Color picker
+    gnome.gnome-control-center # Control center, stealing from gnome
+    playerctl # mpdris controller tool
+    brightnessctl # lights controller
+    pulseaudioFull # Volume adjustments
   ];
 
   # Add gnome settings since it's nice
@@ -68,5 +68,4 @@ in {
     categories = ["X-Preferences"];
     terminal = false;
   };
-
 }

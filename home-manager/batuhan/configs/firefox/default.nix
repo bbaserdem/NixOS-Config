@@ -41,26 +41,35 @@
               {
                 template = "https://search.nixos.org/packages";
                 params = [
-                  { name = "type"; value = "packages"; }
-                  { name = "channel"; value = pkgs.system; }
-                  { name = "query"; value = "{searchTerms}"; }
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "channel";
+                    value = pkgs.system;
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
                 ];
               }
             ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@np" ];
+            definedAliases = ["@np"];
           };
           "NixOS Wiki" = {
-            urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+            urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
             iconUpdateUrl = "https://nixos.wiki/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = [ "@nw" ];
+            definedAliases = ["@nw"];
           };
           "Arch Wiki" = {
-            urls = [{ template = "https://wiki.archlinux.org/index.php?search={searchTerms}"; }];
+            urls = [{template = "https://wiki.archlinux.org/index.php?search={searchTerms}";}];
             iconUpdateUrl = "https://nixos.wiki/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = [ "@aw" ];
+            definedAliases = ["@aw"];
           };
         };
       };

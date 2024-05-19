@@ -1,4 +1,4 @@
-# ZSH config 
+# ZSH config
 {
   config,
   pkgs,
@@ -38,32 +38,37 @@
     };
     historySubstringSearch = {
       enable = true;
-      searchDownKey = [ "^[[B" "\${terminfo[kcud1]}" ];
-      searchUpKey =   [ "^[[A" "\${terminfo[kcuu1]}" ];
+      searchDownKey = ["^[[B" "\${terminfo[kcud1]}"];
+      searchUpKey = ["^[[A" "\${terminfo[kcuu1]}"];
     };
-    plugins = [ {
+    plugins = [
+      {
         name = "powerlevel10k";
         src = pkgs.zsh-powerlevel10k;
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      } {
+      }
+      {
         name = "zsh-completions";
         src = pkgs.zsh-completions;
-      } {
+      }
+      {
         name = "nix-zsh-completions";
         src = pkgs.nix-zsh-completions;
         file = "share/zsh/plugins/nix/nix-zsh-completions.plugin.zsh";
-      } {
+      }
+      {
         name = "zsh-history-substring-search";
         src = pkgs.zsh-history-substring-search;
         file = "share/zsh-history-substring-search/zsh-history-substring-search.zsh";
-      } {
+      }
+      {
         name = "fzf-tab";
         src = pkgs.zsh-fzf-tab;
         file = "share/fzf-tab/fzf-tab.plugin.zsh";
       }
     ];
     initExtra = ''
-      # Prompt theme 
+      # Prompt theme
       if [[ -r "${config.xdg.configHome}/powerlevel10k/config.zsh" ]]; then
         prompt off
         source "${config.xdg.configHome}/powerlevel10k/config.zsh"

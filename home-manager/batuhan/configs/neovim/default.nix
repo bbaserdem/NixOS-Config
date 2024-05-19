@@ -9,7 +9,7 @@
 in {
   programs.neovim = {
     enable = true;
-    # Aliases 
+    # Aliases
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
@@ -26,16 +26,16 @@ in {
       clang
       nodejs
       # Dependencies
-      python311Packages.pynvim    # Python communicator
-      fd            # File finder
-      tree-sitter   # CLI tools for tree-sitter
-      glow          # Markdown typesetting
-      pplatex       # Latex log parsing
+      python311Packages.pynvim # Python communicator
+      fd # File finder
+      tree-sitter # CLI tools for tree-sitter
+      glow # Markdown typesetting
+      pplatex # Latex log parsing
       neovim-remote # Clientserver for vimtex to run latexmk
-      ripgrep       # For filesearch capabilities in Obsidian
-      xclip         # Copy-paste in X
-      wl-clipboard  # Copy-paste in wayland
-      libnotify     # Send notifications to DBus for pomodoro timer
+      ripgrep # For filesearch capabilities in Obsidian
+      xclip # Copy-paste in X
+      wl-clipboard # Copy-paste in wayland
+      libnotify # Send notifications to DBus for pomodoro timer
     ];
   };
   # Send in the needed config files
