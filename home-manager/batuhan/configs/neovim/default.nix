@@ -9,6 +9,7 @@
 in {
   programs.neovim = {
     enable = true;
+    package = pkgs.unstable.neovim-unwrapped;
     # Aliases
     viAlias = true;
     vimAlias = true;
