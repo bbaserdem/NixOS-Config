@@ -45,6 +45,7 @@
     ./configs/tmux
     ./configs/udiskie
     ./configs/vifm
+    ./configs/virt-manager
     ./configs/yt-dlp
     ./configs/zathura
     ./configs/zsh
