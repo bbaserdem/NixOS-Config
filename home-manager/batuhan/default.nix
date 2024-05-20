@@ -18,6 +18,7 @@
     ./configs/beets
     ./configs/btop
     ./configs/calendar
+    ./configs/direnv
     ./configs/firefox
     ./configs/fluidsynth
     ./configs/git
