@@ -11,6 +11,7 @@ local M = {
     },
     -- Load neodev if the path contains our NixOS configuration
     ft = { "lua", },
+    lazy = false,
     opts = {
         -- Override directory detection to edit files in flake
         override = function(_rootdir, _library)
