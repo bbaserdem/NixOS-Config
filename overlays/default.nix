@@ -39,8 +39,15 @@ with myLib; {
     });
     conda = prev.conda.override {
       extraPkgs = [
-        glib
-        glibc
+        prev.glib
+        prev.xorg.libxcb
+        prev.libsForQt5.full
+        prev.libsForQt5.qt5.qttools
+        prev.libsForQt5.qt5.qtbase
+        prev.libsForQt5.qt5.qtwayland
+        prev.fontconfig
+        prev.xorg.libXi
+        prev.xorg.libX11
       ];
     };
     # example = prev.example.overrideAttrs (oldAttrs: rec {

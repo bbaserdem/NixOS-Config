@@ -2,4 +2,5 @@
 # You can build them using 'nix build .#example'
 pkgs: {
   # example = pkgs.callPackage ./example { };
+  #suite2p = pkgs.callPackage ./suite2p {};
 }
