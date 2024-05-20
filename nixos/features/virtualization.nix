@@ -9,6 +9,9 @@ with lib; {
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
+  # Enable USB redirection
+  virtualisation.spiceUSBRedirection.enable = true;
+
   # Enable docker
   virtualisation.docker = {
     enable = true;
@@ -33,6 +36,7 @@ with lib; {
 
   # Install virtio-win drivers
   environment.systemPackages = with pkgs; [
+    spice-gtk
     virtio-win
     docker-client
   ];

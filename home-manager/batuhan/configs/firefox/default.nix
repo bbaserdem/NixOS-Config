@@ -86,6 +86,6 @@
     };
   };
   home.packages = with pkgs; [
-    #unstable.vdhcoapp
+    unstable.vdhcoapp
   ];
 }
