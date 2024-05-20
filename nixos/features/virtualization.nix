@@ -7,7 +7,7 @@
 with lib; {
   # Enable libvirtd
   virtualisation.libvirtd.enable = true;
-  # programs.virt-manager.enable = true;
+  programs.virt-manager.enable = true;
 
   # Enable docker
   virtualisation.docker = {
@@ -35,6 +35,5 @@ with lib; {
   environment.systemPackages = with pkgs; [
     virtio-win
     docker-client
-    virt-manager
   ];
 }
