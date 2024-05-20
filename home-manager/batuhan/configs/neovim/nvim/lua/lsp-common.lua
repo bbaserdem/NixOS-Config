@@ -33,6 +33,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
                     "hover menu" },
                 f = { vim.lsp.buf.format,
                     "Format", },
+                h = { function ()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                    end,
+                    "toggle Hint inlay",
+                },
             },
         }, {
             prefix = "<leader>",
