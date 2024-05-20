@@ -37,6 +37,12 @@ with myLib; {
     waybar = prev.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     });
+    conda = prev.conda.override {
+      extraPkgs = [
+        glib
+        glibc
+      ];
+    };
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
