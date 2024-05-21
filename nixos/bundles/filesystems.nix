@@ -17,5 +17,6 @@
     parted
     gparted
     gptfdisk
+    sshfs
   ];
 }
