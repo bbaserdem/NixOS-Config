@@ -41,6 +41,7 @@ with myLib; {
       extraPkgs = [
         prev.glib
         prev.xorg.libxcb
+        prev.xcb-util-cursor
         prev.libsForQt5.full
         prev.libsForQt5.qt5.qttools
         prev.libsForQt5.qt5.qtbase

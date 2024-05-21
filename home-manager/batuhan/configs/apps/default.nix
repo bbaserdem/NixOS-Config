@@ -31,6 +31,7 @@
     ferdium
     zoom-us
     webcord-vencord
+    remmina
     # Documents
     calibre
     libreoffice-fresh
