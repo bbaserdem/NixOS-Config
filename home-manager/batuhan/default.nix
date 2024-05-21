@@ -22,6 +22,7 @@
     ./configs/firefox
     ./configs/fluidsynth
     ./configs/git
+    ./configs/gnome
     ./configs/gnupg
     ./configs/hyprland
     ./configs/keyboard
