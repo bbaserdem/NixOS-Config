@@ -1,7 +1,10 @@
 # Audio scripts
 {pkgs}:
-pkgs.writeShellScriptBin "audio-convert2opus" ''
-  # Conversion script; meant to be used with beets
+let
+  exiftool = "${pkgs.exiftool}/bin/exiftool";
+  ffmpeg = "${pkgs.ffmpeg}/bin/ffmpeg";
+in pkgs.writeShellScriptBin "audio-convert2opus" ''
+  # Conversion script; written for beets
 
   # Just guards if source and dest are not defined as environment vars
   if [ -z "''${source}" ] ; then source="''${1}" ; fi
@@ -10,7 +13,7 @@ pkgs.writeShellScriptBin "audio-convert2opus" ''
   # Converts a file, given by $source to opus, into $dest
   case "''${source}" in
       *.mp3)
-          _irate="$(exiftool -AudioBitrate "''${source}" | sed 's|[^0-9]*\([0-9]\+\) kbps.*|\1|')"
+          _irate="$(${exiftool} -AudioBitrate "''${source}" | sed 's|[^0-9]*\([0-9]\+\) kbps.*|\1|')"
           # Choose output bitrate
           if   [ "''${_irate}" -ge 300 ] ; then
               _orate='192k'
@@ -28,9 +31,9 @@ pkgs.writeShellScriptBin "audio-convert2opus" ''
   esac
 
   if [ "''${_orate}" = 'keep' ] ; then
-      copy "''${source}" "''${dest}"
+      cp "''${source}" "''${dest}"
   else
-      ffmpeg -i "''${source}" \
+      ${ffmpeg} -i "''${source}" \
           -codec:a libopus -b:a "''${_orate}" -vbr on \
           "''${dest}"
   fi
