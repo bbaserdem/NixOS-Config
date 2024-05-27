@@ -27,6 +27,7 @@
     ./configs/hyprland
     ./configs/keyboard
     ./configs/kitty
+    ./configs/man
     ./configs/mimetypes
     ./configs/mpd
     ./configs/mpv

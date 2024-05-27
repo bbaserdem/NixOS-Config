@@ -37,4 +37,5 @@
   home.sessionVariables = {
     FLAKE = "${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixOS";
   };
+  programs.zsh.shellAliases.cd-flake = "cd $FLAKE";
 }
