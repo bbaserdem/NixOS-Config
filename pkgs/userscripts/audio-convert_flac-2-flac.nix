@@ -17,7 +17,7 @@ in pkgs.writeShellScriptBin "audio-convert_flac-2-flac" ''
   # Get new filename by removing the last 4 letters
   this_name="$(basename "''${input_file}")"
   this_dir="$(dirname "''${input_file}")"
-  output_file="''${this_dir}/''${this_name::-5}.flac"
+  output_file="''${this_dir}/''${this_name::-5}-compressed.flac"
   backup_file="''${backup_dir}/''${this_name}"
 
   # Do conversion, and if successful move old file to backup
