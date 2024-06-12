@@ -51,6 +51,8 @@
     # Gaming
     lutris
     heroic
+    # Scripts
+    user-audio.flac-2-flac
   ];
   # Common services
   services.blueman-applet.enable = lib.mkDefault true;
