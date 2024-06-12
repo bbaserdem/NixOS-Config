@@ -53,6 +53,14 @@
     heroic
     # Scripts
     user-audio.flac-2-flac
+    user-audio.aiff-2-flac
+    user-audio.wav-2-flac
+    user-audio.flac-2-opus
+    user-audio.m4a-2-opus
+    user-audio.mp3-2-opus
+    user-audio.ogg-2-opus
+    user-audio.reencodeLossless
+    user-audio.reencodeLossy
   ];
   # Common services
   services.blueman-applet.enable = lib.mkDefault true;
