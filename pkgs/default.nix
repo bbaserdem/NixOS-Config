@@ -10,8 +10,8 @@
     to-opus     = pkgs.callPackage ./userscripts/audio-convert2opus.nix         {};
     flac-2-opus = pkgs.callPackage ./userscripts/audio-convert_flac-2-opus.nix  {};
     m4a-2-opus  = pkgs.callPackage ./userscripts/audio-convert_m4a-2-opus.nix   {};
-    mp3-2-opus  = pkgs.callPackage ./userscripts/audio-convert_mp3-opus.nix     {};
-    ogg-2-opus  = pkgs.callPackage ./userscripts/audio-convert_ogg-opus.nix     {};
+    mp3-2-opus  = pkgs.callPackage ./userscripts/audio-convert_mp3-2-opus.nix   {};
+    ogg-2-opus  = pkgs.callPackage ./userscripts/audio-convert_ogg-2-opus.nix   {};
     aiff-2-flac = pkgs.callPackage ./userscripts/audio-convert_aiff-2-flac.nix  {};
     flac-2-flac = pkgs.callPackage ./userscripts/audio-convert_flac-2-flac.nix  {};
     wav-2-flac  = pkgs.callPackage ./userscripts/audio-convert_wav-2-flac.nix   {};
