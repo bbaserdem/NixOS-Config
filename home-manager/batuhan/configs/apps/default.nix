@@ -19,6 +19,7 @@
     picard
     cantata
     projectm
+    chromaprint
     # Video related
     vlc
     smplayer
