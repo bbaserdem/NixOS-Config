@@ -1,4 +1,3 @@
--- nvim/after/ftplugin/lu.lua
 -- Lua lsp config
 
 -- Load cmp capabilities

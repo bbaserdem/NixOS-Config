@@ -1,5 +1,4 @@
--- nvim/after/ftplugin/lu.lua
--- Lua lsp config
+-- Nixd LSP config
 
 -- Load cmp capabilities
 local lspc = require("lsp-common")
