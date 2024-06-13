@@ -1,0 +1,10 @@
+-- Typescript LSP config
+
+-- Load cmp capabilities
+local lspc = require("lsp-common")
+
+require("lspconfig").tsserver.setup({
+    cmd = { "typescript-language-server", "--stdio" },
+    -- on_attach = <function>,
+    capabilities = lspc.capabilities_with_cmp,
+})

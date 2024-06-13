@@ -3,3 +3,4 @@
 
 require("lsp-configs/lua_ls")
 require("lsp-configs/nixd")
+require("lsp-configs/tsserver")

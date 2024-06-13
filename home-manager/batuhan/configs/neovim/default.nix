@@ -22,6 +22,7 @@ in {
       lua-language-server
       clang-tools
       nixd
+      nodePackages.typescript-language-server
       # Needed for plugin compilation
       gnumake
       clang
