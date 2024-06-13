@@ -10,7 +10,7 @@ in {
     enable = true;
     shellIntegration.enableZshIntegration = true;
     font = {
-      name = "Iosevka";
+      name = "Iosevka Light";
       size = 15;
       package = pkgs.iosevka;
     };
@@ -23,7 +23,6 @@ in {
       cursor_stop_blinking_after = 0;
       scrollback_lines = 5000;
       url_style = "curly";
-      open_url_modifiers = "kitty_mod";
       open_url_with = "default";
       copy_on_select = false;
       tab_separator = " ┇";
@@ -73,14 +72,13 @@ in {
       shell_integration = true;
     };
     extraConfig = ''
-      font_family         Iosevka Light
       bold_font           Iosevka Heavy
       italic_font         Iosevka Light Italic
       bold_italic_font    Iosevka ExtraBold Oblique
-      font_features       Iosevka Light               +dlig +ss05
-      font_features       Iosevka Heavy               +dlig +ss05
-      font_features       Iosevka Light Italic        +dlig +ss05
-      font_features       Iosevka ExtraBold Oblique   +dlig +ss05
+      font_features       Iosevka-Light               +dlig +ss05
+      font_features       Iosevka-Heavy               +dlig +ss05
+      font_features       Iosevka-Light-Italic        +dlig +ss05
+      font_features       Iosevka-ExtraBold-Oblique   +dlig +ss05
       # Nerd Font override
       # https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
       symbol_map U+E5FA-U+E62B    Symbols Nerd Font Mono
@@ -116,7 +114,7 @@ in {
       # Codicons
       symbol_map U+ea60-U+ebeb    Symbols Nerd Font Mono
       # Heavy Angle Brackets
-      symbol_map U+e276c-U+2771   Symbols Nerd Font Mono
+      symbol_map U+276c-U+2771   Symbols Nerd Font Mono
       # Box Drawing
       symbol_map U+2500-U+259f    Symbols Nerd Font Mono
     '';
