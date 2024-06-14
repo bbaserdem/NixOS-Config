@@ -271,11 +271,7 @@
       alternatives = {
         phone = {
           directory = "${config.xdg.userDirs.extraConfig.XDG_PHONE_DIR}/Music";
-          formats = [
-            "opus"
-            "mp3"
-            "ogg"
-          ];
+          formats = "opus mp3 ogg";
           query = "phone:True";
           removable = false;
         };

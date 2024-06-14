@@ -72,7 +72,6 @@
   outputs = {
     self,
     nixpkgs,
-    home-manager,
     ...
   } @ inputs: let
     myLib = import ./myLib/default.nix {
