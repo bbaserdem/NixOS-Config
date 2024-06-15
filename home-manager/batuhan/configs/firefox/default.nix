@@ -71,6 +71,12 @@
             updateInterval = 24 * 60 * 60 * 1000;
             definedAliases = ["@aw"];
           };
+          "Dotapedia" = {
+            urls = [{template = "https://liquipedia.net/dota2game/{searchTerms}";}];
+            iconUpdateUrl = "https://liquipedia.net/dota2game/extensions/SearchEngineOptimization/resources/images/favicon-32x32.png";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = ["@d2"];
+          };
         };
       };
       #containers = {
