@@ -20,11 +20,24 @@ local M = {
             {
                 name = "Work - CSHL",
                 path = "~/Media/Notes/CSHL",
+                strict = true,
             }, {
-                name = "NixOS",
-                path = "~/Media/Notes/NixOS",
+                name = "Personal",
+                path = "~/Media/Notes/Personal",
+                strict = true,
             },
         },
+        daily_notes = {
+            folder = "Daily_Notes",
+            date_format = "%Y-%m-%d",
+            alias_format = "%B %-d, %Y",
+            template = nil,
+        },
+        completion = {
+            nvim_cmp = true,
+            min_chars = 2,
+        },
+        mappings = {},
     },
 }
 
