@@ -3,7 +3,7 @@
   config,
   pkgs,
   ...
-}: {
+}: rec {
   # Local binaries
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
@@ -28,6 +28,8 @@
     publicShare = "${config.home.homeDirectory}/Shared/Public";
     download = "${config.home.homeDirectory}/Sort/Downloads";
     extraConfig = {
+      XDG_MEDIA_DIR = "${config.home.homeDirectory}/Media";
+      XDG_NOTES_DIR = "${config.home.homeDirectory}/Media/Notes";
       XDG_PROJECTS_DIR = "${config.home.homeDirectory}/Projects";
       XDG_STAGING_DIR = "${config.home.homeDirectory}/Sort";
       XDG_PHONE_DIR = "${config.home.homeDirectory}/Shared/Android";
@@ -35,7 +37,15 @@
   };
   # My flake directory
   home.sessionVariables = {
-    FLAKE = "${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixOS";
+    FLAKE = "${xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixOS";
   };
-  programs.zsh.shellAliases.cd-flake = "cd $FLAKE";
+  programs.zsh.shellAliases = {
+    cd-flake = "cd ${home.sessionVariables.FLAKE}";
+    cd-notes = "cd ${xdg.userDirs.extraConfig.XDG_NOTES_DIR}";
+    cd-media = "cd ${xdg.userDirs.extraConfig.XDG_MEDIA_DIR}";
+    cd-music = "cd ${xdg.userDirs.music}";
+    cd-image = "cd ${xdg.userDirs.pictures}";
+    cd-video = "cd ${xdg.userDirs.videos}";
+    cd-downl = "cd ${xdg.userDirs.downloads}";
+  };
 }
