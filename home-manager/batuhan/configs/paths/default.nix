@@ -46,6 +46,6 @@
     cd-music = "cd ${xdg.userDirs.music}";
     cd-image = "cd ${xdg.userDirs.pictures}";
     cd-video = "cd ${xdg.userDirs.videos}";
-    cd-downl = "cd ${xdg.userDirs.downloads}";
+    cd-downl = "cd ${xdg.userDirs.download}";
   };
 }
