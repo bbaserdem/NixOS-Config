@@ -29,7 +29,7 @@
         sponsorblock
         ublock-origin
         video-downloadhelper
-        #zotero-connector
+        zotero-connector
       ];
       search = {
         default = "Google";
