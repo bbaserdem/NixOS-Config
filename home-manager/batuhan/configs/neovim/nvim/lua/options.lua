@@ -50,7 +50,7 @@ helper_vimopt({
     whichwrap = "bs<>[]",   -- which nav keys are allowed to travel to prev/next line
     numberwidth = 4,    -- set number column width to 2 {default 4}
     signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-    conceallevel = 0,   -- so that `` is visible in markdown files
+    conceallevel = 1,   -- so that plugins work actually
     fileencoding = "utf-8", -- the encoding written to a file
 
     ------------------------------
