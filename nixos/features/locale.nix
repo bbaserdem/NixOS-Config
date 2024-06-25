@@ -12,7 +12,7 @@
   ];
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
-    LANGUAGE = "en_US:tr";
+    LANGUAGE = "en_US";
     LC_ADDRESS = "en_US.UTF-8";
     LC_COLLATE = "tr_TR.UTF-8";
     LC_MONETARY = "en_US.UTF-8";
