@@ -41,6 +41,7 @@
     };
     # Features
     zsh.enable = true;
+    locale.enable = true;
   };
 
   # Nix settings
