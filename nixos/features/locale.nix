@@ -4,6 +4,14 @@
   lib,
   ...
 }: {
+  # Ibus entry
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [
+      uniemoji
+      m17n
+    ];
+  };
   i18n.supportedLocales = [
     "en_US.UTF-8/UTF-8"
     "en_GB.UTF-8/UTF-8"
