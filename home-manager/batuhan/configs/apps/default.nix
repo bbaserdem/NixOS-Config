@@ -13,6 +13,7 @@
     qimgv
     imagemagick
     blender
+    digikam
     # Music related
     audacity
     musescore
