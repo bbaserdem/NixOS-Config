@@ -13,7 +13,7 @@ in {
   };
 
   config = let
-    grub-theme = pkgs.unstable.sleek-grub-theme.override {
+    grub-theme = pkgs.sleek-grub-theme.override {
       withStyle = cfg.grub.flavor;
     };
   in {

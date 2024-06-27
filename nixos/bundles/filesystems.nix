@@ -9,7 +9,7 @@
   # Install archiving tools into userspace
   environment.systemPackages = with pkgs; [
     btrfs-progs
-    unstable.btrfs-assistant
+    btrfs-assistant
     btrfs-heatmap
     snapper
     e2fsprogs

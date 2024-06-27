@@ -8,7 +8,7 @@
   # This needs disabling for nix-index flake to work
   programs.command-not-found.enable = false;
   environment.systemPackages = with pkgs; [
-    unstable.nh
+    nh
     nix-output-monitor
     nvd
     sops

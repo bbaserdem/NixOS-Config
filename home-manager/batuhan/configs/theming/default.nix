@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  catppuccin-kvantum = pkgs.unstable.catppuccin-kvantum.override {
+  catppuccin-kvantum = pkgs.catppuccin-kvantum.override {
     accent = "Sapphire";
     variant = "Mocha";
   };
