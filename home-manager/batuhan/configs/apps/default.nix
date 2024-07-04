@@ -50,6 +50,7 @@
     cinnamon.nemo-with-extensions
     virt-manager
     baobab
+    xclicker
     # Gaming
     lutris
     heroic
