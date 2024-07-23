@@ -12,6 +12,10 @@ creation_rules:
     key_groups:
     - age:
       - *user_batuhan
+  - path_regex: nixos/hosts/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *user_batuhan
   - path_regex: nixos/hosts/yel-ana/[^/]+\.(yaml|json|key)$
     key_groups:
     - age:
