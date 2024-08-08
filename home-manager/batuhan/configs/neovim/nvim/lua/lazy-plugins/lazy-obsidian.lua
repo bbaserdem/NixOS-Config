@@ -19,7 +19,7 @@ local M = {
         workspaces = {
             {
                 name = "Work - CSHL",
-                path = "~/Media/Notes/CSHL",
+                path = "~/Media/Notes/Work/CSHL",
                 strict = true,
             }, {
                 name = "Personal",
