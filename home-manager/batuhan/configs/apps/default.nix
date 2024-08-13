@@ -42,6 +42,7 @@
     # hunspellDicts.tr_TR not available
     obsidian
     zotero
+    #texlive.combined.scheme-full
     # Programming
     octaveFull
     conda

@@ -27,8 +27,6 @@ in {
       gnumake
       clang
       nodejs
-      # LaTeX
-      texlive.combined.scheme-full
       # Dependencies
       python311Packages.pynvim # Python communicator
       fd # File finder
