@@ -68,4 +68,6 @@
   ];
   # Common services
   services.blueman-applet.enable = lib.mkDefault true;
+  # Configuration options
+  xdg.configFile."Ferdium".source = lib.file.mkOutOfStoreSymlink "../.cache/Ferdium";
 }
