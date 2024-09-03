@@ -18,7 +18,7 @@
       # Download options
       concurrent-fragments = 5;
       # Filesystem options
-      paths = "home:${config.xdg.userDirs.download}/yt-dlp,temp:/tmp/yt-dlp";
+      paths = "home:${config.xdg.userDirs.download}/Videos/Youtube-dlp";
       output = "%(title)s-%(resolution)s.$(ext)s";
       restrict-filenames = true;
       no-overwrites = true;
@@ -42,5 +42,8 @@
       # Sponsorblock
       sponsorblock-mark = "all";
     };
+    extraConfig = ''
+      --paths temp:/tmp/yt-dlp
+    '';
   };
 }
