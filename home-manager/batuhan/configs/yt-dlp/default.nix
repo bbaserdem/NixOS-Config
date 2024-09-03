@@ -12,13 +12,13 @@
       # General options
       default-search = "youtube:1";
       live-from-start = true;
-      color = true;
+      color = "auto";
       # Video selection
       yes-playlist = true;
       # Download options
       concurrent-fragments = 5;
       # Filesystem options
-      paths = "home:${config.xdg.userDirs.download}/yt-dlp,tmp:/tmp/yt-dlp";
+      paths = "home:${config.xdg.userDirs.download}/yt-dlp,temp:/tmp/yt-dlp";
       output = "%(title)s-%(resolution)s.$(ext)s";
       restrict-filenames = true;
       no-overwrites = true;
