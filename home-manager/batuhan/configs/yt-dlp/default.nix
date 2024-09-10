@@ -19,7 +19,7 @@
       concurrent-fragments = 5;
       # Filesystem options
       paths = "home:${config.xdg.userDirs.download}/Videos/Youtube-dlp";
-      output = "%(title)s-%(resolution)s.$(ext)s";
+      output = "%(title)s/%(title)s-%(resolution)s.$(ext)s";
       restrict-filenames = true;
       no-overwrites = true;
       write-description = true;
