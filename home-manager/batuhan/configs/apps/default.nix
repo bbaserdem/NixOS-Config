@@ -40,6 +40,7 @@
     libreoffice-fresh
     hunspell
     hunspellDicts.en_US
+    kdePackages.okular
     # hunspellDicts.tr_TR not available
     obsidian
     zotero
