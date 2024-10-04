@@ -3,6 +3,6 @@
 -- Load cmp capabilities
 local lspc = require("lsp-common")
 
-require("lspconfig").tsserver.setup({
+require("lspconfig").ts_ls.setup({
     capabilities = lspc.capabilities_with_cmp,
 })

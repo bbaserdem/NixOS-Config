@@ -18,11 +18,11 @@ local M = {
     opts = {
         workspaces = {
             {
-                name = "Work - CSHL",
-                path = "~/Media/Notes/Work/CSHL",
+                name = "Personal",
+                path = "~/Media/Notes/Batuhan",
                 strict = true,
             }, {
-                name = "Personal",
+                name = "Old Personal",
                 path = "~/Media/Notes/Personal",
                 strict = true,
             },
