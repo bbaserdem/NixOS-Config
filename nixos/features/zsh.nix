@@ -41,5 +41,6 @@
   environment.pathsToLink = ["/share/zsh"];
   environment.systemPackages = with pkgs; [
     spaceship-prompt
+    killall
   ];
 }
