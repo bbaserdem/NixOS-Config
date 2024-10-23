@@ -12,7 +12,7 @@
       "bluetooth.autoswitch-to-headset-profile" = false;
     };
     "monitor.bluez.properties" = {
-      "bluez5.roles" = [ "a2dp_sink" "a2dp_source" ];
+      "bluez5.roles" = ["a2dp_sink" "a2dp_source"];
     };
   };
 }

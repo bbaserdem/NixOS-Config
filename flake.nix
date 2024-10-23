@@ -97,11 +97,11 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        umay      = mkSystem "umay";
+        umay = mkSystem "umay";
         #od-iyesi  = mkSystem "od-iyesi";
         #yertengri = mkSystem "yertengri";
         #su-iyesi  = mkSystem "su-iyesi";
-        yel-ana   = mkSystem "yel-ana";
+        yel-ana = mkSystem "yel-ana";
       };
 
       # Standalone home-manager configuration entrypoint
@@ -111,7 +111,7 @@
         #"batuhan@od-iyesi"  = mkHome "x86_64-linux" "batuhan" "od-iyesi";
         #"batuhan@yertengri" = mkHome "x86_64-linux" "batuhan" "yertengri";
         #"batuhan@su-iyesi"  = mkHome "x86_64-linux" "batuhan" "su-iyesi";
-        "batuhan@yel-ana"   = mkHome "x86_64-linux" "batuhan" "yel-ana";
+        "batuhan@yel-ana" = mkHome "x86_64-linux" "batuhan" "yel-ana";
       };
     };
 }

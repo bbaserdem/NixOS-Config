@@ -4,7 +4,8 @@
     enable = true;
     packageSet = pkgs.texlive;
     extraPackages = tpkgs: {
-      inherit (tpkgs) 
+      inherit
+        (tpkgs)
         collection-basic
         collection-bibtexextra
         collection-binextra
@@ -30,7 +31,8 @@
         collection-xetex
         algorithms
         cleveref
-        latexmk;
+        latexmk
+        ;
     };
   };
 }

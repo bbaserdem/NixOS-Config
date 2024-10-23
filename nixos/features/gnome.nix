@@ -33,30 +33,32 @@
   };
 
   # Exclude some unneeded packages
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-    gedit
-  ]) ++ (with pkgs.gnome; [
-    cheese
-    gnome-music
-    gnome-terminal
-    epiphany
-    geary
-    evince
-    gnome-characters
-    totem
-    tali
-    iagno
-    hitori
-    atomix
-  ]);
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-photos
+      gnome-tour
+      gedit
+    ])
+    ++ (with pkgs.gnome; [
+      cheese
+      gnome-music
+      gnome-terminal
+      epiphany
+      geary
+      evince
+      gnome-characters
+      totem
+      tali
+      iagno
+      hitori
+      atomix
+    ]);
 
   # Make sure gnome-settings-daemon udev rules are enabled
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
   # Profiler, needs to be system level installed
   services.sysprof.enable = true;
-  
+
   # Enable extensions
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
