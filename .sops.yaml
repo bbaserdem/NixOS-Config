@@ -21,3 +21,8 @@ creation_rules:
     - age:
       - *user_batuhan
       - *host_yel-ana
+  - path_regex: nixos/hosts/yertengri/[^/]+\.(yaml|json|key)$
+    key_groups:
+    - age:
+      - *user_batuhan
+      - *host_yertengri
