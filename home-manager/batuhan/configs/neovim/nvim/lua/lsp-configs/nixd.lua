@@ -11,7 +11,8 @@ require("lspconfig").nixd.setup({
     settings = {
         nixd = {
             nixpkgs = {
-                expr = "import (builtins.getFlake \"/home/batuhan/Projects/NixOS\").inputs.nixpkgs { }",
+                -- expr = "import (builtins.getFlake \"/home/batuhan/Projects/NixOS\").inputs.nixpkgs { }",
+                expr = "import <nixpkgs> { }",
             },
             formatting = {
                 command = { "nix", "fmt" },
@@ -20,7 +21,7 @@ require("lspconfig").nixd.setup({
                 nixos = {
                     expr = "builtins.getFlake \"/home/batuhan/Projects/NixOS\").nixosConfigurations.yel-ana.options"
                 },
-                ["home-manager"] = {
+                home_manager = {
                     expr = "builtins.getFlake \"/home/batuhan/Projects/NixOS\").homeConfigurations.\"batuhan@yel-ana\".options"
                 },
             },
