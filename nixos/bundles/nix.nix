@@ -11,8 +11,8 @@
   # Automatic garbage collection
   nix.gc = {
     automatic = true;
-    frequency = "weekly";
-    options = "-d";
+    dates = "weekly";
+    options = "--delete-older-than 60d";
   };
   # Make sure <nixpkgs> path aligns with flake inputs
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
