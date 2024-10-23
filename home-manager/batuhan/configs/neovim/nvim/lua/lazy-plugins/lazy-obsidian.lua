@@ -8,7 +8,10 @@ local M = {
     "epwalsh/obsidian.nvim",
     version = "*",
     lazy = true,
-    ft = "markdown",
+    event = {
+        "BufReadPre " .. vim.fn.expand "~" .. "Media/Notes/*.md",
+        "BufNewFile " .. vim.fn.expand "~" .. "Media/Notes/*.md",
+    },
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim",
@@ -19,19 +22,14 @@ local M = {
         workspaces = {
             {
                 name = "Personal",
-                path = "~/Media/Notes/Batuhan",
-                strict = true,
-            }, {
-                name = "Old Personal",
-                path = "~/Media/Notes/Personal",
-                strict = true,
+                path = "~/Media/Notes",
             },
         },
         daily_notes = {
-            folder = "Daily_Notes",
-            date_format = "%Y-%m-%d",
-            alias_format = "%B %-d, %Y",
-            template = nil,
+            folder = "Daily Notes",
+            date_format = "%Y_%m_%d",
+            --alias_format = "%B %-d, %Y",
+            --template = nil,
         },
         completion = {
             nvim_cmp = true,
