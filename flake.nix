@@ -86,7 +86,7 @@
       # Development shells
       devShells = forAllSystems (system: import ./shell.nix nixpkgs.legacyPackages.${system});
       # Formatter to use with nix fmt command
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
       # Overlays to the package list
       overlays = import ./overlays {inherit inputs myLib;};
 
