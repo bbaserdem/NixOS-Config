@@ -30,7 +30,7 @@
     };
     hyprland.enable = true;
     keymap.enable = true;
-    matlab.enable = true;
+    matlab.enable = false;
     polkit.enable = true;
     sddm.enable = false;
     steam.enable = true;
