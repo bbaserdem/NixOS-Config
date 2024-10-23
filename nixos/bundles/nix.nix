@@ -1,6 +1,7 @@
 # Bundling nix related software
 {
   pkgs,
+  inputs,
   lib,
   config,
   ...
@@ -13,6 +14,8 @@
     frequency = "weekly";
     options = "-d";
   };
+  # Make sure <nixpkgs> path aligns with flake inputs
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   # Nix helper utilities
   environment.systemPackages = with pkgs; [
     nh
