@@ -8,6 +8,19 @@
   # Firefox settings
   programs.firefox = {
     enable = true;
+    package = pkgs.firefox.override {
+      # See nixpkgs' firefox/wrapper.nix to check which options you can use
+      nativeMessagingHosts = [
+        pkgs.ffmpeg
+        pkgs.pipewire
+        pkgs.browserpass
+        pkgs.bukubrow
+        pkgs.tridactyl-native
+        pkgs.gnome-browser-connector
+        pkgs.uget-integrator
+        pkgs.fx-cast-bridge
+      ];
+    };
     profiles.batuhan = {
       isDefault = true;
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
