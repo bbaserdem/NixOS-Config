@@ -12,18 +12,20 @@ local M = {
         -- vim.o.timeoutlen = 300 -- This is set in opts
     end,
     opts = {
-        marks = true,
-        registers = true,
-        -- Show WhichKey at z= to select spelling suggestions
-        spelling = {
-            enabled = true,
-            suggestions = 10,
+        plugins = {
+            marks = true,
+            registers = true,
+            -- Show WhichKey at z= to select spelling suggestions
+            spelling = {
+                enabled = true,
+                suggestions = 10,
+            },
         },
-        window = {
-            border = "rounded",
-            position = "bottom",
-            margin = { 1, 0, 1, 0 },
-            padding = { 1, 2, 1, 2 },
+        win = {
+            no_overlap = true,
+            padding = { 1, 2 },
+            title = true,
+            title_pos = "center",
         },
     },
 }
