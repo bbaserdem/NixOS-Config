@@ -32,6 +32,7 @@
         algorithms
         cleveref
         latexmk
+        cormorantgaramond 
         ;
     };
   };
