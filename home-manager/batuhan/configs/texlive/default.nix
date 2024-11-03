@@ -32,7 +32,7 @@
         algorithms
         cleveref
         latexmk
-        cormorantgaramond 
+        cormorantgaramond charter
         ;
     };
   };
