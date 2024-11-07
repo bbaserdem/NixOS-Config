@@ -67,6 +67,9 @@
     user-audio.ogg-2-opus
     user-audio.reencodeLossless
     user-audio.reencodeLossy
+    # Apps to setup
+    podgrab
+    paperless-ngx
   ];
   # Common services
   services.blueman-applet.enable = lib.mkDefault true;
