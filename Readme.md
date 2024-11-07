@@ -49,3 +49,34 @@ Used multiple resources, and had many iterations of my configuration.
 Here are a few resources I can pinpoint as essential for my configuration.
 
 * [Neovim Starter Guide](https://www.youtube.com/watch?v=Co7gcSvq6jA) by vimjoyer.
+
+# Guide
+
+## LUKS keys
+
+To generate luks keys, I use the following command;
+```
+dd bs=512 count=4 if=/dev/random of=<FILE>.key iflag=fullblock
+```
+
+## GPG
+
+### Encryption / Decryption
+
+To create GPG encrypted/decrpyted files; I use the following
+
+```
+gpg --output <FILE>.gpg --encrypt --recipient <ID> <FILE>
+gpg --output <FILE> --decrypt <FILE>.gpg
+```
+
+## Sops
+
+I'm using [sops-nix](https://github.com/Mic92/sops-nix) to manage secrets.
+The sops command to encrypt a binary file is the following;
+
+```
+sops -e <INPUT>.file > <OUTPUT>.key
+```
+
+
