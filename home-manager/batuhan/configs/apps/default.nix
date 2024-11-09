@@ -54,6 +54,7 @@
     virt-manager
     baobab
     xclicker
+    wifi-qr
     # Gaming
     lutris
     heroic
