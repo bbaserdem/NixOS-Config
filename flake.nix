@@ -28,6 +28,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Automated disk partitioning, and mounting
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Eventually want to set up disk impermanence
     impermanence.url = "github:nix-community/impermanence";
 

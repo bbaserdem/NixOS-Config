@@ -1,0 +1,8 @@
+# Configuration for encrypted block devices.
+# See crypttab(5) for details.
+
+# Put the keyfiles needed in /etc/cryptsetup-keys.d/<name>.key
+
+# <name>            <device>                            <password>  <options>
+Yertengri_Data      PARTLABEL=Crypt_Yertengri_Data      -           luks,timeout=180
+Yertengri_Work      PARTLABEL=Crypt_Yertengri_Work      -           luks,timeout=180
