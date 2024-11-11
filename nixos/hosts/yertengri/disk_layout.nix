@@ -19,7 +19,7 @@
             };
           };
           # This is the swap partition
-          Yertengri_Swap = {
+          Crypt_Yertengri_Swap = {
             size = "30G";
             content = {
               type = "swap";
@@ -32,7 +32,7 @@
             size = "100%";
             content = {
               type = "luks";
-              name = "Crypt_Yertengri_OS";
+              name = "Yertengri_Linux";
               askPassword = true;
               settings = {
                 allowDiscards = true;
