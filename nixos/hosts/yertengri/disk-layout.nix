@@ -41,7 +41,8 @@
             content = {
               type = "luks";
               name = "Yertengri_Linux";
-              askPassword = true;
+              initrdUnlock = true;
+              passwordFile = "/tmp/Yertengri.key";
               additionalKeyFiles = [ "/tmp/Yertengri_Linux.key" ];
               extraFormatArgs = [ "--label" "Crypt_Yertengri_Linux" ];
               settings = {
@@ -102,10 +103,12 @@
           Crypt = {
             size = "100%";
             label = "Crypt_Yertengri_Data";
+            initrdUnlock = true;
             content = {
               type = "luks";
               name = "Yertengri_Data";
-              askPassword = true;
+              initrdUnlock = false;
+              passwordFile = "/tmp/Yertengri.key";
               additionalKeyFiles = [ "/tmp/Yertengri_Data.key" ];
               extraFormatArgs = [ "--label" "Crypt_Yertengri_Data" ];
               settings = {
@@ -163,7 +166,8 @@
             content = {
               type = "luks";
               name = "Yertengri_Work";
-              askPassword = true;
+              initrdUnlock = false;
+              passwordFile = "/tmp/Yertengri.key";
               additionalKeyFiles = [ "/tmp/Yertengri_Work.key" ];
               extraFormatArgs = [ "--label" "Crypt_Yertengri_Work" ];
               settings = {
