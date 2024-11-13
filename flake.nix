@@ -95,7 +95,7 @@
       # Formatter to use with nix fmt command
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
       # Overlays to the package list
-      overlays = import ./overlays {inherit inputs myLib;};
+      overlays = import ./overlays {inherit inputs;};
 
       # Module directories
       nixosModules.default = ./modules/nixos;
