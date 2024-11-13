@@ -3,10 +3,8 @@
 # https://github.com/Misterio77/nix-starter-configs
 {
   inputs,
-  myLib,
   ...
-}:
-with myLib; {
+}: {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs {pkgs = final;};
 
@@ -51,6 +49,7 @@ with myLib; {
         prev.xorg.libX11
       ];
     };
+    python311Packages.imap-tools = inputs.nixpkgs-release.python311Packages.imap-tools;
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
