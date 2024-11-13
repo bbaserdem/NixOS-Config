@@ -1,6 +1,7 @@
 # Yertengri disk setup
 {
-  disko.devices.Yertengri = {
+  disko.devices.disk = {
+    name = "Yertengri";
     Linux = {
       type = "disk";
       device = "/dev/disk/by-id/nvme-Samsung_SSD_970_PRO_512GB_S463NF0M531040W";
@@ -19,7 +20,7 @@
             };
           };
           # This is the swap partition
-          Crypt-Swap = {
+          Swap-Crypt = {
             size = "30G";
             content = {
               type = "swap";
