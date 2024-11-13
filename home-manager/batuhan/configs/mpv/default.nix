@@ -1,7 +1,7 @@
 # Configuring MPV
 {pkgs, ...}: {
   programs.mpv = {
-    enable = true;
+    enable = false;
     package = pkgs.mpv;
     config = {
       keepaspect = true;
