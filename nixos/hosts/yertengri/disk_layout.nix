@@ -40,8 +40,7 @@
               additionalKeyFiles = [ "/tmp/Yertengri_Linux.key" ];
               content = {
                 type = "btrfs";
-                name = "Yertengri_Linux";
-                extraArgs = ["-f"];
+                extraArgs = [ "-f" ];
                 subvolumes = {
                   "/@nixos-root" = {
                     mountpoint = "/";
@@ -91,17 +90,16 @@
         type = "gpt";
         partitions = {
           # This is for the LUKS space
-          Yertengri_Data = {
+          Crypt_Yertengri_Data = {
             size = "100%";
             content = {
               type = "luks";
-              name = "Crypt_Yertengri_Data";
+              name = "Yertengri_Data";
               settings = {
                 allowDiscards = true;
               };
               content = {
                 type = "filesystem";
-                name = "Yertengri_Data";
                 format = "ext4";
                 mountpoint = "/home/data";
               };
