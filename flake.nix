@@ -105,7 +105,7 @@
       nixosConfigurations = {
         umay = mkSystem "umay";
         #od-iyesi  = mkSystem "od-iyesi";
-        #yertengri = mkSystem "yertengri";
+        yertengri = mkSystem "yertengri";
         #su-iyesi  = mkSystem "su-iyesi";
         yel-ana = mkSystem "yel-ana";
       };
@@ -115,7 +115,7 @@
       homeConfigurations = {
         "batuhan@umay" = mkHome "x86_64-linux" "batuhan" "umay";
         #"batuhan@od-iyesi"  = mkHome "x86_64-linux" "batuhan" "od-iyesi";
-        #"batuhan@yertengri" = mkHome "x86_64-linux" "batuhan" "yertengri";
+        "batuhan@yertengri" = mkHome "x86_64-linux" "batuhan" "yertengri";
         #"batuhan@su-iyesi"  = mkHome "x86_64-linux" "batuhan" "su-iyesi";
         "batuhan@yel-ana" = mkHome "x86_64-linux" "batuhan" "yel-ana";
       };
