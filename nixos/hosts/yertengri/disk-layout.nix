@@ -103,7 +103,6 @@
           Crypt = {
             size = "100%";
             label = "Crypt_Yertengri_Data";
-            initrdUnlock = true;
             content = {
               type = "luks";
               name = "Yertengri_Data";
