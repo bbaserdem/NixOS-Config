@@ -1,7 +1,7 @@
 # Yertengri disk setup
 {
   disko.devices.disk = {
-    Yertengri = {
+    Linux = {
       type = "disk";
       device = "/dev/disk/by-id/nvme-Samsung_SSD_970_PRO_512GB_S463NF0M531040W";
       content = {
@@ -10,10 +10,13 @@
           # This is the EFI partition
           ESP = {
             size = "1G";
+            label = "Yertengri_ESP";
             type = "EF00";
+            priority = 100;
             content = {
               type = "filesystem";
               format = "vfat";
+              extraArgs = [ "-n" "ESP" ];
               mountpoint = "/boot";
               mountOptions = [ "defaults" ];
             };
@@ -21,28 +24,32 @@
           # This is the swap partition
           Swap = {
             size = "30G";
+            label = "Yertengri_Swap";
+            priority = 500;
             content = {
               type = "swap";
-              extraArgs = [ "-f" "--label" "Yertengri-Swap" ];
+              extraArgs = [ "-f" "--label" "Yertengri_Swap" ];
               randomEncryption = true;
               priority = 100;
             };
           };
           # Main OS; BTRFS subvolumes
-          Linux-Crypt = {
+          Crypt = {
             size = "100%";
+            label = "Crypt_Yertengri_Linux";
+            priority = 1000;
             content = {
               type = "luks";
-              name = "Yertengri-Linux";
+              name = "Yertengri_Linux";
               askPassword = true;
-              additionalKeyFiles = [ "/tmp/Yertengri-Linux.key" ];
-              extraFormatArgs = [ "--label" "Crypt-Yertengri-Linux" ];
+              additionalKeyFiles = [ "/tmp/Yertengri_Linux.key" ];
+              extraFormatArgs = [ "--label" "Crypt_Yertengri_Linux" ];
               settings = {
                 allowDiscards = true;
               };
               content = {
                 type = "btrfs";
-                extraArgs = [ "--force" "--label" "Yertengri-Linux" ];
+                extraArgs = [ "--force" "--label" "Yertengri_Linux" ];
                 subvolumes = {
                   "/@nixos-root" = {
                     mountpoint = "/";
@@ -85,7 +92,7 @@
         };
       };
     };
-    Yertengri-Data = {
+    Data = {
       type = "disk";
       device = "/dev/disk/by-id/nvme-INTEL_SSDPEKNW020T8_PHNH922200QG2P0C";
       content = {
@@ -94,19 +101,20 @@
           # This is for the LUKS space
           Crypt = {
             size = "100%";
+            label = "Crypt_Yertengri_Data";
             content = {
               type = "luks";
-              name = "Yertengri-Data";
+              name = "Yertengri_Data";
               askPassword = true;
-              additionalKeyFiles = [ "/tmp/Yertengri-Data.key" ];
-              extraFormatArgs = [ "--label" "Crypt-Yertengri-Data" ];
+              additionalKeyFiles = [ "/tmp/Yertengri_Data.key" ];
+              extraFormatArgs = [ "--label" "Crypt_Yertengri_Data" ];
               settings = {
                 allowDiscards = true;
               };
               content = {
                 type = "filesystem";
                 format = "ext4";
-                extraArgs = [ "-L" "Yertengri-Data" ];
+                extraArgs = [ "-L" "Yertengri_Data" ];
                 mountpoint = "/home/data";
               };
             };
@@ -114,47 +122,57 @@
         };
       };
     };
-    Yertengri-Work = {
+    Work = {
       type = "disk";
       device = "/dev/disk/by-id/nvme-SHGP31-2000GM_ASB4N718111004R5E";
       content = {
         type = "gpt";
         partitions = {
-          System = {
+          ESP = {
             size = "512G";
+            label = "System";
+            priority = 100;
             type = "EF00";
             content = {
               type = "filesystem";
               format = "vfat";
             };
           };
-          "Microsoft reserved" = {
+          MSR = {
             size = "16M";
+            label = "Microsoft reserved";
+            priority = 501;
             type = "0C01";
           };
-          "Microsoft basic data" = {
+          Windows = {
             size = "150G";
+            label = "Microsoft basic data";
+            priority = 502;
             type = "0700";
           };
-          "Windows RE" = {
+          Recovery = {
             size = "512M";
+            label = "Windows RE";
+            priority = 503;
             type = "2700";
           };
           Crypt = {
             size = "100%";
+            label = "Crypt_Yertengri_Work";
+            priority = 1000;
             content = {
               type = "luks";
-              name = "Yertengri-Work";
+              name = "Yertengri_Work";
               askPassword = true;
-              additionalKeyFiles = [ "/tmp/Yertengri-Work.key" ];
-              extraFormatArgs = [ "--label" "Crypt-Yertengri-Work" ];
+              additionalKeyFiles = [ "/tmp/Yertengri_Work.key" ];
+              extraFormatArgs = [ "--label" "Crypt_Yertengri_Work" ];
               settings = {
                 allowDiscards = true;
               };
               content = {
                 type = "filesystem";
                 format = "ext4";
-                extraArgs = [ "-L" "Yertengri-Work" ];
+                extraArgs = [ "-L" "Yertengri_Work" ];
                 mountpoint = "/home/work";
               };
             };
