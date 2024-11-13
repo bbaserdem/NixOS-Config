@@ -1,14 +1,14 @@
 # Yertengri disk setup
 {
-  disko.devices.disk = {
-    main = {
+  disko.devices.Yertengri = {
+    Linux = {
       type = "disk";
       device = "/dev/disk/by-id/nvme-Samsung_SSD_970_PRO_512GB_S463NF0M531040W";
       content = {
         type = "gpt";
         partitions = {
           # This is the EFI partition
-          Yertengri_ESP = {
+          ESP = {
             size = "1G";
             type = "EF00";
             content = {
@@ -19,7 +19,7 @@
             };
           };
           # This is the swap partition
-          Crypt_Yertengri_Swap = {
+          Crypt-Swap = {
             size = "30G";
             content = {
               type = "swap";
@@ -28,16 +28,16 @@
             };
           };
           # Main OS; BTRFS subvolumes
-          Crypt_Yertengri_Linux = {
+          Crypt = {
             size = "100%";
             content = {
               type = "luks";
-              name = "Yertengri_Linux";
+              name = "Yertengri-Linux";
               askPassword = true;
               settings = {
                 allowDiscards = true;
               };
-              additionalKeyFiles = [ "/tmp/Yertengri_Linux.key" ];
+              additionalKeyFiles = [ "/tmp/Yertengri-Linux.key" ];
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ];
@@ -83,18 +83,18 @@
         };
       };
     };
-    data = {
+    Data = {
       type = "disk";
       device = "/dev/disk/by-id/nvme-INTEL_SSDPEKNW020T8_PHNH922200QG2P0C";
       content = {
         type = "gpt";
         partitions = {
           # This is for the LUKS space
-          Crypt_Yertengri_Data = {
+          Crypt = {
             size = "100%";
             content = {
               type = "luks";
-              name = "Yertengri_Data";
+              name = "Yertengri-Data";
               settings = {
                 allowDiscards = true;
               };
@@ -108,7 +108,7 @@
         };
       };
     };
-    work = {
+    Work = {
       type = "disk";
       device = "/dev/disk/by-id/nvme-SHGP31-2000GM_ASB4N718111004R5E";
       content = {
@@ -134,11 +134,11 @@
             size = "512M";
             type = "2700";
           };
-          Crypt_Yertengri_Work = {
+          Crypt = {
             size = "100%";
             content = {
               type = "luks";
-              name = "Yertengri_Work";
+              name = "Yertengri-Work";
               askPassword = true;
               settings = {
                 allowDiscards = true;
