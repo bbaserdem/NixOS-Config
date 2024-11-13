@@ -23,6 +23,7 @@
             size = "30G";
             content = {
               type = "swap";
+              extraArgs = [ "-f" "--label" "Yertengri-Swap" ];
               randomEncryption = true;
               priority = 100;
             };
@@ -35,12 +36,13 @@
               name = "Yertengri-Linux";
               askPassword = true;
               additionalKeyFiles = [ "/tmp/Yertengri-Linux.key" ];
+              extraFormatArgs = [ "--label" "Crypt-Yertengri-Linux" ];
               settings = {
                 allowDiscards = true;
               };
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
+                extraArgs = [ "--force" "--label" "Yertengri-Linux" ];
                 subvolumes = {
                   "/@nixos-root" = {
                     mountpoint = "/";
@@ -97,12 +99,14 @@
               name = "Yertengri-Data";
               askPassword = true;
               additionalKeyFiles = [ "/tmp/Yertengri-Data.key" ];
+              extraFormatArgs = [ "--label" "Crypt-Yertengri-Data" ];
               settings = {
                 allowDiscards = true;
               };
               content = {
                 type = "filesystem";
                 format = "ext4";
+                extraArgs = [ "-L" "Yertengri-Data" ];
                 mountpoint = "/home/data";
               };
             };
@@ -143,12 +147,14 @@
               name = "Yertengri-Work";
               askPassword = true;
               additionalKeyFiles = [ "/tmp/Yertengri-Work.key" ];
+              extraFormatArgs = [ "--label" "Crypt-Yertengri-Work" ];
               settings = {
                 allowDiscards = true;
               };
               content = {
                 type = "filesystem";
                 format = "ext4";
+                extraArgs = [ "-L" "Yertengri-Work" ];
                 mountpoint = "/home/work";
               };
             };
