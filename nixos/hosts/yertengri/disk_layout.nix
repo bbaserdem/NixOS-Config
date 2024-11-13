@@ -1,7 +1,6 @@
 # Yertengri disk setup
 {
   disko.devices.disk = {
-    name = "Yertengri";
     Linux = {
       type = "disk";
       device = "/dev/disk/by-id/nvme-Samsung_SSD_970_PRO_512GB_S463NF0M531040W";
