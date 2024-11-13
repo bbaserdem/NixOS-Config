@@ -1,22 +1,17 @@
 # PC system configuration file.
 {
   inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  system,
   ...
 }: {
   imports = [
+    ./hardware-configuration.nix
     ../default.nix
-    # ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
     ./disk-layout.nix
   ];
 
   # Set our name
-  networking.hostName = "yel-ana";
+  networking.hostName = "yertengri";
 
   # Module toggles
   myNixOS = {
@@ -28,7 +23,7 @@
     gnome.enable = true;
     grub = {
       enable = true;
-      flavor = "bigSur";
+      flavor = "dark";
     };
     hyprland.enable = true;
     keymap.enable = true;
