@@ -62,10 +62,4 @@
       config.allowUnfree = true;
     };
   };
-
-  # Release overrides will replace packages from the release set to fast-track
-  # some changes between release-<OS> and nixos-<OS>
-  release-packages = _final: _prev: {
-    python311Packages.imap-tools = inputs.nixpkgs-release.legacyPackages."x86_64-linux".python311Packages.imap-tools;
-  };
 }

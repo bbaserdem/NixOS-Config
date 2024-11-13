@@ -5,7 +5,6 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-release.url = "github:nixos/nixpkgs/release-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
@@ -95,7 +94,7 @@
       # Formatter to use with nix fmt command
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
       # Overlays to the package list
-      overlays = import ./overlays {inherit inputs;};
+      overlays = import ./overlays {inherit inputs; };
 
       # Module directories
       nixosModules.default = ./modules/nixos;
