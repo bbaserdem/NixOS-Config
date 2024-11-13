@@ -31,7 +31,7 @@ in {
   config = {
     programs.zsh.enable = true;
 
-    services.xserver.displayManager.defaultSession = cfg.userDesktop;
+    services.displayManager.defaultSession = cfg.userDesktop;
 
     users.users.${cfg.userName} =
       {

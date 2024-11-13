@@ -5,9 +5,9 @@
   ...
 }: {
   # Xserver keymap
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "dvorak";
+    variant = "dvorak";
   };
   # Console keymap
   console.keyMap = "dvorak";

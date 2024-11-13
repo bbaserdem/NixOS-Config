@@ -9,17 +9,19 @@
   rootPath,
   ...
 }: {
+  services.displayManager = {
+    # Enable auto login
+    autoLogin = {
+      enable = true;
+      user = "batuhan";
+    };
+  };
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
     # Enable gnome login
     displayManager = {
       gdm.enable = true;
-      # Enable auto login
-      autoLogin = {
-        enable = true;
-        user = "batuhan";
-      };
     };
     # Enable gnome
     desktopManager = {
