@@ -134,20 +134,19 @@
             size = "512M";
             type = "2700";
           };
-          Yertengri_Work = {
+          Crypt_Yertengri_Work = {
             size = "100%";
             content = {
               type = "luks";
-              name = "Crypt_Yertengri_Work";
+              name = "Yertengri_Work";
               askPassword = true;
               settings = {
                 allowDiscards = true;
               };
               content = {
-                name = "Yertengri_Data";
                 type = "filesystem";
                 format = "ext4";
-                mountpoint = "/home/data";
+                mountpoint = "/home/work";
               };
             };
           };
