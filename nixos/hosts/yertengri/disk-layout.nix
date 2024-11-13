@@ -1,7 +1,7 @@
 # Yertengri disk setup
 {
   disko.devices.disk = {
-    Linux = {
+    Yertengri = {
       type = "disk";
       device = "/dev/disk/by-id/nvme-Samsung_SSD_970_PRO_512GB_S463NF0M531040W";
       content = {
@@ -15,11 +15,11 @@
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
-              mountOptions = ["defaults"];
+              mountOptions = [ "defaults" ];
             };
           };
           # This is the swap partition
-          Swap-Crypt = {
+          Swap = {
             size = "30G";
             content = {
               type = "swap";
@@ -28,16 +28,16 @@
             };
           };
           # Main OS; BTRFS subvolumes
-          Crypt = {
+          Linux-Crypt = {
             size = "100%";
             content = {
               type = "luks";
               name = "Yertengri-Linux";
               askPassword = true;
+              additionalKeyFiles = [ "/tmp/Yertengri-Linux.key" ];
               settings = {
                 allowDiscards = true;
               };
-              additionalKeyFiles = [ "/tmp/Yertengri-Linux.key" ];
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ];
@@ -83,7 +83,7 @@
         };
       };
     };
-    Data = {
+    Yertengri-Data = {
       type = "disk";
       device = "/dev/disk/by-id/nvme-INTEL_SSDPEKNW020T8_PHNH922200QG2P0C";
       content = {
@@ -95,6 +95,8 @@
             content = {
               type = "luks";
               name = "Yertengri-Data";
+              askPassword = true;
+              additionalKeyFiles = [ "/tmp/Yertengri-Data.key" ];
               settings = {
                 allowDiscards = true;
               };
@@ -108,7 +110,7 @@
         };
       };
     };
-    Work = {
+    Yertengri-Work = {
       type = "disk";
       device = "/dev/disk/by-id/nvme-SHGP31-2000GM_ASB4N718111004R5E";
       content = {
@@ -140,6 +142,7 @@
               type = "luks";
               name = "Yertengri-Work";
               askPassword = true;
+              additionalKeyFiles = [ "/tmp/Yertengri-Work.key" ];
               settings = {
                 allowDiscards = true;
               };

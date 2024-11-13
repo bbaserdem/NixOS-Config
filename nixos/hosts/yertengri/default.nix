@@ -12,7 +12,7 @@
     ../default.nix
     # ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
-    ./disk_layout.nix
+    ./disk-layout.nix
   ];
 
   # Set our name
