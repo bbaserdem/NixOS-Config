@@ -33,7 +33,7 @@
     matlab.enable = false;
     polkit.enable = true;
     sddm.enable = false;
-    steam.enable = true;
+    steam.enable = false;
     virtualization.enable = true;
     # Services
     services = {
