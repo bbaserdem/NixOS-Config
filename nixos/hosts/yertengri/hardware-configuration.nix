@@ -24,7 +24,6 @@
     kernel.sysctl = { "vm.swappiness" = 0; };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [];
-    systemd.enable = true;
     loader = {
       efi = {
         canTouchEfiVariables = true;
