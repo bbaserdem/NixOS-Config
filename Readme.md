@@ -38,6 +38,13 @@ My configuration is based on or uses the following resources.
 * [Misterio77's config](https://github.com/misterio77/nix-config),
   and their [starter config](https://github.com/Misterio77/nix-starter-configs).
 
+Installation command is the following from live USB;
+
+```
+sudo nix --experimantal-features "nix-command flakes" run github:nix-community/disko -- --mode destroy,format,mount ./nixos/hosts/<HOST>/disk-layout.nix
+sudo nixos-install --root /mnt --no-nroot-passwd --flake .#<HOST>
+```
+
 ### Archlinux
 
 My archlinux setup is based on the following
