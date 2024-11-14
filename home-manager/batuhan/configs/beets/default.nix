@@ -8,8 +8,8 @@
   # Link our plugins from the correct folder
   home.file.".local/share/beets/beetsplug".source = ./beetsplug;
   home.packages = with pkgs; [
-    #beetsPackages.alternatives
-    #beetsPackages.copyartifacts
+    beetsPackages.alternatives
+    beetsPackages.copyartifacts
   ];
 
   # Beets config
