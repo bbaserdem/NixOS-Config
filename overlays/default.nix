@@ -27,6 +27,7 @@
       clockSupport = true;
       taglibSupport = true;
     };
+    # Add turkish to libreoffice
     libreoffice = prev.libreoffice.override {
       variant = "fresh";
       langs = ["en-US" "tr"];
@@ -35,6 +36,7 @@
     waybar = prev.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     });
+    # Add packages to conda
     conda = prev.conda.override {
       extraPkgs = [
         prev.glib
@@ -48,6 +50,19 @@
         prev.xorg.libXi
         prev.xorg.libX11
       ];
+    };
+    # Add external plugins to beets
+    beets = prev.beets.override {
+      pluginOverrides = {
+        alternatives = {
+          enable = true;
+          propagatedBuildInputs = [ prev.beetsPackages.alternatives ];
+        };
+        copyartifacts = {
+          enable = true;
+          propagatedBuildInputs = [ prev.beetsPackages.copyartifacts ];
+        };
+      };
     };
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
