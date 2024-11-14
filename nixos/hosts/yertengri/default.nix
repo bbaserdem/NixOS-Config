@@ -58,12 +58,12 @@
   sops.defaultSopsFile = ./secrets.yaml;
   sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   sops.secrets = {
-    crypt-data = {
+    crypt_data = {
       format = "binary";
       sopsFile = ./crypt-data.key;
       path = "/run/cryptsetup-keys.d/Yertengri_Data.key";
     };
-    crypt-work = {
+    crypt_work = {
       format = "binary";
       sopsFile = ./crypt-work.key;
       path = "/run/cryptsetup-keys.d/Yertengri_Work.key";
