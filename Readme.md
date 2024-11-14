@@ -41,8 +41,8 @@ My configuration is based on or uses the following resources.
 Installation command is the following from live USB;
 
 ```
-sudo nix --experimantal-features "nix-command flakes" run github:nix-community/disko -- --mode destroy,format,mount ./nixos/hosts/<HOST>/disk-layout.nix
-sudo nixos-install --root /mnt --no-nroot-passwd --flake .#<HOST>
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode destroy,format,mount ./nixos/hosts/<HOST>/disk-layout.nix
+sudo nixos-install --root /mnt --no-root-passwd --flake .#<HOST>
 ```
 
 ### Archlinux
