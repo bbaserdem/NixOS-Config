@@ -37,7 +37,7 @@
   };
 
   # Use crypttab to unlock partition after init
-  #environment.etc.crypttab.source = ./crypttab;
+  environment.etc.crypttab.source = ./crypttab;
 
   # System options
   networking.useDHCP = lib.mkDefault true;
