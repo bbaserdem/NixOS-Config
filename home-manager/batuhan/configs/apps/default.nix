@@ -70,7 +70,7 @@
     user-audio.reencodeLossy
     # Apps to setup
     podgrab
-    paperless-ngx
+    #paperless-ngx
   ];
   # Common services
   services.blueman-applet.enable = lib.mkDefault true;
