@@ -58,13 +58,28 @@
   };
 
   # Secrets management
-  sops.defaultSopsFile = ./secrets.yaml;
-  sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
-  sops.secrets = {
-    crypt-data = {
-      format = "binary";
-      sopsFile = ./crypt-data.key;
-      path = "/run/cryptsetup-keys.d/Yel-Ana_Data.key";
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age = {
+      sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+      generateKey = false;
+    };
+    secrets = {
+      crypt-data = {
+        format = "binary";
+        sopsFile = ./crypt-data.key;
+        path = "/run/cryptsetup-keys.d/Yel-Ana_Data.key";
+      };
+      "syncthing/key" = {
+        mode = "0440";
+        owner = config.myNixOS.userName;
+        group = "syncthing";
+      };
+      "syncthing/cert" = {
+        mode = "0440";
+        owner = config.myNixOS.userName;
+        group = "syncthing";
+      };
     };
   };
 }
