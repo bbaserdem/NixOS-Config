@@ -37,7 +37,7 @@
       avahi.enable = true;
       cups.enable = true;
       earlyoom.enable = true;
-      geoclue.enable = true;
+      geoclue.enable = false;
       fingerprint.enable = false;
       mariadb.enable = true;
       media.enable = true;
