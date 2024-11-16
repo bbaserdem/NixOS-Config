@@ -47,6 +47,7 @@
       nm.enable = true;
       rasdaemon.enable = true;
       samba.enable = true;
+      syncthing.enable = false;
       tlp.enable = true;
       udev.enable = true;
       udisks.enable = true;
@@ -73,12 +74,12 @@
       "syncthing/key" = {
         mode = "0440";
         owner = config.myNixOS.userName;
-        group = "syncthing";
+        group = if config.myNixOS.syncthing.enable then "syncthing" else config.users.users.nobody.group;
       };
       "syncthing/cert" = {
         mode = "0440";
         owner = config.myNixOS.userName;
-        group = "syncthing";
+        group = if config.myNixOS.syncthing.enable then "syncthing" else config.users.users.nobody.group;
       };
     };
   };
