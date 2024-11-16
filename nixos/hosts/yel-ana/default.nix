@@ -52,7 +52,7 @@
       udisks.enable = true;
     };
     # Enable default user generation
-    default-user.enable = true;
+    defaultUser.enable = true;
     userName = "batuhan";
     userDesktop = "gnome";
   };
