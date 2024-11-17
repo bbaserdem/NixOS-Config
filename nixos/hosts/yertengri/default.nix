@@ -45,6 +45,7 @@
       nm.enable = true;
       rasdaemon.enable = true;
       samba.enable = true;
+      syncthing.enable = false;
       tlp.enable = false;
       udev.enable = true;
       udisks.enable = true;
