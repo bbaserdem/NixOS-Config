@@ -38,7 +38,7 @@
     ./configs/nnn
     ./configs/pass
     ./configs/paths
-    # ./configs/remmina on unstable branch
+    ./configs/remmina on unstable branch
     ./configs/sops
     ./configs/ssh
     ./configs/syncthing

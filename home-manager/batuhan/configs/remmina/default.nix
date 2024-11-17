@@ -6,5 +6,6 @@
     systemdService = {
       enable = true;
     };
+    addRdpMimeTypeAssoc = true;
   };
 }
