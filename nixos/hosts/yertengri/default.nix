@@ -2,6 +2,7 @@
 {
   inputs,
   config,
+  pkgs,
   ...
 }: {
   imports = [
@@ -56,6 +57,16 @@
     userDesktop = "gnome";
   };
 
+  # Joey's account
+  users.users.joseph = {
+    name = "joeysaur";
+    # Account setup for login
+    isNormalUser = true;
+    hashedPasswordFile = config.sops.secrets."joseph/password-hash".path;
+    description = "Joseph Hirsh";
+    shell = pkgs.zsh;
+  };
+
   # Secrets management
   sops = {
     defaultSopsFile = ./secrets.yaml;
@@ -83,6 +94,12 @@
         mode = "0440";
         owner = config.myNixOS.userName;
         group = if config.myNixOS.services.syncthing.enable then "syncthing" else config.users.users.nobody.group;
+      };
+      "joseph/password-hash" = {
+        neededForUsers = true;
+      };
+      "batuhan/password-hash" = {
+        neededForUsers = true;
       };
     };
   };

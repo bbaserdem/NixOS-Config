@@ -2,11 +2,7 @@
 {
   lib,
   config,
-  inputs,
-  outputs,
-  myLib,
   pkgs,
-  rootPath,
   ...
 }: let
   cfg = config.myNixOS;
@@ -37,7 +33,7 @@ in {
       {
         isNormalUser = true;
         initialPassword = "12345";
-        description = cfg.userName;
+        description = "Batuhan Baserdem";
         shell = pkgs.zsh;
         extraGroups = [
           "wheel"
