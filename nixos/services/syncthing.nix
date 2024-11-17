@@ -12,7 +12,7 @@ let
 in {
   services.syncthing = {
     enable = true;
-    user = config.myNixOS.defaultUser;
+    user = config.myNixOS.userName;
     # Credentials to be set by users
     key = config.sops.secrets."syncthing/key".path;
     cert = config.sops.secrets."syncthing/key".cert;
