@@ -77,6 +77,9 @@
         owner = config.myNixOS.userName;
         group = if config.myNixOS.services.syncthing.enable then "syncthing" else config.users.users.nobody.group;
       };
+      "batuhan/password-hash" = {
+        neededForUsers = true;
+      };
     };
   };
 }
