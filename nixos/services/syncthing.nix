@@ -15,7 +15,7 @@ in {
     user = config.myNixOS.userName;
     # Credentials to be set by users
     key = config.sops.secrets."syncthing/key".path;
-    cert = config.sops.secrets."syncthing/key".cert;
+    cert = config.sops.secrets."syncthing/cert".path;
     # Behavior
     overrideFolders = true;
     overrideDevices = true;
