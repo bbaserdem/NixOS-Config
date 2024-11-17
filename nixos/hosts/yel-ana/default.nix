@@ -1,11 +1,7 @@
 # Laptop system configuration file.
 {
   inputs,
-  outputs,
-  lib,
   config,
-  pkgs,
-  system,
   ...
 }: {
   imports = [

@@ -5,10 +5,10 @@
   ...
 }:
 let
-  # Template function to exclude self inclusions
-  filterHost = _attr: removeAttrs _attr [ config.networking.hostName ];
-  removeHost = _list: pkgs.lib.lists.remove config.networking.hostName _list;
-  hostsList = [ "yel-ana" "yertengri" ];
+  hostsList = [
+    "yel-ana"
+    "yertengri"
+  ];
 in {
   services.syncthing = {
     enable = true;
@@ -29,7 +29,7 @@ in {
         relaysEnabled = true;
         localAnnounceEnabled = true;
       };
-      devices = filterHost {
+      devices = {
         yel-ana = {
           name = "Yel Ana";
           id = "DRKKHJC-XAHARAB-JEMMSOW-4IU2OAH-6NMU6SI-DTVDCD2-2RLUPX2-EWQNHQN";
@@ -37,7 +37,7 @@ in {
         };
         yertengri = {
           name = "Yertengri";
-          id = "";
+          id = "JGK6FDM-ALFF5XB-XEHIJSU-ZKZ2UVA-WYB2VLA-X4ETL3B-Q77ZL5D-OFGSGAL";
           autoAcceptFolders = true;
         };
         erlik = {
@@ -52,7 +52,7 @@ in {
           id = "Media_batuhan";
           path = "~/Media";
           type = "sendreceive";
-          devices = removeHost [
+          devices = [
             "yel-ana"
             "yertengri"
           ];
@@ -66,7 +66,7 @@ in {
           id = "Downloads_batuhan";
           path = "~/Sort/Downloads";
           type = "sendreceive";
-          devices = removeHost [
+          devices = [
             "yel-ana"
             "yertengri"
           ];
@@ -80,7 +80,7 @@ in {
           id = "Work_batuhan";
           path = "~/Work";
           type = "sendreceive";
-          devices = removeHost [
+          devices = [
             "yel-ana"
             "yertengri"
           ];
@@ -94,7 +94,7 @@ in {
           id = "Android_batuhan";
           path = "~/Shared/Android";
           type = "sendreceive";
-          devices = removeHost [
+          devices = [
             "yel-ana"
             "yertengri"
             "erlik"
