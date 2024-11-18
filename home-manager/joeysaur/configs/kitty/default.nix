@@ -5,14 +5,15 @@
   ...
 }: let
   color = config.colorScheme.palette;
+  consoleFont = "Inconsolata SemiCondensed";
 in {
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;
     font = {
-      name = "Iosevka Light";
+      name = consoleFont;
       size = 15;
-      package = pkgs.iosevka;
+      package = pkgs.inconsolata;
     };
     settings = {
       disable_ligatures = "cursor";
@@ -72,13 +73,9 @@ in {
       shell_integration = true;
     };
     extraConfig = ''
-      bold_font           Iosevka Heavy
-      italic_font         Iosevka Light Italic
-      bold_italic_font    Iosevka ExtraBold Oblique
-      font_features       Iosevka-Light               +dlig +ss05
-      font_features       Iosevka-Heavy               +dlig +ss05
-      font_features       Iosevka-Light-Italic        +dlig +ss05
-      font_features       Iosevka-ExtraBold-Oblique   +dlig +ss05
+      bold_font           ${consoleFont} Heavy
+      italic_font         ${consoleFont} Light
+      bold_italic_font    ${consoleFont} ExtraBold
       # Nerd Font override
       # https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
       symbol_map U+E5FA-U+E62B    Symbols Nerd Font Mono

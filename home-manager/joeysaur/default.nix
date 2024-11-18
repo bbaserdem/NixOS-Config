@@ -9,14 +9,11 @@
     inputs.nix-colors.homeManagerModules.default
 
     ./configs/apps
-    ./configs/firefox
     ./configs/git
     ./configs/gnome
     ./configs/gnupg
     ./configs/keyboard
     ./configs/kitty
-    ./configs/mimetypes
-    ./configs/neovim
     ./configs/paths
     ./configs/ssh
     ./configs/texlive

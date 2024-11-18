@@ -2,8 +2,8 @@
 {pkgs, ...}: {
   programs.git = {
     enable = true;
-    userName = "bbaserdem";
-    userEmail = "baserdemb@gmail.com";
+    userName = "corepresentable";
+    userEmail = "joseph.hirsh@gmail.com";
     aliases = {
       pu = "push";
       co = "checkout";

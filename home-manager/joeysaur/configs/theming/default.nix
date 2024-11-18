@@ -5,14 +5,13 @@
   ...
 }: let
   catppuccin-kvantum = pkgs.catppuccin-kvantum.override {
-    accent = "Sapphire";
-    variant = "Mocha";
+    accent = "Mauve";
+    variant = "Latte";
   };
-  colors = config.colorScheme.palette;
 in {
   # Set our cursor
   home.pointerCursor = {
-    name = "Bibata-Modern-Ice";
+    name = "Bibata-Modern-Classic";
     package = pkgs.bibata-cursors;
     x11.enable = true;
     gtk.enable = true;
@@ -20,29 +19,15 @@ in {
   # Setup our gtk options
   gtk = {
     enable = true;
-    # Theming
-    theme = {
-      name = "Catppuccin-Mocha-Compact-Sapphire-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["sapphire"];
-        size = "compact";
-        tweaks = ["rimless" "black"];
-        variant = "mocha";
-      };
-    };
-    # Cursor on gtk
-    #cursorTheme = {
-    #  name = "Bibata-Modern-Ice";
-    #  package = pkgs.bibata-cursors;
-    #};
+    # No theme options yet
     # Icons on gtk
     iconTheme = {
       name = "Qogir";
       package = pkgs.qogir-icon-theme;
     };
     # Dark theming
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = "1";
-    gtk4.extraConfig.gtk-application-prefer-dark-theme = "1";
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = "0";
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = "0";
   };
   # Symlinks needed for gtk4
   xdg.configFile = {
@@ -60,9 +45,9 @@ in {
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".text = ''
       [General]
-      theme=Catppuccin-Mocha-Sapphire
+      theme=Catppuccin-Latte-Mauve
     '';
-    "Kvantum/Catppuccin-Mocha-Sapphire".source = "${catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Sapphire";
+    "Kvantum/Catppuccin-Latte-Mauve".source = "${catppuccin-kvantum}/share/Kvantum/Catppuccin-Latte-Mauve";
   };
   home.packages = [
     catppuccin-kvantum

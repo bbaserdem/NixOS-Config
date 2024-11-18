@@ -10,7 +10,6 @@
     extensions = [
       { package = pkgs.gnomeExtensions.appindicator; }
       { package = pkgs.gnomeExtensions.wireless-hid; }
-      { package = pkgs.gnomeExtensions.usd-try; }
     ];
   };
 }

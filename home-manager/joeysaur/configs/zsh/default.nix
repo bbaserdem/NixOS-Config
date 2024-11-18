@@ -4,11 +4,6 @@
   pkgs,
   ...
 }: {
-  # We will put the config file for powerlevel10k in it's own directory
-  xdg.configFile."powerlevel10k/config.zsh" = {
-    source = ./powerlevel10k_config.zsh;
-    executable = false;
-  };
   # We want FZF for our fuzzy completion menu
   programs.fzf = {
     enable = true;
@@ -21,7 +16,13 @@
     package = pkgs.zoxide;
     enableZshIntegration = true;
   };
-  # Setup zsh, only plugin i need is powerlevel10k honestly
+  # Shell prompt
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+  };
+  # Setup zsh
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -43,11 +44,6 @@
     };
     plugins = [
       {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
         name = "zsh-completions";
         src = pkgs.zsh-completions;
       }
@@ -68,16 +64,8 @@
       }
     ];
     initExtra = ''
-      # Prompt theme
-      if [[ -r "${config.xdg.configHome}/powerlevel10k/config.zsh" ]]; then
-        prompt off
-        source "${config.xdg.configHome}/powerlevel10k/config.zsh"
-      fi
-      # Recommended by p10k to add this after enabling spaceship theme globally
-      (( ! ''${+functions[p10k]} )) || p10k finalize
-
       # Set editor default keymap to vi (`-v`) or emacs (`-e`)
-      bindkey -v
+      bindkey -e
 
       # Make completion case-insensitive
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -87,19 +75,10 @@
       zstyle ':completion:*' menu no
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
       zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-      # Run arbitrary binaries, needed for mason nvim
-      export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
     '';
     shellAliases = {
       ls = "ls --color";
       ll = "ls -l";
     };
-    # For powerlevel10k instant prompt
-    initExtraFirst = ''
-      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
-    '';
   };
 }
