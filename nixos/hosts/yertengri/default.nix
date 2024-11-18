@@ -68,12 +68,12 @@
     description = "Joseph Hirsh";
     shell = pkgs.zsh;
   };
-  home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
-    users = {
-      joeysaur = ../../../home-manager/joeysaur/default.nix;
-    };
-  };
+  #home-manager = {
+  #  extraSpecialArgs = { inherit inputs outputs; };
+  #  users = {
+  #    joeysaur = ../../../home-manager/joeysaur/default.nix;
+  #  };
+  #};
 
   # Secrets management
   sops = {
