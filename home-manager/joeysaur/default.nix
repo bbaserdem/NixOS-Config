@@ -7,15 +7,16 @@
   imports = [
     # External imports
     inputs.nix-colors.homeManagerModules.default
+    inputs.sytlix.homeManagerModules.stylix
 
     ./configs/apps
     ./configs/git
     ./configs/gnome
     ./configs/gnupg
     ./configs/keyboard
-    ./configs/kitty
     ./configs/paths
     ./configs/ssh
+    ./configs/stylix
     ./configs/texlive
     ./configs/theming
     ./configs/udiskie

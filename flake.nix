@@ -18,6 +18,7 @@
 
     # Nixifying themes
     nix-colors.url = "github:misterio77/nix-colors";
+    stylix.url = "github:danth/stylix";
 
     # Nix user repository
     nur.url = "github:nix-community/NUR";
@@ -68,6 +69,7 @@
     };
     # AGS: Aylur's GTK Shell
     ags.url = "github:Aylur/ags";
+
     # Matlab shell (unused as of graduating from CSHL)
     nix-matlab = {
       url = "gitlab:doronbehar/nix-matlab";
