@@ -7,7 +7,7 @@
   imports = [
     # External imports
     inputs.nix-colors.homeManagerModules.default
-    inputs.sytlix.homeManagerModules.stylix
+    inputs.stylix.homeManagerModules.stylix
 
     ./configs/apps
     ./configs/git
