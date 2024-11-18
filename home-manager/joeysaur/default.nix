@@ -17,7 +17,7 @@
     ./configs/paths
     ./configs/ssh
     ./configs/texlive
-    #./configs/theming
+    ./configs/theming
     ./configs/udiskie
     ./configs/yt-dlp
     ./configs/zsh
