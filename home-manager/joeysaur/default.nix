@@ -18,7 +18,6 @@
     ./configs/ssh
     ./configs/stylix
     ./configs/texlive
-    ./configs/theming
     ./configs/udiskie
     ./configs/yt-dlp
     ./configs/zsh
