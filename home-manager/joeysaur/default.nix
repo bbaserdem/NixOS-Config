@@ -9,18 +9,18 @@
     inputs.nix-colors.homeManagerModules.default
 
     ./configs/apps
-    ./configs/git
-    ./configs/gnome
-    ./configs/gnupg
-    ./configs/keyboard
-    ./configs/kitty
-    ./configs/paths
-    ./configs/ssh
-    ./configs/texlive
-    ./configs/theming
-    ./configs/udiskie
-    ./configs/yt-dlp
-    ./configs/zsh
+    #./configs/git
+    #./configs/gnome
+    #./configs/gnupg
+    #./configs/keyboard
+    #./configs/kitty
+    #./configs/paths
+    #./configs/ssh
+    #./configs/texlive
+    #./configs/theming
+    #./configs/udiskie
+    #./configs/yt-dlp
+    #./configs/zsh
   ];
 
   # System setup
