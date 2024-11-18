@@ -33,15 +33,6 @@
         popups = 18;
         terminal = 18;
       };
-      packages = with pkgs; [
-        noto-fonts
-        jetbrains-mono
-        iosevka
-        carlito
-        caladea
-        liberation_ttf
-        fira-code
-      ];
     };
     image = ./wallpaper.png;
     imageScalingMode = "fill";
