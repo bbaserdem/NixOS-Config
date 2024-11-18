@@ -18,9 +18,9 @@
     ./configs/ssh
     ./configs/texlive
     #./configs/theming
-    #./configs/udiskie
-    #./configs/yt-dlp
-    #./configs/zsh
+    ./configs/udiskie
+    ./configs/yt-dlp
+    ./configs/zsh
   ];
 
   # System setup
