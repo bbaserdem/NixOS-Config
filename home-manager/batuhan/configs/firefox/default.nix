@@ -52,7 +52,7 @@
                 template = "https://search.nixos.org/packages";
                 params = [
                   { name = "type"; value = "packages"; }
-                  { name = "channel"; value = pkgs.system; }
+                  # { name = "channel"; value = pkgs.system; }
                   { name = "sort"; value = "relevance"; }
                   { name = "query"; value = "{searchTerms}"; }
                 ];
@@ -67,7 +67,7 @@
                 template = "https://search.nixos.org/options";
                 params = [
                   { name = "type"; value = "packages"; }
-                  { name = "channel"; value = pkgs.system; }
+                  # { name = "channel"; value = pkgs.system; }
                   { name = "sort"; value = "relevance"; }
                   { name = "query"; value = "{searchTerms}"; }
                 ];
