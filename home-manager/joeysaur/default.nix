@@ -14,9 +14,9 @@
     ./configs/gnupg
     ./configs/keyboard
     ./configs/kitty
-    #./configs/paths
-    #./configs/ssh
-    #./configs/texlive
+    ./configs/paths
+    ./configs/ssh
+    ./configs/texlive
     #./configs/theming
     #./configs/udiskie
     #./configs/yt-dlp
