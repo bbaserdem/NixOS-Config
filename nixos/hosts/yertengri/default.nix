@@ -1,6 +1,7 @@
 # PC system configuration file.
 {
   inputs,
+  outputs,
   config,
   pkgs,
   ...
@@ -10,6 +11,8 @@
     ../default.nix
     inputs.disko.nixosModules.disko
     ./disk-layout.nix
+    # Do joey as home-manager module
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   # Set our name
@@ -65,6 +68,12 @@
     hashedPasswordFile = config.sops.secrets."joseph/password-hash".path;
     description = "Joseph Hirsh";
     shell = pkgs.zsh;
+  };
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      joeysaur = ../../../home-manager/joeysaur/default.nix;
+    };
   };
 
   # Secrets management
