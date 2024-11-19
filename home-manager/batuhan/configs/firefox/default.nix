@@ -46,13 +46,13 @@
         privateDefault = "Google";
         force = true;
         engines = {
-          "Nix Packages" = {
+          "Nix Packages ${pkgs.lib.trivial.codeName}" = {
             urls = [
               {
                 template = "https://search.nixos.org/packages";
                 params = [
                   { name = "type"; value = "packages"; }
-                  # { name = "channel"; value = pkgs.system; }
+                  { name = "channel"; value = pkgs.lib.trivial.release; }
                   { name = "sort"; value = "relevance"; }
                   { name = "query"; value = "{searchTerms}"; }
                 ];
@@ -61,13 +61,13 @@
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["@np"];
           };
-          "NixOS Options" = {
+          "NixOS Options ${pkgs.lib.trivial.codeName}" = {
             urls = [
               {
                 template = "https://search.nixos.org/options";
                 params = [
                   { name = "type"; value = "packages"; }
-                  # { name = "channel"; value = pkgs.system; }
+                  { name = "channel"; value = pkgs.lib.trivial.release; }
                   { name = "sort"; value = "relevance"; }
                   { name = "query"; value = "{searchTerms}"; }
                 ];
