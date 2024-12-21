@@ -55,6 +55,7 @@
     baobab
     xclicker
     wifi-qr
+    dconf2nix
     # Gaming
     lutris
     heroic
