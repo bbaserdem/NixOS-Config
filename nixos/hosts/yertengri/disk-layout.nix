@@ -1,4 +1,7 @@
 # Yertengri disk setup
+{ config,
+  ...
+}:
 {
   disko.devices.disk = {
     Linux = {
@@ -43,7 +46,11 @@
               name = "Yertengri_Linux";
               initrdUnlock = true;
               passwordFile = "/tmp/Yertengri.key";
-              additionalKeyFiles = [ "/tmp/Yertengri_Linux.key" ];
+              additionalKeyFiles = [
+                "/tmp/Yertengri_Linux.key"
+                #config.sops.secrets."joeysaur/crypt-qwerty".path
+                #config.sops.secrets."joeysaur/crypt-dvorak".path
+              ];
               extraFormatArgs = [ "--label" "Crypt_Yertengri_Linux" ];
               settings = {
                 allowDiscards = true;
