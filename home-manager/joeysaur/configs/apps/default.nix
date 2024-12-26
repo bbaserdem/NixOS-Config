@@ -10,6 +10,7 @@
     chromium
     # Music related
     spotify
+    cantata
     # Video related
     vlc
     droidcam
