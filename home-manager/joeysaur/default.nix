@@ -15,6 +15,7 @@
     ./configs/gnome
     ./configs/gnupg
     ./configs/keyboard
+    ./configs/mpd
     ./configs/paths
     ./configs/ssh
     ./configs/stylix
