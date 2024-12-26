@@ -15,5 +15,8 @@
   home.packages = with pkgs; [
     bat
   ];
-  home.sessionVariables.MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+  home.sessionVariables = {
+    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    MANROFFOPT = "-c'";
+  };
 }
