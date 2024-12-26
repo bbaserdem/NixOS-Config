@@ -11,12 +11,8 @@
     enable = true;
     generateCaches = true;
   };
-  # Custom pager; bat
-  home.packages = with pkgs; [
-    bat
-  ];
   home.sessionVariables = {
-    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-    MANROFFOPT = "-c'";
+    MANPAGER = "nvim +Man!";
+    #MANROFFOPT = "-c'";
   };
 }
