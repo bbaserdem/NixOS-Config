@@ -10,6 +10,7 @@
     inputs.stylix.homeManagerModules.stylix
 
     ./configs/apps
+    ./configs/dconf
     ./configs/git
     ./configs/gnome
     ./configs/gnupg

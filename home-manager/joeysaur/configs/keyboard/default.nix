@@ -3,7 +3,7 @@
   home = {
     keyboard = {
       layout = "us,us";
-      variant = "dvorak-alt-intl,altgr-intl";
+      variant = "alt-intl,dvorak-altgr-intl";
       options = ["grp:alt_caps_toggle"];
     };
     language = {
