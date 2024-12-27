@@ -68,6 +68,12 @@
       }
     ];
     initExtra = ''
+      # Function to get nix program location
+      nix-getPackage () {
+        this_link="$(which "''${1}")"
+        readlink "''${this_link}"
+      }
+
       # Prompt theme
       if [[ -r "${config.xdg.configHome}/powerlevel10k/config.zsh" ]]; then
         prompt off
