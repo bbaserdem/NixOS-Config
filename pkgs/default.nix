@@ -14,6 +14,9 @@
     wav-2-flac = pkgs.callPackage ./userscripts/audio-convert_wav-2-flac.nix {};
     reencodeLossless = pkgs.callPackage ./userscripts/audio-reencodeLossless.nix {};
     reencodeLossy = pkgs.callPackage ./userscripts/audio-reencodeLossy.nix {};
+  };
+  user-script = {
     vifm-visualpreview = pkgs.callPackage ./userscripts/vifm-visualpreview.nix {};
+    vifm-preview = pkgs.callPackage ./userscripts/vifm-preview.nix {};
   };
 }
