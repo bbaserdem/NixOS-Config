@@ -22,20 +22,31 @@ local M = {
         workspaces = {
             {
                 name = "Personal",
-                path = "~/Media/Notes",
+                path = "~/Media/Notes/Personal",
             },
         },
         daily_notes = {
             folder = "Daily Notes",
             date_format = "%Y_%m_%d",
-            --alias_format = "%B %-d, %Y",
-            --template = nil,
+            default_tags = { "dailynote", },
         },
         completion = {
             nvim_cmp = true,
             min_chars = 2,
         },
+        -- No mappings yet
         mappings = {},
+        preferred_link_style = "wiki",
+        disable_frontmatter = false,
+        use_advanced_uri = true,
+        open_app_foreground = true,
+        -- File picker used
+        picker = { name = "telescope.nvim", },
+        sort_by = "modified",
+        sort_reversed = true,
+        open_notes_in = "vsplit",
+        -- Attachments
+        attachments = { img_folder = "_data/Attachments", },
     },
 }
 
