@@ -100,6 +100,7 @@
     shellAliases = {
       ls = "ls --color";
       ll = "ls -l";
+      dev = "nix develop --impure -c $SHELL";
     };
     # For powerlevel10k instant prompt
     initExtraFirst = ''
