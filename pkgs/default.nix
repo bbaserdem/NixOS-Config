@@ -14,6 +14,8 @@
     wav-2-flac = pkgs.callPackage ./userscripts/audio-convert_wav-2-flac.nix {};
     reencodeLossless = pkgs.callPackage ./userscripts/audio-reencodeLossless.nix {};
     reencodeLossy = pkgs.callPackage ./userscripts/audio-reencodeLossy.nix {};
+    syncDAC = pkgs.callPackage ./userscripts/audio-syncDAC.nix {};
+    playlist-2-android = pkgs.callPackage ./userscripts/audio-playlist-2-android.nix {};
   };
   user-script = {
     vifm-visualpreview = pkgs.callPackage ./userscripts/vifm-visualpreview.nix {};

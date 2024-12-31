@@ -69,6 +69,8 @@
     user-audio.ogg-2-opus
     user-audio.reencodeLossless
     user-audio.reencodeLossy
+    user-audio.syncDAC
+    user-audio.playlist-2-android
     # Apps to setup
     podgrab
     #paperless-ngx
