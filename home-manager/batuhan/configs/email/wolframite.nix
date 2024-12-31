@@ -1,6 +1,7 @@
 # Configuration test for our google account
 {
   config,
+  lib,
   ...
 }: {
   accounts.email.accounts.nsfw = {
@@ -28,7 +29,7 @@
     imap.host = "imap.gmail.com";
     smtp = {
       host = "smtp.gmail.com";
-      #port = 587;
+      #port = lib.mkDefault 587;
     };
 
     # Notification, and action for when email arrives
