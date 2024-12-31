@@ -13,7 +13,7 @@ in
     ${mkdir} --parents "''${target_dir}"
 
     # Loop to force overwrite playlists, and then change extensions sensibly
-    for source_file in "''${target_dir}/"* ; do
+    for source_file in "''${source_dir}/"* ; do
       target_file="''${target_dir}/$(basename "''${source_file}")"
       ${cp} --force "''${source_file}" "''${target_file}"
       ${sed} --in-place 's|\.flac$|.opus|' "''${target_file}"
