@@ -27,6 +27,7 @@
   # Specific apps usage
   programs.lieer.enable = true;
   programs.msmtp.enable = true;
+  programs.notmuch.enable = true;
   programs.astroid = {
     enable = true;
     externalEditor = null;
