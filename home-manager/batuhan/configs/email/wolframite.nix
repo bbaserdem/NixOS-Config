@@ -56,6 +56,14 @@
       };
     };
 
+    # Email tags
+    notmuch = {
+      enable = true;
+      neomutt = {
+        enable = true;
+      };
+    };
+
     # TUI interface
     neomutt = {
       enable = true;
