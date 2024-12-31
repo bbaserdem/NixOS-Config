@@ -1,9 +1,10 @@
 # Configuration test for our google account
 {
   config,
-  lib,
   ...
 }: {
+  # Need to wait for secrets for imapnotify
+  systemd.user.services.imapnotify-nsfw.Unit.After = [ "sops-nix.service" ];
   accounts.email.accounts.nsfw = {
     # Main information about the account
     address = "wolf.x.ramite@gmail.com";
@@ -29,7 +30,6 @@
     imap.host = "imap.gmail.com";
     smtp = {
       host = "smtp.gmail.com";
-      #port = lib.mkDefault 587;
     };
 
     # Notification, and action for when email arrives
