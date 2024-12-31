@@ -8,6 +8,14 @@
     ./wolframite.nix
   ];
 
+  # Grab the password
+  sops.secrets = {
+    "google/orig" = {};
+    "google/work" = {};
+    "google/spam" = {};
+    "google/nsfw" = {};
+  };
+
   # Primary account
   accounts.email.accounts.nsfw.primary = true;
   
