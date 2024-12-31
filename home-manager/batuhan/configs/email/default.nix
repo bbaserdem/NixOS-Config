@@ -7,6 +7,9 @@
   imports = [
     ./wolframite.nix
   ];
+
+  # Primary account
+  accounts.email.accounts.nsfw.primary = true;
   
   # Global settings
   accounts.email = {

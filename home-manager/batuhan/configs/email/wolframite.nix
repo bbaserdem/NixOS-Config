@@ -1,6 +1,7 @@
 # Configuration test for our google account
 {
   config,
+  ...
 }: {
   accounts.email.accounts.nsfw = {
     # Main information about the account
