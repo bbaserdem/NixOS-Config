@@ -3,7 +3,7 @@
   config,
   pkgs,
   ...
-}: {
+}: rec {
   programs.password-store = {
     enable = true;
     package = pkgs.pass.withExtensions (exts: [
@@ -18,4 +18,6 @@
       PASSWORD_STORE_GENERATED_LENGTH = "16";
     };
   };
+  # Shell alias for changing to the git directory
+  programs.zsh.shellAliases.cd-pass = "cd ${programs.password-store.settings.PASSWORD_STORE_DIR}";
 }
