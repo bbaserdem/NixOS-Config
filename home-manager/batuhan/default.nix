@@ -20,6 +20,7 @@
     ./configs/calendar
     ./configs/dconf
     ./configs/direnv
+    ./configs/email
     ./configs/firefox
     ./configs/fluidsynth
     ./configs/git
@@ -32,7 +33,6 @@
     ./configs/mimetypes
     ./configs/mpd
     ./configs/mpv
-    ./configs/neomutt
     ./configs/neovim
     ./configs/newsboat
     ./configs/nixshells
