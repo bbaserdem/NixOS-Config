@@ -55,6 +55,7 @@
       settings = {
         ignore_empty_history = true;
       };
+      sync.enable = true;
     };
 
     # Email tags

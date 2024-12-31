@@ -1,7 +1,6 @@
 # Neomutt config
 {
   config,
-  pkgs,
   ...
 }: {
   imports = [
@@ -25,15 +24,20 @@
   };
 
   # Specific apps usage
-  programs.lieer.enable = true;
-  programs.msmtp.enable = true;
-  programs.notmuch.enable = true;
-  programs.astroid = {
-    enable = true;
-    externalEditor = null;
-    pollScript = "";
+  programs = {
+    lieer.enable = true;
+    msmtp.enable = true;
+    notmuch.enable = true;
+    astroid = {
+      enable = true;
+      externalEditor = null;
+      pollScript = "";
+    };
   };
-  services.imapnotify.enable = true;
+  services = {
+    imapnotify.enable = true;
+    lieer.enable = true;
+  };
 
   # Neomutt config
   programs.neomutt = {
