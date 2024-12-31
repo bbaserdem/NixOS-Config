@@ -28,7 +28,7 @@
     imap.host = "imap.gmail.com";
     smtp = {
       host = "smtp.gmail.com";
-      port = 587;
+      #port = 587;
     };
 
     # Notification, and action for when email arrives
