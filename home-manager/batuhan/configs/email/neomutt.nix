@@ -33,12 +33,12 @@
       sort_aux = "date";
       sidebar_divider_char = " |";
       status_chars = " *%A";
-      narrow_tree = true;
-      menu_scroll = true;
+      narrow_tree = "yes";
+      menu_scroll = "yes";
       mailcap_path = "${config.xdg.configHome}/neomutt/mailcap";
       #status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───";
       compose_format = "-- NeoMutt: Compose  [Approx. msg size: %l   Atts: %a]%>-";
-      edit_headers = true;
+      edit_headers = "yes";
       empty_subject = "Mail";
       forward_format = "Fwd: %s";
     };
