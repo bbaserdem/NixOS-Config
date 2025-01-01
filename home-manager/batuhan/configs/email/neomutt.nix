@@ -51,7 +51,7 @@
         key = "/";
         action = "search";
       } {
-        map = "index";
+        map = [ "index" ];
         key = "\\";
         action = "vfolder-from-query";
       } {
@@ -75,23 +75,23 @@
         key = "a";
         action = "group-reply";
       } {
-        map = "pager";
+        map = [ "pager" ];
         key = "l";
         action = "list-reply";
       } {
-        map = "pager";
+        map = [ "pager" ];
         key = "L";
         action = "list-reply";
       } { # Miscellaneous
-        map = "pager";
+        map = [ "pager" ];
         key = "\Ch";
         action = "help";
       } {
-        map = "compose";
+        map = [ "compose" ];
         key = "p";
         action = "postpone-message";
       } {
-        map = "index";
+        map = [ "index" ];
         key = "p";
         action = "recall-message";
       }
