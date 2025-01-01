@@ -6,18 +6,32 @@
 }: {
 
   # Mailcap
-  xdg.configFile.mailcap = {
-    enable = true;
-    target = "neomutt/mailcap";
-    text = ''
-      text/html; ${pkgs.lynx}/bin/lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
-      text/*; more
-    '';
+  xdg.configFile = {
+    "neomutt/mailcap" = {
+      enable = true;
+      text = ''
+        text/html; ${pkgs.lynx}/bin/lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
+        text/*; more
+      '';
+    };
+
+    # Theming
+    "neomutt/dark-theme" = {
+      enable = true;
+      source = ./colors.dark;
+    };
+    "neomutt/light-theme" = {
+      enable = true;
+      source = ./colors.light;
+    };
   };
 
   # Neomutt config
   programs.neomutt = {
     enable = true;
+
+    # Theming
+    extraConfig = "source ${config.xdg.configHome}/neomutt/dark-theme";
 
     # Sidebar
     sidebar = {
