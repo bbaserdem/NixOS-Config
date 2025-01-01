@@ -54,9 +54,11 @@
       enable = true;
       settings = {
         ignore_empty_history = true;
+        ignore_remote_labels = [];
       };
       sync = {
         enable = true;
+        frequency = "*:0/15";
       };
     };
 

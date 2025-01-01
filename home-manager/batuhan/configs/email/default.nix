@@ -4,7 +4,8 @@
   ...
 }: {
   imports = [
-    ./wolframite.nix
+    ./neomutt.nix
+    ./accounts/wolframite.nix
   ];
 
   # Grab the password
@@ -27,20 +28,19 @@
   programs = {
     lieer.enable = true;
     msmtp.enable = true;
-    notmuch.enable = true;
+    notmuch = {
+      enable = true;
+      new.tags = [];
+    };
     astroid = {
       enable = true;
       externalEditor = null;
       pollScript = "";
     };
   };
+
   services = {
     imapnotify.enable = true;
     lieer.enable = true;
-  };
-
-  # Neomutt config
-  programs.neomutt = {
-    enable = true;
   };
 }
