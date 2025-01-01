@@ -66,7 +66,7 @@
         action = "search";
       } {
         map = [ "index" ];
-        key = "\\";
+        key = "\\\\";
         action = "vfolder-from-query";
       } {
         map = [ "index" "pager" ];
@@ -98,7 +98,7 @@
         action = "list-reply";
       } { # Miscellaneous
         map = [ "pager" ];
-        key = "\Ch";
+        key = "\\Ch";
         action = "help";
       } {
         map = [ "compose" ];
@@ -115,7 +115,7 @@
     macros = [
       {
         map = [ "index" "pager" "attach" "compose" ];
-        key = "\cb";
+        key = "\\Cb";
         action = "<pipe-message> ${pkgs.urlscan}/bin/urlscan<Enter>";
       }
     ];
