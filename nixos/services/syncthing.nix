@@ -20,7 +20,7 @@ in {
     overrideFolders = true;
     overrideDevices = true;
     openDefaultPorts = true;
-    guiAddress = "127.0.0.1:8080";
+    guiAddress = "127.0.0.1:8384";
     # Settings for the syncthing service among hosts
     settings = {
       # Runtime options
