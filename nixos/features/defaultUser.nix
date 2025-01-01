@@ -29,20 +29,22 @@ in {
 
     services.displayManager.defaultSession = cfg.userDesktop;
 
-    users.users.${cfg.userName} =
-      {
-        isNormalUser = true;
-        initialPassword = "12345";
-        description = "Batuhan Baserdem";
-        shell = pkgs.zsh;
-        extraGroups = [
-          "wheel"
-          "networkmanager"
-          "docker"
-          "libvirtd"
-          "libvirtd-qemu"
-        ];
-      }
-      // cfg.userNixosSettings;
+    users.users.${cfg.userName} = {
+      isNormalUser = true;
+      initialPassword = "12345";
+      description = "Batuhan Baserdem";
+      shell = pkgs.zsh;
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "docker"
+        "libvirtd"
+        "libvirtd-qemu"
+      ];
+    } // cfg.userNixosSettings;
+
+    nix.settings.trusted-users = [
+      cfg.userName
+    ];
   };
 }
