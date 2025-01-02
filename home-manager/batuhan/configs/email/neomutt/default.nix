@@ -8,16 +8,15 @@
   imports = [
     ./theme.nix
     ./mailcap.nix
-    #./keybinds.nix
+    ./keybinds.nix
   ];
 
   # Neomutt config
   programs.neomutt = {
     enable = true;
 
-    # For now, disable all keybinds and just use vim navigation
-    # Remove this line when redoing keybinds
-    vimKeys = lib.mkDefault true;
+    # Clear other mailboxes when account switching
+    unmailboxes = true;
 
     # General settings
     settings = {
