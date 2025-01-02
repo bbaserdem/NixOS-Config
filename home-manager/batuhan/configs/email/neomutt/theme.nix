@@ -24,7 +24,7 @@
     # Sidebar
     sidebar = {
       enable = true;
-      format = "%B%?F? [%F]?%* %?N?%N/?%S";
+      format = "%D%?F? [%F]?%* %?N?%N/?%S";
       width = 30;
     };
     
