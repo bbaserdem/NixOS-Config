@@ -17,7 +17,7 @@
 
     # For now, disable all keybinds and just use vim navigation
     # Remove this line when redoing keybinds
-    vimKeys = lib.mkOptionDefault true;
+    vimKeys = lib.mkDefault true;
 
     # General settings
     settings = {

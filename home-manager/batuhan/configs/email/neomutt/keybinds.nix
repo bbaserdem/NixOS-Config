@@ -7,7 +7,7 @@
   programs.neomutt = {
     
     # VIM like bindings
-    vimKeys = lib.mkDefault true;
+    vimKeys = lib.mkForce true;
 
     # Extra bindings
     binds = [
