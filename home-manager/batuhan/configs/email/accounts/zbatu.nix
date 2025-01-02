@@ -7,11 +7,12 @@ let
   account = "spam";
   address = "zbatu.bogus";
   name = "Z Batuhan Batu";
+  vmbox = import ./gmailGenInbox.nix account;
 in {
   # Need to wait for secrets for imapnotify
   systemd.user.services."imapnotify-${account}".Unit.After = [ "sops-nix.service" ];
 
-  accounts.email.accounts.spam = {
+  accounts.email.accounts."${account}" = {
     # Main information about the account
     address = "${address}@gmail.com";
     realName = name;
@@ -73,37 +74,7 @@ in {
       enable = true;
       neomutt = {
         enable = true;
-        virtualMailboxes = [
-          {
-            name = "[${account}] Inbox";
-            query = "(tag:inbox -tag:promotions -tag:social) OR (tag:inbox and tag:flagged)";
-            limit = 1000;
-          } {
-            name = "[${account}] Archive";
-            query = "not tag:inbox and not tag:spam";
-            limit = 1000;
-          } {
-            name = "[${account}] Personal";
-            query = "tag:personal";
-            limit = 1000;
-          } {
-            name = "[${account}] Flagged";
-            query = "tag:flagged";
-            limit = 1000;
-          } {
-            name = "[${account}] Promotions";
-            query = "tag:promotions";
-            limit = 1000;
-          } {
-            name = "[${account}] Social";
-            query = "tag:social";
-            limit = 1000;
-          } {
-            name = "[${account}] Sent";
-            query = "tag:sent";
-            limit = 1000;
-          }
-        ];
+        virtualMailboxes = vmbox;
       };
     };
 

@@ -15,9 +15,6 @@
     "google/spam" = {};
     "google/nsfw" = {};
   };
-
-  # Primary account
-  accounts.email.accounts.spam.primary = true;
   
   # Global settings
   accounts.email = {
