@@ -1,64 +1,15 @@
-# Neomutt config
+# Neomutt keybinds
 {
   pkgs,
-  config,
+  lib,
   ...
 }: {
-
-  # Mailcap
-  xdg.configFile = {
-    "neomutt/mailcap" = {
-      enable = true;
-      text = ''
-        text/html; ${pkgs.lynx}/bin/lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
-        text/*; more
-      '';
-    };
-
-    # Theming
-    "neomutt/dark-theme" = {
-      enable = true;
-      source = ./colors.dark;
-    };
-    "neomutt/light-theme" = {
-      enable = true;
-      source = ./colors.light;
-    };
-  };
-
-  # Neomutt config
   programs.neomutt = {
-    enable = true;
+    
+    # VIM like bindings
+    vimKeys = lib.mkDefault true;
 
-    # Theming
-    extraConfig = "source ${config.xdg.configHome}/neomutt/dark-theme";
-
-    # Sidebar
-    sidebar = {
-      enable = true;
-      format = "%B%?F? [%F]?%* %?N?%N/?%S";
-      width = 30;
-    };
-
-    # General settings
-    settings = {
-      use_threads = "reverse";
-      sort = "last-date";
-      sort_aux = "date";
-      sidebar_divider_char = " |";
-      status_chars = " *%A";
-      narrow_tree = "yes";
-      menu_scroll = "yes";
-      mailcap_path = "${config.xdg.configHome}/neomutt/mailcap";
-      #status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───";
-      compose_format = "\"-- NeoMutt: Compose  [Approx. msg size: %l   Atts: %a]%>-\"";
-      edit_headers = "yes";
-      empty_subject = "Mail";
-      forward_format = "\"Fwd: %s\"";
-    };
-
-    # Keybinds
-    vimKeys = true;
+    # Extra bindings
     binds = [
       {   # Search functions
         map = [ "index" "pager" ];
@@ -111,7 +62,7 @@
       }
     ];
 
-    # Macros
+    # Extra macros
     macros = [
       {
         map = [ "index" "pager" "attach" "compose" ];
@@ -120,9 +71,10 @@
       }
     ];
   };
-
+ 
+  # Have to include urlscan to make this work
   home.packages = with pkgs; [
     urlscan
-    lynx
   ];
+
 }

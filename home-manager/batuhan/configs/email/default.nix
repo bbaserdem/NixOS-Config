@@ -4,9 +4,8 @@
   ...
 }: {
   imports = [
-    ./neomutt.nix
-    ./accounts/wolframite.nix
-    ./accounts/zbatu.nix
+    ./neomutt
+    ./accounts
   ];
 
   # Grab the password
