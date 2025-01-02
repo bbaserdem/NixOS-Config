@@ -2,21 +2,26 @@
 {
   config,
   ...
-}: {
+}:
+let
+  account = "nsfw";
+  address = "wolf.x.ramite";
+  name = "Wolf Ramite";
+in {
   # Need to wait for secrets for imapnotify
-  systemd.user.services.imapnotify-nsfw.Unit.After = [ "sops-nix.service" ];
-  accounts.email.accounts.nsfw = {
+  systemd.user.services."imapnotify-${account}".Unit.After = [ "sops-nix.service" ];
+  accounts.email.accounts."${account}" = {
     # Main information about the account
-    address = "wolf.x.ramite@gmail.com";
-    realName = "Wolf Ramite";
-    maildir.path = "NSFW";
-    passwordCommand = "cat ${config.sops.secrets."google/nsfw".path}";
+    address = "${address}@gmail.com";
+    realName = name;
+    maildir.path = account;
+    passwordCommand = "cat ${config.sops.secrets."google/${account}".path}";
     # Signature for sending mail
     signature = {
       delimiter = ''
         ---
       '';
-      text = "Wolf.Ramite";
+      text = name;
       showSignature = "append";
     };
 
