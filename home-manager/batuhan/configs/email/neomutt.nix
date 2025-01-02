@@ -51,10 +51,10 @@
       menu_scroll = "yes";
       mailcap_path = "${config.xdg.configHome}/neomutt/mailcap";
       #status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───";
-      compose_format = "-- NeoMutt: Compose  [Approx. msg size: %l   Atts: %a]%>-";
+      compose_format = "\"-- NeoMutt: Compose  [Approx. msg size: %l   Atts: %a]%>-\"";
       edit_headers = "yes";
       empty_subject = "Mail";
-      forward_format = "Fwd: %s";
+      forward_format = "\"Fwd: %s\"";
     };
 
     # Keybinds
