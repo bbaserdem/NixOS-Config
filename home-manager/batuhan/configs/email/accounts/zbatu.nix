@@ -82,7 +82,7 @@ in {
     neomutt = {
       enable = true;
       mailboxType = "imap";
-      showDefaultMailbox = false;
+      mailboxName = "[${account}] Inbox";
     };
 
     # GUI interface
