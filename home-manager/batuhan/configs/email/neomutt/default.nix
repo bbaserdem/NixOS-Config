@@ -15,9 +15,6 @@
   programs.neomutt = {
     enable = true;
 
-    # Clear other mailboxes when account switching
-    unmailboxes = true;
-
     # General settings
     settings = {
       use_threads = "reverse";
