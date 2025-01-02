@@ -6,6 +6,7 @@
   imports = [
     ./neomutt.nix
     ./accounts/wolframite.nix
+    ./accounts/zbatu.nix
   ];
 
   # Grab the password
@@ -17,7 +18,7 @@
   };
 
   # Primary account
-  accounts.email.accounts.nsfw.primary = true;
+  accounts.email.accounts.spam.primary = true;
   
   # Global settings
   accounts.email = {
