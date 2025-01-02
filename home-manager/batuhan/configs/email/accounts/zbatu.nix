@@ -73,6 +73,37 @@ in {
       enable = true;
       neomutt = {
         enable = true;
+        virtualMailboxes = [
+          {
+            name = "[${account}] Inbox";
+            query = "(tag:inbox -tag:promotions -tag:social) OR (tag:inbox and tag:flagged)";
+            limit = 1000;
+          } {
+            name = "[${account}] Archive";
+            query = "not tag:inbox and not tag:spam";
+            limit = 1000;
+          } {
+            name = "[${account}] Personal";
+            query = "tag:personal";
+            limit = 1000;
+          } {
+            name = "[${account}] Flagged";
+            query = "tag:flagged";
+            limit = 1000;
+          } {
+            name = "[${account}] Promotions";
+            query = "tag:promotions";
+            limit = 1000;
+          } {
+            name = "[${account}] Social";
+            query = "tag:social";
+            limit = 1000;
+          } {
+            name = "[${account}] Sent";
+            query = "tag:sent";
+            limit = 1000;
+          }
+        ];
       };
     };
 
@@ -80,6 +111,7 @@ in {
     neomutt = {
       enable = true;
       mailboxType = "imap";
+      showDefaultMailbox = false;
     };
 
     # GUI interface
