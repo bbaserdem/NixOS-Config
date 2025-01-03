@@ -1,31 +1,31 @@
-account: [
+account: email: [
     {
       name = "📥 Inbox──────[${account}]";
-      query = "(tag:inbox -tag:promotions -tag:social) OR (tag:inbox and tag:flagged)";
+      query = "to:${email} AND ((tag:inbox -tag:promotions -tag:social) OR (tag:inbox and tag:flagged))";
       limit = 1000;
     } {
       name = "🏦 Archive────[${account}]";
-      query = "not tag:inbox and not tag:spam";
+      query = "to:${email} AND (not tag:inbox and not tag:spam)";
       limit = 1000;
     } {
       name = "🧑 Personal───[${account}]";
-      query = "tag:personal";
+      query = "to:${email} AND (tag:personal)";
       limit = 1000;
     } {
       name = "🚩 Flagged────[${account}]";
-      query = "tag:flagged";
+      query = "to:${email} AND (tag:flagged)";
       limit = 1000;
     } {
       name = "💸 Promotions─[${account}]";
-      query = "tag:promotions";
+      query = "to:${email} AND (tag:promotions)";
       limit = 1000;
     } {
       name = "🐦 Social─────[${account}]";
-      query = "tag:social";
+      query = "to:${email} AND (tag:social)";
       limit = 1000;
     } {
       name = "📤 Sent───────[${account}]";
-      query = "tag:sent";
+      query = "to:${email} AND (tag:sent)";
       limit = 1000;
     }
 ]
