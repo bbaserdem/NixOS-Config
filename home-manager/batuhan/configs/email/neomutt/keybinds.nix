@@ -20,7 +20,7 @@
         action = "sidebar-prev";
       } {
         map = [ "index" "pager" ];
-        key = "\\C<enter>";
+        key = "\\Ch";
         action = "sidebar-open";
       }
     ];
