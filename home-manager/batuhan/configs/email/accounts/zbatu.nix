@@ -81,7 +81,7 @@ in {
     # TUI interface
     neomutt = {
       enable = true;
-      mailboxType = "imap";
+      mailboxType = "Maildir";
       mailboxName = "[${account}] Inbox";
     };
 
