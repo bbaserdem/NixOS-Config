@@ -1,33 +1,31 @@
-account: email: order: let
-  prefix = "${order}.${account}";
-in [
+account: email: order: [
   {
-    name = "[${prefix}.1] ├─📥 Inbox";
-    query = "to:${email} AND ((tag:inbox -tag:promotions -tag:social) OR (tag:inbox and tag:flagged))";
+    name = "[${account}] 📥 Inbox";
+    query = "query:a${order}-${account} AND query:f0-mail";
     limit = 1000;
   } {
-    name = "[${prefix}.2] ├─🧑 Personal";
-    query = "to:${email} AND (tag:personal)";
+    name = "[${account}] ├─🧑 Personal";
+    query = "query:a${order}-${account} AND query:f1-pers";
     limit = 1000;
   } {
-    name = "[${prefix}.3] ├─💸 Promotions";
-    query = "to:${email} AND (tag:promotions)";
+    name = "[${account}] ├─💸 Promotions";
+    query = "query:a${order}-${account} AND query:f2-prom";
     limit = 1000;
   } {
-    name = "[${prefix}.4] ├─🐦 Social";
-    query = "to:${email} AND (tag:social)";
+    name = "[${account}] ├─🐦 Social";
+    query = "query:a${order}-${account} AND query:f3-socl";
     limit = 1000;
   } {
-    name = "[${prefix}.5] ├─📤 Sent";
-    query = "to:${email} AND (tag:sent)";
+    name = "[${account}] ├─📤 Sent";
+    query = "query:a${order}-${account} AND query:f4-sent";
     limit = 1000;
   } {
-    name = "[${prefix}.6] ├─🚩 Flagged";
-    query = "to:${email} AND (tag:flagged)";
+    name = "[${account}] ├─🚩 Flagged";
+    query = "query:a${order}-${account} AND query:f5-flag";
     limit = 1000;
   } {
-    name = "[${prefix}.7] └─🏦 Archive";
-    query = "to:${email} AND (not tag:inbox and not tag:spam)";
+    name = "[${account}] └─🏦 Archive";
+    query = "query:a${order}-${account} AND query:f6-arch";
     limit = 1000;
   }
 ]
