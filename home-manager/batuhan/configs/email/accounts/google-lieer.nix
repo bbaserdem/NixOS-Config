@@ -1,14 +1,14 @@
-# Configuration test for our google account
+# Configuration for google accounts
 {
   config,
+  account,
+  address,
+  name,
+  order,
   ...
 }:
 let
-  account = "spam";
-  address = "zbatu.bogus";
-  name = "Z Batuhan Batu";
-  order = "2";
-  vmbox = import ./google-mailboxes.nix account "${address}@gmail.com" order;
+  vmbox = import ./gmailGenInbox.nix account "${address}@gmail.com" order;
 in {
 
   # Need to wait for secrets for imapnotify
