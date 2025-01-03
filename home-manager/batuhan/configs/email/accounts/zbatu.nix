@@ -93,6 +93,10 @@ in {
       enable = true;
       mailboxType = "maildir";
       mailboxName = "[${order}.${account}.0] 📧All Mail";
+      extraConfig = ''
+        # Fix for last-labels not working with home manager, override the setup
+        set sort=${config.programs.neomutt.settings.sort}
+      '';
     };
 
     # GUI interface

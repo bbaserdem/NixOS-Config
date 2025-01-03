@@ -16,6 +16,8 @@
     enable = true;
 
     # General settings
+    # Last-date is not allowed value here
+    sort = "date";
     settings = {
       use_threads = "reverse";
       sort = "last-date";
