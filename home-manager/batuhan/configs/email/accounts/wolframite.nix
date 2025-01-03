@@ -7,7 +7,7 @@ let
   account = "nsfw";
   address = "wolf.x.ramite";
   name = "Wolf Ramite";
-  order = 3;
+  order = "3";
   vmbox = import ./gmailGenInbox.nix account "${address}@gmail.com" order;
 in {
 
