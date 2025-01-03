@@ -8,7 +8,7 @@ let
   address = "wolf.x.ramite";
   name = "Wolf Ramite";
   order = "3";
-  vmbox = import ./google-mailboxes.nix "${address}@gmail.com" order;
+  vmbox = import ./google-mailboxes.nix account "${address}@gmail.com" order;
 in {
 
   # Need to wait for secrets for imapnotify
