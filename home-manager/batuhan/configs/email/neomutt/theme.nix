@@ -35,6 +35,9 @@
       sidebar_sort_method = "path";
       compose_format = "\"-- NeoMutt: Compose  [Approx. msg size: %l   Atts: %a]%>-\"";
       status_format = "\"───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───\"";
+      # Trying to fix sidebar behavior
+      browser_abbreviate_mailboxes = "no";
+      sort_browser = "alpha";
     };
   };
 }
