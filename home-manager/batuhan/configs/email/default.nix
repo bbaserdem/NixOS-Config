@@ -40,4 +40,7 @@
     imapnotify.enable = true;
     lieer.enable = true;
   };
+
+  # A shell alias
+  programs.zsh.shellAliases.cd-email = "cd ${config.xdg.dataHome}/mail";
 }
