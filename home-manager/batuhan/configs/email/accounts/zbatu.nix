@@ -7,7 +7,7 @@ let
   account = "spam";
   address = "zbatu.bogus";
   name = "Z Batuhan Batu";
-  vmbox = import ./gmailGenInbox.nix account;
+  vmbox = import ./gmailGenInbox.nix account "${address}@gmail.com";
 in {
   # Need to wait for secrets for imapnotify
   systemd.user.services."imapnotify-${account}".Unit.After = [ "sops-nix.service" ];
