@@ -7,7 +7,8 @@ let
   account = "spam";
   address = "zbatu.bogus";
   name = "Z Batuhan Batu";
-  vmbox = import ./gmailGenInbox.nix account "${address}@gmail.com";
+  order = 2;
+  vmbox = import ./gmailGenInbox.nix account "${address}@gmail.com" order;
 in {
 
   # Need to wait for secrets for imapnotify
@@ -91,7 +92,7 @@ in {
     neomutt = {
       enable = true;
       mailboxType = "maildir";
-      mailboxName = "[${account}] Inbox";
+      mailboxName = "[${order}.${account}.0] 📧All Mail";
     };
 
     # GUI interface
