@@ -9,8 +9,8 @@ in {
   # Install the package
   home.packages = with pkgs; [
     vifm-full
-    user-script.vifm-visualpreview
-    user-script.vifm-preview
+    user-script-vifm-visualpreview
+    user-script-vifm-preview
   ];
   # Configure the package
   xdg.configFile."vifm/vifmrc".source = ./vifmrc;
