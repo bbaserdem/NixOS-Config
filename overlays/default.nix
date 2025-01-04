@@ -62,6 +62,8 @@
           enable = true;
           propagatedBuildInputs = [ prev.beetsPackages.copyartifacts ];
         };
+        # Bucket plugin failing test, disable for now for build
+        bucket.enable = false;
       };
     };
     # example = prev.example.overrideAttrs (oldAttrs: rec {

@@ -50,7 +50,7 @@
     conda
     pipx
     # Utilities
-    cinnamon.nemo-with-extensions
+    nemo-with-extensions
     virt-manager
     baobab
     xclicker

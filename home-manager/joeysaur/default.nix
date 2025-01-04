@@ -46,7 +46,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      inputs.nur.overlay
+      inputs.nur.overlays.default
     ];
     config = {
       allowUnfree = true;

@@ -29,7 +29,7 @@
     conda
     pipx
     # Utilities
-    cinnamon.nemo-with-extensions
+    nemo-with-extensions
     wifi-qr
     # Gaming
     lutris

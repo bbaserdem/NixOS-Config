@@ -5,8 +5,8 @@
   ...
 }: let
   catppuccin-kvantum = pkgs.catppuccin-kvantum.override {
-    accent = "Sapphire";
-    variant = "Mocha";
+    accent = "sapphire";
+    variant = "mocha";
   };
   colors = config.colorScheme.palette;
 in {
