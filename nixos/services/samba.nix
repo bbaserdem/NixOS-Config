@@ -12,7 +12,6 @@
         workgroup = "WORKGROUP";
         "server string" = "Samba server on ${config.networking.hostName}";
         "netbios name" = "smbnix";
-        security = "user";
         #"use sendfile" = true;
         #"max protocol" = "smb2";
         # note: localhost is the ipv6 localhost ::1
