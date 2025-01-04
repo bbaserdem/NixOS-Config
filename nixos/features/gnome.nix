@@ -31,8 +31,6 @@
       gnome-photos
       gnome-tour
       gedit
-    ])
-    ++ (with pkgs.gnome; [
       cheese
       gnome-music
       gnome-terminal

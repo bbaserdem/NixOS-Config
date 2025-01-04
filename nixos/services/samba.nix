@@ -1,28 +1,27 @@
 # Configuring samba
 {
   config,
-  pkgs,
-  lib,
   ...
-}:
-with lib; {
+}: {
   services.samba = {
     enable = true;
     securityType = "user";
     openFirewall = true;
-    extraConfig = ''
-      workgroup = WORKGROUP
-      server string = Samba server on ${config.networking.hostName}
-      netbios name = smbnix
-      security = user
-      #use sendfile = yes
-      #max protocol = smb2
-      # note: localhost is the ipv6 localhost ::1
-      hosts allow = 192.168.0. 127.0.0.1 localhost
-      hosts deny = 0.0.0.0/0
-      guest account = nobody
-      map to guest = bad user
-    '';
+    settings = {
+      global = {
+        workgroup = "WORKGROUP";
+        "server string" = "Samba server on ${config.networking.hostName}";
+        "netbios name" = "smbnix";
+        security = "user";
+        #"use sendfile" = true;
+        #"max protocol" = "smb2";
+        # note: localhost is the ipv6 localhost ::1
+        "hosts allow" = "192.168.0. 127.0.0.1 localhost";
+        "hosts deny" = "0.0.0.0/0";
+        "guest account" = "nobody";
+        "map to guest" = "bad user";
+      };
+    };
     shares = {
       public = {
         path = "/mnt/Shares/Public";
@@ -49,10 +48,12 @@ with lib; {
 
   services.samba-wsdd = {
     enable = true;
-    # Doesn't work for some reason
-    #openFirewall = true;
+    # TODO: See if this still works or not
+    openFirewall = true;
   };
 
-  networking.firewall.enable = true;
-  networking.firewall.allowPing = true;
+  networking.firewall = {
+    enable = true;
+    allowPing = true;
+  };
 }
