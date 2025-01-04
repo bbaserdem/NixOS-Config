@@ -5,10 +5,10 @@
 }: {
   services.samba = {
     enable = true;
-    securityType = "user";
     openFirewall = true;
     settings = {
       global = {
+        security = "user";
         workgroup = "WORKGROUP";
         "server string" = "Samba server on ${config.networking.hostName}";
         "netbios name" = "smbnix";
@@ -20,9 +20,6 @@
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         "map to guest" = "bad user";
-      };
-    };
-    shares = {
       public = {
         path = "/mnt/Shares/Public";
         browseable = "yes";
@@ -42,6 +39,7 @@
         "directory mask" = "0755";
         "force user" = "username";
         "force group" = "groupname";
+      };
       };
     };
   };
