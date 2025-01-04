@@ -25,7 +25,7 @@ in {
     settings = {
       # Runtime options
       options = {
-        urAccepted = 1;
+        urAccepted = 3;
         relaysEnabled = true;
         localAnnounceEnabled = true;
       };
