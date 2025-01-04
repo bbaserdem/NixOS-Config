@@ -19,6 +19,7 @@
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         "map to guest" = "bad user";
+      };
       public = {
         path = "/mnt/Shares/Public";
         browseable = "yes";
@@ -38,7 +39,6 @@
         "directory mask" = "0755";
         "force user" = "username";
         "force group" = "groupname";
-      };
       };
     };
   };
