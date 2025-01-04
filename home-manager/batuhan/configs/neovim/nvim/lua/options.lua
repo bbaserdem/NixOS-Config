@@ -15,7 +15,7 @@ helper_vimopt({
     ---- Indentation  options ----
     ------------------------------
     expandtab = true,   -- convert tabs to spaces when writing
-    smartindent = true, -- make indenting smarter again
+    smartindent = false,-- make indenting smarter again, but with TreeSitter
     shiftwidth = 4,     -- the number of spaces inserted for each indentation
     tabstop = 4,        -- Default tab is shown as 4 spaces
     softtabstop = 4,    -- how many spaces inserted when tab is placed

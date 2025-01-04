@@ -11,8 +11,13 @@ local M = {
             { with_sync = true, }
         )()
     end,
+    lazy = false,
+    -- Auto start this plugin
+    priority = 500,
+    config = true,
     main = "nvim-treesitter.configs",
     opts = {
+        -- Parsers to install by default
         ensure_installed = {
             "bash", "make", "ini", "json", "toml",
             "c", "cpp", "python",
@@ -25,12 +30,12 @@ local M = {
             "regex"
         },
         auto_install = true,
-        -- Treesitter with latex causes vimtex to malfunction
-        -- however, I still want to use latex ts highlighter in markdown
-        -- for the nabla plugin.
-        -- We need to disable TS on latex documents only
         highlight = {
             enable = true,
+            -- Treesitter with latex causes vimtex to malfunction
+            -- however, I still want to use latex ts highlighter in markdown
+            -- for the nabla plugin.
+            -- We need to disable TS on latex documents only
             disable = function(_lang, _buf)
                 -- Disable if language is latex
                 if (_lang == "latex")   or
@@ -41,7 +46,21 @@ local M = {
                     return true
                 end
             end,
+            additional_vim_regex_highlighting = false,
         },
+
+        -- Enable incremental selection
+        incremental_selection = {
+            enable = true,
+            keymaps = {
+                init_selection = "gnn",
+                node_incremental = "grn",
+                scope_incremental = "grc",
+                node_decremental = "grm",
+            },
+        },
+
+        -- Enable TS to do indentation
         indent = {
             enable = true,
         },
