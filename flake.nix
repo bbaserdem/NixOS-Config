@@ -87,13 +87,16 @@
       rootPath = ./.;
     };
     inherit (self) outputs;
-  in with myLib; {
+  in {
     # Custom packages
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    packages = myLib.forAllSystems 
+      (system: import ./pkgs {pkgs = nixpkgs.legacyPackages.${system};});
     # Development shells
-    devShells = forAllSystems (system: import ./shell.nix nixpkgs.legacyPackages.${system});
+    devShells = myLib.forAllSystems
+      (system: import ./shell.nix {pkgs = nixpkgs.legacyPackages.${system};});
     # Formatter to use with nix fmt command
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    formatter = myLib.forAllSystems
+      (system: nixpkgs.legacyPackages.${system}.alejandra);
     # Overlays to the package list
     overlays = import ./overlays {inherit inputs; };
 
@@ -104,22 +107,22 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      umay = mkSystem "umay";
-      #od-iyesi  = mkSystem "od-iyesi";
-      yertengri = mkSystem "yertengri";
-      #su-iyesi  = mkSystem "su-iyesi";
-      yel-ana = mkSystem "yel-ana";
+      umay = myLib.mkSystem "umay";
+      #od-iyesi  = myLib.mkSystem "od-iyesi";
+      yertengri = myLib.mkSystem "yertengri";
+      #su-iyesi  = myLib.mkSystem "su-iyesi";
+      yel-ana = myLib.mkSystem "yel-ana";
     };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "batuhan@umay" = mkHome "x86_64-linux" "batuhan" "umay";
+      "batuhan@umay" = myLib.mkHome "x86_64-linux" "batuhan" "umay";
       #"batuhan@od-iyesi"  = mkHome "x86_64-linux" "batuhan" "od-iyesi";
-      "batuhan@yertengri" = mkHome "x86_64-linux" "batuhan" "yertengri";
-      "joeysaur@yertengri" = mkHome "x86_64-linux" "joeysaur" "yertengri";
+      "batuhan@yertengri" = myLib.mkHome "x86_64-linux" "batuhan" "yertengri";
+      "joeysaur@yertengri" = myLib.mkHome "x86_64-linux" "joeysaur" "yertengri";
       #"batuhan@su-iyesi"  = mkHome "x86_64-linux" "batuhan" "su-iyesi";
-      "batuhan@yel-ana" = mkHome "x86_64-linux" "batuhan" "yel-ana";
+      "batuhan@yel-ana" = myLib.mkHome "x86_64-linux" "batuhan" "yel-ana";
     };
   };
 }

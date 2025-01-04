@@ -1,9 +1,9 @@
 # Audio scripts; standalone lossless conversion from wav to flac
 {pkgs}: let
   find = "${pkgs.findutils}/bin/find";
-  flac-2-flac = "${pkgs.user-audio.flac-2-flac}/bin/audio-convert_flac-2-flac";
-  aiff-2-flac = "${pkgs.user-audio.aiff-2-flac}/bin/audio-convert_aiff-2-flac";
-  wav-2-flac = "${pkgs.user-audio.wav-2-flac}/bin/audio-convert_wav-2-flac";
+  flac-2-flac = "${pkgs.user-audio-flac-2-flac}/bin/audio-convert_flac-2-flac";
+  aiff-2-flac = "${pkgs.user-audio-aiff-2-flac}/bin/audio-convert_aiff-2-flac";
+  wav-2-flac = "${pkgs.user-audio-wav-2-flac}/bin/audio-convert_wav-2-flac";
   parallel = "${pkgs.parallel}/bin/parallel";
   notify-send = "${pkgs.libnotify}/bin/notify-send";
 in
