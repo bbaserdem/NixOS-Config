@@ -17,7 +17,7 @@
     hardware.url = "github:nixos/nixos-hardware";
 
     # Flake utilities
-    inputs.flake-utils.url = "github:numtide/flake-utils";
+    flake-utils.url = "github:numtide/flake-utils";
 
     # Nixifying themes
     nix-colors.url = "github:misterio77/nix-colors";
