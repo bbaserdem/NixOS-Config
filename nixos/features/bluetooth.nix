@@ -1,9 +1,5 @@
 # Configuring bluetooth
-{
-  pkgs,
-  ...
-}: {
-
+{pkgs, ...}: {
   # Enable bluetooth controller service
   services.blueman.enable = true;
 

@@ -1,8 +1,5 @@
 # Yertengri disk setup
-{ config,
-  ...
-}:
-{
+{config, ...}: {
   disko.devices.disk = {
     Linux = {
       type = "disk";
@@ -19,9 +16,9 @@
             content = {
               type = "filesystem";
               format = "vfat";
-              extraArgs = [ "-n" "ESP" ];
+              extraArgs = ["-n" "ESP"];
               mountpoint = "/boot";
-              mountOptions = [ "defaults" ];
+              mountOptions = ["defaults"];
             };
           };
           # This is the swap partition
@@ -31,7 +28,7 @@
             priority = 500;
             content = {
               type = "swap";
-              extraArgs = [ "-f" "--label" "Yertengri_Swap" ];
+              extraArgs = ["-f" "--label" "Yertengri_Swap"];
               randomEncryption = true;
               priority = 100;
             };
@@ -51,13 +48,13 @@
                 #config.sops.secrets."joeysaur/crypt-qwerty".path
                 #config.sops.secrets."joeysaur/crypt-dvorak".path
               ];
-              extraFormatArgs = [ "--label" "Crypt_Yertengri_Linux" ];
+              extraFormatArgs = ["--label" "Crypt_Yertengri_Linux"];
               settings = {
                 allowDiscards = true;
               };
               content = {
                 type = "btrfs";
-                extraArgs = [ "--force" "--label" "Yertengri_Linux" ];
+                extraArgs = ["--force" "--label" "Yertengri_Linux"];
                 subvolumes = {
                   "/@nixos-root" = {
                     mountpoint = "/";
@@ -115,15 +112,15 @@
               name = "Yertengri_Data";
               initrdUnlock = false;
               passwordFile = "/tmp/Yertengri.key";
-              additionalKeyFiles = [ "/tmp/Yertengri_Data.key" ];
-              extraFormatArgs = [ "--label" "Crypt_Yertengri_Data" ];
+              additionalKeyFiles = ["/tmp/Yertengri_Data.key"];
+              extraFormatArgs = ["--label" "Crypt_Yertengri_Data"];
               settings = {
                 allowDiscards = true;
               };
               content = {
                 type = "filesystem";
                 format = "ext4";
-                extraArgs = [ "-L" "Yertengri_Data" ];
+                extraArgs = ["-L" "Yertengri_Data"];
                 mountpoint = "/home/data";
               };
             };
@@ -174,15 +171,15 @@
               name = "Yertengri_Work";
               initrdUnlock = false;
               passwordFile = "/tmp/Yertengri.key";
-              additionalKeyFiles = [ "/tmp/Yertengri_Work.key" ];
-              extraFormatArgs = [ "--label" "Crypt_Yertengri_Work" ];
+              additionalKeyFiles = ["/tmp/Yertengri_Work.key"];
+              extraFormatArgs = ["--label" "Crypt_Yertengri_Work"];
               settings = {
                 allowDiscards = true;
               };
               content = {
                 type = "filesystem";
                 format = "ext4";
-                extraArgs = [ "-L" "Yertengri_Work" ];
+                extraArgs = ["-L" "Yertengri_Work"];
                 mountpoint = "/home/work";
               };
             };

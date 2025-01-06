@@ -1,8 +1,5 @@
 # Audio scripts; standalone lossless conversion from wav to flac
-{
-  pkgs,
-  ...
-}@myPkgs: let
+{pkgs, ...} @ myPkgs: let
   find = "${pkgs.findutils}/bin/find";
   flac-2-flac = "${myPkgs.user-audio-flac-2-flac}/bin/audio-convert_flac-2-flac";
   aiff-2-flac = "${myPkgs.user-audio-aiff-2-flac}/bin/audio-convert_aiff-2-flac";

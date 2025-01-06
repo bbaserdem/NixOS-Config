@@ -1,8 +1,5 @@
 # NixOS: nixosModules/features/gnome.nix
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
@@ -20,24 +17,23 @@
   };
 
   # Exclude some unneeded packages
-  environment.gnome.excludePackages =
-    (with pkgs; [
-      gnome-photos
-      gnome-tour
-      gedit
-      cheese
-      gnome-music
-      gnome-terminal
-      epiphany
-      geary
-      evince
-      gnome-characters
-      totem
-      tali
-      iagno
-      hitori
-      atomix
-    ]);
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-photos
+    gnome-tour
+    gedit
+    cheese
+    gnome-music
+    gnome-terminal
+    epiphany
+    geary
+    evince
+    gnome-characters
+    totem
+    tali
+    iagno
+    hitori
+    atomix
+  ];
 
   # Make sure gnome-settings-daemon udev rules are enabled
   services.udev.packages = with pkgs; [

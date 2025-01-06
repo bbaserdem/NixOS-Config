@@ -44,7 +44,8 @@
 in {
   # Import bunch of files, and home-manager module
   imports =
-    [ # Get the home-manager module for system level managed users
+    [
+      # Get the home-manager module for system level managed users
       inputs.home-manager.nixosModules.home-manager
     ]
     ++ features

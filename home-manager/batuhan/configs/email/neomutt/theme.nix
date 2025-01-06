@@ -1,8 +1,5 @@
 # Themeing options for neomutt
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   # Import as separate files
   xdg.configFile = {
     "neomutt/catppuccin.muttrc" = {
@@ -17,17 +14,16 @@
 
   # Source in neomuttrc
   programs.neomutt = {
-
     # Source color theme files
     extraConfig = "source ${config.xdg.configHome}/neomutt/catppuccin.muttrc";
-    
+
     # Sidebar
     sidebar = {
       enable = true;
       format = "%D%?F? [%F]?%* %?N?%N/?%S";
       width = 30;
     };
-    
+
     # Theming related settings
     settings = {
       sidebar_divider_char = " |";

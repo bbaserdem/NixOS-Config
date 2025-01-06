@@ -21,8 +21,8 @@
       ];
       kernelModules = [];
     };
-    kernel.sysctl = { "vm.swappiness" = 0; };
-    kernelModules = [ "kvm-amd" ];
+    kernel.sysctl = {"vm.swappiness" = 0;};
+    kernelModules = ["kvm-amd"];
     extraModulePackages = [];
     loader = {
       efi = {

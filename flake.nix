@@ -1,62 +1,47 @@
 # NixOS: flake.nix
 {
-  description = "bbaserdem's NixOS config";
+  description = "bbaserdem's NixOS configuration";
 
   inputs = {
+    # ----- System Flakes ----- #
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # We want access to hardware fixes
-    hardware.url = "github:nixos/nixos-hardware";
-
-    # Flake utilities
-    flake-utils.url = "github:numtide/flake-utils";
-
-    # Nixifying themes
-    nix-colors.url = "github:misterio77/nix-colors";
-    stylix.url = "github:danth/stylix";
-
     # Nix user repository
     nur.url = "github:nix-community/NUR";
+    # Flake utilities
+    flake-utils.url = "github:numtide/flake-utils";
+    # Hardware fixes
+    hardware.url = "github:nixos/nixos-hardware";
 
-    # Sets up nix database
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    # ----- Utilities ----- #
     # Automated disk partitioning, and mounting
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Eventually want to set up disk impermanence
-    impermanence.url = "github:nix-community/impermanence";
-
-    # Eventually want to set up secrets
+    # Sets up nix database
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # Secret deployment
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Nixcats for neovim management
+    nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    # Eventually want to set up disk impermanence
+    # TODO: Set this up
+    impermanence.url = "github:nix-community/impermanence";
 
-    # Spell libraries
-    vimspell-tr = {
-      url = "https://ftp.nluug.nl/pub/vim/runtime/spell/tr.utf-8.spl";
-      flake = false;
-    };
-    vimspell-en = {
-      url = "https://ftp.nluug.nl/pub/vim/runtime/spell/en.utf-8.spl";
-      flake = false;
-    };
-
+    # ----- Desktop ----- #
     # Future desktop
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -73,10 +58,18 @@
     # AGS: Aylur's GTK Shell
     ags.url = "github:Aylur/ags";
 
-    # Matlab shell (unused as of graduating from CSHL)
-    nix-matlab = {
-      url = "gitlab:doronbehar/nix-matlab";
-      inputs.nixpkgs.follows = "nixpkgs";
+    # ----- Flair and small functionality ----- #
+    # Nixifying themes
+    nix-colors.url = "github:misterio77/nix-colors";
+    stylix.url = "github:danth/stylix";
+    # Spell libraries
+    vimspell-tr = {
+      url = "https://ftp.nluug.nl/pub/vim/runtime/spell/tr.utf-8.spl";
+      flake = false;
+    };
+    vimspell-en = {
+      url = "https://ftp.nluug.nl/pub/vim/runtime/spell/en.utf-8.spl";
+      flake = false;
     };
   };
 
@@ -87,52 +80,83 @@
   } @ inputs: let
     # Let us pass out outputs to relevant modules
     inherit (self) outputs;
+
     # Import my library functions
-    lib = import ./myLib { inherit inputs outputs; };
+    lib = import ./myLib {inherit inputs outputs;};
+
     # Convenient shortcut for flake-utils
     utils = inputs.flake-utils.lib;
+
     # List of hosts that are already configured
     configuredHosts = [
-      { arch = utils.system.x86_64-linux; host = "umay"; }
-      { arch = utils.system.x86_64-linux; host = "yertengri"; }
-      { arch = utils.system.x86_64-linux; host = "yel-ana"; }
+      {
+        arch = utils.system.x86_64-linux;
+        host = "umay";
+      }
+      {
+        arch = utils.system.x86_64-linux;
+        host = "yertengri";
+      }
+      {
+        arch = utils.system.x86_64-linux;
+        host = "yel-ana";
+      }
     ];
-  in utils.eachDefaultSystem (system: let pkgs = lib.pkgsFor system; in {
-    # Outputs that need a system definition, to be available on all systems
-    # My custom packages, executed by `nix build .#<pkgname>`
-    packages = pkgs;
-    #legacyPackages = pkgs;
-    # Dev shells for this flake
-    devShells = import ./shell.nix {inherit pkgs; };
-    # Formatter to use with nix fmt command
-    formatter = pkgs.alejandra;
-    # Checking functions, executed by `nix flake check`
-    # checks = import ./checks {inherit pkgs; };
-    # Custom applications, executed by `nix run .#<name>
-    # apps = = import ./apps.nix {inherit pkgs; };
-  }) // { 
-    # Outputs that don't need system definition
-  
-    # My library functions
-    inherit lib;
-    # Overlays to the package list, function of the form `final: prev: {};`
-    overlays = import ./overlays {inherit inputs; };
-    # My flake templates,
-    templates = import ./templates {inherit inputs; };
-    # Modules provided by this flake
-    nixosModules = ./modules/nixos;
-    homeManagerModules = ./modules/home-manager;
+  in
+    utils.eachDefaultSystem (system: let
+      pkgs = lib.pkgsFor system;
+    in {
+      # Outputs that need a system definition, to be available on all systems
 
-    # NixOS configurations
-    # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      # WIP hostnames, once done, put them in myLib
-    } // (lib.mkConfiguredHost configuredHosts);
+      # My custom packages, executed by `nix build .#<pkgname>`
+      packages = pkgs;
+      #legacyPackages = pkgs;
 
-    # Standalone HM configurations
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      # Put standalone HM configs here
-    } // (lib.mkConfiguredUser "batuhan" configuredHosts);
-  };
+      # Dev shells for this flake
+      devShells = import ./shell.nix {inherit pkgs;};
+
+      # Formatter to use with nix fmt command
+      formatter = pkgs.alejandra;
+
+      # Checking functions, executed by `nix flake check`
+      # checks = import ./checks {inherit pkgs; };
+
+      # Custom applications, executed by `nix run .#<name>
+      # apps = = import ./apps.nix {inherit pkgs; };
+    })
+    // {
+      # Outputs that don't need system definition
+
+      # My library functions
+      inherit lib;
+
+      # Overlays to the package list, function of the form `final: prev: {};`
+      overlays = import ./overlays {inherit inputs;};
+
+      # My flake templates,
+      templates = import ./templates {inherit inputs;};
+
+      # Modules provided by this flake
+      nixosModules = ./modules/nixos;
+      homeManagerModules = ./modules/home-manager;
+
+      # NixOS configurations
+      # Available through 'nixos-rebuild --flake .#your-hostname'
+      nixosConfigurations =
+        {
+          # WIP hostnames, once done, put them in myLib
+        }
+        // (lib.mkConfiguredHost configuredHosts);
+
+      # Standalone HM configurations
+      # Available through 'home-manager --flake .#your-username@your-hostname'
+      homeConfigurations =
+        {
+          # Put standalone HM configs here
+        }
+        // (lib.mkConfiguredUser "batuhan" configuredHosts);
+
+      # Nixcats outputs
+      myNixCats = import ./nixCats {inherit inputs;};
+    };
 }

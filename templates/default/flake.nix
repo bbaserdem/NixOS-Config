@@ -5,10 +5,9 @@
     # Include explicitly used inputs here
     # nixpkgs,
     ...
-  }@inputs: let
+  } @ inputs: let
     # Expose outputs explicitly
     inherit (self) outputs;
   in {
-
   };
 }

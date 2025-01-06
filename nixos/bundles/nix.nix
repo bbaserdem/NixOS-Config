@@ -8,7 +8,7 @@
   programs.command-not-found.enable = false;
   # Automatic garbage collection
   nix = {
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     gc = {
       automatic = true;
       dates = "weekly";

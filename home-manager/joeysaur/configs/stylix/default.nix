@@ -1,8 +1,5 @@
 # Configuring kitty
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   stylix = {
     enable = true;
     autoEnable = true;

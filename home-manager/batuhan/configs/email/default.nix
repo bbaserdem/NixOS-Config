@@ -1,8 +1,5 @@
 # Neomutt config
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./neomutt
     ./accounts
@@ -15,7 +12,7 @@
     "google/spam" = {};
     "google/nsfw" = {};
   };
-  
+
   # Global settings
   accounts.email = {
     maildirBasePath = "${config.xdg.dataHome}/mail";

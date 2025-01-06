@@ -1,8 +1,5 @@
 # Configuring samba
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   services.samba = {
     enable = true;
     openFirewall = true;

@@ -1,8 +1,5 @@
 # joeysaur@yertengri home configuration
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   # Just default to regular now
   imports = [
     ./default.nix

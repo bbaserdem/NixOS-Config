@@ -6,17 +6,14 @@
   name,
   order,
   ...
-}:
-let
+}: let
   vmbox = import ./google-mailboxes.nix account "${address}@gmail.com" order;
 in {
-
   # Need to wait for secrets for imapnotify
-  systemd.user.services."imapnotify-${account}".Unit.After = [ "sops-nix.service" ];
+  systemd.user.services."imapnotify-${account}".Unit.After = ["sops-nix.service"];
 
   # Main settings for the account
   accounts.email.accounts."${account}" = {
-
     # Main information about the account
     address = "${address}@gmail.com";
     realName = name;

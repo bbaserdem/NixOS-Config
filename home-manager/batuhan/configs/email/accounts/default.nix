@@ -1,21 +1,21 @@
 # Mail accounts
-args@{
-  ...
-}: {
+args @ {...}: {
   imports = [
     # Using the module template to centrally generate google accounts
-    ( import ./google-lieer.nix ( args // {
-      account = "spam";
-      address = "zbatu.bogus";
-      name = "Z Batuhan Batu";
-      order = "2";
-    }))
-    ( import ./google-lieer.nix ( args // {
-      account = "nsfw";
-      address = "wolf.x.ramite";
-      name = "Wolf Ramite";
-      order = "3";
-    }))
+    (import ./google-lieer.nix (args
+      // {
+        account = "spam";
+        address = "zbatu.bogus";
+        name = "Z Batuhan Batu";
+        order = "2";
+      }))
+    (import ./google-lieer.nix (args
+      // {
+        account = "nsfw";
+        address = "wolf.x.ramite";
+        name = "Wolf Ramite";
+        order = "3";
+      }))
   ];
 
   # Default account

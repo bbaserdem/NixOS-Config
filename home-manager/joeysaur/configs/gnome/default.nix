@@ -8,8 +8,8 @@
   programs.gnome-shell = {
     enable = true;
     extensions = [
-      { package = pkgs.gnomeExtensions.appindicator; }
-      { package = pkgs.gnomeExtensions.wireless-hid; }
+      {package = pkgs.gnomeExtensions.appindicator;}
+      {package = pkgs.gnomeExtensions.wireless-hid;}
     ];
   };
 }

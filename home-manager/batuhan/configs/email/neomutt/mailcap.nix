@@ -4,7 +4,6 @@
   pkgs,
   ...
 }: {
-
   # Generate mailcap file
   xdg.configFile = {
     "neomutt/mailcap" = {
@@ -18,10 +17,9 @@
 
   # Put the mailcap in config
   programs.neomutt.settings.mailcap_path = "${config.xdg.configHome}/neomutt/mailcap";
-  
+
   # Include lynx in our packages
   home.packages = with pkgs; [
     lynx
   ];
-
 }

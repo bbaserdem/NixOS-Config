@@ -13,32 +13,42 @@
   # ========================== Buildables ========================== #
 
   # Generate NixOS configs for hosts
-  mkConfiguredHost = configuredHosts: builtins.listToAttrs (
-    map ({host, arch}: {
-      name = "${host}";
-      value = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
-        modules = [
-          ../nixos
-          ../nixos/hosts/${host}
-        ];
-      };
-    }) configuredHosts
-  );
+  mkConfiguredHost = configuredHosts:
+    builtins.listToAttrs (
+      map ({
+        host,
+        arch,
+      }: {
+        name = "${host}";
+        value = inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs outputs;};
+          modules = [
+            ../nixos
+            ../nixos/hosts/${host}
+          ];
+        };
+      })
+      configuredHosts
+    );
 
   # Generate standalone home-manager configs
-  mkConfiguredUser = user: configuredHosts: builtins.listToAttrs (
-    map ({host, arch}: {
-      name = "${user}@${host}";
-      value = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgsFor arch;
-        extraSpecialArgs = { inherit inputs outputs; };
-        modules = [
-          ../home-manager/${user}/${host}.nix
-        ];
-      };
-    }) configuredHosts
-  );
+  mkConfiguredUser = user: configuredHosts:
+    builtins.listToAttrs (
+      map ({
+        host,
+        arch,
+      }: {
+        name = "${user}@${host}";
+        value = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor arch;
+          extraSpecialArgs = {inherit inputs outputs;};
+          modules = [
+            ../home-manager/${user}/${host}.nix
+          ];
+        };
+      })
+      configuredHosts
+    );
 
   # =========================== Helpers ============================ #
 

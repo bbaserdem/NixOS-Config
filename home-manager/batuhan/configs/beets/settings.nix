@@ -1,8 +1,5 @@
 # Beets configuration
-{
-  config,
-  ...
-}: rec {
+{config, ...}: rec {
   directory = config.xdg.userDirs.music;
   library = "${directory}/Beets_Library.db";
   ignore_hidden = false;

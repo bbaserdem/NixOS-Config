@@ -7,7 +7,7 @@
   ...
 }: {
   # GnuPG related utils
-  services.dbus.packages = [ pkgs.gcr ];
+  services.dbus.packages = [pkgs.gcr];
   # Install archiving tools into userspace
   environment.systemPackages = with pkgs; [
     git

@@ -13,7 +13,7 @@
       triggers = [];
     };
     "desktop/ibus/panel/emoji" = {
-      hotkey = [ "<Control>period" ];
+      hotkey = ["<Control>period"];
     };
 
     # GNOME settings
@@ -32,16 +32,16 @@
     # Keyboard layout set here specifically for gnome
     "org/gnome/desktop/input-sources" = {
       mru-sources = [
-        (lib.hm.gvariant.mkTuple [ "xkb" "us+dvorak-alt-intl" ])
-        (lib.hm.gvariant.mkTuple [ "xkb" "tr+f" ])
-        (lib.hm.gvariant.mkTuple [ "xkb" "us+altgr-intl" ])
+        (lib.hm.gvariant.mkTuple ["xkb" "us+dvorak-alt-intl"])
+        (lib.hm.gvariant.mkTuple ["xkb" "tr+f"])
+        (lib.hm.gvariant.mkTuple ["xkb" "us+altgr-intl"])
       ];
       per-window = false;
       show-all-sources = true;
       sources = [
-        (lib.hm.gvariant.mkTuple [ "xkb" "us+dvorak-alt-intl" ])
-        (lib.hm.gvariant.mkTuple [ "xkb" "tr+f" ])
-        (lib.hm.gvariant.mkTuple [ "xkb" "us+altgr-intl" ])
+        (lib.hm.gvariant.mkTuple ["xkb" "us+dvorak-alt-intl"])
+        (lib.hm.gvariant.mkTuple ["xkb" "tr+f"])
+        (lib.hm.gvariant.mkTuple ["xkb" "us+altgr-intl"])
       ];
       xkb-options = [
         "compose:ins"
@@ -76,6 +76,5 @@
       tap-to-click = true;
       two-finger-scrolling-enabled = true;
     };
-
   };
 }

@@ -1,8 +1,5 @@
 # Module that enables steam, has to be system level
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # Enable steam
   programs.steam = {
     enable = true;

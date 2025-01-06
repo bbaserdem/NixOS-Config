@@ -3,8 +3,7 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   hostsList = [
     "yel-ana"
     "yertengri"
@@ -58,7 +57,7 @@ in {
           ];
           versioning = {
             type = "trashcan";
-            params = { cleanoutDays = "60"; };
+            params = {cleanoutDays = "60";};
           };
         };
         downloads = {
@@ -72,7 +71,7 @@ in {
           ];
           versioning = {
             type = "trashcan";
-            params = { cleanoutDays = "10"; };
+            params = {cleanoutDays = "10";};
           };
         };
         work = {
@@ -86,7 +85,7 @@ in {
           ];
           versioning = {
             type = "trashcan";
-            params = { cleanoutDays = "100"; };
+            params = {cleanoutDays = "100";};
           };
         };
         phone = {
@@ -101,7 +100,7 @@ in {
           ];
           versioning = {
             type = "trashcan";
-            params = { cleanoutDays = "30"; };
+            params = {cleanoutDays = "30";};
           };
         };
       };

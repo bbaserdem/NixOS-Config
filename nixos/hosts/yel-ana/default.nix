@@ -70,12 +70,18 @@
       "syncthing/key" = {
         mode = "0440";
         owner = config.myNixOS.userName;
-        group = if config.myNixOS.services.syncthing.enable then "syncthing" else config.users.users.nobody.group;
+        group =
+          if config.myNixOS.services.syncthing.enable
+          then "syncthing"
+          else config.users.users.nobody.group;
       };
       "syncthing/cert" = {
         mode = "0440";
         owner = config.myNixOS.userName;
-        group = if config.myNixOS.services.syncthing.enable then "syncthing" else config.users.users.nobody.group;
+        group =
+          if config.myNixOS.services.syncthing.enable
+          then "syncthing"
+          else config.users.users.nobody.group;
       };
       "batuhan/password-hash" = {
         neededForUsers = true;

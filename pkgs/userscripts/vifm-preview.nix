@@ -12,7 +12,7 @@ in
     # Input file
     action="''${1}"
     input_file="''${2}"
-    
+
     # Switch case
     case "$action" in
       flac)

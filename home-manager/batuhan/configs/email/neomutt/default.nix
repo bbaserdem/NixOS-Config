@@ -1,9 +1,5 @@
 # Neomutt config
-{
-  lib,
-  ...
-}: {
-
+{lib, ...}: {
   # Separate files for different things
   imports = [
     ./theme.nix

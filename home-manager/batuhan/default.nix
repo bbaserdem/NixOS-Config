@@ -67,7 +67,7 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
-  
+
   # Entry point for sops settings
   sops = {
     age.keyFile = "/home/batuhan/.ssh/batuhan_age_keys.txt";

@@ -1,7 +1,5 @@
 # nixos/features/droidcam.nix
-{
-  ...
-}: {
+{...}: {
   # Enable droidcam modules
   programs.droidcam.enable = true;
 
