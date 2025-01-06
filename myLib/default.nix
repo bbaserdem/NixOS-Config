@@ -4,12 +4,8 @@
 {
   inputs,
   outputs,
-  rootPath,
   ...
-}: let
-  utils = inputs.flake-utils.lib;
-  # Also make us recursive so the functions can refer to one another
-in rec {
+}: rec {
   # ================================================================ #
   # ============================ My Lib ============================ #
   # ================================================================ #
@@ -17,18 +13,6 @@ in rec {
   # ========================== Buildables ========================== #
 
   # Generate NixOS configs for hosts
-  mkSystems = names: inputs.nixpkgs.lib.genAttrs names (name:
-    inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs outputs;
-      };
-      modules = [
-        # Default modules mean for all systems
-        (rootPath + /nixos)
-        # Host specific modules
-        (rootPath + /nixos/hosts/${name})
-      ];
-    });
   mkConfiguredHost = configuredHosts: builtins.listToAttrs (
     map ({host, arch}: {
       name = "${host}";
