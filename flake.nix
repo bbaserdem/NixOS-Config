@@ -99,10 +99,10 @@
       (system: nixpkgs.legacyPackages.${system}.alejandra);
     # Overlays to the package list
     overlays = import ./overlays {inherit inputs; };
+    # Modules provided by this flake
+    nixosModules = ./modules/nixos;
+    homeManagerModules = ./modules/home-manager;
 
-    # Module directories
-    nixosModules.default = ./modules/nixos;
-    homeManagerModules.default = ./modules/home-manager;
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
