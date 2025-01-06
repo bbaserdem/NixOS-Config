@@ -4,62 +4,69 @@
 {
   inputs,
   rootPath,
+  ...
 }: let
-  # Make ourselves available so these functions can be used in further modules
-  myLib = (import ./default.nix) {inherit inputs rootPath;};
   utils = inputs.flake-utils.lib;
   # Make ourselves available so these functions can be used in further modules
   outputs = inputs.self.outputs;
+  myLib = outputs.lib;
+  # Also make us recursive so the functions can refer to one another
 in rec {
   # ================================================================ #
   # =                            My Lib                            = #
   # ================================================================ #
 
-  # ============================ Systems =========================== #
+  # ======================= Available Hosts ======================== #
 
-  # List of systems that our nix flake will build for
-  systems = [
-    "aarch64-linux"
-    "i686-linux"
-    "x86_64-linux"
+  configuredHosts = [
+    {   # Virtualbox setup
+      host = "umay";
+      arch = utils.system.x86_64-linux;
+    } { # Home PC
+      host = "yertengri";
+      arch = utils.system.x86_64-linux;
+    } { # Laptop
+      host = "yel-ana";
+      arch = utils.system.x86_64-linux;
+    }
   ];
-
-  # Generate attribute set function that will apply this to our systems
-  forAllSystems = inputs.nixpkgs.lib.genAttrs systems;
-
-  # ======================= Package Helpers ======================== #
-
-  pkgsFor = sys: inputs.nixpkgs.legacyPackages.${sys};
 
   # ========================== Buildables ========================== #
 
-  # Generate standardized config for host
-  mkSystem = name:
+  # Generate NixOS configs for hosts
+  mkSystems = names: inputs.nixpkgs.lib.genAttrs names (name:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs outputs myLib rootPath;
+        inherit inputs outputs;
       };
       modules = [
+        # Default modules mean for all systems
         (rootPath + /nixos)
+        # Host specific modules
         (rootPath + /nixos/hosts/${name})
-        outputs.nixosModules.default
       ];
-    };
+    });
 
-  # Generate standardized config for user and host
-  mkHome = sys: name: host:
-    inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgsFor sys;
-      extraSpecialArgs = {
-        inherit inputs outputs myLib rootPath;
+  # Generate standalone home-manager configs
+  # Get lists of attrsets as argument
+  # Return one attrset with all the list elements configured for
+  # Each entry should be an attrset of user, host and arch
+  mkHomes = homes: inputs.nixpkgs.lib.attrsets.mergeAttrsList (
+    inputs.nixpkgs.lib.lists.forEach homes ({user, host, arch, ...}@home: {
+      "${user}@${host}" = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgsFor arch;
+        modules = [
+          (rootPath + /home-manager/${user}/${host}.nix)
+          outputs.homeManagerModules.default
+        ];
+        extraSpecialArgs = { inherit inputs outputs; };
       };
-      modules = [
-        (rootPath + /home-manager/${name}/${host}.nix)
-        outputs.homeManagerModules.default
-      ];
-    };
+    })
+  );
 
   # =========================== Helpers ============================ #
+
+  pkgsFor = system: inputs.nixpkgs.legacyPackages.${system};
 
   filesIn = dir: (map (fname: dir + "/${fname}")
     (builtins.attrNames (builtins.readDir dir)));
@@ -112,9 +119,4 @@ in rec {
       name = fileNameOf f;
     in (extendModule ((extension name) // {path = f;})))
     modules;
-
-  # ============================ Shell ============================= #
-  pkgsForAllSystems = pkgs:
-    forAllSystems
-    (system: pkgs inputs.nixpkgs.legacyPackages.${system});
 }

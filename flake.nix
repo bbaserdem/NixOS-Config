@@ -94,45 +94,50 @@
     utils = inputs.flake-utils.lib;
     # Let us use outputs immediately from flake
     inherit (self) outputs;
-  in {
-    # Custom packages
-    packages = myLib.forAllSystems 
-      (system: import ./pkgs {pkgs = nixpkgs.legacyPackages.${system};});
-    # Development shells
-    devShells = myLib.forAllSystems
-      (system: import ./shell.nix {pkgs = nixpkgs.legacyPackages.${system};});
+    # List of hosts that are already configured
+    configuredHosts = myLib.configuredHosts;
+  in utils.eachDefaultSystem (system: let pkgs = myLib.pkgsFor system; in {
+    # Outputs that need a system definition, to be available on all systems
+    # My custom packages, executed by `nix build .#<pkgname>`
+    packages = pkgs;
+    # Dev shells for this flake
+    devShells = import ./shell.nix {inherit pkgs; };
     # Formatter to use with nix fmt command
-    formatter = myLib.forAllSystems
-      (system: nixpkgs.legacyPackages.${system}.alejandra);
-    # Overlays to the package list
+    formatter = pkgs.alejandra;
+    # Checking functions, executed by `nix flake check`
+    # checks = import ./checks {inherit pkgs; };
+    # Custom applications, executed by `nix run .#<name>
+    # apps = = import ./apps.nix {inherit pkgs; };
+  }) // { 
+    # Outputs that don't need system definition
   
     # My library functions
     lib = myLib;
+    # Overlays to the package list, function of the form `final: prev: {};`
     overlays = import ./overlays {inherit inputs; };
+    # My flake templates,
+    templates = import ./templates {inherit inputs; };
     # Modules provided by this flake
     nixosModules = ./modules/nixos;
     homeManagerModules = ./modules/home-manager;
 
-
-    # NixOS configuration entrypoint
+    # NixOS configurations
     # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      umay = myLib.mkSystem "umay";
-      #od-iyesi  = myLib.mkSystem "od-iyesi";
-      yertengri = myLib.mkSystem "yertengri";
-      #su-iyesi  = myLib.mkSystem "su-iyesi";
-      yel-ana = myLib.mkSystem "yel-ana";
-    };
+    nixosConfigurations = outputs.lib.mkSystems (
+      (inputs.nixpkgs.lib.lists.forEach configuredHosts ({host, ...}: host))
+      ++ [
+        # WIP hostnames, once done put them in myLib
+      ]
+    );
 
-    # Standalone home-manager configuration entrypoint
+    # Standalone home-manager configurations, mostly for batuhan
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      "batuhan@umay" = myLib.mkHome "x86_64-linux" "batuhan" "umay";
-      #"batuhan@od-iyesi"  = mkHome "x86_64-linux" "batuhan" "od-iyesi";
-      "batuhan@yertengri" = myLib.mkHome "x86_64-linux" "batuhan" "yertengri";
-      "joeysaur@yertengri" = myLib.mkHome "x86_64-linux" "joeysaur" "yertengri";
-      #"batuhan@su-iyesi"  = mkHome "x86_64-linux" "batuhan" "su-iyesi";
-      "batuhan@yel-ana" = myLib.mkHome "x86_64-linux" "batuhan" "yel-ana";
-    };
+    homeConfigurations = (
+      outputs.lib.mkHomes (inputs.nixpkgs.lib.lists.forEach configuredHosts (
+        { host, arch, ... }: { inherit host arch; user = "batuhan"; }
+      )) ++ [
+        # Put extra standalone HM configs with attrsets {host, arch, user} here
+      ]
+    );
   };
 }
