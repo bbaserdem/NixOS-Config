@@ -100,6 +100,7 @@
     # Outputs that need a system definition, to be available on all systems
     # My custom packages, executed by `nix build .#<pkgname>`
     packages = pkgs;
+    #legacyPackages = pkgs;
     # Dev shells for this flake
     devShells = import ./shell.nix {inherit pkgs; };
     # Formatter to use with nix fmt command
