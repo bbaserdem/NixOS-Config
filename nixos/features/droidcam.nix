@@ -1,12 +1,5 @@
 # nixos/features/droidcam.nix
 {
-  lib,
-  config,
-  inputs,
-  outputs,
-  myLib,
-  pkgs,
-  rootPath,
   ...
 }: {
   # Enable droidcam modules

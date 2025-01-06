@@ -105,6 +105,9 @@
     formatter = myLib.forAllSystems
       (system: nixpkgs.legacyPackages.${system}.alejandra);
     # Overlays to the package list
+  
+    # My library functions
+    lib = myLib;
     overlays = import ./overlays {inherit inputs; };
     # Modules provided by this flake
     nixosModules = ./modules/nixos;

@@ -2,12 +2,6 @@
 {
   inputs,
   outputs,
-  myLib,
-  lib,
-  config,
-  pkgs,
-  system,
-  rootPath,
   ...
 }: {
   # Nixpkgs options

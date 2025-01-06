@@ -4,9 +4,11 @@
   config,
   lib,
   inputs,
-  myLib,
+  outputs,
   ...
 }: let
+  # Load my library functions
+  myLib = outputs.lib;
   # We use the myNixOS field to populate self options
   cfg = config.myNixOS;
   # Grab all modules in ./features and add enables to them
@@ -42,13 +44,14 @@
 in {
   # Import bunch of files, and home-manager module
   imports =
-    [
+    [ # Get the home-manager module for system level managed users
       inputs.home-manager.nixosModules.home-manager
     ]
     ++ features
     ++ bundles
     ++ services;
 
+  # Extra options to enable
   options.myNixOS = {
     sharedSettings = {
       hyprland.enable = lib.mkEnableOption "Enable Hyprland";

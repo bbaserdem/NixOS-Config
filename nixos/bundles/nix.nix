@@ -2,8 +2,6 @@
 {
   pkgs,
   inputs,
-  lib,
-  config,
   ...
 }: {
   # This needs disabling for nix-index flake to work
@@ -17,8 +15,11 @@
       options = "--delete-older-than 60d";
     };
     extraOptions = ''
+      # Development related settings
       keep-outputs = true
       keep-derivations = true
+      # Include pipe operators
+      extra-experimental-features = pipe-operators
     '';
   };
   # Nix helper utilities
