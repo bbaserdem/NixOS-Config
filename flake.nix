@@ -85,17 +85,21 @@
     nixpkgs,
     ...
   } @ inputs: let
+    # Let us pass out outputs to relevant modules
+    inherit (self) outputs;
     # Import my library functions
     myLib = import ./myLib {
-      inherit inputs;
+      inherit inputs outputs;
       rootPath = ./.;
     };
     # Convenient shortcut for flake-utils
     utils = inputs.flake-utils.lib;
-    # Let us use outputs immediately from flake
-    inherit (self) outputs;
     # List of hosts that are already configured
-    configuredHosts = myLib.configuredHosts;
+    configuredHosts = [
+      { arch = utils.system.x86_64-linux; host = "umay"; }
+      { arch = utils.system.x86_64-linux; host = "yertengri"; }
+      { arch = utils.system.x86_64-linux; host = "yel-ana"; }
+    ];
   in utils.eachDefaultSystem (system: let pkgs = myLib.pkgsFor system; in {
     # Outputs that need a system definition, to be available on all systems
     # My custom packages, executed by `nix build .#<pkgname>`
@@ -124,17 +128,14 @@
 
     # NixOS configurations
     # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = outputs.lib.mkSystems (
-      (inputs.nixpkgs.lib.lists.forEach configuredHosts ({host, ...}: host))
-      ++ [
-        # WIP hostnames, once done put them in myLib
-      ]
-    );
+    nixosConfigurations = {
+      # WIP hostnames, once done, put them in myLib
+    } // (outputs.lib.mkConfiguredHost configuredHosts);
 
     # Standalone home-manager configurations, mostly for batuhan
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      # Put extra standalone HM configs with attrsets {host, arch, user} here
-    } // (myLib.mkConfiguredUser "batuhan");
+      # Put extra standalone HM configs here
+    } // (myLib.mkConfiguredUser "batuhan" configuredHosts);
   };
 }

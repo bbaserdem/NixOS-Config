@@ -3,35 +3,16 @@
 # Wants the rootpath variable to simplify path input to this function
 {
   inputs,
+  outputs,
   rootPath,
   ...
 }: let
   utils = inputs.flake-utils.lib;
-  # Make ourselves available so these functions can be used in further modules
-  outputs = inputs.self.outputs;
-  # Some quick default library functions
-  mergeAttrsList = inputs.nixpkgs.lib.attrsets.mergeAttrsList;
-  forEach = inputs.nixpkgs.lib.lists.forEach;
   # Also make us recursive so the functions can refer to one another
 in rec {
   # ================================================================ #
-  # =                            My Lib                            = #
+  # ============================ My Lib ============================ #
   # ================================================================ #
-
-  # ======================= Available Hosts ======================== #
-
-  configuredHosts = [
-    {   # Virtualbox setup
-      host = "umay";
-      arch = utils.system.x86_64-linux;
-    } { # Home PC
-      host = "yertengri";
-      arch = utils.system.x86_64-linux;
-    } { # Laptop
-      host = "yel-ana";
-      arch = utils.system.x86_64-linux;
-    }
-  ];
 
   # ========================== Buildables ========================== #
 
@@ -48,18 +29,29 @@ in rec {
         (rootPath + /nixos/hosts/${name})
       ];
     });
+  mkConfiguredHost = configuredHosts: builtins.listToAttrs (
+    map ({host, arch}: {
+      name = "${host}";
+      value = inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
+        modules = [
+          ../nixos
+          ../nixos/hosts/${host}
+        ];
+      };
+    }) configuredHosts
+  );
 
   # Generate standalone home-manager configs
-  mkConfiguredUser = user: builtins.listToAttrs(
+  mkConfiguredUser = user: configuredHosts: builtins.listToAttrs (
     map ({host, arch}: {
       name = "${user}@${host}";
       value = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor arch;
-        modules = [
-          (rootPath + /home-manager/${user}/${host}.nix)
-          outputs.homeManagerModules.default
-        ];
         extraSpecialArgs = { inherit inputs outputs; };
+        modules = [
+          ../home-manager/${user}/${host}.nix
+        ];
       };
     }) configuredHosts
   );
