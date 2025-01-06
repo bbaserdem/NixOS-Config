@@ -133,12 +133,8 @@
 
     # Standalone home-manager configurations, mostly for batuhan
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = (
-      outputs.lib.mkHomes (inputs.nixpkgs.lib.lists.forEach configuredHosts (
-        { host, arch, ... }: { inherit host arch; user = "batuhan"; }
-      )) ++ [
-        # Put extra standalone HM configs with attrsets {host, arch, user} here
-      ]
-    );
+    homeConfigurations = [
+      # Put extra standalone HM configs with attrsets {host, arch, user} here
+    ] ++ (myLib.mkConfiguredUser "batuhan");
   };
 }

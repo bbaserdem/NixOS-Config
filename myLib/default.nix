@@ -9,7 +9,9 @@
   utils = inputs.flake-utils.lib;
   # Make ourselves available so these functions can be used in further modules
   outputs = inputs.self.outputs;
-  myLib = outputs.lib;
+  # Some quick default library functions
+  mergeAttrsList = inputs.nixpkgs.lib.attrsets.mergeAttrsList;
+  forEach = inputs.nixpkgs.lib.lists.forEach;
   # Also make us recursive so the functions can refer to one another
 in rec {
   # ================================================================ #
@@ -48,12 +50,10 @@ in rec {
     });
 
   # Generate standalone home-manager configs
-  # Get lists of attrsets as argument
-  # Return one attrset with all the list elements configured for
-  # Each entry should be an attrset of user, host and arch
-  mkHomes = homes: inputs.nixpkgs.lib.attrsets.mergeAttrsList (
-    inputs.nixpkgs.lib.lists.forEach homes ({user, host, arch, ...}@home: {
-      "${user}@${host}" = inputs.home-manager.lib.homeManagerConfiguration {
+  mkConfiguredUser = user: builtins.listToAttrs(
+    map ({host, arch}: {
+      name = "${user}@${host}";
+      value = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor arch;
         modules = [
           (rootPath + /home-manager/${user}/${host}.nix)
@@ -61,7 +61,7 @@ in rec {
         ];
         extraSpecialArgs = { inherit inputs outputs; };
       };
-    })
+    }) configuredHosts
   );
 
   # =========================== Helpers ============================ #
