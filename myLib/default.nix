@@ -7,6 +7,7 @@
 }: let
   # Make ourselves available so these functions can be used in further modules
   myLib = (import ./default.nix) {inherit inputs rootPath;};
+  utils = inputs.flake-utils.lib;
   # Make ourselves available so these functions can be used in further modules
   outputs = inputs.self.outputs;
 in rec {

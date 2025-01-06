@@ -16,6 +16,9 @@
     # We want access to hardware fixes
     hardware.url = "github:nixos/nixos-hardware";
 
+    # Flake utilities
+    inputs.flake-utils.url = "github:numtide/flake-utils";
+
     # Nixifying themes
     nix-colors.url = "github:misterio77/nix-colors";
     stylix.url = "github:danth/stylix";
@@ -82,10 +85,14 @@
     nixpkgs,
     ...
   } @ inputs: let
-    myLib = import ./myLib/default.nix {
+    # Import my library functions
+    myLib = import ./myLib {
       inherit inputs;
       rootPath = ./.;
     };
+    # Convenient shortcut for flake-utils
+    utils = inputs.flake-utils.lib;
+    # Let us use outputs immediately from flake
     inherit (self) outputs;
   in {
     # Custom packages
