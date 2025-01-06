@@ -133,8 +133,8 @@
 
     # Standalone home-manager configurations, mostly for batuhan
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = [
+    homeConfigurations = {
       # Put extra standalone HM configs with attrsets {host, arch, user} here
-    ] ++ (myLib.mkConfiguredUser "batuhan");
+    } // (myLib.mkConfiguredUser "batuhan");
   };
 }
