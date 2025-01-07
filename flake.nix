@@ -138,8 +138,8 @@
       templates = import ./templates {inherit inputs;};
 
       # Modules provided by this flake
-      nixosModules = ./modules/nixos;
-      homeManagerModules = ./modules/home-manager;
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
 
       # NixOS configurations
       # Available through 'nixos-rebuild --flake .#your-hostname'
