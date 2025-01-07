@@ -1,6 +1,10 @@
 # Package definitions
 # Each value in this attribute set should be a set function with pkgs
 {
+  nixpkgs,
+  utils,
+  ...
+}: {
   nixCats = {pkgs, ...} @ misc: {
     # they contain a settings set defined above
     # see :help nixCats.flake.outputs.settings
@@ -8,7 +12,7 @@
       wrapRc = true;
       # IMPORTANT:
       # your alias may not conflict with your other packages.
-      aliases = [ "vim" "vimcat" ];
+      aliases = ["vim" "vimcat"];
       configDirName = "nixCats-nvim";
       # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
     };
@@ -29,10 +33,10 @@
       colorscheme = "onedark";
     };
     extra = {
-      nixdExtras = {inherit nixpkgs; };
+      nixdExtras = {inherit nixpkgs;};
     };
   };
-  regularCats = {pkgs, ... } @ misc: {
+  regularCats = {pkgs, ...} @ misc: {
     settings = {
       wrapRc = true;
       configDirName = "nixCats-nvim";
@@ -53,15 +57,14 @@
       nixdExtras = {inherit nixpkgs;};
       theBestCat = "says meow!!";
       theWorstCat = {
-        thing'1 = [ "MEOW" '']]' ]=][=[HISSS]]"[['' ];
+        thing'1 = ["MEOW" '']]' ]=][=[HISSS]]"[[''];
         thing2 = [
-          { thing3 = [ "give" "treat" ]; }
+          {thing3 = ["give" "treat"];}
           "I LOVE KEYBOARDS"
           (utils.n2l.types.inline-safe.mk ''[[I am a]] .. [[ lua ]] .. type("value")'')
         ];
         thing4 = "couch is for scratching";
       };
-
     };
   };
 }

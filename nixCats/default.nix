@@ -24,14 +24,13 @@
   ];
 
   categoryDefinitions = import ./categoryDefinitions.nix;
-  packageDefinitions = import ./packageDefinitions.nix;
+  packageDefinitions = import ./packageDefinitions.nix {inherit nixpkgs utils;};
 
   # Default package to use from packageDefinitions
   defaultPackageName = "nixCats";
 in
   # see :help nixCats.flake.outputs.exports
   forEachSystem (system: let
-
     # The builder function
     nixCatsBuilder =
       utils.baseBuilder luaPath {
@@ -45,18 +44,18 @@ in
 
     # For using utils, the pkgs for <cat|pkg>Defs are defined inside the builder
     pkgs = import nixpkgs {inherit system;};
-
   in {
-
     # this will make a package out of each of the packageDefinitions defined above
     # and set the default package to the one passed in here.
     packages = utils.mkAllWithDefault defaultPackage;
 
     # choose your package for devShell
     # and add whatever else you want in it.
-    devShells = import ./shell.nix
-      { inherit pkgs defaultPackageName defaultPackage; };
-  }) // ( let
+    devShells =
+      import ./shell.nix
+      {inherit pkgs defaultPackageName defaultPackage;};
+  })
+  // (let
     # we also export a nixos module to allow reconfiguration from configuration.nix
     nixosModule = utils.mkNixosModules {
       inherit

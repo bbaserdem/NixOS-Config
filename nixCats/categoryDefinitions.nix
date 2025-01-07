@@ -8,7 +8,6 @@
   mkNvimPlugin,
   ...
 } @ packageDef: {
-
   # The LSP's required to run stuff
   lspsAndRuntimeDeps = {
     general = with pkgs; [
@@ -38,13 +37,14 @@
         nvim-web-devicons
       ];
     };
-    themer = with pkgs.vimPlugins; (builtins.getAttr (categories.colorscheme or "onedark") {
-      # Theme switcher without creating a new category
-      "onedark" = onedark-nvim;
-      "catppuccin" = catppuccin-nvim;
-      "catppuccin-mocha" = catppuccin-nvim;
-      "tokyonight" = tokyonight-nvim;
-      "tokyonight-day" = tokyonight-nvim;
+    themer = with pkgs.vimPlugins; (
+      builtins.getAttr (categories.colorscheme or "onedark") {
+        # Theme switcher without creating a new category
+        "onedark" = onedark-nvim;
+        "catppuccin" = catppuccin-nvim;
+        "catppuccin-mocha" = catppuccin-nvim;
+        "tokyonight" = tokyonight-nvim;
+        "tokyonight-day" = tokyonight-nvim;
       }
     );
   };
@@ -61,13 +61,13 @@
       nvim-lint
     ];
     format = with pkgs.vimPlugins; [
-      conform-nvim 
+      conform-nvim
     ];
     markdown = with pkgs.vimPlugins; [
-      markdown-preview-nvim 
+      markdown-preview-nvim
     ];
     neonixdev = with pkgs.vimPlugins; [
-      lazydev-nvim 
+      lazydev-nvim
     ];
     general = {
       cmp = with pkgs.vimPlugins; [
@@ -152,10 +152,10 @@
   };
   extraCats = {
     test = [
-      [ "test" "default" ]
+      ["test" "default"]
     ];
     debug = [
-      [ "debug" "default" ]
+      ["debug" "default"]
     ];
   };
 }

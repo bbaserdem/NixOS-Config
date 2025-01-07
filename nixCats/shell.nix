@@ -4,8 +4,7 @@
   defaultPackageName,
   defaultPackage,
   ...
-}: @ args {
-
+} @ args: {
   # Default shell
   default = pkgs.mkShell {
     name = defaultPackageName;
