@@ -157,6 +157,6 @@
         // (lib.mkConfiguredUser "batuhan" configuredHosts);
 
       # Nixcats outputs
-      myNixCats = import ./nixCats {inherit inputs outputs;};
+      nixCats = import ./nixCats {inherit inputs outputs;};
     };
 }

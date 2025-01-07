@@ -13,7 +13,7 @@
     inputs.nix-colors.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
     # My nixCats
-    outputs.myNixCats.homeManagerModules.default
+    outputs.nixCats.homeManagerModules.default
 
     ./configs/apps
     ./configs/autorandr
@@ -82,6 +82,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      outputs.nixCats.overlays.default
       inputs.nur.overlays.default
     ];
     config = {

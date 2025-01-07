@@ -5,7 +5,9 @@
   ...
 }: {
   imports = [
-    # External imports
+    # Internal modules
+    outputs.nixCats.homeManagerModules.default
+    # External modules
     inputs.nix-colors.homeManagerModules.default
     inputs.stylix.homeManagerModules.stylix
 
@@ -46,6 +48,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      outputs.nixCats.overlays.default
       inputs.nur.overlays.default
     ];
     config = {
