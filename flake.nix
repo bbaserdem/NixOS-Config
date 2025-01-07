@@ -82,7 +82,7 @@
     inherit (self) outputs;
 
     # Import my library functions
-    lib = import ./myLib {inherit inputs outputs;};
+    lib = import ./lib {inherit inputs outputs;};
 
     # Convenient shortcut for flake-utils
     utils = inputs.flake-utils.lib;
@@ -144,7 +144,7 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations =
         {
-          # WIP hostnames, once done, put them in myLib
+          # WIP hostnames, once done, put them in the <let in>
         }
         // (lib.mkConfiguredHost configuredHosts);
 
