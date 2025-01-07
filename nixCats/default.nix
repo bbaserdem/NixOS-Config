@@ -54,24 +54,114 @@
   } @ packageDef: {
     lspsAndRuntimeDeps = {
       general = with pkgs; [
+        universal-ctags
+        ripgrep
+        fd
+      ];
+      neonixdev = with pkgs; [
+        nix-doc
+        lua-language-server
+        nixd
       ];
     };
 
     startupPlugins = {
-      general = [
+      debug = with pkgs.vimPlugins; [
+        nvim-nio
       ];
+      general = with pkgs.vimPlugins; {
+        always = [
+          lze
+          vim-repeat
+          plenary-nvim
+        ];
+        extra = [
+          oil-nvim
+          nvim-web-devicons
+        ];
+      };
+      themer = with pkgs.vimPlugins; (builtins.getAttr (categories.colorscheme or "onedark") {
+        # Theme switcher without creating a new category
+        "onedark" = onedark-nvim;
+        "catppuccin" = catppuccin-nvim;
+        "catppuccin-mocha" = catppuccin-nvim;
+        "tokyonight" = tokyonight-nvim;
+        "tokyonight-day" = tokyonight-nvim;
+        }
+      );
     };
 
     optionalPlugins = {
-      gitPlugins = with pkgs.neovimPlugins; [];
-      general = with pkgs.vimPlugins; [];
+      debug = with pkgs.vimPlugins; {
+        default = [
+          nvim-dap
+          nvim-dap-ui
+          nvim-dap-virtual-text
+        ];
+      };
+      lint = with pkgs.vimPlugins; [
+        nvim-lint
+      ];
+      format = with pkgs.vimPlugins; [
+        conform-nvim 
+      ];
+      markdown = with pkgs.vimPlugins; [
+        markdown-preview-nvim 
+      ];
+      neonixdev = with pkgs.vimPlugins; [
+        lazydev-nvim 
+      ];
+      general = {
+        cmp = with pkgs.vimPlugins; [
+          # cmp stuff
+          nvim-cmp
+          luasnip
+          friendly-snippets
+          cmp_luasnip
+          cmp-buffer
+          cmp-path
+          cmp-nvim-lua
+          cmp-nvim-lsp
+          cmp-cmdline
+          cmp-nvim-lsp-signature-help
+          cmp-cmdline-history
+          lspkind-nvim
+        ];
+        treesitter = with pkgs.vimPlugins; [
+          nvim-treesitter-textobjects
+          nvim-treesitter.withAllGrammars
+        ];
+        telescope = with pkgs.vimPlugins; [
+          telescope-fzf-native-nvim
+          telescope-ui-select-nvim
+          telescope-nvim
+        ];
+        always = with pkgs.vimPlugins; [
+          nvim-lspconfig
+          lualine-nvim
+          gitsigns-nvim
+          vim-sleuth
+          vim-fugitive
+          vim-rhubarb
+          nvim-surround
+        ];
+        extra = with pkgs.vimPlugins; [
+          fidget-nvim
+          lualine-lsp-progress
+          which-key-nvim
+          comment-nvim
+          undotree
+          indent-blankline-nvim
+          vim-startuptime
+        ];
+      };
     };
 
     # shared libraries to be added to LD_LIBRARY_PATH
     # variable available to nvim runtime
     sharedLibraries = {
       general = with pkgs; [
-        # libgit2
+        libgit2
       ];
     };
 
@@ -102,6 +192,14 @@
     extraLuaPackages = {
       test = [(_: [])];
     };
+    extraCats = {
+      test = [
+        [ "test" "default" ]
+      ];
+      debug = [
+        [ "debug" "default" ]
+      ];
+    };
   };
 
   packageDefinitions = {
@@ -112,25 +210,61 @@
         wrapRc = true;
         # IMPORTANT:
         # your alias may not conflict with your other packages.
-        aliases = ["vim"];
+        aliases = [ "vim" "vimcat" ];
+        configDirName = "nixCats-nvim";
         # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
       };
       # and a set of categories that you want
       # (and other information to pass to lua)
       categories = {
+        markdown = true;
         general = true;
+        lint = true;
+        format = true;
+        neonixdev = true;
         test = true;
-        example = {
-          youCan = "add more than just booleans";
-          toThisSet = [
-            "and the contents of this categories set"
-            "will be accessible to your lua with"
-            "nixCats('path.to.value')"
-            "see :help nixCats"
-          ];
-        };
+
+        # Non-existent
+        lspDebugMode = false;
+
+        themer = true;
+        colorscheme = "onedark";
       };
-      extra = {};
+      extra = {
+        nixdExtras = {inherit nixpkgs; };
+      };
+    };
+  };
+  regularCats = {pkgs, ... }@misc: {
+    settings = {
+      wrapRc = true;
+      configDirName = "nixCats-nvim";
+      aliases = ["testCat"];
+    };
+    categories = {
+      markdown = true;
+      general = true;
+      neonixdev = true;
+      lint = true;
+      format = true;
+      test = true;
+      lspDebugMode = false;
+      themer = true;
+      colorscheme = "catppuccin";
+    };
+    extra = {
+      nixdExtras = {inherit nixpkgs;};
+      theBestCat = "says meow!!";
+      theWorstCat = {
+        thing'1 = [ "MEOW" '']]' ]=][=[HISSS]]"[['' ];
+        thing2 = [
+          { thing3 = [ "give" "treat" ]; }
+          "I LOVE KEYBOARDS"
+          (utils.n2l.types.inline-safe.mk ''[[I am a]] .. [[ lua ]] .. type("value")'')
+        ];
+        thing4 = "couch is for scratching";
+      };
+
     };
   };
   # In this section, the main thing you will need to do is change the default package name
