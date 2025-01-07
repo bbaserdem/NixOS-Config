@@ -110,8 +110,8 @@
       # Outputs that need a system definition, to be available on all systems
 
       # My custom packages, executed by `nix build .#<pkgname>`
-      packages = pkgs;
-      #legacyPackages = pkgs;
+      packages = import ./pkgs {inherit pkgs;};
+      #legacyPackages = import ./pkgs {inherit pkgs;};
 
       # Dev shells for this flake
       devShells = import ./shell.nix {inherit pkgs;};
@@ -135,11 +135,11 @@
       overlays = import ./overlays {inherit inputs;};
 
       # My flake templates,
-      templates = import ./templates {inherit inputs;};
+      templates = import ./templates;
 
       # Modules provided by this flake
-      nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home-manager;
+      nixosModules = import ./modules/nixos {inherit inputs outputs; };
+      homeManagerModules = import ./modules/home-manager {inherit inputs outputs; };
 
       # NixOS configurations
       # Available through 'nixos-rebuild --flake .#your-hostname'
