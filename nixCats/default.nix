@@ -97,7 +97,7 @@ in
       defaultPackageName;
 
     nixosModules.default = nixosModule;
-    homeModules.default = homeModule;
+    homeManagerModules.default = homeModule;
 
     inherit utils nixosModule homeModule;
     inherit (utils) templates;

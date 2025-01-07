@@ -10,6 +10,8 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      # My nixCats setup
+      outputs.myNixCats.overlays.default
     ];
   };
 
@@ -17,6 +19,7 @@
   imports = [
     inputs.sops-nix.nixosModules.sops
     inputs.nix-index-database.nixosModules.nix-index
+    outputs.myNixCats.nixosModules.default
   ];
 
   # Generalized Personal module toggles

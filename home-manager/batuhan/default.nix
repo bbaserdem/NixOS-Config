@@ -12,6 +12,8 @@
     inputs.ags.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
+    # My nixCats
+    outputs.myNixCats.homeManagerModules.default
 
     ./configs/apps
     ./configs/autorandr
