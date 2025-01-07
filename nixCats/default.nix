@@ -28,7 +28,8 @@
   ];
 
   categoryDefinitions = import ./categoryDefinitions.nix;
-  packageDefinitions = import ./packageDefinitions.nix
+  packageDefinitions =
+    import ./packageDefinitions.nix
     {inherit inputs nixpkgs utils;};
 
   # Default package to use from packageDefinitions

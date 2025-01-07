@@ -6,7 +6,6 @@
   utils,
   ...
 }: {
-
   # Full neovim instance
   nixCats-full = {pkgs, ...} @ misc: {
     # they contain a settings set defined above

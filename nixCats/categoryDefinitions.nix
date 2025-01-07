@@ -8,7 +8,6 @@
   mkNvimPlugin,
   ...
 } @ packageDef: {
-
   # The way the tree is established is;
   # <category>
   # ├─ debug
@@ -26,12 +25,12 @@
   lspsAndRuntimeDeps = {
     general = with pkgs; {
       always = [
-        universal-ctags     # Tag generation for multiple languages
-        ripgrep             # Fast grep implementation
-        fd                  # Fast find implementation
-        wl-clipboard        # Wayland clipboard communication
-        xclip               # Xorg clipboard communication
-        libnotify           # Allows neovim to send notifications to desktop
+        universal-ctags # Tag generation for multiple languages
+        ripgrep # Fast grep implementation
+        fd # Fast find implementation
+        wl-clipboard # Wayland clipboard communication
+        xclip # Xorg clipboard communication
+        libnotify # Allows neovim to send notifications to desktop
       ];
     };
     languages = {
@@ -62,9 +61,9 @@
     ];
     general = with pkgs.vimPlugins; {
       always = [
-        lze             # Lazy loader for plugins
-        vim-repeat      # Allows plugins to invoke .
-        plenary-nvim    # Library for most other plugins
+        lze # Lazy loader for plugins
+        vim-repeat # Allows plugins to invoke .
+        plenary-nvim # Library for most other plugins
         mkdir-nvim
         bufdelete-nvim
         nvim-scrollbar
@@ -190,9 +189,9 @@
   # lists of the functions you would have passed to
   # python.withPackages or lua.withPackages
   extraPython3Packages = {
-    general.always = (python-pkgs: [
+    general.always = python-pkgs: [
       python-pkgs.pynvim
-    ]);
+    ];
   };
   # populates $LUA_PATH and $LUA_CPATH
   extraLuaPackages = {
