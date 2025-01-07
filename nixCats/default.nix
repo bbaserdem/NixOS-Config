@@ -21,13 +21,18 @@
 
   dependencyOverlays = [
     (utils.standardPluginOverlay inputs)
+    # Apply my flake overlays
+    outputs.overlays.additions
+    outputs.overlays.modifications
+    outputs.overlays.unstable-packages
   ];
 
   categoryDefinitions = import ./categoryDefinitions.nix;
-  packageDefinitions = import ./packageDefinitions.nix {inherit nixpkgs utils;};
+  packageDefinitions = import ./packageDefinitions.nix
+    {inherit inputs nixpkgs utils;};
 
   # Default package to use from packageDefinitions
-  defaultPackageName = "nixCats";
+  defaultPackageName = "nixCats-full";
 in
   # see :help nixCats.flake.outputs.exports
   forEachSystem (system: let

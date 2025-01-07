@@ -8,109 +8,160 @@
   mkNvimPlugin,
   ...
 } @ packageDef: {
-  # The LSP's required to run stuff
+
+  # The way the tree is established is;
+  # <category>
+  # ├─ debug
+  # ├─ general
+  # │  ├─ always
+  # │  ├─ extra
+  # │  ├─ theme
+  # │  └─ <specific big plugin like cmp>
+  # └─ language
+  #    └─ <specific language settings>
+
+  # System level requirements
+  # These packages should be available to the nixCat instance
+  # Similar to programs.neovim.extraPackages in homeManager
   lspsAndRuntimeDeps = {
-    general = with pkgs; [
-      universal-ctags
-      ripgrep
-      fd
-    ];
-    neonixdev = with pkgs; [
-      nix-doc
-      lua-language-server
-      nixd
-    ];
+    general = with pkgs; {
+      always = [
+        universal-ctags     # Tag generation for multiple languages
+        ripgrep             # Fast grep implementation
+        fd                  # Fast find implementation
+        wl-clipboard        # Wayland clipboard communication
+        xclip               # Xorg clipboard communication
+        libnotify           # Allows neovim to send notifications to desktop
+      ];
+    };
+    languages = {
+      lua = with pkgs; [
+        lua-language-server
+      ];
+      nix = with pkgs; [
+        nix-doc
+        nixd
+      ];
+      markdown = with pkgs; [
+        glow
+      ];
+      ts = with pkgs; [
+        nodePackages.typescript-language-server
+      ];
+      latex = with pkgs; [
+        pplatex
+        neovim-remote
+      ];
+    };
   };
 
+  # Plugins that need to be operational at start
   startupPlugins = {
     debug = with pkgs.vimPlugins; [
       nvim-nio
     ];
     general = with pkgs.vimPlugins; {
       always = [
-        lze
-        vim-repeat
-        plenary-nvim
+        lze             # Lazy loader for plugins
+        vim-repeat      # Allows plugins to invoke .
+        plenary-nvim    # Library for most other plugins
+        mkdir-nvim
+        bufdelete-nvim
+        nvim-scrollbar
       ];
       extra = [
-        oil-nvim
+        nvim-tree-lua
         nvim-web-devicons
+        lualine-nvim
+        lualine-lsp-progress
+        fidget-nvim
+        nvim-notify
+      ];
+      theme = with pkgs.vimPlugins; (
+        builtins.getAttr (categories.general.theme or "onedark") {
+          # Theme switcher without creating a new category
+          "onedark" = onedark-nvim;
+          "catppuccin" = catppuccin-nvim;
+          "catppuccin-mocha" = catppuccin-nvim;
+          "catppuccin-latte" = catppuccin-nvim;
+        }
+      );
+      telescope = with pkgs.vimPlugins; [
+        telescope-nvim
+        telescope-fzf-native-nvim
+        telescope-ui-select-nvim
+        urlview-nvim
       ];
     };
-    themer = with pkgs.vimPlugins; (
-      builtins.getAttr (categories.colorscheme or "onedark") {
-        # Theme switcher without creating a new category
-        "onedark" = onedark-nvim;
-        "catppuccin" = catppuccin-nvim;
-        "catppuccin-mocha" = catppuccin-nvim;
-        "tokyonight" = tokyonight-nvim;
-        "tokyonight-day" = tokyonight-nvim;
-      }
-    );
   };
 
   optionalPlugins = {
-    debug = with pkgs.vimPlugins; {
-      default = [
-        nvim-dap
-        nvim-dap-ui
-        nvim-dap-virtual-text
-      ];
-    };
-    lint = with pkgs.vimPlugins; [
-      nvim-lint
-    ];
-    format = with pkgs.vimPlugins; [
-      conform-nvim
-    ];
-    markdown = with pkgs.vimPlugins; [
-      markdown-preview-nvim
-    ];
-    neonixdev = with pkgs.vimPlugins; [
-      lazydev-nvim
+    debug = with pkgs.vimPlugins; [
+      nvim-dap
+      nvim-dap-ui
+      nvim-dap-virtual-text
     ];
     general = {
-      cmp = with pkgs.vimPlugins; [
-        # cmp stuff
-        nvim-cmp
-        luasnip
-        friendly-snippets
-        cmp_luasnip
-        cmp-buffer
-        cmp-path
-        cmp-nvim-lua
-        cmp-nvim-lsp
-        cmp-cmdline
-        cmp-nvim-lsp-signature-help
-        cmp-cmdline-history
-        lspkind-nvim
-      ];
-      treesitter = with pkgs.vimPlugins; [
-        nvim-treesitter-textobjects
-        nvim-treesitter.withAllGrammars
-      ];
-      telescope = with pkgs.vimPlugins; [
-        telescope-fzf-native-nvim
-        telescope-ui-select-nvim
-        telescope-nvim
-      ];
       always = with pkgs.vimPlugins; [
         nvim-lspconfig
-        lualine-nvim
-        gitsigns-nvim
-        vim-sleuth
-        vim-fugitive
-        vim-rhubarb
         nvim-surround
+        which-key-nvim
+        trouble-nvim
+        aerial-nvim
+        conform-nvim
+        nvim-lint
       ];
       extra = with pkgs.vimPlugins; [
-        fidget-nvim
-        lualine-lsp-progress
-        which-key-nvim
         comment-nvim
         undotree
         indent-blankline-nvim
         vim-startuptime
+        zen-mode-nvim
+        twilight-nvim
+        toggleterm-nvim
+      ];
+      cmp = with pkgs.vimPlugins; [
+        nvim-cmp
+        luasnip
+        cmp_luasnip
+        friendly-snippets
+        cmp-nvim-lsp
+        cmp-nvim-lsp-signature-help
+        cmp-nvim-lua
+        cmp-spell
+        cmp-async-path
+        cmp-vimtex
+        cmp-emoji
+        #cmp-nerdfont
+        cmp-cmdline
+        cmp-cmdline-history
+        cmp-buffer
+        lspkind-nvim
+      ];
+      git = with pkgs.vimPlugins; [
+        gitsigns-nvim
+        vim-fugitive
+        vim-rhubarb
+      ];
+      treesitter = with pkgs.vimPlugins; [
+        nvim-treesitter-textobjects
+        nvim-treesitter.withAllGrammars
+        indent-blankline-nvim
+      ];
+    };
+    languages = {
+      lua = with pkgs.vimPlugins; [
+        lazydev-nvim
+      ];
+      latex = with pkgs.vimPlugins; [
+        vimtex
+        nabla-nvim
+      ];
+      markdown = with pkgs.vimPlugins; [
+        mkdnflow-nvim
+        markdown-preview-nvim
+        glow-nvim
+        obsidian-nvim
       ];
     };
   };
@@ -138,24 +189,18 @@
 
   # lists of the functions you would have passed to
   # python.withPackages or lua.withPackages
-
-  # get the path to this python environment
-  # in your lua config via
-  # vim.g.python3_host_prog
-  # or run from nvim terminal via :!<packagename>-python3
   extraPython3Packages = {
-    test = _: [];
+    general.always = (python-pkgs: [
+      python-pkgs.pynvim
+    ]);
   };
   # populates $LUA_PATH and $LUA_CPATH
   extraLuaPackages = {
-    test = [(_: [])];
+    general.always = [(_: [])];
   };
   extraCats = {
-    test = [
-      ["test" "default"]
-    ];
-    debug = [
-      ["debug" "default"]
+    general = [
+      ["general" "always"]
     ];
   };
 }
