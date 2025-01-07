@@ -10,16 +10,25 @@
   ];
 in {
   services.syncthing = {
+    # Syncthing runs for main user
     enable = true;
     user = config.myNixOS.userName;
+
     # Credentials to be set by users
     key = config.sops.secrets."syncthing/key".path;
     cert = config.sops.secrets."syncthing/cert".path;
+
     # Behavior
     overrideFolders = true;
     overrideDevices = true;
     openDefaultPorts = true;
     guiAddress = "127.0.0.1:8384";
+
+    # Relay service
+    relay = {
+      enable = false;
+    };
+
     # Settings for the syncthing service among hosts
     settings = {
       # Runtime options
@@ -28,6 +37,8 @@ in {
         relaysEnabled = true;
         localAnnounceEnabled = true;
       };
+
+      # Public IDs of all users
       devices = {
         yel-ana = {
           name = "Yel Ana";
@@ -45,6 +56,8 @@ in {
           autoAcceptFolders = false;
         };
       };
+
+      # Folder layout
       folders = {
         media = {
           label = "Media";
@@ -104,10 +117,6 @@ in {
           };
         };
       };
-    };
-    # Relay service
-    relay = {
-      enable = false;
     };
   };
 }

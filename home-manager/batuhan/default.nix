@@ -44,6 +44,7 @@
     ./configs/remmina
     ./configs/sops
     ./configs/ssh
+    ./configs/syncthing
     ./configs/texlive
     ./configs/theming
     ./configs/tmux
