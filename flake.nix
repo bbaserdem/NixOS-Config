@@ -36,6 +36,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Nixcats for neovim management
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
     # Eventually want to set up disk impermanence
     # TODO: Set this up
