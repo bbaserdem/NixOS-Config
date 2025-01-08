@@ -1,6 +1,7 @@
 # Neovim config
 {
   inputs,
+  outputs,
   config,
   pkgs,
   ...
@@ -57,4 +58,10 @@ in {
       source = inputs.vimspell-en;
     };
   };
+
+  # Transitioning to nixCats
+  home.packages = [
+    outputs.nixCats.packages.${pkgs.system}.nixCats-full
+    outputs.nixCats.packages.${pkgs.system}.nixCats-none
+  ];
 }
