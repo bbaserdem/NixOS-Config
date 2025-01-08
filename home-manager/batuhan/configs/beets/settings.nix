@@ -122,7 +122,7 @@
     format = "opus";
     formats = {
       opus = {
-        command = "${pkgs.useraudio}/bin/audio-convert2opus $source $dest";
+        command = "${pkgs.user-audio}/bin/audio-convert2opus $source $dest";
         extension = "opus";
       };
     };
