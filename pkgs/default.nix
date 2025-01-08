@@ -4,7 +4,7 @@
   # example = pkgs.callPackage ./example { };
 
   # Audio related scripts, this is already a derivation
-  user-audio = import ./audio-scripts;
+  user-audio = pkgs.callPackage ./audio-scripts {};
 
   # System related scripts
   user-script-vifm-visualpreview = pkgs.callPackage ./userscripts/vifm-visualpreview.nix {};
