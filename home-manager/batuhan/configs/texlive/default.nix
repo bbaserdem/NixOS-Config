@@ -34,6 +34,7 @@
         latexmk
         cormorantgaramond
         xcharter
+        ling-macros
         ;
     };
   };
