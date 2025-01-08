@@ -15,5 +15,6 @@
   # Also install cli control package
   home.packages = with pkgs; [
     stc-cli
+    pkgs.syncthingtray
   ];
 }
