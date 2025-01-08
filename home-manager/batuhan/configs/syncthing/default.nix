@@ -8,13 +8,12 @@
     tray = {
       enable = true;
       package = pkgs.syncthingtray;
-      command = "${pkgs.syncthingtray}/bin/syncthingtray";
+      command = "syncthingtray";
     };
   };
 
   # Also install cli control package
   home.packages = with pkgs; [
     stc-cli
-    pkgs.syncthingtray
   ];
 }
