@@ -1,10 +1,10 @@
 # Audio scripts; standalone lossless conversion from wav to flac
 {pkgs, ...} @ myPkgs: let
   find = "${pkgs.findutils}/bin/find";
-  flac-2-opus = "${myPkgs.user-audio-flac-2-opus}/bin/audio-convert_flac-2-opus";
-  mp3-2-opus = "${myPkgs.user-audio-mp3-2-opus}/bin/audio-convert_mp3-2-opus";
-  m4a-2-opus = "${myPkgs.user-audio-m4a-2-opus}/bin/audio-convert_m4a-2-opus";
-  ogg-2-opus = "${myPkgs.user-audio-ogg-2-opus}/bin/audio-convert_ogg-2-opus";
+  flac-2-opus = "${myPkgs.flac-2-opus}/bin/audio-convert_flac-2-opus";
+  mp3-2-opus = "${myPkgs.mp3-2-opus}/bin/audio-convert_mp3-2-opus";
+  m4a-2-opus = "${myPkgs.m4a-2-opus}/bin/audio-convert_m4a-2-opus";
+  ogg-2-opus = "${myPkgs.ogg-2-opus}/bin/audio-convert_ogg-2-opus";
   parallel = "${pkgs.parallel}/bin/parallel";
   notify-send = "${pkgs.libnotify}/bin/notify-send";
 in
