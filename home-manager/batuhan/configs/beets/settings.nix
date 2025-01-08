@@ -1,5 +1,9 @@
 # Beets configuration
-{config, ...}: rec {
+{
+  config,
+  pkgs,
+  ...
+}: rec {
   directory = config.xdg.userDirs.music;
   library = "${directory}/Beets_Library.db";
   ignore_hidden = false;
@@ -118,7 +122,7 @@
     format = "opus";
     formats = {
       opus = {
-        command = "ffmpeg -i $source -y -vn -acodec libopus -ab 192k $dest";
+        command = "${pkgs.useraudio}/bin/audio-convert2opus $source $dest";
         extension = "opus";
       };
     };
