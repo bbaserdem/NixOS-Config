@@ -114,7 +114,7 @@
       #legacyPackages = import ./pkgs {inherit pkgs;};
 
       # Dev shells for this flake
-      devShells = import ./shell.nix {inherit pkgs;};
+      devShells = import ./shells {inherit pkgs inputs system;};
 
       # Formatter to use with nix fmt command
       formatter = pkgs.alejandra;

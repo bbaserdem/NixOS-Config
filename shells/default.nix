@@ -1,5 +1,12 @@
 # shell.nix
-{pkgs, ...}: {
+{
+  pkgs, 
+  inputs,
+  system,
+  ...
+}: {
+
+  # Main dev shell
   default = pkgs.mkShell {
     NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations pipe-operators";
     nativeBuildInputs = with pkgs; [
@@ -14,4 +21,7 @@
       neovim
     ];
   };
+
+  # Extra dev shells
+  ags = import ./ags.nix {inherit pkgs inputs system;};
 }

@@ -5,7 +5,8 @@
   config,
   ...
 }: let
-  plugpkgs = inputs.hyprland-plugins.packages.${pkgs.system};
+  hyprpkgs = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
+  plugpkgs = inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system};
 in {
   imports = [
     ./hyprland.nix
@@ -22,6 +23,7 @@ in {
   # Hyprland configuration
   wayland.windowManager.hyprland = {
     enable = true;
+    package = hyprpkgs.hyprland;
     xwayland.enable = true;
     plugins = [
       #plugpkgs.hyprbars
