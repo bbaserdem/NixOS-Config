@@ -16,6 +16,6 @@
       enableUpdate = true;
     };
     # Bucket plugin test failing, disable with overlay
-    settings = (import ./settings.nix) {inherit config;};
+    settings = (import ./settings.nix) {inherit config pkgs;};
   };
 }
