@@ -18,22 +18,38 @@
     profiles.batuhan = {
       isDefault = true;
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        augmented-steam
         automatic-dark
         batchcamp
         behind-the-overlay-revival
         betterttv
         browserpass
+        bukubrow
+        castkodi
+        catppuccin-gh-file-explorer
+        container-tab-groups
         container-tabs-sidebar
+        containerise
         control-panel-for-twitter
+        df-youtube
         don-t-fuck-with-paste
+        duckduckgo-for-firefox
         enhanced-github
+        firenvim
+        flagfox
         gnome-shell-integration
         greasemonkey
+        gruvbox-dark-theme
+        h264ify
+        hulu-ad-blocker-firefox
+        languagetool
+        leechblock-ng
         mullvad
         multi-account-containers
-        notion-web-clipper
-        reddit-enhancement-suite
+        plasma-integration
+        protondb-for-steam
         sponsorblock
+        steam-database
         ublock-origin
         video-downloadhelper
         zotero-connector
