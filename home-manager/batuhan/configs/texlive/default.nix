@@ -34,7 +34,9 @@
         latexmk
         cormorantgaramond
         xcharter
-        ling-macros
+        tree-dvips
+        maths-symbols
+        unicode-math
         ;
     };
   };
