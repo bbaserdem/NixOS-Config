@@ -33,7 +33,7 @@
         control-panel-for-twitter
         df-youtube
         don-t-fuck-with-paste
-        duckduckgo-for-firefox
+        duckduckgo-privacy-essentials
         enhanced-github
         firenvim
         flagfox
@@ -41,7 +41,7 @@
         greasemonkey
         gruvbox-dark-theme
         h264ify
-        hulu-ad-blocker-firefox
+        hulu-ad-blocker
         languagetool
         leechblock-ng
         mullvad
