@@ -4,7 +4,6 @@
   lib,
   ...
 }: {
-  # Enable xserver so that SDDM can be run
   programs.zsh = {
     enable = true;
     syntaxHighlighting = {

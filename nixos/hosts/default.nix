@@ -37,7 +37,7 @@
       sunshine.enable = false;
     };
     # Features
-    zsh.enable = true;
+    shell.enable = true;
     locale.enable = true;
   };
 
