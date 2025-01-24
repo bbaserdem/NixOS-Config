@@ -6,7 +6,7 @@
 }: {
   programs.starship = {
     enable = true;
-    enableBashIntegration = true;
+    enableBashIntegration = false;
     enableZshIntegration = false;
     enableFishIntegration = false;
     enableIonIntegration = false;
