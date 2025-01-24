@@ -21,5 +21,6 @@
     polkit # Privilege utility
     sudo # Privilege escalation
     inotify-tools # File watching
+    killall # Program killer
   ];
 }
