@@ -41,6 +41,7 @@
     ./configs/nnn
     ./configs/pass
     ./configs/paths
+    ./configs/qmk
     ./configs/remmina
     ./configs/sops
     ./configs/ssh
