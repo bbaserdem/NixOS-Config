@@ -35,7 +35,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Nixcats for neovim management
+    # Nixcats for neovim management, might bud this off to another repo later
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
     # Eventually want to set up disk impermanence
@@ -58,6 +58,14 @@
     };
     # AGS: Aylur's GTK Shell
     ags.url = "github:Aylur/ags";
+    # Declaratively managing plasma
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
 
     # ----- Flair and small functionality ----- #
     # Nixifying themes
