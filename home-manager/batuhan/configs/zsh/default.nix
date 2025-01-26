@@ -76,7 +76,7 @@
 
       # Prompt theme
       if [[ -r "${config.xdg.configHome}/powerlevel10k/config.zsh" ]]; then
-        prompt off
+        # prompt off
         source "${config.xdg.configHome}/powerlevel10k/config.zsh"
       fi
       # Recommended by p10k to add this after enabling spaceship theme globally

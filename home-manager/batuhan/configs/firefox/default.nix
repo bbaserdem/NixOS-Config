@@ -6,13 +6,14 @@
     enable = true;
     package = pkgs.firefox.override {
       # See nixpkgs' firefox/wrapper.nix to check which options you can use
-      nativeMessagingHosts = [
-        pkgs.browserpass
-        pkgs.bukubrow
-        pkgs.tridactyl-native
-        pkgs.gnome-browser-connector
-        pkgs.uget-integrator
-        pkgs.fx-cast-bridge
+      nativeMessagingHosts = with pkgs; [
+        browserpass
+        bukubrow
+        tridactyl-native
+        gnome-browser-connector
+        uget-integrator
+        fx-cast-bridge
+        vdhcoapp
       ];
     };
     profiles.batuhan = {
