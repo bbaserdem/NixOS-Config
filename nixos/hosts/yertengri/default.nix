@@ -23,6 +23,12 @@
 
   # Module toggles
   myNixOS = {
+
+    # Enable default user generation
+    defaultUser.enable = true;
+    userName = "batuhan";
+    userDesktop = "plasma";
+
     # Desktop
     displayManager = {
       enable = true;
@@ -31,6 +37,7 @@
     gnome.enable = true;
     hyprland.enable = true;
     plasma.enable = true;
+
     # Features
     bluetooth.enable = true;
     consolefont.enable = true;
@@ -45,6 +52,7 @@
     polkit.enable = true;
     steam.enable = true;
     virtualization.enable = true;
+
     # Services
     services = {
       avahi.enable = true;
@@ -62,10 +70,6 @@
       udev.enable = true;
       udisks.enable = true;
     };
-    # Enable default user generation
-    defaultUser.enable = true;
-    userName = "batuhan";
-    userDesktop = "";
   };
 
   # Joey's account
