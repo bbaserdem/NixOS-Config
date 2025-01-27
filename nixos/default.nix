@@ -52,10 +52,7 @@ in {
     ++ bundles
     ++ services;
 
-  # Extra options to enable
+  # Extra options to enable globally go here
   options.myNixOS = {
-    sharedSettings = {
-      hyprland.enable = lib.mkEnableOption "Enable Hyprland";
-    };
   };
 }
