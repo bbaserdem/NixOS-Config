@@ -30,13 +30,13 @@ in {
     (lib.mkIf (cfg.displayManager.name == "sddm") {
       services.displayManager.sddm = {
         enable = true;
-        theme = "catppuccin";
-        extraPackages = with pkgs; [
-          catppuccin-sddm-corners
-        ];
+        theme = "catppuccin-mocha";
         enableHidpi = true;
         wayland.enable = true;
       };
+      environment.systemPackages = with pkgs; [
+        catppuccin-mocha-sddm
+      ];
     })
   ];
 }
