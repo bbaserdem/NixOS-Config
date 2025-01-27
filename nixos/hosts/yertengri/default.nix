@@ -19,7 +19,7 @@
   networking.hostName = "yertengri";
 
   # Weird fix for plasma + gnome
-  #programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
+  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
 
   # Module toggles
   myNixOS = {
@@ -36,7 +36,7 @@
     };
     gnome.enable = true;
     hyprland.enable = true;
-    plasma.enable = false;
+    plasma.enable = true;
 
     # Features
     bluetooth.enable = true;
