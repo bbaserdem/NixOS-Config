@@ -14,21 +14,26 @@
 
   # Module toggles
   myNixOS = {
+    # Desktop
+    displayManager = {
+      enable = true;
+      name = "gdm";
+    };
+    gnome.enable = true;
+    hyprland.enable = true;
+    plasma.enable = true;
     # Features
     bluetooth.enable = true;
     consolefont.enable = true;
     droidcam.enable = true;
     fonts.enable = true;
-    gnome.enable = true;
     grub = {
       enable = true;
       flavor = "bigSur";
     };
-    hyprland.enable = true;
     keymap.enable = true;
     matlab.enable = false;
     polkit.enable = true;
-    sddm.enable = false;
     steam.enable = false;
     virtualization.enable = true;
     # Services
