@@ -18,6 +18,9 @@
   # Set our name
   networking.hostName = "yertengri";
 
+  # Weird fix for plasma + gnome
+  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
+
   # Module toggles
   myNixOS = {
     # Desktop
