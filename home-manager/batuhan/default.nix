@@ -11,8 +11,8 @@
     # External imports
     inputs.ags.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
-    inputs.stylix.homeManagerModules.stylix
-    inputs.plasma-manager.homeManagerModules.plasma-manager
+    #inputs.stylix.homeManagerModules.stylix
+    #inputs.plasma-manager.homeManagerModules.plasma-manager
     inputs.sops-nix.homeManagerModules.sops
     # My nixCats
     outputs.nixCats.homeManagerModules.default
