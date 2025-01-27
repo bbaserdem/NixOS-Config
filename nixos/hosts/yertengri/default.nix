@@ -36,7 +36,7 @@
     };
     gnome.enable = true;
     hyprland.enable = true;
-    plasma.enable = true;
+    plasma.enable = false;
 
     # Features
     bluetooth.enable = true;
