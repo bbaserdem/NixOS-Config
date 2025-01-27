@@ -33,8 +33,6 @@ in {
         theme = "catppuccin";
         extraPackages = with pkgs; [
           catppuccin-sddm-corners
-          libsForQt5.qt5.qtquickcontrols2
-          libsForQt5.qt5.qtgraphicaleffects
         ];
         enableHidpi = true;
         wayland.enable = true;
