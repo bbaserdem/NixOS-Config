@@ -1,19 +1,13 @@
 # NixOS: nixosModules/features/gnome.nix
 {pkgs, ...}: {
+
   services.xserver = {
+
     # Enable the X11 windowing system.
     enable = true;
-    # Enable gnome login
-    displayManager = {
-      gdm = {
-        enable = true;
-        settings = {};
-      };
-    };
+
     # Enable gnome
-    desktopManager = {
-      gnome.enable = true;
-    };
+    desktopManager.gnome.enable = true;
   };
 
   # Exclude some unneeded packages
