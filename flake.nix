@@ -70,7 +70,13 @@
     # ----- Flair and small functionality ----- #
     # Nixifying themes
     nix-colors.url = "github:misterio77/nix-colors";
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
     # Spell libraries
     vimspell-tr = {
       url = "https://ftp.nluug.nl/pub/vim/runtime/spell/tr.utf-8.spl";
