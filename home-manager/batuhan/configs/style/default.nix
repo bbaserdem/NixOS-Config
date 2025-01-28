@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: let
-  catppuccin-kvantum = pkgs.catppuccin-kvantum.override {
-    accent = "sapphire";
-    variant = "mocha";
-  };
+  wallpaper = "${pkgs.pantheon.elementary-wallpapers}/share/backgrounds/Snow-Capped Mountain.jpg";
 in {
 
   stylix = {
@@ -15,6 +12,8 @@ in {
     enable = true;
     autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
+    image = wallpaper;
+    polarity = "dark";
 
     # System fonts
     fonts = {
@@ -63,24 +62,29 @@ in {
       btop.enable = true;
       firefox = {
         enable = true;
+        # Unconfigured
         #firefoxGnomeTheme.enable = true;
         #profileNames = [];
       };
       fzf.enable = true;
       gnome.enable = true;
-      gnome-text-editor.enable = true;
+      # In unstable
+      #gnome-text-editor.enable = true;
       gtk.enable = true;
       hyprland = {
         enable = true;
-        hyprpaper.enable = true;
+        # In unstable
+        #hyprpaper.enable = true;
       };
       hyprlock.enable = true;
       hyprpaper.enable = true;
       kde.enable = true;
       kitty.enable = true;
       lazygit.enable = true;
+      # Unconfigured
       #nixcord.enable = true;
       tmux.enable = true;
+      # Unconfigured
       #vencord.enable = true;
       xresources.enable = true;
       zathura.enable = true;

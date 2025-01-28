@@ -1,15 +1,17 @@
 # NixOS: flake.nix
-{
+let
+  osVersion = "24.11";
+in {
   description = "bbaserdem's NixOS configuration";
 
   inputs = {
     # ----- System Flakes ----- #
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-${osVersion}";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Home manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-${osVersion}";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Nix user repository
@@ -71,7 +73,7 @@
     # Nixifying themes
     nix-colors.url = "github:misterio77/nix-colors";
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:danth/stylix/release-${osVersion}";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";

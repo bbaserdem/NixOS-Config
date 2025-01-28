@@ -51,7 +51,7 @@
     "org/gnome/desktop/interface" = {
       clock-show-seconds = true;
       clock-show-weekday = true;
-      color-scheme = "prefer-dark";
+      #color-scheme = "prefer-dark";
       cursor-size = 32;
       show-battery-percentage = true;
       toolkit-accessibility = false;

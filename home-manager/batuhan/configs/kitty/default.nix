@@ -2,6 +2,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   color = config.colorScheme.palette;
@@ -9,7 +10,7 @@ in {
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;
-    font = {
+    font = lib.mkForce {
       name = "Iosevka Light";
       size = 15;
       package = pkgs.iosevka;
@@ -27,45 +28,45 @@ in {
       copy_on_select = false;
       tab_separator = " ┇";
       # Color settings
-      cursor = "#${color.base06}";
-      cursor_text_color = "background";
-      url_color = "#${color.base0D}";
-      visual_bell_color = "#${color.base0C}";
-      bell_border_color = "#${color.base0C}";
-      active_border_color = "#${color.base0E}";
-      inactive_border_color = "#${color.base03}";
-      foreground = "#${color.base06}";
-      background = "#${color.base00}";
-      selection_foreground = "#${color.base02}";
-      selection_background = "#${color.base06}";
-      active_tab_foreground = "#${color.base06}";
-      active_tab_background = "#${color.base03}";
-      inactive_tab_foreground = "#${color.base04}";
-      inactive_tab_background = "#${color.base01}";
+      #cursor = "#${color.base06}";
+      #cursor_text_color = "background";
+      #url_color = "#${color.base0D}";
+      #visual_bell_color = "#${color.base0C}";
+      #bell_border_color = "#${color.base0C}";
+      #active_border_color = "#${color.base0E}";
+      #inactive_border_color = "#${color.base03}";
+      #foreground = "#${color.base06}";
+      #background = "#${color.base00}";
+      #selection_foreground = "#${color.base02}";
+      #selection_background = "#${color.base06}";
+      #active_tab_foreground = "#${color.base06}";
+      #active_tab_background = "#${color.base03}";
+      #inactive_tab_foreground = "#${color.base04}";
+      #inactive_tab_background = "#${color.base01}";
       # = "black  (bg3/bg4)";
-      color0 = "#${color.base03}";
-      color8 = "#${color.base04}";
+      #color0 = "#${color.base03}";
+      #color8 = "#${color.base04}";
       # = "red";
-      color1 = "#${color.base08}";
-      color9 = "#${color.base08}";
+      #color1 = "#${color.base08}";
+      #color9 = "#${color.base08}";
       #: = "green";
-      color2 = "#${color.base0B}";
-      color10 = "#${color.base0B}";
+      #color2 = "#${color.base0B}";
+      #color10 = "#${color.base0B}";
       # = "yellow";
-      color3 = "#${color.base0A}";
-      color11 = "#${color.base0A}";
+      #color3 = "#${color.base0A}";
+      #color11 = "#${color.base0A}";
       # = "blue";
-      color4 = "#${color.base0D}";
-      color12 = "#${color.base0D}";
+      #color4 = "#${color.base0D}";
+      #color12 = "#${color.base0D}";
       # = "purple";
-      color5 = "#${color.base0E}";
-      color13 = "#${color.base0E}";
+      #color5 = "#${color.base0E}";
+      #color13 = "#${color.base0E}";
       # = "aqua";
-      color6 = "#${color.base0C}";
-      color14 = "#${color.base0C}";
+      #color6 = "#${color.base0C}";
+      #color14 = "#${color.base0C}";
       # = "white (fg4/fg3)";
-      color7 = "#${color.base05}";
-      color15 = "#${color.base06}";
+      #color7 = "#${color.base05}";
+      #color15 = "#${color.base06}";
       # scrollback_pager = ''nvim -c "set signcolumn=no showtabline=0" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "'';
       allow_remote_control = true;
       listen_on = "unix:/tmp/kitty";

@@ -30,7 +30,7 @@
     ./configs/git
     ./configs/gnome
     ./configs/gnupg
-    ./configs/hyprland
+    #./configs/hyprland
     ./configs/keyboard
     ./configs/kitty
     ./configs/man
