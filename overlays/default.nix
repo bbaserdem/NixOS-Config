@@ -63,11 +63,15 @@
         bucket.enable = false;
       };
     };
-    # Add different variants of the cattpuccin package
+    # Add different variants of the cattpuccin packages
     catppuccin-mocha-sddm = prev.catppuccin-sddm.override {
       flavor = "mocha";
       font = "Noto Sans";
       fontSize = "16";
+    };
+    catppuccin-sapphire-mocha-kvantum = prev.catppuccin-kvantum.override {
+      accent = "sapphire";
+      variant = "mocha";
     };
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
