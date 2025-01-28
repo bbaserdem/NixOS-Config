@@ -63,7 +63,7 @@
       theme=catppuccin-mocha-sapphire
     '';
     "Kvantum/catppuccin-mocha-sapphire".source = 
-      "${pkgs.catppuccin-sapphire-mocha-kvantum}/share/Kvantum/Catppuccin-Mocha-Sapphire";
+      "${pkgs.catppuccin-sapphire-mocha-kvantum}/share/Kvantum/catppuccin-mocha-sapphire";
   };
 
   home.packages = with pkgs; [
