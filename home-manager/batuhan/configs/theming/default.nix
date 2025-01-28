@@ -13,6 +13,17 @@
     gtk.enable = true;
   };
 
+  # Set our fonts
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      emoji = [ "Noto Color Emoji" ];
+      monospace = [ "IMB 3270" ];
+      serif = [ "Caladea" ];
+      sansSerif = [ "Source Sans Pro" ];
+    };
+  };
+
   # Setup our gtk options
   gtk = {
     enable = true;
@@ -26,13 +37,6 @@
         variant = "mocha";
       };
     };
-
-    # Cursor on gtk
-    #cursorTheme = {
-    #  name = "Bibata-Modern-Ice";
-    #  package = pkgs.bibata-cursors;
-    #};
-    # Icons on gtk
 
     iconTheme = {
       name = "Qogir";
@@ -57,6 +61,8 @@
     style.name = "kvantum";
   };
 
+  # Need to hand-put this in for the kvantum theme to be recognized
+  # The package is provided by my package override
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".text = ''
       [General]
@@ -68,7 +74,12 @@
 
   home.packages = with pkgs; [
     libsForQt5.qt5ct
-    kdePackages.qt6ct 
+    kdePackages.qt6ct
     catppuccin-sapphire-mocha-kvantum
+    # Fonts
+    caladea
+    source-sans-pro
+    _3270font
+    noto-fonts-color-emoji
   ];
 }
