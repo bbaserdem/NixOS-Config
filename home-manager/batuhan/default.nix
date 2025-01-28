@@ -11,7 +11,7 @@
     # External imports
     inputs.ags.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
-    #inputs.stylix.homeManagerModules.stylix
+    inputs.stylix.homeManagerModules.stylix
     #inputs.plasma-manager.homeManagerModules.plasma-manager
     inputs.sops-nix.homeManagerModules.sops
     # My nixCats
@@ -48,8 +48,9 @@
     ./configs/shell
     ./configs/sops
     ./configs/ssh
+    ./configs/style
     ./configs/syncthing
-    ./configs/theming
+    #./configs/theming
     ./configs/texlive
     ./configs/tmux
     ./configs/udiskie
