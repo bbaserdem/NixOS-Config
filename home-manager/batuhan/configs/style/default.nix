@@ -13,6 +13,7 @@ in {
   stylix = {
 
     enable = true;
+    autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
 
     # System fonts
@@ -60,7 +61,14 @@ in {
     # App enables
     targets = {
       btop.enable = true;
-      firefox.enable = true;
+      firefox = {
+        enable = true;
+        #firefoxGnomeTheme.enable = true;
+        #profileNames = [];
+      };
+      fzf.enable = true;
+      gnome.enable = true;
+      gnome-text-editor.enable = true;
       gtk.enable = true;
       hyprland = {
         enable = true;
@@ -68,11 +76,14 @@ in {
       };
       hyprlock.enable = true;
       hyprpaper.enable = true;
+      kde.enable = true;
       kitty.enable = true;
       lazygit.enable = true;
+      #nixcord.enable = true;
       tmux.enable = true;
-      vencord.enable = true;
+      #vencord.enable = true;
       xresources.enable = true;
+      zathura.enable = true;
     };
   };
 }
