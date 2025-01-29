@@ -11,10 +11,21 @@
   # Some gnome extensions
   programs.gnome-shell = {
     enable = true;
-    extensions = [
-      {package = pkgs.gnomeExtensions.appindicator;}
-      {package = pkgs.gnomeExtensions.wireless-hid;}
-      {package = pkgs.gnomeExtensions.syncthing-toggle;}
+    extensions = with pkgs.gnomeExtensions; [
+      # Status tray
+      {package = appindicator;}
+      # Battery of wireless devices shown
+      {package = wireless-hid;}
+      # Menu for removable drives
+      {package = removable-drive-menu;}
+      # Shows system resources
+      {package = system-monitor;}
+      # KDE Connect implementation
+      {package = gsconnect;}
+      # Clipboard
+      {package = clipboard-indicator;}
+      # Wallpaper slideshow
+      {package = backslide;}
     ];
   };
 }
