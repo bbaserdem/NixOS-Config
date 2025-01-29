@@ -56,6 +56,7 @@
     xclicker
     wifi-qr
     dconf2nix
+    exiftool
     # Gaming
     lutris
     heroic
