@@ -79,6 +79,11 @@
     ).sddm-astronaut.override {
       embeddedTheme = "pixel_sakura";
     };
+    sddm-astronaut-blackHole = (
+      import inputs.nixpkgs-unstable { system = prev.system; }
+    ).sddm-astronaut.override {
+      embeddedTheme = "black_hole";
+    };
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
