@@ -64,9 +64,6 @@
     homeDirectory = "/home/batuhan";
   };
 
-  # User-wide color theme
-  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-soft;
-
   # Enable home-manager
   programs.home-manager.enable = true;
 

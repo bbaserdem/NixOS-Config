@@ -67,8 +67,13 @@
     #paperless-ngx
     uv
   ];
+
+  # Enable stylix for apps
+  stylix.targets = {
+    fzf.enable = true;
+  };
+
   # Common services
   services.blueman-applet.enable = lib.mkDefault true;
-  # Configuration options
-  # xdg.configFile."Ferdium".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.cacheHome}/Ferdium";
+
 }

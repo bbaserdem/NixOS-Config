@@ -5,6 +5,7 @@
 }: {
 
   # Enable themeing
-  stylix.targets.nixcord.enable = true;
+  # In stylix unstable
+  #stylix.targets.nixcord.enable = true;
 
 }

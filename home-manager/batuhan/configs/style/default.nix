@@ -1,6 +1,5 @@
 # Main theming stuff
 {
-  config,
   pkgs,
   ...
 }: let
@@ -57,37 +56,11 @@ in {
       terminal = 0.85;
     };
 
-    # App enables
+    # Enable themeing systemwide
     targets = {
-      btop.enable = true;
-      firefox = {
-        enable = true;
-        # Unconfigured
-        #firefoxGnomeTheme.enable = true;
-        #profileNames = [];
-      };
-      fzf.enable = true;
-      gnome.enable = true;
-      # In unstable
-      #gnome-text-editor.enable = true;
       gtk.enable = true;
-      hyprland = {
-        enable = true;
-        # In unstable
-        #hyprpaper.enable = true;
-      };
-      hyprlock.enable = true;
-      hyprpaper.enable = true;
       kde.enable = true;
-      kitty.enable = true;
-      lazygit.enable = true;
-      # Unconfigured
-      #nixcord.enable = true;
-      tmux.enable = true;
-      # Unconfigured
-      #vencord.enable = true;
       xresources.enable = true;
-      zathura.enable = true;
     };
   };
 }
