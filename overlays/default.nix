@@ -3,7 +3,7 @@
 # https://github.com/Misterio77/nix-starter-configs
 {inputs, ...}: {
   # This one brings our custom packages from the 'pkgs' directory
-  additions = final: _prev: import ../pkgs {pkgs = final;};
+  additions = final: prev: import ../pkgs {pkgs = final;};
 
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
@@ -63,11 +63,21 @@
         bucket.enable = false;
       };
     };
-    # Add different variants of the cattpuccin package
+    # Add different variants of the cattpuccin packages
     catppuccin-mocha-sddm = prev.catppuccin-sddm.override {
       flavor = "mocha";
       font = "Noto Sans";
       fontSize = "16";
+    };
+    catppuccin-sapphire-mocha-kvantum = prev.catppuccin-kvantum.override {
+      accent = "sapphire";
+      variant = "mocha";
+    };
+    # SDDM QT6 theme with different themes, need to pull from unstable for now
+    sddm-astronaut-pixelSakura = (
+      import inputs.nixpkgs-unstable { system = prev.system; }
+    ).sddm-astronaut.override {
+      themeConfig = "pixel_sakura";
     };
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
@@ -76,7 +86,7 @@
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
   # be accessible through 'pkgs.unstable'
-  unstable-packages = final: _prev: {
+  unstable-packages = final: prev: {
     unstable = import inputs.nixpkgs-unstable {
       system = final.system;
       config.allowUnfree = true;

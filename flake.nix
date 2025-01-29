@@ -68,9 +68,19 @@
     };
 
     # ----- Flair and small functionality ----- #
-    # Nixifying themes
-    nix-colors.url = "github:misterio77/nix-colors";
-    stylix.url = "github:danth/stylix";
+    # Nixifying theming and styling
+    stylix = {
+      url = "github:danth/stylix/release-24.11";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+    # Discord client
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Spell libraries
     vimspell-tr = {
       url = "https://ftp.nluug.nl/pub/vim/runtime/spell/tr.utf-8.spl";

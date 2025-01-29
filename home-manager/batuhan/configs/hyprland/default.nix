@@ -20,6 +20,17 @@ in {
     # ./swww.nix        # Wallpaper manager
   ];
 
+  # Stylix integration
+  stylix.targets = {
+    hyprland = {
+      enable = true;
+      # In stylix unstable
+      #hyprpaper.enable = true;
+    };
+    hyprlock.enable = true;
+    hyprpaper.enable = true;
+  };
+
   # Hyprland configuration
   wayland.windowManager.hyprland = {
     enable = true;

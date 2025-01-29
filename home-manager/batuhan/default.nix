@@ -2,18 +2,15 @@
 {
   inputs,
   outputs,
-  lib,
-  config,
-  pkgs,
   ...
 }: {
   imports = [
     # External imports
     inputs.ags.homeManagerModules.default
-    inputs.nix-colors.homeManagerModules.default
-    #inputs.stylix.homeManagerModules.stylix
+    inputs.nixcord.homeManagerModules.nixcord
     #inputs.plasma-manager.homeManagerModules.plasma-manager
     inputs.sops-nix.homeManagerModules.sops
+    inputs.stylix.homeManagerModules.stylix
     # My nixCats
     outputs.nixCats.homeManagerModules.default
 
@@ -24,13 +21,14 @@
     ./configs/calendar
     ./configs/dconf
     ./configs/direnv
+    ./configs/discord
     ./configs/email
     ./configs/firefox
     ./configs/fluidsynth
     ./configs/git
     ./configs/gnome
     ./configs/gnupg
-    ./configs/hyprland
+    #./configs/hyprland
     ./configs/keyboard
     ./configs/kitty
     ./configs/man
@@ -48,8 +46,8 @@
     ./configs/shell
     ./configs/sops
     ./configs/ssh
+    ./configs/style
     ./configs/syncthing
-    ./configs/theming
     ./configs/texlive
     ./configs/tmux
     ./configs/udiskie
@@ -65,9 +63,6 @@
     username = "batuhan";
     homeDirectory = "/home/batuhan";
   };
-
-  # User-wide color theme
-  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-soft;
 
   # Enable home-manager
   programs.home-manager.enable = true;

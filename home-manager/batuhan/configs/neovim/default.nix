@@ -5,9 +5,7 @@
   config,
   pkgs,
   ...
-}: let
-  colors = config.colorScheme.palette;
-in {
+}: {
   programs.neovim = {
     enable = true;
     package = pkgs.unstable.neovim-unwrapped;

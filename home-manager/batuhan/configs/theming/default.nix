@@ -3,13 +3,8 @@
   config,
   pkgs,
   ...
-}: let
-  catppuccin-kvantum = pkgs.catppuccin-kvantum.override {
-    accent = "sapphire";
-    variant = "mocha";
-  };
-  colors = config.colorScheme.palette;
-in {
+}: {
+
   # Set our cursor
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";
@@ -17,6 +12,18 @@ in {
     x11.enable = true;
     gtk.enable = true;
   };
+
+  # Set our fonts
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      emoji = [ "Noto Color Emoji" ];
+      monospace = [ "IMB 3270" ];
+      serif = [ "Caladea" ];
+      sansSerif = [ "Source Sans Pro" ];
+    };
+  };
+
   # Setup our gtk options
   gtk = {
     enable = true;
@@ -30,16 +37,12 @@ in {
         variant = "mocha";
       };
     };
-    # Cursor on gtk
-    #cursorTheme = {
-    #  name = "Bibata-Modern-Ice";
-    #  package = pkgs.bibata-cursors;
-    #};
-    # Icons on gtk
+
     iconTheme = {
       name = "Qogir";
       package = pkgs.qogir-icon-theme;
     };
+
     # Dark theming
     gtk3.extraConfig.gtk-application-prefer-dark-theme = "1";
     gtk4.extraConfig.gtk-application-prefer-dark-theme = "1";
@@ -57,14 +60,26 @@ in {
     platformTheme.name = "qtct";
     style.name = "kvantum";
   };
+
+  # Need to hand-put this in for the kvantum theme to be recognized
+  # The package is provided by my package override
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".text = ''
       [General]
-      theme=Catppuccin-Mocha-Sapphire
+      theme=catppuccin-mocha-sapphire
     '';
-    "Kvantum/Catppuccin-Mocha-Sapphire".source = "${catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Sapphire";
+    "Kvantum/catppuccin-mocha-sapphire".source = 
+      "${pkgs.catppuccin-sapphire-mocha-kvantum}/share/Kvantum/catppuccin-mocha-sapphire";
   };
-  home.packages = [
-    catppuccin-kvantum
+
+  home.packages = with pkgs; [
+    libsForQt5.qt5ct
+    kdePackages.qt6ct
+    catppuccin-sapphire-mocha-kvantum
+    # Fonts
+    caladea
+    source-sans-pro
+    _3270font
+    noto-fonts-color-emoji
   ];
 }

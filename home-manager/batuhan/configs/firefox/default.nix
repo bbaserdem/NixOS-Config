@@ -1,6 +1,15 @@
 # Setup browsers to be used
 # TODO: Zotero connector as addon, and vdhcoapp as package
 {pkgs, ...}: {
+  # Enable stylix color theme
+  stylix.targets.firefox = {
+    enable = true;
+    firefoxGnomeTheme.enable = true;
+    profileNames = [
+      "batuhan"
+    ];
+  };
+
   # Firefox settings
   programs.firefox = {
     enable = true;
