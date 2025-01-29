@@ -43,7 +43,7 @@ in {
         description = "Extension used by the wallpaper.";
       };
       path = lib.mkOption {
-        type = lib.types.string;
+        type = lib.types.str;
         description = "Path to the wallpaper file";
         readOnly = true;
       };

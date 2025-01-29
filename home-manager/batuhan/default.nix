@@ -21,7 +21,6 @@
     ./configs/beets
     ./configs/btop
     ./configs/calendar
-    ./configs/dconf
     ./configs/direnv
     ./configs/discord
     ./configs/email

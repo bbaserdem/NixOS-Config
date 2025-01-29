@@ -1,13 +1,14 @@
 #
 {
   config,
-  pkgs,
   ...
-}: rec {
+}: {
+
   # Local binaries
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
   ];
+
   # XDG paths
   xdg = {
     # Enables this feature
@@ -38,18 +39,32 @@
       };
     };
   };
+
   # My flake directory
   home.sessionVariables = {
-    FLAKE = "${xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixOS";
+    FLAKE = "${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixOS";
   };
+
   # Aliases to navigate quickly
   programs.zsh.shellAliases = {
-    cd-flake = "cd ${home.sessionVariables.FLAKE}";
-    cd-notes = "cd ${xdg.userDirs.extraConfig.XDG_NOTES_DIR}";
-    cd-media = "cd ${xdg.userDirs.extraConfig.XDG_MEDIA_DIR}";
-    cd-music = "cd ${xdg.userDirs.music}";
-    cd-image = "cd ${xdg.userDirs.pictures}";
-    cd-video = "cd ${xdg.userDirs.videos}";
-    cd-downl = "cd ${xdg.userDirs.download}";
+    cd-flake = "cd ${config.home.sessionVariables.FLAKE}";
+    cd-notes = "cd ${config.xdg.userDirs.extraConfig.XDG_NOTES_DIR}";
+    cd-media = "cd ${config.xdg.userDirs.extraConfig.XDG_MEDIA_DIR}";
+    cd-music = "cd ${config.xdg.userDirs.music}";
+    cd-image = "cd ${config.xdg.userDirs.pictures}";
+    cd-video = "cd ${config.xdg.userDirs.videos}";
+    cd-downl = "cd ${config.xdg.userDirs.download}";
   };
+
+  # Add the bookmarks to file browser
+  gtk.gtk3.bookmarks = [
+    "file://${config.xdg.userDirs.documents}"
+    "file://${config.xdg.userDirs.music}"
+    "file://${config.xdg.userDirs.pictures}"
+    "file://${config.xdg.userDirs.videos}"
+    "file://${config.xdg.userDirs.extraConfig.XDG_MEDIA_DIR}"
+    "file://${config.xdg.userDirs.extraConfig.XDG_PHONE_DIR}"
+    "file://${config.xdg.userDirs.download}"
+    "file://${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}"
+  ];
 }
