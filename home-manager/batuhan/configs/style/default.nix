@@ -1,17 +1,16 @@
 # Main theming stuff
 {
   pkgs,
+  config,
   ...
-}: let
-  wallpaper = "${pkgs.pantheon.elementary-wallpapers}/share/backgrounds/Snow-Capped Mountain.jpg";
-in {
+}: {
 
   stylix = {
 
     enable = true;
     autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
-    image = wallpaper;
+    image = config.myHome.wallpaper.path;
     polarity = "dark";
 
     # System fonts
