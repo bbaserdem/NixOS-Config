@@ -77,7 +77,7 @@
     sddm-astronaut-pixelSakura = (
       import inputs.nixpkgs-unstable { system = prev.system; }
     ).sddm-astronaut.override {
-      themeConfig = "pixel_sakura";
+      embeddedTheme = "pixel_sakura";
     };
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
