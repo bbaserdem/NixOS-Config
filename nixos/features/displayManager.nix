@@ -30,12 +30,18 @@ in {
     (lib.mkIf (cfg.displayManager.name == "sddm") {
       services.displayManager.sddm = {
         enable = true;
-        theme = "catppuccin-mocha";
+        theme = "sddm-astronaut-theme";
         enableHidpi = true;
         wayland.enable = true;
+        settings = {
+          General = {
+            InputMethod = "qtvirtualkeyboard";
+          };
+        };
       };
       environment.systemPackages = with pkgs; [
-        catppuccin-mocha-sddm
+        # The theme is in unstable only for now
+        sddm-astronaut-pixelSakura
       ];
     })
   ];
