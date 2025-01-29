@@ -17,6 +17,10 @@ in {
     # Credentials to be set by users
     key = config.sops.secrets."syncthing/key".path;
     cert = config.sops.secrets."syncthing/cert".path;
+    extraFlags = [
+      # This doesn't work
+      #"--gui-apikey=$(cat ${config.sops.secrets."syncthing/rest".path})"
+    ];
 
     # Behavior
     overrideFolders = true;
