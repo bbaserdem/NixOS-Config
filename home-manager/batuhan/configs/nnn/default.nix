@@ -3,9 +3,7 @@
   config,
   pkgs,
   ...
-}: let
-  colors = config.colorScheme.colors;
-in {
+}: {
   programs.nnn = {
     enable = true;
     package = pkgs.nnn;

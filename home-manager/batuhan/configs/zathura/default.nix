@@ -3,9 +3,12 @@
   config,
   pkgs,
   ...
-}: let
-  colors = config.colorScheme.palette;
-in {
+}: {
+
+  # Enable colors
+  stylix.targets.zathura.enable = true;
+
+  # Zathura settings
   programs.zathura = {
     enable = true;
     package = pkgs.zathura;

@@ -56,6 +56,7 @@
     xclicker
     wifi-qr
     dconf2nix
+    fzf
     # Gaming
     lutris
     heroic

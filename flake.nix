@@ -1,17 +1,15 @@
 # NixOS: flake.nix
-let
-  osVersion = "24.11";
-in {
+{
   description = "bbaserdem's NixOS configuration";
 
   inputs = {
     # ----- System Flakes ----- #
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-${osVersion}";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Home manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-${osVersion}";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Nix user repository
@@ -70,14 +68,18 @@ in {
     };
 
     # ----- Flair and small functionality ----- #
-    # Nixifying themes
-    nix-colors.url = "github:misterio77/nix-colors";
+    # Nixifying theming and styling
     stylix = {
-      url = "github:danth/stylix/release-${osVersion}";
+      url = "github:danth/stylix/release-24.11";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
+    };
+    # Discord client
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # Spell libraries
     vimspell-tr = {

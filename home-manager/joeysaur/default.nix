@@ -8,7 +8,6 @@
     # Internal modules
     outputs.nixCats.homeManagerModules.default
     # External modules
-    inputs.nix-colors.homeManagerModules.default
     inputs.stylix.homeManagerModules.stylix
 
     ./configs/apps

@@ -1,8 +1,5 @@
 # Direnv setup
 {
-  config,
-  pkgs,
-  lib,
   ...
 }: {
   programs.direnv = {
