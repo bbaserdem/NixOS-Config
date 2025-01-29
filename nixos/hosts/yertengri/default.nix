@@ -36,7 +36,7 @@
     };
     gnome.enable = true;
     hyprland.enable = true;
-    kde.enable = false;
+    kde.enable = true;
 
     # Features
     bluetooth.enable = true;
