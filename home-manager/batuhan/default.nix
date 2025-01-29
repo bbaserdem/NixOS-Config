@@ -13,6 +13,8 @@
     inputs.stylix.homeManagerModules.stylix
     # My nixCats
     outputs.nixCats.homeManagerModules.default
+    # My variables
+    outputs.homeManagerModules.userConfig
 
     ./configs/apps
     ./configs/autorandr
