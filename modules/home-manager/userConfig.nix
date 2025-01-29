@@ -13,7 +13,7 @@ in {
   options.myHome = {
     wallpaper = {
       name = lib.mkOption {
-        type = lib.types.nullOr lib.types.string;
+        type = lib.types.nullOr lib.types.str;
         default = null;
         example = "Snow-Capped Mountain";
         description = "Wallpaper name to be used.";
@@ -25,13 +25,14 @@ in {
         description = "Package to draw the wallpapers from.";
       };
       directory = lib.mkOption {
-        type = lib.types.nullOr lib.types.string;
+        type = lib.types.nullOr lib.types.str;
         default = null;
         example = "share/backgrounds";
         description = "Directory the wallpapers are in.";
       };
       extension = lib.mkOption {
-        type = lib.types.nullOr lib.types.enum [
+        type = lib.types.enum [
+          null
           "jpg"
           "jpeg"
           "png"
