@@ -32,7 +32,7 @@
     # Desktop
     displayManager = {
       enable = true;
-      name = "gdm";
+      name = "sddm";
     };
     gnome.enable = true;
     hyprland.enable = true;
