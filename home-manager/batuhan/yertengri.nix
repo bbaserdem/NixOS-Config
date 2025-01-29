@@ -2,6 +2,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   # Just default to regular now
@@ -14,4 +15,7 @@
   home.file."Work".source = config.lib.file.mkOutOfStoreSymlink "/home/work/Work";
   # Disable autorandr in gnome for now
   services.autorandr.enable = lib.mkOverride 500 false;
+
+  # Define wallpaper
+  myHome.wallpaper.name = "Snow-Capped Mountain";
 }

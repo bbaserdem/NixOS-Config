@@ -77,6 +77,13 @@
     defaultSopsFile = ./secrets.yaml;
   };
 
+  # Make all our wallpapers elementary OS wallpapers
+  myHome.wallpaper = {
+    package = pkgs.pantheon.elementary-wallpapers;
+    directory = "share/backgrounds";
+    extension = "jpg";
+  };
+
   nixpkgs = {
     # My overlays
     overlays = [

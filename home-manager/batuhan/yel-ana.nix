@@ -24,10 +24,5 @@
   services.autorandr.enable = lib.mkOverride 500 false;
 
   # Define wallpaper
-  myHome.wallpaper = {
-    package = pkgs.pantheon.elementary-wallpapers;
-    directory = "share/backgrounds";
-    name = "Snow-Capped Mountain";
-    extension = "jpg";
-  };
+  myHome.wallpaper.name = "Sunset by the Pier";
 }
