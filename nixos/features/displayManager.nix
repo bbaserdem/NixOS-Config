@@ -42,6 +42,9 @@ in {
       environment.systemPackages = with pkgs; [
         # The theme is in unstable only for now
         sddm-astronaut-pixelSakura
+        kdePackages.qtmultimedia
+        kdePackages.qtvirtualkeyboard
+        kdePackages.qtsvg
       ];
     })
   ];
