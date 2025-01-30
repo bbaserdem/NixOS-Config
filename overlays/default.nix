@@ -1,7 +1,11 @@
 # This file defines overlays
 # Taken from the stater config here;
 # https://github.com/Misterio77/nix-starter-configs
-{inputs, ...}: {
+{
+  inputs,
+  outputs,
+  ...
+}: {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: prev: import ../pkgs {pkgs = final;};
 
@@ -97,4 +101,7 @@
       config.allowUnfree = true;
     };
   };
+
+  # This one is nixCats package overlays
+  nixCats = (import ../nixCats {inherit inputs outputs;}).overlays;
 }
