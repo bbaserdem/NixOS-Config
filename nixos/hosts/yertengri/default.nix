@@ -60,6 +60,7 @@
       earlyoom.enable = true;
       geoclue.enable = false;
       fingerprint.enable = false;
+      kdeconnect.enable = true;
       mariadb.enable = true;
       media.enable = true;
       nm.enable = true;
