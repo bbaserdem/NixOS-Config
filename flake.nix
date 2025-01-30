@@ -150,7 +150,7 @@
       inherit lib;
 
       # Overlays to the package list, function of the form `final: prev: {};`
-      overlays = import ./overlays {inherit inputs;};
+      overlays = import ./overlays {inherit inputs outputs;};
 
       # My flake templates,
       templates = import ./templates;
