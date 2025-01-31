@@ -13,5 +13,5 @@
   userConfig = import ./userConfig.nix;
 
   # My nixCats home modules
-  nixCats = (import ../../nixCats {inherit inputs outputs;}).homeModules;
+  nixCats = (import ../../nixCats {inherit inputs outputs;}).homeManagerModules;
 }
