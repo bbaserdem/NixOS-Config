@@ -23,6 +23,7 @@
         uget-integrator
         fx-cast-bridge
         vdhcoapp
+        kdePackages.plasma-browser-integration
       ];
     };
     profiles.batuhan = {

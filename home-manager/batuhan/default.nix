@@ -43,6 +43,7 @@
     ./configs/nnn
     ./configs/pass
     ./configs/paths
+    ./configs/plasma
     ./configs/qmk
     ./configs/remmina
     ./configs/shell
