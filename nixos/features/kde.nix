@@ -1,5 +1,8 @@
 # NixOS: nixos/features/kde.nix
-{...}: {
+{
+  pkgs,
+  ...
+}: {
 
   # Enable plasma
   services.xserver.enable = true;
