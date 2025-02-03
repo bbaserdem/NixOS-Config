@@ -92,7 +92,7 @@
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
       # External overlays
-      inputs.overlays.nixCats.default
+      inputs.nixCats.overlays.default
       inputs.nur.overlays.default
     ];
     config = {

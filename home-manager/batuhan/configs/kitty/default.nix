@@ -23,6 +23,7 @@
     # General settings
     settings = {
       disable_ligatures = "cursor";
+      background_blur = "8";
       force_ltr = false;
       enable_audio_bell = false;
       cursor_shape = "block";

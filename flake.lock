@@ -648,11 +648,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1738546470,
-        "narHash": "sha256-pyMFj2IBeiRDnYoHD9XtbFiwBzvXJCavdFoVPnZ1YB0=",
+        "lastModified": 1738612394,
+        "narHash": "sha256-MDoY6eOZPxhHNsLUfeJ07YnUEPHLQdqEik3ql+ePjwI=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "708d16636047c6a311c4e44424cf7d2090219a47",
+        "rev": "70cfc7cc9c4ecadbb9dd9a75f096fc70177a8ca5",
         "type": "github"
       },
       "original": {
@@ -698,11 +698,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1738500466,
-        "narHash": "sha256-GAO3bpA4nk7RETw0SFN3QhDPNcTYbxiCoRZO9NudKsY=",
+        "lastModified": 1738612236,
+        "narHash": "sha256-IGp1AcZvYZ/R+AO0Znd+i+eQuEnQfkg/6AshoYPyUIg=",
         "owner": "hyprwm",
         "repo": "hyprland-plugins",
-        "rev": "eefa87d099bac625234b9e89ed67624efea0d27a",
+        "rev": "6d525bcfea005d399f4f603f6d9321f7281ddb6e",
         "type": "github"
       },
       "original": {
@@ -967,11 +967,11 @@
         "vimspell-tr": "vimspell-tr"
       },
       "locked": {
-        "lastModified": 1738551756,
-        "narHash": "sha256-qRfD0rhudlhp+4V4eZo4ZdLBvOhzYmsaYvcidnGzVFU=",
+        "lastModified": 1738619881,
+        "narHash": "sha256-yAigjBDPy5WUaNvcPjPoVMmwCG/iPfcGZRkipLfH2ww=",
         "owner": "bbaserdem",
         "repo": "NixCats",
-        "rev": "321c16ac02a2a56f832e06f76cda54b818e34efb",
+        "rev": "d7b0258bbea18bdb3065fd17d9a66978ddb9de3d",
         "type": "github"
       },
       "original": {
