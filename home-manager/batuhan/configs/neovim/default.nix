@@ -59,7 +59,6 @@
 
   # Transitioning to nixCats
   home.packages = [
-    outputs.nixCats.packages.${pkgs.system}.nixCats-full
-    outputs.nixCats.packages.${pkgs.system}.nixCats-none
+    pkgs.nixCats-full
   ];
 }

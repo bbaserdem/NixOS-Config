@@ -94,10 +94,9 @@
 
   outputs = {
     self,
-    nixpkgs,
     ...
   } @ inputs: let
-    # Let us pass out outputs to relevant modules
+    # Let us pass our outputs to relevant modules
     inherit (self) outputs;
 
     # Import my library functions
@@ -174,8 +173,5 @@
           # Put standalone HM configs here
         }
         // (lib.mkConfiguredUser "batuhan" configuredHosts);
-
-      # Nixcats outputs
-      nixCats = import ./nixCats {inherit inputs outputs;};
     };
 }

@@ -13,7 +13,7 @@
     inputs.sops-nix.homeManagerModules.sops
     inputs.stylix.homeManagerModules.stylix
     # My nixCats
-    outputs.nixCats.homeManagerModules.default
+    outputs.homeManagerModules.nixCats.default
     # My variables
     outputs.homeManagerModules.userConfig
 
@@ -92,7 +92,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      outputs.nixCats.overlays.default
+      outputs.overlays.nixCats.default
       inputs.nur.overlays.default
     ];
     config = {

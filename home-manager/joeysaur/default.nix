@@ -6,7 +6,7 @@
 }: {
   imports = [
     # Internal modules
-    outputs.nixCats.homeManagerModules.default
+    outputs.homeManagerModules.nixCats.default
     # External modules
     inputs.stylix.homeManagerModules.stylix
 
@@ -32,9 +32,6 @@
     homeDirectory = "/home/joeysaur";
   };
 
-  # User-wide color theme
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-macchiato;
-
   # Enable home-manager
   programs.home-manager.enable = true;
 
@@ -47,7 +44,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      outputs.nixCats.overlays.default
+      outputs.overlays.nixCats.default
       inputs.nur.overlays.default
     ];
     config = {
