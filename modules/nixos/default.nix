@@ -8,7 +8,4 @@
   # List your module files here
   # my-module = import ./my-module.nix;
   default = {};
-
-  # My nixCats system modules
-  nixCats = (import ../../nixCats {inherit inputs outputs;}).nixosModules;
 }

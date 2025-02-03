@@ -7,11 +7,12 @@
   # Nixpkgs options
   nixpkgs = {
     overlays = [
+      # My overlays
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      # My nixCats setup
-      outputs.nixCats.overlays.default
+      # Flake overlays
+      inputs.nixCats.overlays.default
     ];
   };
 
@@ -19,7 +20,7 @@
   imports = [
     inputs.sops-nix.nixosModules.sops
     inputs.nix-index-database.nixosModules.nix-index
-    outputs.nixCats.nixosModules.default
+    inputs.nixCats.nixosModules.default
   ];
 
   # Generalized Personal module toggles

@@ -101,7 +101,4 @@
       config.allowUnfree = true;
     };
   };
-
-  # This one is nixCats package overlays
-  nixCats = (import ../nixCats {inherit inputs outputs;}).overlays;
 }

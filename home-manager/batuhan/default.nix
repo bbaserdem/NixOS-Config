@@ -8,12 +8,11 @@
   imports = [
     # External imports
     inputs.ags.homeManagerModules.default
+    inputs.nixCats.homeManagerModules.default
     inputs.nixcord.homeManagerModules.nixcord
     #inputs.plasma-manager.homeManagerModules.plasma-manager
     inputs.sops-nix.homeManagerModules.sops
     inputs.stylix.homeManagerModules.stylix
-    # My nixCats
-    outputs.homeManagerModules.nixCats.default
     # My variables
     outputs.homeManagerModules.userConfig
 
@@ -87,12 +86,13 @@
   };
 
   nixpkgs = {
-    # My overlays
     overlays = [
+      # My overlays
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      outputs.overlays.nixCats.default
+      # External overlays
+      inputs.overlays.nixCats.default
       inputs.nur.overlays.default
     ];
     config = {

@@ -35,9 +35,9 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Nixcats for neovim management, might bud this off to another repo later
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    # Nixcats for neovim management
+    nixCats.url = "github:bbaserdem/NixCats";
+
     # Eventually want to set up disk impermanence
     # TODO: Set this up
     impermanence.url = "github:nix-community/impermanence";

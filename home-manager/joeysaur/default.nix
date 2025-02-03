@@ -6,9 +6,9 @@
 }: {
   imports = [
     # Internal modules
-    outputs.homeManagerModules.nixCats.default
     # External modules
     inputs.stylix.homeManagerModules.stylix
+    outputs.nixCats.homeManagerModules.default
 
     ./configs/apps
     ./configs/dconf
@@ -39,12 +39,13 @@
   systemd.user.startServices = "sd-switch";
 
   nixpkgs = {
-    # My overlays
     overlays = [
+      # My overlays
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      outputs.overlays.nixCats.default
+      # External overlays
+      inputs.nixCats.overlays.default
       inputs.nur.overlays.default
     ];
     config = {
