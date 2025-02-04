@@ -56,8 +56,8 @@
 
   # Sops, global key path
   sops = {
+    defaultSopsFile = ./secrets.yaml;
     age = {
-      defaultSopsFile = ./secrets.yaml;
       sshKeyPaths = [
         "/etc/ssh/ssh_all_ed25519_key"
         "/etc/ssh/ssh_host_ed25519_key"
