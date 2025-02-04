@@ -57,6 +57,7 @@
   # Sops, global key path
   sops = {
     defaultSopsFile = ./secrets.yaml;
+    gnupg.sshKeyPaths = [];
     age = {
       sshKeyPaths = [
         "/etc/ssh/ssh_all_ed25519_key"
