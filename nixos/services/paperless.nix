@@ -19,7 +19,7 @@ in {
     dataDir = "/home/data/Media/Documents/Paperless";
     mediaDir = "${config.services.paperless.dataDir}/media";
     consumptionDir = "${config.services.paperless.dataDir}/consume";
-    consumptionDirsPublic = false;
+    consumptionDirIsPublic = false;
     user = myUser;
     passwordFile = config.sops.secrets.paperless.path;
     settings = {
