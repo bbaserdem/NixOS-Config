@@ -54,6 +54,26 @@
   programs.nix-ld.enable = true;
   nixpkgs.config.allowUnfree = true;
 
+  # Sops, global key path
+  sops = {
+    age = {
+      defaultSopsFile = ./secrets.yaml;
+      sshKeyPaths = [
+        "/etc/ssh/ssh_all_ed25519_key"
+        "/etc/ssh/ssh_host_ed25519_key"
+      ];
+      generateKey = false;
+    };
+    secrets = {
+      "batuhan/password-hash" = {
+        neededForUsers = true;
+      };
+      "joeysaur/password-hash" = {
+        neededForUsers = true;
+      };
+    };
+  };
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
 }

@@ -14,9 +14,9 @@
     #  gammastep.isAllowed = true;
     #};
   };
-  sops.secrets.google-url = {
-    format = "yaml";
-    sopsFile = ../hosts/secrets.yaml;
+
+  # Import the SOPS secrets
+  sops.secrets."google/geoApiUrl" = {
     mode = "0444";
     path = "/etc/geoclue/conf.d/99-google-api.conf";
   };

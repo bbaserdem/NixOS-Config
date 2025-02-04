@@ -61,37 +61,32 @@
   };
 
   # Secrets management
-  sops = {
-    defaultSopsFile = ./secrets.yaml;
-    age = {
-      sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
-      generateKey = false;
+  sops.secrets = {
+    crypt-data = {
+      sopsFile = ./crypt-data.key;
+      format = "binary";
+      path = "/run/cryptsetup-keys.d/Yel-Ana_Data.key";
     };
-    secrets = {
-      crypt-data = {
-        format = "binary";
-        sopsFile = ./crypt-data.key;
-        path = "/run/cryptsetup-keys.d/Yel-Ana_Data.key";
-      };
-      "syncthing/key" = {
-        mode = "0440";
-        owner = config.myNixOS.userName;
-        group =
-          if config.myNixOS.services.syncthing.enable
-          then "syncthing"
-          else config.users.users.nobody.group;
-      };
-      "syncthing/cert" = {
-        mode = "0440";
-        owner = config.myNixOS.userName;
-        group =
-          if config.myNixOS.services.syncthing.enable
-          then "syncthing"
-          else config.users.users.nobody.group;
-      };
-      "batuhan/password-hash" = {
-        neededForUsers = true;
-      };
+    "syncthing/key" = {
+      sopsFile = ./secrets.yaml;
+      mode = "0440";
+      owner = config.myNixOS.userName;
+      group =
+        if config.myNixOS.services.syncthing.enable
+        then "syncthing"
+        else config.users.users.nobody.group;
+    };
+    "syncthing/cert" = {
+      sopsFile = ./secrets.yaml;
+      mode = "0440";
+      owner = config.myNixOS.userName;
+      group =
+        if config.myNixOS.services.syncthing.enable
+        then "syncthing"
+        else config.users.users.nobody.group;
+    };
+    "batuhan/password-hash" = {
+      neededForUsers = true;
     };
   };
 }

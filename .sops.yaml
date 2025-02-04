@@ -1,6 +1,7 @@
 # SOPS key for secrets
 keys:
   - &user_batuhan   age1045taew2vlflmcqs0dv5jyym82l4h9d5pq6m2lfcynp69dlxge9q802tde
+  - &hosts          age1vw50adxhacck5784gjtklrevqmpkr6e6rjl6r2ntuv8ur8w853ns2w3u5n
   - &host_umay      age129y4f7rtwv65j2jwydyjf67dt6vj58fvfrq39gezwkcpkj7cnsqq9lgm87
   - &host_yel-ana   age16jcedwfyapurnach0uqhe0sxk7c7nt5nkaeh6xnjyz6lur6snutqef2l0r
   - &host_yertengri age1zmcdylr608puzyt0yq43vedfhemhfxy4pmaxge82qfzmpt66d5jqeepj3m
@@ -16,12 +17,7 @@ creation_rules:
     key_groups:
     - age:
       - *user_batuhan
-      - *host_umay
-      - *host_yel-ana
-      - *host_yertengri
-      - *host_erlik
-      - *host_od-iyesi
-      - *host_su-iyesi
+      - *hosts
   - path_regex: nixos/hosts/yel-ana/[^/]+\.(yaml|json|key)$
     key_groups:
     - age:

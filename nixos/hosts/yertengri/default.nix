@@ -90,45 +90,40 @@
   #};
 
   # Secrets management
-  sops = {
-    defaultSopsFile = ./secrets.yaml;
-    age = {
-      sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
-      generateKey = false;
+  sops.secrets = {
+    crypt-data = {
+      sopsFile = ./crypt_data.key;
+      format = "binary";
+      path = "/run/cryptsetup-keys.d/Yertengri_Data.key";
     };
-    secrets = {
-      crypt-data = {
-        format = "binary";
-        sopsFile = ./crypt_data.key;
-        path = "/run/cryptsetup-keys.d/Yertengri_Data.key";
-      };
-      crypt-work = {
-        format = "binary";
-        sopsFile = ./crypt_work.key;
-        path = "/run/cryptsetup-keys.d/Yertengri_Work.key";
-      };
-      "syncthing/key" = {
-        mode = "0440";
-        owner = config.myNixOS.userName;
-        group =
-          if config.myNixOS.services.syncthing.enable
-          then "syncthing"
-          else config.users.users.nobody.group;
-      };
-      "syncthing/cert" = {
-        mode = "0440";
-        owner = config.myNixOS.userName;
-        group =
-          if config.myNixOS.services.syncthing.enable
-          then "syncthing"
-          else config.users.users.nobody.group;
-      };
-      "joeysaur/password-hash" = {
-        neededForUsers = true;
-      };
-      "batuhan/password-hash" = {
-        neededForUsers = true;
-      };
+    crypt-work = {
+      sopsFile = ./crypt_work.key;
+      format = "binary";
+      path = "/run/cryptsetup-keys.d/Yertengri_Work.key";
+    };
+    "syncthing/key" = {
+      sopsFile = ./secrets.yaml;
+      mode = "0440";
+      owner = config.myNixOS.userName;
+      group =
+        if config.myNixOS.services.syncthing.enable
+        then "syncthing"
+        else config.users.users.nobody.group;
+    };
+    "syncthing/cert" = {
+      sopsFile = ./secrets.yaml;
+      mode = "0440";
+      owner = config.myNixOS.userName;
+      group =
+        if config.myNixOS.services.syncthing.enable
+        then "syncthing"
+        else config.users.users.nobody.group;
+    };
+    "joeysaur/cryptkey/qwerty" = {
+      sopsFile = ./secrets.yaml;
+    };
+    "joeysaur/cryptkey/dvorak" = {
+      sopsFile = ./secrets.yaml;
     };
   };
 }

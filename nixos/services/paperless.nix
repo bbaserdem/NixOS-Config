@@ -7,10 +7,9 @@
 in {
 
   # Import our SOPS key
-  sops.secrets.paperless = {
+  sops.secrets."paperless" = {
     mode = "0400";
     owner = myUser;
-    sopsFile = ../hosts/secrets.yaml;
   };
 
   # Configure paperless
