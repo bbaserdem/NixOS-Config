@@ -3,8 +3,7 @@
   config,
   ...
 }: let
-  myUserName = config.myNixOS.userName;
-  myUser = config.users.users."${myUserName}".name;
+  myUser = config.myNixOS.userName;
 in {
 
   # Import our SOPS key
