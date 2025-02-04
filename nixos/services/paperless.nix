@@ -29,7 +29,7 @@ in {
       PAPERLESS_OCR_LANGUAGE = "eng+tur";
       PAPERLESS_OCR_USER_ARGS = {
         optimize = 1;
-        pdfa_image_conversion = "lossless";
+        pdfa_image_compression = "lossless";
       };
     };
   };
