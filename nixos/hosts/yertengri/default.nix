@@ -64,6 +64,7 @@
       mariadb.enable = true;
       media.enable = true;
       nm.enable = true;
+      paperless.enable = true;
       rasdaemon.enable = true;
       samba.enable = true;
       syncthing.enable = true;

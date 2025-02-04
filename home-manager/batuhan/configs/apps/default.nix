@@ -65,7 +65,6 @@
     user-audio
     # Apps to setup
     podgrab
-    #paperless-ngx
     uv
   ];
 
