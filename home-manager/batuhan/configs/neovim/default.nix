@@ -6,24 +6,29 @@
   ...
 } @ args: let
 
-  # We will override the full nixCats with our flake info and create myNixCats package, 
+  # We will override the full nixCats with our flake info.
   myCats = pkgs.nixCats-full.override (prev: {
     packageDefinitions = prev.packageDefinitions // {
       myCats =
         pkgs.nixCats-full.utils.mergeCatDefs
         prev.packageDefinitions.nixCats-full
         ({ pkgs, ... }: {
+          settings.aliases = [
+            "nvimCat"
+            "nvim-nc"
+          ];
           extra.nix = {
             inherit (args) host user;
             flake = outputs.lib.rootDir;
           };
         });
     };
+    name = "myCats";
   });
 
 in {
 
-  # Transitioning to nixCats
+  # Using nixcats
   home.packages = [
     myCats
   ];
