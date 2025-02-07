@@ -2,10 +2,32 @@
 {
   inputs,
   outputs,
-  config,
   pkgs,
   ...
-}: {
+} @ args: let
+
+  # We will override the full nixCats with our flake info and create myNixCats package, 
+  myCats = pkgs.nixCats-full.override (prev: {
+    packageDefinitions = prev.packageDefinitions // {
+      myCats =
+        pkgs.nixCats-full.utils.mergeCatDefs
+        prev.packageDefinitions.nixCats-full
+        ({ pkgs, ... }: {
+          extra.nix = {
+            inherit (args) host user;
+            flake = outputs.lib.rootDir;
+          };
+        });
+    };
+  });
+
+in {
+
+  # Transitioning to nixCats
+  home.packages = [
+    myCats
+  ];
+
   programs.neovim = {
     enable = true;
     package = pkgs.unstable.neovim-unwrapped;
@@ -57,8 +79,4 @@
     };
   };
 
-  # Transitioning to nixCats
-  home.packages = [
-    pkgs.nixCats-full
-  ];
 }

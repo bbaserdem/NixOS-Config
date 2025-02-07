@@ -9,6 +9,8 @@
   # ============================ My Lib ============================ #
   # ================================================================ #
 
+  rootDir = "${inputs.self}";
+
   # My make-if functions
   mkIfElse = p: yes: no: inputs.nixpkgs.lib.mkMerge [
     (inputs.nixpkgs.lib.mkIf p yes)
@@ -27,7 +29,7 @@
       }: {
         name = "${host}";
         value = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs outputs host;};
+          specialArgs = {inherit inputs outputs;};
           modules = [
             ../nixos
             ../nixos/hosts/${host}
