@@ -2,7 +2,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   inputs,
   ...
@@ -10,7 +9,31 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.hardware.nixosModules.framework-13-7040-amd
+    inputs.fw-fanctrl.nixosModules.default
   ];
+
+  # Fan control
+  programs.fw-fanctrl = {
+    enable = true;
+    config = {
+      defaultStrategy = "medium";
+      strategyOnDischarging = "lazy";
+      strategies = {
+        "lazy" = {
+          fanSpeedUpdateFrequency = 5;
+          movingAverageInterval = 30;
+          speedCurve = [
+            { temp = 0;   speed =  15; }
+            { temp = 50;  speed =  15; }
+            { temp = 65;  speed =  25; }
+            { temp = 70;  speed =  35; }
+            { temp = 75;  speed =  50; }
+            { temp = 85;  speed = 100; }
+          ];
+        };
+      };
+    };
+  };
 
   boot = {
     initrd = {

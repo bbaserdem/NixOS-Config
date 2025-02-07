@@ -40,6 +40,11 @@
       url = "github:bbaserdem/NixCats";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    # Fan control for framework laptop
+    fw-fanctrl = {
+      url = "github:TamtamHero/fw-fanctrl/packaging/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Eventually want to set up disk impermanence
     # TODO: Set this up
