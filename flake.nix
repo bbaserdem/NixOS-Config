@@ -36,7 +36,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Nixcats for neovim management
-    nixCats.url = "github:bbaserdem/NixCats";
+    nixCats = {
+      url = "github:bbaserdem/NixCats";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     # Eventually want to set up disk impermanence
     # TODO: Set this up
@@ -97,6 +100,7 @@
     ...
   } @ inputs: let
     # Let us pass our outputs to relevant modules
+    inherit self;
     inherit (self) outputs;
 
     # Import my library functions
