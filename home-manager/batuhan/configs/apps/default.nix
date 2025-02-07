@@ -58,6 +58,7 @@
     dconf2nix
     exiftool
     fzf
+    wl-clipboard
     # Gaming
     lutris
     heroic
