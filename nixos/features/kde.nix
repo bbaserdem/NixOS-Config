@@ -14,7 +14,7 @@
 
   # Include some Plasma project packages
   environment.systemPackages = with pkgs.kdePackages; [
-    marble    # Maps
+    pkgs.unstable.kdePackages.marble    # Maps
     dragon    # Media player
     kmail     # Email client
   ];
