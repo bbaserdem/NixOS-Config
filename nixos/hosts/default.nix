@@ -42,18 +42,6 @@
     locale.enable = true;
   };
 
-  # Nix settings
-  nix = {
-    settings = {
-      experimental-features = ["nix-command" "flakes"];
-      auto-optimise-store = true;
-    };
-    # Need to provide $NIX_PATH for nixd (lsp)
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-  };
-  programs.nix-ld.enable = true;
-  nixpkgs.config.allowUnfree = true;
-
   # Sops, global key path
   sops = {
     defaultSopsFile = ./secrets.yaml;
