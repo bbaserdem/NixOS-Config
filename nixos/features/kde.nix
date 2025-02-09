@@ -10,8 +10,13 @@
 
   # Exclude some unneeded packages
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    elisa
-    khelpcenter
+  ];
+
+  # Include some Plasma project packages
+  environment.systemPackages = with pkgs.kdePackages; [
+    marble    # Maps
+    dragon    # Media player
+    kmail     # Email client
   ];
 
 }
