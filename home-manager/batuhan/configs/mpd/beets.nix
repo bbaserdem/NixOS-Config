@@ -16,6 +16,6 @@
       enableUpdate = true;
     };
 
-    settings = (import ./settings.nix) {inherit config pkgs;};
+    settings = (import ./beetsSettings.nix) {inherit config pkgs;};
   };
 }

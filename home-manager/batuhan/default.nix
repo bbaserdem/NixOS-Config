@@ -18,7 +18,6 @@
 
     ./configs/apps
     ./configs/autorandr
-    ./configs/beets
     ./configs/btop
     ./configs/calendar
     ./configs/direnv

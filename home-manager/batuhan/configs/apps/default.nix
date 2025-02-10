@@ -19,7 +19,6 @@
     audacity
     musescore
     picard
-    cantata
     projectm
     chromaprint
     # Video related
