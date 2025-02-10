@@ -17,6 +17,7 @@
     pkgs.unstable.kdePackages.marble    # Maps
     dragon    # Media player
     kmail     # Email client
+    yakuake   # Dropdown terminal
   ];
 
 }
