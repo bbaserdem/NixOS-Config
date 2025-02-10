@@ -1,0 +1,32 @@
+# Video associations
+apps: {
+  "video/3gp" = apps;
+  "video/3gpp" = apps;
+  "video/avi" = apps;
+  "video/divx" = apps;
+  "video/fli" = apps;
+  "video/flv" = apps;
+  "video/mp4" = apps;
+  "video/mp4v" = apps;
+  "video/mpeg" = apps;
+  "video/msvideo" = apps;
+  "video/ogg" = apps;
+  "video/quicktime" = apps;
+  "video/vnd.rn-realvideo" = apps;
+  "video/webm" = apps;
+  "video/mkv" = apps;
+  "video/x-avi" = apps;
+  "video/x-flv" = apps;
+  "video/x-mp4" = apps;
+  "video/x-matroska" = apps;
+  "video/x-mpeg2" = apps;
+  "video/x-ms-asf" = apps;
+  "video/x-ms-wmv" = apps;
+  "video/x-msvideo" = apps;
+  "video/x-ogm" = apps;
+  "video/x-ogm+ogg" = apps;
+  "video/x-theora" = apps;
+  "video/x-theora+ogg" = apps;
+  "video/vnd.rn" = apps;
+  "video/realvideo" = apps;
+}
