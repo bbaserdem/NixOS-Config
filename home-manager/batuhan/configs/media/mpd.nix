@@ -1,21 +1,8 @@
-# Configuring MPD
 {
   config,
   pkgs,
   ...
 }: {
-
-  # Import our modules
-  imports = [
-    ./beets.nix
-    ./listenbrainz.nix
-    ./ncmpcpp.nix
-  ];
-
-  # Use cantata as graphical frontend
-  home.packages = [
-    pkgs.nur.repos.bandithedoge.cantata
-  ];
 
   # MPD configuration 
   services.mpd = {
@@ -58,7 +45,7 @@
     '';
   };
 
-  # Media playback keys
+  # Media playback keys for mpd
   services.mpdris2 = {
     enable = true;
     mpd = {

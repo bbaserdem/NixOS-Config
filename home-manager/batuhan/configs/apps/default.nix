@@ -2,9 +2,17 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }: {
+
+  # Some app modules
+  imports = [
+    ./btop.nix
+    ./firefox.nix
+    ./kitty.nix
+    ./newsboat.nix
+  ];
+
   home.packages = with pkgs; [
     # Image editing
     darktable

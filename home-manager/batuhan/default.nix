@@ -18,25 +18,19 @@
 
     ./configs/apps
     ./configs/autorandr
-    ./configs/btop
     ./configs/calendar
     ./configs/direnv
     ./configs/discord
     ./configs/email
-    ./configs/firefox
-    ./configs/fluidsynth
     ./configs/git
     ./configs/gnome
     ./configs/gnupg
     #./configs/hyprland
     ./configs/keyboard
-    ./configs/kitty
     ./configs/man
+    ./configs/media
     ./configs/mimetypes
-    ./configs/mpd
-    ./configs/mpv
     ./configs/neovim
-    ./configs/newsboat
     ./configs/nixshells
     ./configs/nnn
     ./configs/pass
