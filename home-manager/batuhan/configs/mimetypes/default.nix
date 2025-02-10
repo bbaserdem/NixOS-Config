@@ -21,7 +21,7 @@
     audioApp,
     videoApp,
     textsApp,
-    pdfftApp,
+    pdfFtApp,
     filesApp,
     archvApp,
     gpsLcApp,
@@ -34,7 +34,7 @@
     ${turnMimeappSetToString (import ./audio.nix audioApp)}
     ${turnMimeappSetToString (import ./video.nix videoApp)}
     ${turnMimeappSetToString (import ./texts.nix textsApp)}
-    ${turnMimeappSetToString (import ./pdfft.nix pdfftApp)}
+    ${turnMimeappSetToString (import ./pdfFt.nix pdfFtApp)}
     ${turnMimeappSetToString (import ./files.nix filesApp)}
     ${turnMimeappSetToString (import ./archv.nix archvApp)}
     ${turnMimeappSetToString (import ./gpsLc.nix gpsLcApp)}
@@ -53,7 +53,7 @@ in {
       audioApp = "vlc.desktop";
       videoApp = "org.kde.dragonplayer.desktop";
       textsApp = "org.kde.kwrite.desktop";
-      pdfftApp = "okularApplication_pdf.desktop";
+      pdfFtApp = "okularApplication_pdf.desktop";
       filesApp = "org.kde.dolphin.desktop";
       archvApp = "org.kde.ark.desktop";
       gpsLcApp = "marble_geo.desktop";
