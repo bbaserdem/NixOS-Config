@@ -31,6 +31,7 @@ in {
   # Using nixcats
   home.packages = [
     myCats
+    pkgs.unstable.helix
   ];
 
   programs.neovim = {
@@ -72,8 +73,7 @@ in {
     source = ./nvim;
     recursive = true;
   };
-  # Command to test nvim setup without changing home-manager config
-  programs.zsh.shellAliases.nvim-test = "nvim -u \"\${FLAKE}/home-manager/batuhan/configs/neovim/nvim/init.lua\"";
+
   # Fetch language files
   xdg.dataFile = {
     "nvim/site/spell/tr.utf-8.spl" = {
@@ -81,6 +81,27 @@ in {
     };
     "nvim/site/spell/en.utf-8.spl" = {
       source = inputs.vimspell-en;
+    };
+  };
+
+  # Helix editor config
+  programs.helix = {
+    enable = true;
+    defaultEditor = false;
+    settings = {
+      theme = "ferra";
+      editor = {
+        line-number = "relative";
+        mouse = true;
+        cursor-shape = {
+          normal = "block";
+          insert = "bar";
+          select = "underline";
+        };
+        file-picker = {
+          hidden = false;
+        }
+      };
     };
   };
 
