@@ -31,7 +31,6 @@ in {
   # Using nixcats
   home.packages = [
     myCats
-    pkgs.unstable.helix
   ];
 
   programs.neovim = {
@@ -87,6 +86,7 @@ in {
   # Helix editor config
   programs.helix = {
     enable = true;
+    package = pkgs.unstable.helix;
     defaultEditor = false;
     settings = {
       theme = "ferra";
@@ -100,7 +100,7 @@ in {
         };
         file-picker = {
           hidden = false;
-        }
+        };
       };
     };
   };
