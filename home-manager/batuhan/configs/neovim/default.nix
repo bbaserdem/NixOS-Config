@@ -2,6 +2,7 @@
 {
   inputs,
   outputs,
+  config,
   pkgs,
   ...
 } @ args: let
@@ -17,9 +18,17 @@
             "nvimCat"
             "nvim-nc"
           ];
-          extra.nix = {
-            inherit (args) host user;
-            flake = outputs.lib.rootDir;
+          extra = {
+            nix = {
+              inherit (args) host user;
+              flake = outputs.lib.rootDir;
+            };
+            obsidian.workspaces = [
+              {
+                name = "Personal";
+                path = config.xdg.userDirs.extraConfig.XDG_NOTES_DIR;
+              }
+            ];
           };
         });
     };

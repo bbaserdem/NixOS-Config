@@ -11,6 +11,7 @@
     ./firefox.nix
     ./kitty.nix
     ./newsboat.nix
+    ./wezterm.nix
   ];
 
   home.packages = with pkgs; [
