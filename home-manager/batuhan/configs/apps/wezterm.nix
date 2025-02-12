@@ -15,7 +15,6 @@
     extraConfig = ''
       local wezterm = require('wezterm')
       local config = {}
-      local fontTemplate = 
 
       config.font_size = 15.0
       config.font = wezterm.font_with_fallback({
