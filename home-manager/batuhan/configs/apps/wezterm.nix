@@ -13,11 +13,10 @@
 
     # Stylix allows us to overwrite the config
     extraConfig = ''
-      local wezterm = require('wezterm')
-      local config = {}
+      local conf = {}
 
-      config.font_size = 15.0
-      config.font = wezterm.font_with_fallback({
+      conf.font_size = 15.0
+      conf.font = wezterm.font_with_fallback({
         {
           family = 'Symbols Nerd Font Mono',
           weight = 'Regular',
@@ -31,7 +30,7 @@
           harfbuzz_features = { 'dlig', 'ss05', }
         }
       })
-      config.font_rules = {
+      conf.font_rules = {
         {   -- Bold
           intensity = 'Bold',
           italic = false,
@@ -120,7 +119,7 @@
         },
       }
 
-      return myConfig
+      return conf
     '';
 
     
