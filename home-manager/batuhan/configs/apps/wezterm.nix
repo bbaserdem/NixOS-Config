@@ -14,7 +14,112 @@
     # Stylix allows us to overwrite the config
     extraConfig = ''
       local wezterm = require('wezterm')
-      local myConfig = {}
+      local config = {}
+      local fontTemplate = 
+
+      config.font_size = 15.0
+      config.font = wezterm.font_with_fallback({
+        {
+          family = 'Symbols Nerd Font Mono',
+          weight = 'Regular',
+          stretch = 'Normal',
+          style = 'Normal',
+        }, {
+          family = 'Iosevka',
+          weight = 'Light',
+          stretch = 'Normal',
+          style = 'Normal',
+          harfbuzz_features = { 'dlig', 'ss05', }
+        }
+      })
+      config.font_rules = {
+        {   -- Bold
+          intensity = 'Bold',
+          italic = false,
+          font = wezterm.font_with_fallback({
+            {
+              family = 'Symbols Nerd Font Mono',
+              weight = 'Regular',
+              stretch = 'Normal',
+              style = 'Normal',
+            }, {
+              family = 'Iosevka',
+              weight = 'ExtraBold',
+              stretch = 'Normal',
+              style = 'Normal',
+              harfbuzz_features = { 'dlig', 'ss05', }
+            }
+          }),
+        }, {-- Muted
+          intensity = 'Half',
+          italic = false,
+          font = wezterm.font_with_fallback({
+            {
+              family = 'Symbols Nerd Font Mono',
+              weight = 'Regular',
+              stretch = 'Normal',
+              style = 'Normal',
+            }, {
+              family = 'Iosevka',
+              weight = 'ExtraLight',
+              stretch = 'Normal',
+              style = 'Normal',
+              harfbuzz_features = { 'dlig', 'ss05', }
+            }
+          }),
+        }, {-- Normal, italic
+          intensity = 'Normal',
+          italic = true,
+          font = wezterm.font_with_fallback({
+            {
+              family = 'Symbols Nerd Font Mono',
+              weight = 'Regular',
+              stretch = 'Normal',
+              style = 'Normal',
+            }, {
+              family = 'Iosevka',
+              weight = 'Regular',
+              stretch = 'Normal',
+              style = 'Oblique',
+              harfbuzz_features = { 'dlig', 'ss05', }
+            }
+          }),
+        },  {-- Bold, italic
+          intensity = 'Bold',
+          italic = true,
+          font = wezterm.font_with_fallback({
+            {
+              family = 'Symbols Nerd Font Mono',
+              weight = 'Regular',
+              stretch = 'Normal',
+              style = 'Normal',
+            }, {
+              family = 'Iosevka',
+              weight = 'Black',
+              stretch = 'Normal',
+              style = 'Oblique',
+              harfbuzz_features = { 'dlig', 'ss05', }
+            },
+          }),
+        }, {-- Muted and italic
+          intensity = 'Half',
+          italic = true,
+          font = wezterm.font_with_fallback({
+            {
+              family = 'Symbols Nerd Font Mono',
+              weight = 'Regular',
+              stretch = 'Normal',
+              style = 'Normal',
+            }, {
+              family = 'Iosevka',
+              weight = 'Light',
+              stretch = 'Normal',
+              style = 'Oblique',
+              harfbuzz_features = { 'dlig', 'ss05', }
+            },
+          }),
+        },
+      }
 
       return myConfig
     '';
