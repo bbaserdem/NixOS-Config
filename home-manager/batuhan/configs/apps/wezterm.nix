@@ -18,11 +18,6 @@
       conf.font_size = 15.0
       conf.font = wezterm.font_with_fallback({
         {
-          family = 'Symbols Nerd Font Mono',
-          weight = 'Regular',
-          stretch = 'Normal',
-          style = 'Normal',
-        }, {
           family = 'Iosevka',
           weight = 'Light',
           stretch = 'Normal',
@@ -36,11 +31,6 @@
           italic = false,
           font = wezterm.font_with_fallback({
             {
-              family = 'Symbols Nerd Font Mono',
-              weight = 'Regular',
-              stretch = 'Normal',
-              style = 'Normal',
-            }, {
               family = 'Iosevka',
               weight = 'ExtraBold',
               stretch = 'Normal',
@@ -53,11 +43,6 @@
           italic = false,
           font = wezterm.font_with_fallback({
             {
-              family = 'Symbols Nerd Font Mono',
-              weight = 'Regular',
-              stretch = 'Normal',
-              style = 'Normal',
-            }, {
               family = 'Iosevka',
               weight = 'ExtraLight',
               stretch = 'Normal',
@@ -70,11 +55,6 @@
           italic = true,
           font = wezterm.font_with_fallback({
             {
-              family = 'Symbols Nerd Font Mono',
-              weight = 'Regular',
-              stretch = 'Normal',
-              style = 'Normal',
-            }, {
               family = 'Iosevka',
               weight = 'Regular',
               stretch = 'Normal',
@@ -87,11 +67,6 @@
           italic = true,
           font = wezterm.font_with_fallback({
             {
-              family = 'Symbols Nerd Font Mono',
-              weight = 'Regular',
-              stretch = 'Normal',
-              style = 'Normal',
-            }, {
               family = 'Iosevka',
               weight = 'Black',
               stretch = 'Normal',
@@ -104,11 +79,6 @@
           italic = true,
           font = wezterm.font_with_fallback({
             {
-              family = 'Symbols Nerd Font Mono',
-              weight = 'Regular',
-              stretch = 'Normal',
-              style = 'Normal',
-            }, {
               family = 'Iosevka',
               weight = 'Light',
               stretch = 'Normal',
