@@ -15,6 +15,9 @@
     extraConfig = ''
       local conf = {}
 
+      conf.window_background_opacity = 0.8
+      conf.text_background_opacity = 0.8
+
       conf.font_size = 15.0
       conf.font = wezterm.font_with_fallback({
         {
