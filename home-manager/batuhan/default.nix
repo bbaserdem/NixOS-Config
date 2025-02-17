@@ -30,7 +30,6 @@
     ./configs/man
     ./configs/media
     ./configs/mimetypes
-    ./configs/neovim
     ./configs/nixshells
     ./configs/nnn
     ./configs/pass

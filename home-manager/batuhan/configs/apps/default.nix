@@ -8,6 +8,7 @@
   # Some app modules
   imports = [
     ./btop.nix
+    ./editor.nix
     ./firefox.nix
     ./kitty.nix
     ./newsboat.nix

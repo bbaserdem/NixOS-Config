@@ -1,14 +1,14 @@
 # Module that brings in fonts
 {
   pkgs,
-  lib,
   ...
 }: {
   fonts = {
     enableDefaultPackages = true;
     # Fonts we will use
     packages = with pkgs; [
-      nerdfont-standalone # Defined in overlays, glyphs
+      #nerdfont-standalone # Defined in overlays, glyphs
+      unstable.nerd-fonts.symbols-only
       noto-fonts-monochrome-emoji # Emoji fonts
       noto-fonts-color-emoji
       _3270font # Monospace
