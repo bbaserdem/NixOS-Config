@@ -89,15 +89,6 @@
       url = "github:kaylorben/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Spell libraries
-    vimspell-tr = {
-      url = "https://ftp.nluug.nl/pub/vim/runtime/spell/tr.utf-8.spl";
-      flake = false;
-    };
-    vimspell-en = {
-      url = "https://ftp.nluug.nl/pub/vim/runtime/spell/en.utf-8.spl";
-      flake = false;
-    };
   };
 
   outputs = {self, ...} @ inputs: let
