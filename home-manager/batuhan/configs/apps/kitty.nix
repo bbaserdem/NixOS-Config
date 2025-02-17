@@ -5,7 +5,6 @@
   lib,
   ...
 }: {
-
   # Stylix color scheme
   stylix.targets.kitty.enable = true;
 
@@ -34,7 +33,7 @@
       open_url_with = "default";
       copy_on_select = false;
       tab_separator = " ┇";
-      # scrollback_pager = ''nvim -c "set signcolumn=no showtabline=0" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "'';
+      # scrollback_pager = ''${config.home.sessionVariables.EDITOR} -c "set signcolumn=no showtabline=0" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "'';
       allow_remote_control = true;
       listen_on = "unix:/tmp/kitty";
       shell_integration = true;

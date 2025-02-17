@@ -1,8 +1,5 @@
 # Configuring Nixcord
-{
-  ...
-}: {
-
+{...}: {
   # Enable themeing
   # nixcord & vencord in stylix unstable
   stylix.targets = {
@@ -68,5 +65,4 @@
       };
     };
   };
-
 }

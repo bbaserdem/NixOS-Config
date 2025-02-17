@@ -78,16 +78,22 @@
       variant = "mocha";
     };
     # SDDM QT6 theme with different themes, need to pull from unstable for now
-    sddm-astronaut-pixelSakura = (
-      import inputs.nixpkgs-unstable { system = prev.system; }
-    ).sddm-astronaut.override {
-      embeddedTheme = "pixel_sakura";
-    };
-    sddm-astronaut-blackHole = (
-      import inputs.nixpkgs-unstable { system = prev.system; }
-    ).sddm-astronaut.override {
-      embeddedTheme = "black_hole";
-    };
+    sddm-astronaut-pixelSakura =
+      (
+        import inputs.nixpkgs-unstable {system = prev.system;}
+      )
+      .sddm-astronaut
+      .override {
+        embeddedTheme = "pixel_sakura";
+      };
+    sddm-astronaut-blackHole =
+      (
+        import inputs.nixpkgs-unstable {system = prev.system;}
+      )
+      .sddm-astronaut
+      .override {
+        embeddedTheme = "black_hole";
+      };
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });

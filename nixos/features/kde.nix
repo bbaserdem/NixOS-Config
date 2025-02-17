@@ -1,9 +1,5 @@
 # NixOS: nixos/features/kde.nix
-{
-  pkgs,
-  ...
-}: {
-
+{pkgs, ...}: {
   # Enable plasma
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -14,10 +10,9 @@
 
   # Include some Plasma project packages
   environment.systemPackages = with pkgs.kdePackages; [
-    pkgs.unstable.kdePackages.marble    # Maps
-    dragon    # Media player
-    kmail     # Email client
-    yakuake   # Dropdown terminal
+    pkgs.unstable.kdePackages.marble # Maps
+    dragon # Media player
+    kmail # Email client
+    yakuake # Dropdown terminal
   ];
-
 }

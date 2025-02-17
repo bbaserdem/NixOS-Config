@@ -1,11 +1,7 @@
 # Configures paperless
-{
-  config,
-  ...
-}: let
+{config, ...}: let
   myUser = config.myNixOS.userName;
 in {
-
   # Import our SOPS key
   sops.secrets."paperless" = {
     mode = "0400";
@@ -33,6 +29,4 @@ in {
       };
     };
   };
-
-
 }

@@ -4,7 +4,6 @@
   outputs,
   ...
 }: {
-
   # System setup
   home = {
     username = "steam";
@@ -18,7 +17,6 @@
   systemd.user.startServices = "sd-switch";
 
   nixpkgs = {
-
     # My overlays
     overlays = [
       outputs.overlays.additions
@@ -30,7 +28,6 @@
     config = {
       allowUnfree = true;
     };
-
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

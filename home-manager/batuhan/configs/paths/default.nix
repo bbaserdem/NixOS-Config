@@ -1,9 +1,5 @@
 #
-{
-  config,
-  ...
-}: {
-
+{config, ...}: {
   # Local binaries
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
@@ -48,6 +44,8 @@
   # Aliases to navigate quickly
   programs.zsh.shellAliases = {
     cd-flake = "cd ${config.home.sessionVariables.FLAKE}";
+    cd-ncats = "cd ${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixCats";
+    cd-projs = "cd ${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}";
     cd-notes = "cd ${config.xdg.userDirs.extraConfig.XDG_NOTES_DIR}";
     cd-media = "cd ${config.xdg.userDirs.extraConfig.XDG_MEDIA_DIR}";
     cd-music = "cd ${config.xdg.userDirs.music}";

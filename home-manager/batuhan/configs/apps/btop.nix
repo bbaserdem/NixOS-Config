@@ -4,7 +4,6 @@
   lib,
   ...
 }: {
-
   # Enable color theme
   stylix.targets.btop.enable = true;
 

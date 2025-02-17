@@ -4,7 +4,6 @@
   config,
   ...
 }: {
-
   # Add qmk to home packages
   home.packages = with pkgs; [
     qmk
@@ -21,5 +20,4 @@
 
   # Drop environment variable defining where the main repo is
   home.sessionVariables."QMK_HOME" = "${config.home.homeDirectory}/Projects/qmk_firmware";
-
 }

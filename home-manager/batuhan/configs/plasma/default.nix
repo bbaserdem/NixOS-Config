@@ -1,9 +1,5 @@
 # Configuring plasma
-{
-  pkgs,
-  ...
-}: {
-
+{pkgs, ...}: {
   # Enable KDE connect
   services.kdeconnect = {
     enable = true;
@@ -15,7 +11,7 @@
   programs.plasma = {
     enable = true;
     immutableByDefault = true;
- 
+
     # Desktop settings
     desktop = {
       icons = {
@@ -125,7 +121,5 @@
     elisa.enable = false;
     ghostwriter.enable = false;
     konsole.enable = false;
-
   };
-
 }

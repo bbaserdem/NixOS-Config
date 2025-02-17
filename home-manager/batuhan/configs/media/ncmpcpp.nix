@@ -1,9 +1,5 @@
 # Configuring ncmpcpp
-{
-  config,
-  ...
-}: {
-
+{config, ...}: {
   # TUI Music player
   programs.ncmpcpp = {
     enable = true;
@@ -71,12 +67,11 @@
       window_border_color = "white_blue";
       active_window_border = "magenta";
       # Tags
-      external_editor = "nvim";
+      external_editor = config.home.sessionVariables.EDITOR;
       use_console_editor = true;
     };
   };
 
   # Placeholder file
   xdg.dataFile."ncmpcpp/lyrics/.nomedia".text = "Placeholder for directory creation";
-
 }

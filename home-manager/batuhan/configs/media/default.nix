@@ -4,7 +4,6 @@
   pkgs,
   ...
 }: {
-
   # Import our modules
   imports = [
     ./beets.nix
@@ -19,5 +18,4 @@
   home.packages = [
     pkgs.nur.repos.bandithedoge.cantata
   ];
-
 }

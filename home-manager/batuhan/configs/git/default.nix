@@ -1,6 +1,9 @@
 # Configuring git
-{pkgs, ...}: {
-
+{
+  pkgs,
+  config,
+  ...
+}: {
   # Git settings
   programs.git = {
     enable = true;
@@ -13,7 +16,7 @@
     };
     extraConfig = {
       core = {
-        editor = "nvim";
+        editor = config.home.sessionVariables.EDITOR;
       };
       pull = {
         rebase = false;

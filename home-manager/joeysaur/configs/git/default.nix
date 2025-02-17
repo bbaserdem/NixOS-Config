@@ -1,5 +1,9 @@
 # Configuring git
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.git = {
     enable = true;
     userName = "corepresentable";
@@ -11,7 +15,7 @@
     };
     extraConfig = {
       core = {
-        editor = "nvim";
+        editor = config.home.sessionVariables.EDITOR;
       };
       pull = {
         rebase = false;

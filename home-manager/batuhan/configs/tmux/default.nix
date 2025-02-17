@@ -1,6 +1,5 @@
 # TMUX config
 {pkgs, ...}: {
-
   # Enable theming
   stylix.targets.tmux.enable = true;
 

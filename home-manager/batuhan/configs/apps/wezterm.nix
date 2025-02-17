@@ -1,8 +1,5 @@
 # Configuring kitty
-{
-  ...
-}: {
-
+{...}: {
   # Stylix color scheme
   stylix.targets.wezterm.enable = true;
 
@@ -95,7 +92,6 @@
       return conf
     '';
 
-    
     ###
     #font = lib.mkForce {
     #  name = "Iosevka Light";

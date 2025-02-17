@@ -8,7 +8,6 @@
   cfg = config.myHome.wallpaper;
   mkAll = lib.lists.foldl (a: b: a && b) true;
 in {
-
   # Custom variables to be referenced to
   options.myHome = {
     wallpaper = {
@@ -50,12 +49,13 @@ in {
     };
   };
 
-  config = lib.mkIf (mkAll [
-    (cfg.package != null)
-    (cfg.directory != null)
-    (cfg.name != null)
-    (cfg.extension != null)
-  ]) {
-    myHome.wallpaper.path = "${cfg.package}/${cfg.directory}/${cfg.name}.${cfg.extension}";
-  };
+  config =
+    lib.mkIf (mkAll [
+      (cfg.package != null)
+      (cfg.directory != null)
+      (cfg.name != null)
+      (cfg.extension != null)
+    ]) {
+      myHome.wallpaper.path = "${cfg.package}/${cfg.directory}/${cfg.name}.${cfg.extension}";
+    };
 }

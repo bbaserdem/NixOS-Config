@@ -4,7 +4,6 @@
   lib,
   ...
 }: {
-
   # Some app modules
   imports = [
     ./btop.nix
@@ -85,5 +84,4 @@
 
   # Common services
   services.blueman-applet.enable = lib.mkDefault true;
-
 }

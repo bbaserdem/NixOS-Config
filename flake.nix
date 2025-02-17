@@ -100,10 +100,7 @@
     };
   };
 
-  outputs = {
-    self,
-    ...
-  } @ inputs: let
+  outputs = {self, ...} @ inputs: let
     # Let us pass our outputs to relevant modules
     inherit self;
     inherit (self) outputs;

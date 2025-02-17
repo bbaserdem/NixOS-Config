@@ -1,18 +1,16 @@
 # Configuring mimetypes
-{
-  lib,
-  ...
-}: let
+{lib, ...}: let
   # Helper functions
-  turnMimeappSetToString = mimeappSet: builtins.concatStringsSep "\n" (
-    lib.attrsets.mapAttrsToList (name: value: let
-      listValue =
-        if builtins.isList value
-        then builtins.concatStringsSep ";" value
-        else value
-      ;
-    in "${name}=${listValue};") mimeappSet
-  );
+  turnMimeappSetToString = mimeappSet:
+    builtins.concatStringsSep "\n" (
+      lib.attrsets.mapAttrsToList (name: value: let
+        listValue =
+          if builtins.isList value
+          then builtins.concatStringsSep ";" value
+          else value;
+      in "${name}=${listValue};")
+      mimeappSet
+    );
   generateDesktopMimeappFile = {
     browsApp,
     emailApp,
@@ -62,25 +60,26 @@ in {
     mimeApps = {
       enable = true;
       # Default applications to launch stuff with
-      defaultApplications = {
-        # Zathura has separate launchers depending
-        "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
-        "image/vnd.djvu" = "zathura-djvu.desktop";
-        "image/vnd.djvu+multipage" = "zathura-djvu.desktop";
-        # Let default handler be firefox, probably can handle
-        "x-scheme-handler/default" = "firefox.desktop";
-        "application/msword" = "libreoffice-writer.desktop";
-        "x-scheme-handler/rdp" = "org.remmina.Remmina.desktop";
-        "x-scheme-handler/spice" = "org.remmina.Remmina.desktop";
-        "x-scheme-handler/vnc" = "org.remmina.Remmina.desktop";
-        "x-scheme-handler/remmina" = "org.remmina.Remmina.desktop";
-        "application/x-remmina" = "org.remmina.Remmina.desktop";
-      } // (import ./brows.nix "firefox.desktop")
+      defaultApplications =
+        {
+          # Zathura has separate launchers depending
+          "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+          "image/vnd.djvu" = "zathura-djvu.desktop";
+          "image/vnd.djvu+multipage" = "zathura-djvu.desktop";
+          # Let default handler be firefox, probably can handle
+          "x-scheme-handler/default" = "firefox.desktop";
+          "application/msword" = "libreoffice-writer.desktop";
+          "x-scheme-handler/rdp" = "org.remmina.Remmina.desktop";
+          "x-scheme-handler/spice" = "org.remmina.Remmina.desktop";
+          "x-scheme-handler/vnc" = "org.remmina.Remmina.desktop";
+          "x-scheme-handler/remmina" = "org.remmina.Remmina.desktop";
+          "application/x-remmina" = "org.remmina.Remmina.desktop";
+        }
+        // (import ./brows.nix "firefox.desktop")
         // (import ./image.nix "vimiv.desktop")
         // (import ./audio.nix "vlc.desktop")
         // (import ./video.nix "smplayer.desktop")
-        // (import ./texts.nix "nvim.desktop")
-        ;
+        // (import ./texts.nix "nvim.desktop");
       associations = let
         browsApps = [
           "org.qutebrowser.qutebrowser.desktop"
@@ -103,8 +102,8 @@ in {
           "org.kde.kwrite.desktop"
         ];
         pdfFtApps = [
-            "okularApplication_pdf.desktop"
-            "firefox.desktop"
+          "okularApplication_pdf.desktop"
+          "firefox.desktop"
         ];
         filesApps = [
           "nnn.desktop"
@@ -122,31 +121,33 @@ in {
         ];
       in {
         # Added associations; associate file types with these apps
-        added = {
-          # Raw image processing with darktable
-          "image/raw" = "darktable.desktop";
-          "image/heif" = "darktable.desktop";
-          "image/dng" = "darktable.desktop";
-          "image/x-adobe-dng" = "darktable.desktop";
-          # Document types
-          "application/msword" = "libreoffice-writer.desktop";
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "libreoffice-writer.desktop";
-          "application/vnd.oasis.opendocument.presentation" = [
-            "libreoffice-impress.desktop"
-            "org.pwmt.zathura-cb.desktop"
-          ];
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "libreoffice-calc.desktop";
-          "application/vnd.oasis.opendocument.spreadsheet" = "libreoffice-calc.desktop";
-          # Djvu files, zathura has separate launchers for this
-          "image/vnd.djvu" = "zathura-djvu.desktop";
-          "image/vnd.djvu+multipage" = "zathura-djvu.desktop";
-          # Remotes
-          "application/x-remmina" = "org.remmina.Remmina.desktop";
-          "x-scheme-handler/rdp" = "org.remmina.Remmina.desktop";
-          "x-scheme-handler/spice" = "org.remmina.Remmina.desktop";
-          "x-scheme-handler/vnc" = "org.remmina.Remmina.desktop";
-          "x-scheme-handler/remmina" = "org.remmina.Remmina.desktop";
-        } // (import ./brows.nix browsApps)
+        added =
+          {
+            # Raw image processing with darktable
+            "image/raw" = "darktable.desktop";
+            "image/heif" = "darktable.desktop";
+            "image/dng" = "darktable.desktop";
+            "image/x-adobe-dng" = "darktable.desktop";
+            # Document types
+            "application/msword" = "libreoffice-writer.desktop";
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "libreoffice-writer.desktop";
+            "application/vnd.oasis.opendocument.presentation" = [
+              "libreoffice-impress.desktop"
+              "org.pwmt.zathura-cb.desktop"
+            ];
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "libreoffice-calc.desktop";
+            "application/vnd.oasis.opendocument.spreadsheet" = "libreoffice-calc.desktop";
+            # Djvu files, zathura has separate launchers for this
+            "image/vnd.djvu" = "zathura-djvu.desktop";
+            "image/vnd.djvu+multipage" = "zathura-djvu.desktop";
+            # Remotes
+            "application/x-remmina" = "org.remmina.Remmina.desktop";
+            "x-scheme-handler/rdp" = "org.remmina.Remmina.desktop";
+            "x-scheme-handler/spice" = "org.remmina.Remmina.desktop";
+            "x-scheme-handler/vnc" = "org.remmina.Remmina.desktop";
+            "x-scheme-handler/remmina" = "org.remmina.Remmina.desktop";
+          }
+          // (import ./brows.nix browsApps)
           // (import ./image.nix imageApps)
           // (import ./audio.nix audioApps)
           // (import ./video.nix videoApps)
@@ -154,8 +155,7 @@ in {
           // (import ./pdfFt.nix pdfFtApps)
           // (import ./files.nix filesApps)
           // (import ./archv.nix archvApps)
-          // (import ./gpsLc.nix gpsLcApps)
-          ;
+          // (import ./gpsLc.nix gpsLcApps);
       };
     };
   };

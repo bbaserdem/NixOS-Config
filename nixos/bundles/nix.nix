@@ -14,7 +14,6 @@
     };
   };
 
-
   # Package manager config
   nix = {
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
@@ -24,7 +23,7 @@
       options = "--delete-older-than 60d";
     };
     settings = {
-      experimental-features = [ "nix-command" "flakes"];
+      experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
     };
     extraOptions = ''

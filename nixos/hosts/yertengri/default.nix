@@ -23,7 +23,6 @@
 
   # Module toggles
   myNixOS = {
-
     # Enable default user generation
     defaultUser.enable = true;
     userName = "batuhan";

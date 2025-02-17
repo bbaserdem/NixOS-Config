@@ -4,7 +4,6 @@
   pkgs,
   ...
 }: {
-
   # Enable colors
   stylix.targets.zathura.enable = true;
 
@@ -25,7 +24,7 @@
       scroll-step = 50;
       # Synctex for LaTeX
       synctex = true;
-      synctex-editor-command = "nvim --headless -c \\\"VimtexInverseSearch %l '%f'\\\"";
+      synctex-editor-command = "nx --headless -c \\\"VimtexInverseSearch %l '%f'\\\"";
       # Colors
       #default-bg = "#${colors.base00}";
       #default-fg = "#${colors.base01}";

@@ -1,12 +1,7 @@
 # Language and keyboard settings
-{
-  lib,
-  ...
-}: {
-  
+{lib, ...}: {
   # Home settings
   home = {
-
     # Set layout
     keyboard = {
       layout = "us,tr,us";
@@ -24,7 +19,6 @@
 
   # Dconf settings
   dconf.settings = {
-
     # IBUS related options (for emoji and utf input)
     "desktop/ibus/general" = {
       use-system-keyboard-layout = true;
@@ -55,6 +49,5 @@
         "grp:alt_caps_toggle"
       ];
     };
-
   };
 }

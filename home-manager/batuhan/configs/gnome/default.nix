@@ -4,7 +4,6 @@
   lib,
   ...
 }: {
-
   # Enable stylix themeing
   stylix.targets = {
     gnome.enable = true;
@@ -31,7 +30,6 @@
 
   # Configure through dconf
   dconf.settings = {
-  
     # Background style
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
@@ -123,6 +121,5 @@
     "org/gnome/shell/extensions/user-theme" = {
       name = "Stylix";
     };
-    
   };
 }

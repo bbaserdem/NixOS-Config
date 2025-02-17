@@ -1,9 +1,5 @@
 # Configuring Scrobbler
-{
-  config,
-  ...
-}: {
-
+{config, ...}: {
   # Scrobbler token
   sops.secrets.listenbrainz = {};
 
@@ -17,5 +13,4 @@
       };
     };
   };
-
 }

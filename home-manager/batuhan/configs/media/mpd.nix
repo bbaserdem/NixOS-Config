@@ -3,8 +3,7 @@
   pkgs,
   ...
 }: {
-
-  # MPD configuration 
+  # MPD configuration
   services.mpd = {
     enable = true;
     musicDirectory = config.xdg.userDirs.music;
@@ -56,5 +55,4 @@
     multimediaKeys = true;
     notifications = false;
   };
-
 }

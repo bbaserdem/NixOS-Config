@@ -4,10 +4,11 @@
   inputs,
   system,
   ...
-}: pkgs.mkShell {
+}:
+pkgs.mkShell {
   buildInputs = [
     # includes astal3 astal4 astal-io by default
-    (inputs.ags.packages.${system}.default.override { 
+    (inputs.ags.packages.${system}.default.override {
       extraPackages = [
         # cherry pick packages
       ];

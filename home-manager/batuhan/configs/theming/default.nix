@@ -4,7 +4,6 @@
   pkgs,
   ...
 }: {
-
   # Set our cursor
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";
@@ -17,10 +16,10 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      emoji = [ "Noto Color Emoji" ];
-      monospace = [ "IMB 3270" ];
-      serif = [ "Caladea" ];
-      sansSerif = [ "Source Sans Pro" ];
+      emoji = ["Noto Color Emoji"];
+      monospace = ["IMB 3270"];
+      serif = ["Caladea"];
+      sansSerif = ["Source Sans Pro"];
     };
   };
 
@@ -68,8 +67,7 @@
       [General]
       theme=catppuccin-mocha-sapphire
     '';
-    "Kvantum/catppuccin-mocha-sapphire".source = 
-      "${pkgs.catppuccin-sapphire-mocha-kvantum}/share/Kvantum/catppuccin-mocha-sapphire";
+    "Kvantum/catppuccin-mocha-sapphire".source = "${pkgs.catppuccin-sapphire-mocha-kvantum}/share/Kvantum/catppuccin-mocha-sapphire";
   };
 
   home.packages = with pkgs; [

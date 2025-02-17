@@ -1,8 +1,5 @@
 # Module that brings in fonts
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   fonts = {
     enableDefaultPackages = true;
     # Fonts we will use

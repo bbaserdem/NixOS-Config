@@ -1,4 +1,4 @@
-{ pkgs, ... }: let
+{pkgs, ...}: let
   to-opus = pkgs.callPackage ./convert2opus.nix {};
   flac-2-opus = pkgs.callPackage ./convert_flac-2-opus.nix {};
   m4a-2-opus = pkgs.callPackage ./convert_m4a-2-opus.nix {};
@@ -24,7 +24,6 @@
   };
   syncDAC = pkgs.callPackage ./syncDAC.nix {};
   playlist-2-android = pkgs.callPackage ./playlist-2-android.nix {};
-
 in (pkgs.symlinkJoin {
   name = "user-audio";
   paths = [

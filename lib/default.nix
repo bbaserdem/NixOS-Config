@@ -12,10 +12,11 @@
   rootDir = "${inputs.self}";
 
   # My make-if functions
-  mkIfElse = p: yes: no: inputs.nixpkgs.lib.mkMerge [
-    (inputs.nixpkgs.lib.mkIf p yes)
-    (inputs.nixpkgs.lib.mkIf (!p) no)
-  ];
+  mkIfElse = p: yes: no:
+    inputs.nixpkgs.lib.mkMerge [
+      (inputs.nixpkgs.lib.mkIf p yes)
+      (inputs.nixpkgs.lib.mkIf (!p) no)
+    ];
   mkUnless = p: no: inputs.nixpkgs.lib.mkIf (!p);
 
   # ========================== Buildables ========================== #
