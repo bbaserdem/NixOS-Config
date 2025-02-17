@@ -29,7 +29,7 @@
             # Pass configuration to nixd
             nix = {
               inherit (args) host user;
-              flake = outputs.self;
+              flake = outputs.lib.rootDir;
             };
             # Pass configuration to obsidian.nvim
             obsidian.workspaces = [
