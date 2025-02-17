@@ -1007,11 +1007,11 @@
         "vimspell-tr": "vimspell-tr"
       },
       "locked": {
-        "lastModified": 1739763253,
-        "narHash": "sha256-gLbrAkUkYy77WRN+ZQLAqISYM2F1Z4P78gepNBqHTZo=",
+        "lastModified": 1739766389,
+        "narHash": "sha256-WJHG98Jl9P3DjrRtinASFqDSLaYaEHeOcinpREUt8so=",
         "owner": "bbaserdem",
         "repo": "NixCats",
-        "rev": "ed28f81cae25d03af9987482f6f2fabb95c019f7",
+        "rev": "35c655fae2153339e758bc224a4d5c74261665f4",
         "type": "github"
       },
       "original": {
@@ -1161,11 +1161,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1739764087,
-        "narHash": "sha256-0Eh+t1AccGCoqvailKopAjY8QeCfX21S3o7xZ/+Js5c=",
+        "lastModified": 1739765537,
+        "narHash": "sha256-HUZO5nFLV7FiBsDQ18EXQg6xFspv1zwFZdo5HDEctJE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "69bd866c00cc718c959c8ce3d91fdcb521c13275",
+        "rev": "ce08c4fc6e533f485797904ecc179d6a07302719",
         "type": "github"
       },
       "original": {
