@@ -9,13 +9,14 @@
   # We will override the full nixCats with our flake info.
   myNixCats = pkgs.neovim-nixCats-full.override (prev: {
     packageDefinitions = prev.packageDefinitions // {
-      myCats =
+      myNixCats =
         pkgs.neovim-nixCats-full.utils.mergeCatDefs
         prev.packageDefinitions.neovim-nixCats-full
         ({ pkgs, ... }: {
           settings = {
             aliases = [
               # Don't need the full prefix
+              "neovim-nixCats"
               "nvim-nixCats"
               "neovimCats"
               "nvimCats"
