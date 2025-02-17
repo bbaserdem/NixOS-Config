@@ -4,7 +4,7 @@
 "-----GENERAL-----"
 "-----------------"
 
-set vicmd=nvim
+set vicmd=nx
 
 " Set conventional trash dir
 set trashdir="~/.local/share/Trash"
