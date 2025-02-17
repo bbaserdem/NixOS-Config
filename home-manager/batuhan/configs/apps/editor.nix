@@ -7,10 +7,10 @@
 } @ args: let
 
   # We will override the full nixCats with our flake info.
-  myCats = pkgs.nixCats-full.override (prev: {
+  myNixCats = pkgs.neovim-nixCats-full.override (prev: {
     packageDefinitions = prev.packageDefinitions // {
       myCats =
-        pkgs.nixCats-full.utils.mergeCatDefs
+        pkgs.neovim-nixCats-full.utils.mergeCatDefs
         prev.packageDefinitions.neovim-nixCats-full
         ({ pkgs, ... }: {
           settings = {
@@ -40,7 +40,7 @@
           };
         });
     };
-    name = "myCats";
+    name = "myNixCats";
   });
 
 in {
@@ -48,7 +48,7 @@ in {
   # Get our nixcats, and use it as our default editor with the nx command 
   home = {
     packages = [
-      myCats
+      myNixCats
     ];
     sessionVariables = {
       EDITOR = "nx";
