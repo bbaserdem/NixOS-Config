@@ -1008,11 +1008,11 @@
         "vimspell-tr": "vimspell-tr"
       },
       "locked": {
-        "lastModified": 1740352500,
-        "narHash": "sha256-5gec5co5xmI6CT7H7CmSoqeWDfYepuF0Mo0ok1vzsMY=",
+        "lastModified": 1740412614,
+        "narHash": "sha256-gQrQamvw7k2zHa5mYMVcBcRJqhm/IXW/i/f0402zGn4=",
         "owner": "bbaserdem",
         "repo": "NixCats",
-        "rev": "c2ae5cb14791a96f3a0a4378658537bc551a5d48",
+        "rev": "98cfcc814199e4bbddc90b4472faa17ae00cba0a",
         "type": "github"
       },
       "original": {
