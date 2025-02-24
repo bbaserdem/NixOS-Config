@@ -11,8 +11,6 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      # Flake overlays
-      inputs.nixCats.overlays.neovim-nixCats-none
     ];
   };
 

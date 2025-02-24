@@ -14,51 +14,8 @@
     )
     config.lib.stylix.colors
   );
-
-  # We will override the full nixCats with our flake info.
-  myNixCats = pkgs.neovim-nixCats-full.override (prev: {
-    packageDefinitions =
-      prev.packageDefinitions
-      // {
-        myNixCats =
-          pkgs.neovim-nixCats-full.utils.mergeCatDefs
-          prev.packageDefinitions.neovim-nixCats-full
-          ({pkgs, ...}: {
-            settings = {
-              aliases = [
-                # Don't need the full prefix
-                "neovim-nixCats"
-                "nvim-nixCats"
-                "neovimCats"
-                "nvimCats"
-                "nx"
-              ];
-              # Make us use the local nvim config
-              configDirName = "nvim-nixCats";
-            };
-            extra = {
-              # Pass configuration to nixd
-              nix = {
-                inherit (args) host user;
-                flake = outputs.lib.rootDir;
-              };
-              colorscheme = {
-                base16 = stylix16;
-              };
-              # Pass configuration to obsidian.nvim
-              obsidian.workspaces = [
-                {
-                  name = "Personal";
-                  path = config.xdg.userDirs.extraConfig.XDG_NOTES_DIR;
-                }
-              ];
-            };
-          });
-      };
-    name = "myNixCats";
-  });
 in {
-  # NixCats
+  # Neovim nixCats
   nixCats = {
     enable = true;
     nixpkgs_version = inputs.nixpkgs-unstable;
@@ -83,7 +40,7 @@ in {
             flake = outputs.lib.rootDir;
           };
           colorscheme = {
-            base16 = stylix16;
+            base16 = config.lib.stylix.colors.withHashtag;
           };
           # Pass configuration to obsidian.nvim
           obsidian.workspaces = [
@@ -97,21 +54,8 @@ in {
     };
   };
 
-  # Get our nixcats, and use it as our default editor with the nx command
-  home = {
-    packages = [
-      #myNixCats
-    ];
-    sessionVariables = {
-      EDITOR = "nx";
-    };
-  };
-
-  # Can we enable stylix?
-  stylix.targets.neovim = {
-    enable = true;
-    plugin = "mini.base16";
-  };
+  # Make us the default
+  home.sessionVariables.EDITOR = "nx";
 
   # Enable neovide; ide for neovim
   programs.neovide = {
