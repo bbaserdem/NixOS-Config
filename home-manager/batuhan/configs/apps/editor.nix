@@ -58,11 +58,6 @@
     name = "myNixCats";
   });
 in {
-  # Doing module imports
-  imports = [
-    inputs.nixCats.homeManagerModules.default
-  ];
-
   # NixCats
   nixCats.enable = false;
 
