@@ -39,6 +39,11 @@
       shell_integration = true;
     };
     extraConfig = ''
+      # Liberate ctrl+tab
+      map ctrl+tab        send_text normal,application \x1b[9;5u
+      map ctrl+shift+tab  send_text normal,application \x1b[9;6u
+
+      # Fonts I want
       bold_font           Iosevka Heavy
       italic_font         Iosevka Light Italic
       bold_italic_font    Iosevka ExtraBold Oblique
@@ -46,6 +51,7 @@
       font_features       Iosevka-Heavy               +dlig +ss05
       font_features       Iosevka-Light-Italic        +dlig +ss05
       font_features       Iosevka-ExtraBold-Oblique   +dlig +ss05
+
       # Nerd Font override
       # https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
       symbol_map U+E5FA-U+E62B    Symbols Nerd Font Mono

@@ -5,6 +5,14 @@
   pkgs,
   ...
 } @ args: let
+  # Grab stylix override
+  stylix16 = builtins.mapAttrs (k: v: "#" + v) (
+    pkgs.lib.filterAttrs (
+      k: v:
+        builtins.match "base0[0-9A-F]" k != null
+    )
+    config.lib.stylix.colors
+  );
   # We will override the full nixCats with our flake info.
   myNixCats = pkgs.neovim-nixCats-full.override (prev: {
     packageDefinitions =
@@ -31,6 +39,9 @@
               nix = {
                 inherit (args) host user;
                 flake = outputs.lib.rootDir;
+              };
+              colorscheme = {
+                base16 = stylix16;
               };
               # Pass configuration to obsidian.nvim
               obsidian.workspaces = [
