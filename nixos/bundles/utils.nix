@@ -36,7 +36,6 @@
       sudo # Privilege escalation
       inotify-tools # File watching
       killall # Program killer
-      neovim-nixCats-none # A bare-bones nvim instance
     ];
     # Let us define global sudo and visual editors
     variables = {
