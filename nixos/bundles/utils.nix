@@ -10,14 +10,6 @@
     enable = true;
     nixpkgs_version = inputs.nixpkgs;
     packageNames = ["neovim-nixCats-none"];
-    packageDefinitions.replace = {
-      neovim-nixCats-none = {pkgs, ...}: {
-        extra.colorscheme = {
-          name = "minired";
-          translucent = false;
-        };
-      };
-    };
   };
 
   environment = {
