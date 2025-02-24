@@ -59,12 +59,48 @@
   });
 in {
   # NixCats
-  nixCats.enable = false;
+  nixCats = {
+    enable = true;
+    nixpkgs_version = inputs.nixpkgs-unstable;
+    packageNames = ["neovim-nixCats-full"];
+    packageDefinitions.replace = {
+      neovim-nixCats-full = {pkgs, ...}: {
+        settings = {
+          aliases = [
+            # Don't need the full prefix
+            "neovim-nixCats"
+            "nvim-nixCats"
+            "neovimCats"
+            "nvimCats"
+            "nx"
+          ];
+          configDirName = "nvim-nixCats";
+        };
+        extra = {
+          # Pass configuration to nixd
+          nix = {
+            inherit (args) host user;
+            flake = outputs.lib.rootDir;
+          };
+          colorscheme = {
+            base16 = stylix16;
+          };
+          # Pass configuration to obsidian.nvim
+          obsidian.workspaces = [
+            {
+              name = "Personal";
+              path = config.xdg.userDirs.extraConfig.XDG_NOTES_DIR;
+            }
+          ];
+        };
+      };
+    };
+  };
 
   # Get our nixcats, and use it as our default editor with the nx command
   home = {
     packages = [
-      myNixCats
+      #myNixCats
     ];
     sessionVariables = {
       EDITOR = "nx";
