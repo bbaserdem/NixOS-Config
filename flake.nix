@@ -38,7 +38,7 @@
     # Nixcats for neovim management
     nixCats = {
       url = "github:bbaserdem/NixCats";
-      #inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     # Fan control for framework laptop
     fw-fanctrl = {
