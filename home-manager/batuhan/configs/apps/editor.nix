@@ -1,5 +1,6 @@
 # Neovim config
 {
+  inputs,
   outputs,
   config,
   pkgs,
@@ -13,6 +14,7 @@
     )
     config.lib.stylix.colors
   );
+
   # We will override the full nixCats with our flake info.
   myNixCats = pkgs.neovim-nixCats-full.override (prev: {
     packageDefinitions =
@@ -56,6 +58,14 @@
     name = "myNixCats";
   });
 in {
+  # Doing module imports
+  imports = [
+    inputs.nixCats.homeManagerModules.default
+  ];
+
+  # NixCats
+  nixCats.enable = false;
+
   # Get our nixcats, and use it as our default editor with the nx command
   home = {
     packages = [
