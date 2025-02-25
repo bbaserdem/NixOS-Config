@@ -7,13 +7,10 @@
   ...
 } @ args: let
   # Grab stylix override
-  stylix16 = builtins.mapAttrs (k: v: "#" + v) (
-    pkgs.lib.filterAttrs (
-      k: v:
-        builtins.match "base0[0-9A-F]" k != null
-    )
-    config.lib.stylix.colors
-  );
+  stylix16 =
+    pkgs.lib.filterAttrs
+    (k: v: builtins.match "base0[0-9A-F]" k != null)
+    config.lib.stylix.colors.withHashtag;
 in {
   # Neovim nixCats
   nixCats = {
@@ -40,7 +37,7 @@ in {
             flake = outputs.lib.rootDir;
           };
           colorscheme = {
-            base16 = config.lib.stylix.colors.withHashtag;
+            base16 = stylix16;
           };
           # Pass configuration to obsidian.nvim
           obsidian.workspaces = [
@@ -55,7 +52,9 @@ in {
   };
 
   # Make us the default
-  home.sessionVariables.EDITOR = "nx";
+  home.sessionVariables.EDITOR = let
+    nvimpkg = config.nixCats.out.packages.neovim-nixCats-full;
+  in "${nvimpkg}/bin/${nvimpkg.nixCats_packageName}";
 
   # Enable neovide; ide for neovim
   programs.neovide = {
