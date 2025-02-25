@@ -14,7 +14,7 @@
     ./ncmpcpp.nix
   ];
 
-  home.packages = [
+  home.packages = with pkgs; [
     # Use cantata as graphical frontend
     pkgs.nur.repos.bandithedoge.cantata
     # Music download tool
