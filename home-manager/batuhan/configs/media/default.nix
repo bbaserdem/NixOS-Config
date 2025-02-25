@@ -14,8 +14,10 @@
     ./ncmpcpp.nix
   ];
 
-  # Use cantata as graphical frontend
   home.packages = [
+    # Use cantata as graphical frontend
     pkgs.nur.repos.bandithedoge.cantata
+    # Music download tool
+    streamrip
   ];
 }
