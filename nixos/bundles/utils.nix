@@ -8,7 +8,7 @@
   # Editor to use
   nixCats = {
     enable = true;
-    nixpkgs_version = inputs.nixpkgs;
+    nixpkgs_version = inputs.nixpkgs-unstable;
     packageNames = ["neovim-nixCats-none"];
   };
 
