@@ -22,8 +22,8 @@ in {
 
   # Bash options
   programs.bash = {
-    # Needed for starship prompt
-    blesh.enable = true;
+    # Needed for starship prompt right side
+    blesh.enable = false;
     promptInit = ''
       # Starship prompt default
       eval "$(${starship-bin} init bash)"
