@@ -42,6 +42,7 @@
     consolefont.enable = true;
     droidcam.enable = true;
     fonts.enable = true;
+    gaming.enable = true;
     grub = {
       enable = true;
       flavor = "dark";
@@ -49,7 +50,6 @@
     keymap.enable = true;
     matlab.enable = false;
     polkit.enable = true;
-    steam.enable = true;
     virtualization.enable = true;
 
     # Services

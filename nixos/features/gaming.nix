@@ -1,3 +1,4 @@
+# <flake>/nixos/features/gaming.nix
 # Module that enables steam, has to be system level
 {pkgs, ...}: {
   # Enable steam
@@ -18,8 +19,11 @@
   };
   # Enable gaming daemon
   programs.gamemode.enable = true;
-  # Install machine performance viewer
+  # Install machine performance viewer, and other gaming things
   environment.systemPackages = with pkgs; [
+    lutris
+    heroic
+    rpcs3
     mangohud
     protonup
     bubblewrap
