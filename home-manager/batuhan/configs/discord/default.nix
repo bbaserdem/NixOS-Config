@@ -1,5 +1,9 @@
 # Configuring Nixcord
-{...}: {
+{inputs, ...}: {
+  imports = [
+    inputs.nixcord.homeManagerModules.nixcord
+  ];
+
   # Enable themeing
   # nixcord & vencord in stylix unstable
   stylix.targets = {

@@ -1,9 +1,15 @@
 # Main theming stuff
 {
+  inputs,
   pkgs,
   config,
   ...
 }: {
+  # Load stylix
+  imports = [
+    inputs.stylix.homeManagerModules.stylix
+  ];
+
   stylix = {
     enable = true;
     autoEnable = false;

@@ -18,6 +18,7 @@ in {
     # ./kanshi.nix      # Auto layout for hotplugging monitors
     # ./nwg-drawer.nix  # App launcher/drawer
     # ./swww.nix        # Wallpaper manager
+    inputs.ags.homeManagerModules.default
   ];
 
   # Stylix integration

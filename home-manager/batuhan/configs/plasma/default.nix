@@ -1,5 +1,12 @@
 # Configuring plasma
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [
+    #inputs.plasma-manager.homeManagerModules.plasma-manager
+  ];
   # Enable KDE connect
   services.kdeconnect = {
     enable = true;

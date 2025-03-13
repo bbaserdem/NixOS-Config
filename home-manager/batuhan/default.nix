@@ -6,16 +6,9 @@
   ...
 }: {
   imports = [
-    # External imports
-    inputs.ags.homeManagerModules.default
-    inputs.nixCats.homeManagerModules.default
-    inputs.nixcord.homeManagerModules.nixcord
-    #inputs.plasma-manager.homeManagerModules.plasma-manager
-    inputs.sops-nix.homeManagerModules.sops
-    inputs.stylix.homeManagerModules.stylix
     # My variables
     outputs.homeManagerModules.userConfig
-
+    # My modules
     ./configs/apps
     ./configs/autorandr
     ./configs/calendar
@@ -57,6 +50,19 @@
     username = "batuhan";
     homeDirectory = "/home/batuhan";
   };
+  nixpkgs = {
+    overlays = [
+      # My overlays
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+      # External overlays
+      inputs.nur.overlays.default
+    ];
+    config = {
+      allowUnfree = true;
+    };
+  };
 
   # Enable home-manager
   programs.home-manager.enable = true;
@@ -75,21 +81,6 @@
     package = pkgs.pantheon.elementary-wallpapers;
     directory = "share/backgrounds";
     extension = "jpg";
-  };
-
-  nixpkgs = {
-    overlays = [
-      # My overlays
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-      # External overlays
-      inputs.nixCats.overlays.default
-      inputs.nur.overlays.default
-    ];
-    config = {
-      allowUnfree = true;
-    };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
