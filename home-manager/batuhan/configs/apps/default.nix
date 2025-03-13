@@ -67,9 +67,6 @@
     exiftool
     fzf
     wl-clipboard
-    # Gaming
-    lutris
-    heroic
     # Scripts
     user-audio
     # Apps to setup

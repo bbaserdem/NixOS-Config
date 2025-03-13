@@ -27,6 +27,7 @@
     consolefont.enable = true;
     droidcam.enable = true;
     fonts.enable = true;
+    gaming.enable = false;
     grub = {
       enable = true;
       flavor = "bigSur";
@@ -34,7 +35,6 @@
     keymap.enable = true;
     matlab.enable = false;
     polkit.enable = true;
-    steam.enable = false;
     virtualization.enable = true;
     # Services
     services = {
@@ -43,6 +43,7 @@
       earlyoom.enable = true;
       geoclue.enable = true;
       fingerprint.enable = true;
+      fwupd.enable = true;
       kdeconnect.enable = true;
       mariadb.enable = true;
       media.enable = true;

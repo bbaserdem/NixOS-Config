@@ -24,6 +24,7 @@
       gparted # Partition manager, gui
       udisks # Storage device manager
       lshw # Hardware utility
+      dmidecode # Hardware utility
       polkit # Privilege utility
       sudo # Privilege escalation
       inotify-tools # File watching

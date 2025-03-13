@@ -12,6 +12,10 @@
     (k: v: builtins.match "base0[0-9A-F]" k != null)
     config.lib.stylix.colors.withHashtag;
 in {
+  imports = [
+    inputs.nixCats.homeManagerModules.default
+  ];
+
   # Neovim nixCats
   nixCats = {
     enable = true;
