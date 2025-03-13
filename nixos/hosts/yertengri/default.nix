@@ -26,7 +26,7 @@
     # Enable default user generation
     defaultUser.enable = true;
     userName = "batuhan";
-    userDesktop = "gnome";
+    userDesktop = "plasma";
 
     # Desktop
     displayManager = {
