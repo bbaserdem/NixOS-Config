@@ -37,6 +37,8 @@
         tree-dvips
         maths-symbols
         unicode-math
+        nunito
+        archivo
         ;
     };
   };
