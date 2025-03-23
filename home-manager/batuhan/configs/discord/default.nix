@@ -25,7 +25,8 @@
       enable = false;
       vencord = {
         enable = true;
-        unstable = true;
+        package = pkgs.unstable.vencord;
+        #unstable = true;
       };
       openASAR.enable = true;
     };
