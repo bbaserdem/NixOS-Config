@@ -35,7 +35,7 @@
         behind-the-overlay-revival
         betterttv
         browserpass
-        bukubrow
+        # bukubrow : removed
         castkodi
         catppuccin-gh-file-explorer
         container-tab-groups
@@ -46,7 +46,6 @@
         don-t-fuck-with-paste
         duckduckgo-privacy-essentials
         enhanced-github
-        firenvim
         flagfox
         gnome-shell-integration
         greasemonkey
