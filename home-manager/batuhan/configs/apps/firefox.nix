@@ -37,7 +37,7 @@
         browserpass
         # bukubrow : removed
         castkodi
-        catppuccin-gh-file-explorer
+        catppuccin-web-file-icons
         container-tab-groups
         container-tabs-sidebar
         containerise
