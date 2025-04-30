@@ -13,6 +13,18 @@
     generateCaches = true;
   };
 
+  # Configure bat in our user
+  programs.bat = {
+    enable = true;
+    extraPackages = with pkgs.bat-extras; [
+      prettybat
+      batwatch
+      batpipe
+      batman
+      batgrep
+      batdiff
+    ];
+  };
   # Enable color for bat
   stylix.targets.bat.enable = true;
 

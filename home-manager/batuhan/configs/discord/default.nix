@@ -1,5 +1,9 @@
 # Configuring Nixcord
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     inputs.nixcord.homeManagerModules.nixcord
   ];
@@ -19,10 +23,18 @@
     # Get vesktop without discord
     discord = {
       enable = false;
-      vencord.enable = true;
+      vencord = {
+        enable = true;
+        package = pkgs.unstable.vencord;
+        #unstable = true;
+      };
       openASAR.enable = true;
     };
-    vesktop.enable = true;
+
+    vesktop = {
+      enable = true;
+      # package = pkgs.unstable.vesktop;
+    };
 
     # Configuration for vencord
     config = {
