@@ -25,7 +25,6 @@
     # Features
     bluetooth.enable = true;
     consolefont.enable = true;
-    droidcam.enable = true;
     fonts.enable = true;
     gaming.enable = false;
     grub = {
@@ -40,6 +39,7 @@
     services = {
       avahi.enable = true;
       cups.enable = true;
+      droidcam.enable = true;
       earlyoom.enable = true;
       geoclue.enable = true;
       fingerprint.enable = true;
