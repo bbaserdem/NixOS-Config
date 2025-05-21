@@ -77,10 +77,24 @@ in {
             params = {cleanoutDays = "60";};
           };
         };
-        downloads = {
-          label = "Downloads";
-          id = "Downloads_batuhan";
-          path = "~/Sort/Downloads";
+        sort = {
+          label = "Sort";
+          id = "Sort_batuhan";
+          path = "~/Sort";
+          type = "sendreceive";
+          devices = [
+            "yel-ana"
+            "yertengri"
+          ];
+          versioning = {
+            type = "trashcan";
+            params = {cleanoutDays = "10";};
+          };
+        };
+        projects = {
+          label = "Projects";
+          id = "Projects_batuhan";
+          path = "~/Projects";
           type = "sendreceive";
           devices = [
             "yel-ana"
