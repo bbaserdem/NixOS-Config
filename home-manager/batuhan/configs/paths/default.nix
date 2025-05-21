@@ -38,7 +38,7 @@
 
   # My flake directory
   home.sessionVariables = {
-    FLAKE = "${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixOS";
+    NH_FLAKE = "${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixOS";
   };
 
   # Aliases to navigate quickly
