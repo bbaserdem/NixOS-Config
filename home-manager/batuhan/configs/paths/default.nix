@@ -1,5 +1,7 @@
 #
-{config, ...}: {
+{config, ...}: let
+  flakeDir = "${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixOS";
+in {
   # Local binaries
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
@@ -36,14 +38,15 @@
     };
   };
 
-  # My flake directory
+  # My flake directory, used with NH as well
   home.sessionVariables = {
-    NH_FLAKE = "${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixOS";
+    FLAKE = "${flakeDir}";
+    NH_FLAKE = "${flakeDir}";
   };
 
   # Aliases to navigate quickly
   programs.zsh.shellAliases = {
-    cd-flake = "cd ${config.home.sessionVariables.FLAKE}";
+    cd-flake = "cd ${flakeDir}";
     cd-ncats = "cd ${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixCats";
     cd-projs = "cd ${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}";
     cd-notes = "cd ${config.xdg.userDirs.extraConfig.XDG_NOTES_DIR}";
