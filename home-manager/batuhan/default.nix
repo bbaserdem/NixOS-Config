@@ -13,7 +13,6 @@
     ./configs/autorandr
     ./configs/calendar
     ./configs/direnv
-    ./configs/discord
     ./configs/email
     ./configs/git
     ./configs/gnome
