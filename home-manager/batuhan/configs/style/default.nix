@@ -7,7 +7,7 @@
 }: {
   # Load stylix
   imports = [
-    inputs.stylix.homeModules.stylix
+    inputs.stylix.homeManagerModules.stylix
   ];
 
   stylix = {
