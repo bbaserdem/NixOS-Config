@@ -60,20 +60,20 @@
     };
 
     # # Add external plugins to beets
-    # beets = prev.beets.override {
-    #   pluginOverrides = {
-    #     alternatives = {
-    #       enable = true;
-    #       propagatedBuildInputs = [prev.beetsPackages.alternatives];
-    #     };
-    #     copyartifacts = {
-    #       enable = true;
-    #       propagatedBuildInputs = [prev.beetsPackages.copyartifacts];
-    #     };
-    #     # Bucket plugin failing test, disable for now for build
-    #     bucket.enable = false;
-    #   };
-    # };
+    beets = prev.beets.override {
+      pluginOverrides = {
+        alternatives = {
+          enable = true;
+          propagatedBuildInputs = [prev.beetsPackages.alternatives];
+        };
+        copyartifacts = {
+          enable = true;
+          propagatedBuildInputs = [prev.beetsPackages.copyartifacts];
+        };
+        # Bucket plugin failing test, disable for now for build
+        bucket.enable = false;
+      };
+    };
 
     # Add different variants of the cattpuccin packages
     catppuccin-mocha-sddm = prev.catppuccin-sddm.override {
