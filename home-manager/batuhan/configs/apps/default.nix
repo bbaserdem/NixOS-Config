@@ -29,7 +29,7 @@
     audacity
     musescore
     picard
-    projectm
+    projectm-sdl-cpp
     chromaprint
     # Video related
     vlc
