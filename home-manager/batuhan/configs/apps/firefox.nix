@@ -28,7 +28,7 @@
     };
     profiles.batuhan = {
       isDefault = true;
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         augmented-steam
         automatic-dark
         batchcamp
@@ -65,8 +65,8 @@
         zotero-connector
       ];
       search = {
-        default = "Google";
-        privateDefault = "Google";
+        default = "google";
+        privateDefault = "google";
         force = true;
         engines = {
           "Nix Packages ${pkgs.lib.trivial.codeName}" = {
