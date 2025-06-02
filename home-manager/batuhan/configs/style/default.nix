@@ -15,7 +15,7 @@
     autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
     image = config.myHome.wallpaper.path;
-    # polarity = "dark";
+    polarity = "dark";
 
     # System fonts
     fonts = {
@@ -63,7 +63,7 @@
     targets = {
       gtk.enable = true;
       kde.enable = true;
-      xresources.enable = false;
+      xresources.enable = true;
     };
   };
 }
