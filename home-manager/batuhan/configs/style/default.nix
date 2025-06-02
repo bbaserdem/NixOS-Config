@@ -63,7 +63,7 @@
     targets = {
       gtk.enable = true;
       kde.enable = true;
-      xresources.enable = true;
+      xresources.enable = false;
     };
   };
 }
