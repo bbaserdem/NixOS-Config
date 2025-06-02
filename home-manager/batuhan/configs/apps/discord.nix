@@ -64,7 +64,6 @@
         moreKaomoji.enable = true;
         noTypingAnimation.enable = true;
         noUnblockToJump.enable = true;
-        nsfwGateBypass.enable = true;
         onePingPerDM.enable = true;
         petpet.enable = true;
         pictureInPicture.enable = true;
