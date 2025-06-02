@@ -16,7 +16,8 @@
 
   home.packages = with pkgs; [
     # Use cantata as graphical frontend
-    pkgs.nur.repos.bandithedoge.cantata
+    #pkgs.nur.repos.bandithedoge.cantata
+    cantata
     # Music download tool
     streamrip
   ];
