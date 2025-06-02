@@ -1022,11 +1022,11 @@
         "vimspell-tr": "vimspell-tr"
       },
       "locked": {
-        "lastModified": 1748875498,
-        "narHash": "sha256-jl0G0CtTJwqiY5hCYPhTerzCEOHoePO+bm1lwblkF+U=",
+        "lastModified": 1748875855,
+        "narHash": "sha256-bMjEcw2GpmoyBwmQxG0Qahmi+fJ41WQLyPl6cc6FrZE=",
         "owner": "bbaserdem",
         "repo": "NixCats",
-        "rev": "759e3c183129d73c902eda93fb873054cff2b611",
+        "rev": "a31c452a9fb66b5b6e6eabb6a53ddd4438a209a7",
         "type": "github"
       },
       "original": {
