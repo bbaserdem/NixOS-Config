@@ -181,16 +181,26 @@
           "Google".metaData.alias = "@g";
         };
       };
-      #containers = {
-      #  personal      = { name = "Personal";    id = 0; icon = "tree";        color = "blue";     };
-      #  work          = { name = "Work";        id = 1; icon = "briefcase";   color = "turquoise";};
-      #  banking       = { name = "Finance";     id = 2; icon = "dollar";      color = "green";    };
-      #  shopping      = { name = "Shopping";    id = 3; icon = "cart";        color = "yellow";   };
-      #  porn          = { name = "Explicit";    id = 4; icon = "pet";         color = "orange";   };
-      #  media         = { name = "Media";       id = 5; icon = "fruit";       color = "red";      };
-      #  productivity  = { name = "Organization";id = 6; icon = "fence";       color = "pink";     };
-      #  programming   = { name = "Programming"; id = 7; icon = "fingerprint"; color = "purple";   };
-      #};
+      containers = {
+        work = {
+          name = "Work";
+          id = 1;
+          icon = "briefcase";
+          color = "blue";
+        };
+        banking = {
+          name = "Banking";
+          id = 2;
+          icon = "dollar";
+          color = "green";
+        };
+        porn = {
+          name = "Explicit";
+          id = 3;
+          icon = "pet";
+          color = "red";
+        };
+      };
     };
   };
   home.packages = with pkgs; [
