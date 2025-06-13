@@ -178,7 +178,7 @@
             updateInterval = 24 * 60 * 60 * 1000;
             definedAliases = ["@d2"];
           };
-          "Google".metaData.alias = "@g";
+          "google".metaData.alias = "@g";
         };
       };
       containers = {
