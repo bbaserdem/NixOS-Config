@@ -3,7 +3,59 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  zshConfigEarlyInit = lib.mkBefore ''
+    #--START--ZSH Config before everything
+    if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+      source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+    fi
+    #---END---ZSH Config before everything
+
+  '';
+  zshConfigBeforeCompinit = lib.mkOrder 550 ''
+    #--START--ZSH Config before compinit
+    #---END---ZSH Config before compinit
+
+  '';
+  zshConfig = lib.mkOrder 1000 ''
+    #--START--ZSH Config
+    # Function to get nix program location
+    nix-getPackage () {
+      this_link="$(which "''${1}")"
+      readlink "''${this_link}"
+    }
+
+    # Prompt theme
+    if [[ -r "${config.xdg.configHome}/powerlevel10k/config.zsh" ]]; then
+      # prompt off
+      source "${config.xdg.configHome}/powerlevel10k/config.zsh"
+    fi
+    # Recommended by p10k to add this after enabling spaceship theme globally
+    (( ! ''${+functions[p10k]} )) || p10k finalize
+
+    # Set editor default keymap to vi (`-v`) or emacs (`-e`)
+    bindkey -v
+
+    # Make completion case-insensitive
+    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+    # Get colored ls completions, needs also ls alias
+    zstyle ':completion:*' list-colors  "''${(s.:.)LS_COLORS}"
+    # Disable native menu in favor of fzf menu, and get directory previews
+    zstyle ':completion:*' menu no
+    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+    zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+    # Run arbitrary binaries, needed for mason in neovim (not needed with nixCats)
+    # export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
+    #---END---ZSH Config
+
+  '';
+  zshConfigAfter = lib.mkOrder 1500 ''
+    #--START--ZSH Config after everything else
+    #---END---ZSH Config after everything else
+
+  '';
+in {
   # We will put the config file for powerlevel10k in it's own directory
   xdg.configFile."powerlevel10k/config.zsh" = {
     source = ./powerlevel10k_config.zsh;
@@ -67,46 +119,16 @@
         file = "share/fzf-tab/fzf-tab.plugin.zsh";
       }
     ];
-    initExtra = ''
-      # Function to get nix program location
-      nix-getPackage () {
-        this_link="$(which "''${1}")"
-        readlink "''${this_link}"
-      }
-
-      # Prompt theme
-      if [[ -r "${config.xdg.configHome}/powerlevel10k/config.zsh" ]]; then
-        # prompt off
-        source "${config.xdg.configHome}/powerlevel10k/config.zsh"
-      fi
-      # Recommended by p10k to add this after enabling spaceship theme globally
-      (( ! ''${+functions[p10k]} )) || p10k finalize
-
-      # Set editor default keymap to vi (`-v`) or emacs (`-e`)
-      bindkey -v
-
-      # Make completion case-insensitive
-      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-      # Get colored ls completions, needs also ls alias
-      zstyle ':completion:*' list-colors  "''${(s.:.)LS_COLORS}"
-      # Disable native menu in favor of fzf menu, and get directory previews
-      zstyle ':completion:*' menu no
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-      zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-      # Run arbitrary binaries, needed for mason in neovim (not needed with nixCats)
-      # export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
-    '';
+    initContent = lib.mkMerge [
+      zshConfigEarlyInit
+      zshConfigBeforeCompinit
+      zshConfig
+      zshConfigAfter
+    ];
     shellAliases = {
       ls = "ls --color";
       ll = "ls -l";
       dev = "nix develop --impure -c $SHELL";
     };
-    # For powerlevel10k instant prompt
-    initExtraFirst = ''
-      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
-    '';
   };
 }
