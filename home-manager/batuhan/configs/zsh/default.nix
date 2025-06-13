@@ -2,6 +2,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   zshConfigEarlyInit = lib.mkBefore ''
