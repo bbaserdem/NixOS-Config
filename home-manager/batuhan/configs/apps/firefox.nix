@@ -51,7 +51,7 @@
         hulu-ad-blocker
         languagetool
         mullvad
-        #multi-account-containers
+        multi-account-containers
         plasma-integration
         protondb-for-steam
         sponsorblock
