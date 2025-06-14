@@ -35,7 +35,6 @@
         behind-the-overlay-revival
         betterttv
         browserpass
-        # bukubrow : removed
         castkodi
         catppuccin-web-file-icons
         containerise
@@ -43,6 +42,7 @@
         don-t-fuck-with-paste
         duckduckgo-privacy-essentials
         enhanced-github
+        fakespot-fake-reviews-amazon
         flagfox
         gnome-shell-integration
         greasemonkey
@@ -51,12 +51,13 @@
         hulu-ad-blocker
         languagetool
         mullvad
-        multi-account-containers
+        #multi-account-containers
         plasma-integration
         protondb-for-steam
         sponsorblock
         steam-database
         ublock-origin
+        user-agent-string-switcher
         video-downloadhelper
         zotero-connector
       ];
