@@ -38,11 +38,8 @@
         # bukubrow : removed
         castkodi
         catppuccin-web-file-icons
-        container-tab-groups
-        container-tabs-sidebar
         containerise
         control-panel-for-twitter
-        df-youtube
         don-t-fuck-with-paste
         duckduckgo-privacy-essentials
         enhanced-github
@@ -53,7 +50,6 @@
         h264ify
         hulu-ad-blocker
         languagetool
-        leechblock-ng
         mullvad
         multi-account-containers
         plasma-integration
