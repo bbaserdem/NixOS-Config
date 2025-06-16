@@ -59,6 +59,7 @@
     conda
     pipx
     # Utilities
+    awscli2
     nemo-with-extensions
     virt-manager
     baobab
