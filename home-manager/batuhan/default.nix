@@ -12,7 +12,6 @@
     ./configs/apps
     ./configs/autorandr
     ./configs/calendar
-    ./configs/direnv
     ./configs/email
     ./configs/git
     ./configs/gnome
