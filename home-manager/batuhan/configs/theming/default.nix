@@ -17,7 +17,7 @@
     enable = true;
     defaultFonts = {
       emoji = ["Noto Color Emoji"];
-      monospace = ["IMB 3270"];
+      monospace = ["IBM 3270"];
       serif = ["Caladea"];
       sansSerif = ["Source Sans Pro"];
     };
