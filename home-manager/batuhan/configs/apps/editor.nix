@@ -140,7 +140,7 @@ in {
     };
   };
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs.unstable; [
     code-cursor
   ];
 }
