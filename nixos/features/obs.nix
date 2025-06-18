@@ -9,7 +9,7 @@
       waveform
       droidcam-obs
       obs-backgroundremoval
-      abs-pipewire-audio-capture
+      obs-pipewire-audio-capture
       obs-vaapi
       obs-gstreamer
       obs-vkcapture
