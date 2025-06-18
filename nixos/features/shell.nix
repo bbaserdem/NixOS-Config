@@ -9,8 +9,8 @@
     enable = true;
     interactiveOnly = true;
     presets = [
-      "nerd-font-symbols"
       "jetpack"
+      "nerd-font-symbols"
     ];
     settings = {
       follow_symlinks = true;
