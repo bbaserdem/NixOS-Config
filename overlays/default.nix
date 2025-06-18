@@ -104,20 +104,23 @@
         embeddedTheme = "black_hole";
       };
 
-    # Add some fonts to cursor code
-    code-cursor = prev.code-cursor.overrideAttrs (
-      oldAttrs: let
-        addedFonts = with prev.nerd-fonts; [
-          droid-sans-mono
-          fira-code
-          sauce-code-pro
-          jetbrains-mono
-        ];
-      in {
-        buildInputs = oldAttrs.buildInputs ++ addedFonts;
-        runtimeDependencies = oldAttrs.runtimeDependencies ++ addedFonts;
-      }
-    );
+    # Add some fonts to cursor code and pull in from unstable
+    code-cursor =
+      (
+        import inputs.nixpkgs-unstable {system = prev.system;}
+      ).code-cursor.overrideAttrs (
+        oldAttrs: let
+          addedFonts = with prev.nerd-fonts; [
+            droid-sans-mono
+            fira-code
+            sauce-code-pro
+            jetbrains-mono
+          ];
+        in {
+          buildInputs = oldAttrs.buildInputs ++ addedFonts;
+          runtimeDependencies = oldAttrs.runtimeDependencies ++ addedFonts;
+        }
+      );
 
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
