@@ -107,7 +107,10 @@
     # Add some fonts to cursor code and pull in from unstable
     code-cursor =
       (
-        import inputs.nixpkgs-unstable {system = prev.system;}
+        import inputs.nixpkgs-unstable {
+          system = prev.system;
+          config.allowUnfree = true;
+        }
       ).code-cursor.overrideAttrs (
         oldAttrs: let
           addedFonts = with prev.nerd-fonts; [
