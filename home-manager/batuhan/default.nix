@@ -28,7 +28,6 @@
     #./configs/plasma
     ./configs/qmk
     ./configs/remmina
-    ./configs/shell
     ./configs/sops
     ./configs/ssh
     ./configs/style

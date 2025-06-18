@@ -11,4 +11,7 @@
 
   # User config variables
   userConfig = import ./userConfig.nix;
+
+  # Powerlevel10k module
+  powerlevel10k = import ./powerlevel10k.nix;
 }
