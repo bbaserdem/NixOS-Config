@@ -10,4 +10,9 @@
     path = ./default;
     description = "Empty flake template";
   };
+
+  cursorWebApp = {
+    path = ./cursorWebApp;
+    description = "WebApp project template, to be used for AI based development with cursor";
+  };
 }
