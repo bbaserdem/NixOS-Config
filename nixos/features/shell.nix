@@ -9,7 +9,7 @@
     enable = true;
     interactiveOnly = true;
     presets = [
-      "jetpack"
+      #"jetpack"
       "nerd-font-symbols"
     ];
     settings = {
