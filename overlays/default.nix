@@ -114,14 +114,19 @@
       ).code-cursor.overrideAttrs (
         oldAttrs: let
           addedFonts = with prev.nerd-fonts; [
+            symbols-only
             droid-sans-mono
             fira-code
             sauce-code-pro
             jetbrains-mono
+            prev.iosevka
+          ];
+          addedPackages = with prev; [
+            kitty
           ];
         in {
-          buildInputs = oldAttrs.buildInputs ++ addedFonts;
-          runtimeDependencies = oldAttrs.runtimeDependencies ++ addedFonts;
+          buildInputs = oldAttrs.buildInputs ++ addedFonts ++ addedPackages;
+          runtimeDependencies = oldAttrs.runtimeDependencies ++ addedFonts ++ addedPackages;
         }
       );
 

@@ -4,7 +4,6 @@
     enableDefaultPackages = true;
     # Fonts we will use
     packages = with pkgs; [
-      #nerdfont-standalone # Defined in overlays, glyphs
       unstable.nerd-fonts.symbols-only
       noto-fonts-monochrome-emoji # Emoji fonts
       noto-fonts-color-emoji
