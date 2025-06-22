@@ -13,33 +13,25 @@
     ./configs/autorandr
     ./configs/calendar
     ./configs/email
-    ./configs/git
     ./configs/gnome
-    ./configs/gnupg
     #./configs/hyprland
     ./configs/keyboard
-    ./configs/man
     ./configs/media
     ./configs/mimetypes
-    ./configs/nixshells
     ./configs/nnn
     ./configs/pass
     ./configs/paths
     #./configs/plasma
     ./configs/qmk
     ./configs/remmina
-    ./configs/sops
-    ./configs/ssh
+    ./configs/security
+    ./configs/shell
     ./configs/style
-    ./configs/syncthing
     ./configs/texlive
-    ./configs/tmux
     ./configs/udiskie
     ./configs/vifm
     ./configs/virt-manager
     ./configs/yt-dlp
-    ./configs/zathura
-    ./configs/zsh
   ];
 
   # System setup

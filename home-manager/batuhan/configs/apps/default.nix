@@ -12,7 +12,9 @@
     ./firefox.nix
     ./kitty.nix
     ./newsboat.nix
+    ./syncthing.nix
     ./wezterm.nix
+    ./zathura.nix
   ];
 
   home.packages = with pkgs; [

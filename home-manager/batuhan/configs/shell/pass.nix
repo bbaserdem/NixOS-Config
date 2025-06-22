@@ -1,4 +1,4 @@
-# Syncthing
+# Password store
 {
   config,
   pkgs,
@@ -18,6 +18,7 @@
       PASSWORD_STORE_GENERATED_LENGTH = "16";
     };
   };
+
   # Shell alias for changing to the git directory
   programs.zsh.shellAliases.cd-pass = "cd ${config.programs.password-store.settings.PASSWORD_STORE_DIR}";
 }
