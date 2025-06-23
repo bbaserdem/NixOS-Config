@@ -42,7 +42,6 @@
         don-t-fuck-with-paste
         duckduckgo-privacy-essentials
         enhanced-github
-        fakespot-fake-reviews-amazon
         flagfox
         gnome-shell-integration
         greasemonkey
