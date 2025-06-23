@@ -12,7 +12,6 @@
     ./man.nix
     ./qmk.nix
     ./pass.nix
-    ./ssh.nix
     ./tmux.nix
   ];
 }
