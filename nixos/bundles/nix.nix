@@ -28,8 +28,8 @@
     };
     extraOptions = ''
       # Development related settings
-      keep-outputs = false
-      keep-derivations = false
+      keep-outputs = true
+      keep-derivations = true
       # Include pipe operators
       extra-experimental-features = pipe-operators
     '';
