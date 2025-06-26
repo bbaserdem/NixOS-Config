@@ -44,9 +44,11 @@
     # Communication
     signal-desktop
     ferdium
+    slack
     zoom-us
     webcord-vencord
     remmina
+    thunderbird
     # Documents
     calibre
     libreoffice-fresh
