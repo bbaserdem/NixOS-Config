@@ -110,7 +110,7 @@
         version = "1.1.6";
         src = prev.fetchurl {
           url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/linux/x64/Cursor-1.1.6-x86_64.AppImage";
-          hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+          hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
         };
         buildInputs = oldAttrs.buildInputs ++ addedFonts ++ addedPackages;
         runtimeDependencies = oldAttrs.runtimeDependencies ++ addedFonts ++ addedPackages;
