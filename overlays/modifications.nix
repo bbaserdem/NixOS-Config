@@ -132,7 +132,7 @@
           if prev.hostPlatform.isLinux
           then
             prev.appimageTools.extract {
-              pname = prev.pname;
+              pname = oldAttrs.pname;
               version = appVersion;
               src = source;
             }
