@@ -105,13 +105,38 @@
         addedPackages = with prev; [
           kitty
         ];
+        sources = {
+          "x86_64-linux" = prev.fetchurl {
+            url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/linux/x64/Cursor-1.1.6-x86_64.AppImage";
+            hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
+          };
+          "aarch64-linux" = prev.fetchurl {
+            url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/linux/arm64/Cursor-1.1.6-aarch64.AppImage";
+            hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
+          };
+          "x86_64-darwin" = prev.fetchurl {
+            url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/darwin/x64/Cursor-darwin-x64.dmg";
+            hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
+          };
+          "aarch64-darwin" = prev.fetchurl {
+            url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/darwin/arm64/Cursor-darwin-arm64.dmg";
+            hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
+          };
+        };
+        source = sources.${prev.hostPlatform.system};
+        appVersion = "1.1.6";
       in {
         vscodeVersion = "1.101.2";
-        version = "1.1.6";
-        src = prev.fetchurl {
-          url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/linux/x64/Cursor-1.1.6-x86_64.AppImage";
-          hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
-        };
+        version = appVersion;
+        src =
+          if prev.hostPlatform.isLinux
+          then
+            prev.appimageTools.extract {
+              pname = prev.pname;
+              version = appVersion;
+              src = source;
+            }
+          else source;
         buildInputs = oldAttrs.buildInputs ++ addedFonts ++ addedPackages;
         runtimeDependencies = oldAttrs.runtimeDependencies ++ addedFonts ++ addedPackages;
       }
