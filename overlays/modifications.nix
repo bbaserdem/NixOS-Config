@@ -100,10 +100,10 @@
           fira-code
           sauce-code-pro
           jetbrains-mono
-          prev.iosevka
         ];
         addedPackages = with prev; [
           kitty
+          task-master-ai
         ];
         sources = {
           "x86_64-linux" = prev.fetchurl {
