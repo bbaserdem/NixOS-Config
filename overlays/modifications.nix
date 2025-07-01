@@ -135,8 +135,8 @@
         if prev.hostPlatform.isLinux
         then "${oldAttrs.pname}-${appVersion}-extracted/usr/share/cursor"
         else "Cursor.app";
-      buildInputs = oldAttrs.buildInputs ++ addedFonts ++ addedPackages;
-      runtimeDependencies = oldAttrs.runtimeDependencies ++ addedFonts ++ addedPackages;
+      nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ addedFonts ++ addedPackages;
+      additionalPkgs = (oldAttrs.additionalPkgs or []) ++ addedFonts ++ addedPackages;
     }
   );
 })
