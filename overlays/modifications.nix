@@ -1,6 +1,11 @@
 # Packageset modifications
 # We need inputs to pull unstable when needed, hence pulling the inputs
-{inputs, ...}: (final: prev: {
+{inputs, ...}: let
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    system = prev.system;
+    config.allowUnfree = true;
+  };
+in (final: prev: {
   # Standalone version of Nerd Fonts
   nerdfont-standalone = prev.nerdfonts.override {
     fonts = ["NerdFontsSymbolsOnly"];
@@ -86,63 +91,57 @@
   # Get the latest version
   # Pull from unstable, to use vscode generic builder
   # Hand coded to be linux_x64 for now
-  code-cursor_1_1_6 =
-    (
-      import inputs.nixpkgs-unstable {
-        system = prev.system;
-        config.allowUnfree = true;
-      }
-    ).code-cursor.overrideAttrs (
-      oldAttrs: let
-        addedFonts = with prev.nerd-fonts; [
-          symbols-only
-          droid-sans-mono
-          fira-code
-          sauce-code-pro
-          jetbrains-mono
-        ];
-        addedPackages = with prev; [
-          kitty
-          task-master-ai
-        ];
-        sources = {
-          "x86_64-linux" = prev.fetchurl {
-            url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/linux/x64/Cursor-1.1.6-x86_64.AppImage";
-            hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
-          };
-          "aarch64-linux" = prev.fetchurl {
-            url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/linux/arm64/Cursor-1.1.6-aarch64.AppImage";
-            hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
-          };
-          "x86_64-darwin" = prev.fetchurl {
-            url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/darwin/x64/Cursor-darwin-x64.dmg";
-            hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
-          };
-          "aarch64-darwin" = prev.fetchurl {
-            url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/darwin/arm64/Cursor-darwin-arm64.dmg";
-            hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
-          };
+  code-cursor_1_1_6 = pkgs-unstable.code-cursor.overrideAttrs (
+    oldAttrs: let
+      addedFonts = with prev.nerd-fonts; [
+        symbols-only
+        droid-sans-mono
+        fira-code
+        sauce-code-pro
+        jetbrains-mono
+      ];
+      addedPackages = with prev; [
+        kitty
+        pkgs-unstable.task-master-ai
+      ];
+      sources = {
+        "x86_64-linux" = prev.fetchurl {
+          url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/linux/x64/Cursor-1.1.6-x86_64.AppImage";
+          hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
         };
-        source = sources.${prev.hostPlatform.system};
-        appVersion = "1.1.6";
-      in {
-        vscodeVersion = "1.101.2";
-        version = appVersion;
-        src =
-          if prev.hostPlatform.isLinux
-          then
-            prev.appimageTools.extract {
-              pname = oldAttrs.pname;
-              version = appVersion;
-              src = source;
-            }
-          else source;
-        sourceRoot =
-          if prev.hostPlatform.isLinux
-          then "${oldAttrs.pname}-${appVersion}-extracted/usr/share/cursor"
-          else "Cursor.app";
-        buildInputs = oldAttrs.buildInputs ++ addedFonts ++ addedPackages;
-        runtimeDependencies = oldAttrs.runtimeDependencies ++ addedFonts ++ addedPackages;
-      }
-    );
+        "aarch64-linux" = prev.fetchurl {
+          url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/linux/arm64/Cursor-1.1.6-aarch64.AppImage";
+          hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
+        };
+        "x86_64-darwin" = prev.fetchurl {
+          url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/darwin/x64/Cursor-darwin-x64.dmg";
+          hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
+        };
+        "aarch64-darwin" = prev.fetchurl {
+          url = "https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/darwin/arm64/Cursor-darwin-arm64.dmg";
+          hash = "sha256-T0vJRs14tTfT2kqnrQWPFXVCIcULPIud1JEfzjqcEIM=";
+        };
+      };
+      source = sources.${prev.hostPlatform.system};
+      appVersion = "1.1.6";
+    in {
+      vscodeVersion = "1.101.2";
+      version = appVersion;
+      src =
+        if prev.hostPlatform.isLinux
+        then
+          prev.appimageTools.extract {
+            pname = oldAttrs.pname;
+            version = appVersion;
+            src = source;
+          }
+        else source;
+      sourceRoot =
+        if prev.hostPlatform.isLinux
+        then "${oldAttrs.pname}-${appVersion}-extracted/usr/share/cursor"
+        else "Cursor.app";
+      buildInputs = oldAttrs.buildInputs ++ addedFonts ++ addedPackages;
+      runtimeDependencies = oldAttrs.runtimeDependencies ++ addedFonts ++ addedPackages;
+    }
+  );
 })
