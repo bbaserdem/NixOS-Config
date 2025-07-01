@@ -1,11 +1,6 @@
 # Packageset modifications
 # We need inputs to pull unstable when needed, hence pulling the inputs
-{inputs, ...}: (final: prev: let
-  pkgs-unstable = import inputs.nixpkgs-unstable {
-    system = prev.system;
-    config.allowUnfree = true;
-  };
-in {
+{inputs, ...}: (final: prev: {
   # Standalone version of Nerd Fonts
   nerdfont-standalone = prev.nerdfonts.override {
     fonts = ["NerdFontsSymbolsOnly"];
@@ -91,7 +86,7 @@ in {
   # Get the latest version
   # Pull from unstable, to use vscode generic builder
   # Hand coded to be linux_x64 for now
-  code-cursor_1_1_6 = pkgs-unstable.code-cursor.overrideAttrs (
+  code-cursor_1_1_6 = prev.unstable.code-cursor.overrideAttrs (
     oldAttrs: let
       addedFonts = with prev.nerd-fonts; [
         symbols-only
@@ -102,7 +97,7 @@ in {
       ];
       addedPackages = with prev; [
         kitty
-        pkgs-unstable.task-master-ai
+        prev.unstable.task-master-ai
       ];
       sources = {
         "x86_64-linux" = prev.fetchurl {
