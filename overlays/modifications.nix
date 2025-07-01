@@ -1,11 +1,11 @@
 # Packageset modifications
 # We need inputs to pull unstable when needed, hence pulling the inputs
-{inputs, ...}: let
+{inputs, ...}: (final: prev: let
   pkgs-unstable = import inputs.nixpkgs-unstable {
     system = prev.system;
     config.allowUnfree = true;
   };
-in (final: prev: {
+in {
   # Standalone version of Nerd Fonts
   nerdfont-standalone = prev.nerdfonts.override {
     fonts = ["NerdFontsSymbolsOnly"];
