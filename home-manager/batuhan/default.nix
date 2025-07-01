@@ -61,6 +61,9 @@
   sops = {
     age.keyFile = "/home/batuhan/.ssh/batuhan_age_keys.txt";
     defaultSopsFile = ./secrets.yaml;
+    secrets = {
+      openai-apk = {};
+    };
   };
 
   # Make all our wallpapers elementary OS wallpapers
