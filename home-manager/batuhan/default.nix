@@ -13,7 +13,7 @@
     ./configs/autorandr
     ./configs/calendar
     ./configs/email
-    ./configs/gnome
+    #./configs/gnome
     #./configs/hyprland
     ./configs/keyboard
     ./configs/media
@@ -76,5 +76,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.11";
+  home.stateVersion = "25.05";
 }

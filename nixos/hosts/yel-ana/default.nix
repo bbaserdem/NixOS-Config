@@ -17,11 +17,11 @@
     # Desktop
     displayManager = {
       enable = true;
-      name = "gdm";
+      name = "sddm";
     };
-    gnome.enable = true;
+    gnome.enable = false;
     hyprland.enable = true;
-    kde.enable = false;
+    kde.enable = true;
     # Features
     bluetooth.enable = true;
     consolefont.enable = true;
