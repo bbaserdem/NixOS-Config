@@ -14,6 +14,11 @@
 
   # Module toggles
   myNixOS = {
+    # Enable default user generation
+    defaultUser.enable = true;
+    userName = "batuhan";
+    userDesktop = "plasma";
+
     # Desktop
     displayManager = {
       enable = true;
@@ -55,10 +60,6 @@
       udev.enable = true;
       udisks.enable = true;
     };
-    # Enable default user generation
-    defaultUser.enable = true;
-    userName = "batuhan";
-    userDesktop = "gnome";
   };
 
   # Secrets management
