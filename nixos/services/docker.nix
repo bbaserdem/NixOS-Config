@@ -6,15 +6,18 @@
   ...
 }: {
   # Add rootless docker
-  virtualisation.docker = {
-    # Disable system wide docker
-    enable = false;
-    # Enable rootless docker instances
-    rootless = {
+  virtualisation = {
+    podman = {
       enable = true;
-      setSocketVariable = true;
+      dockerCompat = true;
+      dockerSocket.enable = true;
+      defaultNetwork.settings.dns_enabled = true;
     };
   };
 
   users.users.${config.myNixOS.userName}.extraGroups = ["docker"];
+
+  environment.systemPackages = with pkgs; [
+    docker-compose
+  ];
 }
