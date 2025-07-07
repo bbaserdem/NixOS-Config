@@ -1,5 +1,8 @@
 # Configuring bluetooth
 {pkgs, ...}: {
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+
   # Enable bluetooth controller service
   services.blueman.enable = true;
 
