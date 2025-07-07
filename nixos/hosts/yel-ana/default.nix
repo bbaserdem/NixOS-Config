@@ -44,6 +44,7 @@
     services = {
       avahi.enable = true;
       cups.enable = true;
+      docker.enable = true;
       droidcam.enable = true;
       earlyoom.enable = true;
       geoclue.enable = true;
