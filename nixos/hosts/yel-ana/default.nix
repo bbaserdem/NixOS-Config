@@ -38,6 +38,7 @@
     };
     keymap.enable = true;
     matlab.enable = false;
+    obs.enable = true;
     polkit.enable = true;
     virtualization.enable = true;
     # Services

@@ -1,6 +1,6 @@
 # Module that configures obs
 {pkgs, ...}: {
-  # Import the matlab package
+  # Get the OBS package
   programs.obs-studio = {
     enable = true;
     enableVirtualCamera = true;
