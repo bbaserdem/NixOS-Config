@@ -11,5 +11,6 @@
   home.packages = with pkgs.unstable; [
     code-cursor
     claude-code
+    task-master-ai
   ];
 }
