@@ -12,6 +12,7 @@
     ./mpd.nix
     ./mpv.nix
     ./ncmpcpp.nix
+    ./wireplumber.nix
   ];
 
   home.packages = with pkgs; [
