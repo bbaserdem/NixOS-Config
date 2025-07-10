@@ -34,11 +34,4 @@
   '';
 in {
   home.file.${fName}.text = luaScript;
-
-  # Ensure PipeWire + WirePlumber is set up correctly
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    alsa.enable = true;
-  };
 }
