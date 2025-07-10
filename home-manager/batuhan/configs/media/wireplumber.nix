@@ -33,7 +33,7 @@
     end
   '';
 in {
-  home.file.${fname}.text = luaScript;
+  home.file.${fName}.text = luaScript;
 
   # Ensure PipeWire + WirePlumber is set up correctly
   services.pipewire = {
