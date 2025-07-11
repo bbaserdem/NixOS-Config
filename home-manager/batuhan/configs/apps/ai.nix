@@ -6,10 +6,12 @@
   pkgs,
   ...
 }: {
-  # Get cursor editor, custom overlay already applied
+  # Get cursor editor
+  imports = [
+    ./aiCursor.nix
+  ];
   # Also get anthropic's claude
   home.packages = with pkgs.unstable; [
-    code-cursor
     claude-code
     task-master-ai
   ];
