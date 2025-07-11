@@ -78,7 +78,7 @@
 in {
   home.packages = [
     cursor-wrapped
-    pkgs.unstable.cursor
+    pkgs.unstable.code-cursor
   ];
 
   systemd.user.services.cursor-cleanup = {
