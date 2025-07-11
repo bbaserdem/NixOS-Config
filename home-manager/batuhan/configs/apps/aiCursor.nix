@@ -41,8 +41,8 @@
       cleanup_on_exit() {
         if [[ -n "$CLEANUP_PID" ]]; then
           echo "Stopping background cleanup (PID: $CLEANUP_PID)..."
-          kill $CLEANUP_PID 2>/dev/null
-          wait $CLEANUP_PID 2>/dev/null
+          kill "$CLEANUP_PID" 2>/dev/null
+          wait "$CLEANUP_PID" 2>/dev/null
           echo "Background cleanup stopped"
         fi
       }
