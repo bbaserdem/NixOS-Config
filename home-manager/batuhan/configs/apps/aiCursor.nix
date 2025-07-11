@@ -1,11 +1,5 @@
 # Cursor wrapper to fix freezing issues by cleaning chat history
-{
-  inputs,
-  outputs,
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   sq3 = "${pkgs.sqlite}/bin/sqlite3";
   cursor-wrapped = pkgs.writeShellApplication {
     name = "cursor-wrapped";
@@ -84,7 +78,7 @@
 in {
   home.packages = [
     cursor-wrapped
-    unstable.cursor
+    pkgs.unstable.cursor
   ];
 
   systemd.user.services.cursor-cleanup = {
