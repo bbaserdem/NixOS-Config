@@ -126,9 +126,7 @@ in {
               temp_sql="/tmp/cursor_essential_data.sql"
 
               # Extract essential user data (not CursorDiskKV)
-              ${sq3} "$STATE_DB" <<EOF > "''${temp_sql}" 2>/dev/null
-              .dump
-              EOF
+              ${sq3} "$STATE_DB" ".dump" > "''${temp_sql}" 2>/dev/null
 
               # Filter out CursorDiskKV entries and recreate database
               if [[ -f "''${temp_sql}" ]]; then
