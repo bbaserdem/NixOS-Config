@@ -72,7 +72,7 @@
       systemctl --user start cursor-cleanup.service
 
       # Start original cursor with all arguments
-      exec ${pkgs.unstable.code-cursor}/bin/code-cursor "$@"
+      exec ${pkgs.unstable.code-cursor}/bin/cursor "$@"
     '';
   };
 in {
