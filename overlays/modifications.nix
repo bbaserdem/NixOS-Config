@@ -90,7 +90,7 @@
         domain = "gitlab.kitware.com";
         owner = "paraview";
         repo = "paraview";
-        rev = "v${version}-RC1";
+        rev = "v6.0.0-RC1";
         hash = "sha256-29PLXVpvj8RLkSDWQgj5QjBZ6l1/0NoVx/qcJXOSssU=";
         fetchSubmodules = true;
       };
