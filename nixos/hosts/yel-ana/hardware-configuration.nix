@@ -227,6 +227,7 @@
   ];
   environment.systemPackages = with pkgs; [
     displaylink
+    displaylink-driver
   ];
 
   # System options
