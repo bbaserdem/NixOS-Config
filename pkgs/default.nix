@@ -9,4 +9,7 @@
   # System related scripts
   user-script-vifm-visualpreview = pkgs.callPackage ./userscripts/vifm-visualpreview.nix {};
   user-script-vifm-preview = pkgs.callPackage ./userscripts/vifm-preview.nix {};
+
+  # Drivers
+  displaylink-driver = import ./drivers/displaylink-driver.nix {inherit pkgs;};
 }
