@@ -42,8 +42,10 @@
   programs = {
     gh = {
       enable = true;
-      git_protocol = "ssh";
-      editor = config.home.sessionVariables.EDITOR;
+      settings = {
+        editor = config.home.sessionVariables.EDITOR;
+        git_protocol = "ssh";
+      };
       hosts = {
         "github.com" = {
           userName = config.programs.git.userName;
