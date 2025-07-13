@@ -82,21 +82,6 @@
     embeddedTheme = "black_hole";
   };
 
-  # We need paraview 6.0.0
-  paraview-6 = prev.paraview.overrideAttrs (
-    oldAttrs: {
-      version = "6.0.0";
-      src = prev.fetchFromGitLab {
-        domain = "gitlab.kitware.com";
-        owner = "paraview";
-        repo = "paraview";
-        rev = "v6.0.0-RC1";
-        hash = "sha256-29PLXVpvj8RLkSDWQgj5QjBZ6l1/0NoVx/qcJXOSssU=";
-        fetchSubmodules = true;
-      };
-    }
-  );
-
   # Add some fonts to cursor code
   # Get the latest version
   # Pull from unstable, to use vscode generic builder

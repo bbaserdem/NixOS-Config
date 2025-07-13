@@ -38,6 +38,35 @@
     };
   };
 
+  # Github cli
+  programs = {
+    gh = {
+      enable = true;
+      git_protocol = "ssh";
+      editor = config.home.sessionVariables.EDITOR;
+      hosts = {
+        "github.com" = {
+          userName = config.programs.git.userName;
+        };
+      };
+      extensions = with pkgs; [
+        gh-s
+        gh-i
+        gh-f
+        gh-poi
+        gh-eco
+        gh-notify
+        gh-skyline
+        gh-contribs
+        gh-screensaver
+        gh-markdown-preview
+      ];
+    };
+    gh-dash = {
+      enable = true;
+    };
+  };
+
   # Style lazygit
   stylix.targets.lazygit.enable = true;
 
