@@ -4,8 +4,7 @@
   pkgs,
   lib,
   ...
-}: let
-in {
+}: {
   # Enable direnv for our shells
   programs.direnv = {
     enable = true;
