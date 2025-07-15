@@ -14,5 +14,6 @@
   home.packages = with pkgs.unstable; [
     claude-code
     task-master-ai
+    amp-cli
   ];
 }
