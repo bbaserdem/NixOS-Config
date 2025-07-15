@@ -14,6 +14,15 @@
     ];
     settings = {
       follow_symlinks = true;
+      format = "$shell$all";
+      shell = {
+        disabled = false;
+        bash_indicator = " ";
+        zsh_indicator = " ";
+        fish_indicator = "󰈺 ";
+        powershell_indicator = " ";
+        ion_indicator = " ";
+      };
     };
   };
 
