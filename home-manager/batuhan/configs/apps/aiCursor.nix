@@ -91,7 +91,6 @@ in {
             '
           '';
         };
-        Install.WantedBy = ["default.target"];
       };
     };
     timers = {
@@ -103,9 +102,7 @@ in {
           OnCalendar = "hourly";
           Persistent = true;
         };
-        Install = {
-          WantedBy = ["timers.target"];
-        };
+        Install.WantedBy = ["timers.target"];
       };
     };
   };
