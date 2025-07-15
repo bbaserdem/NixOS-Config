@@ -21,11 +21,26 @@
   programs.bash = {
     # Needed for starship prompt right side
     blesh.enable = true;
+    # Undistract me stuff
+    undistractMe = {
+      enable = true;
+      timeout = 20;
+      playSound = true;
+    };
+    # Bash settings
+    vteIntegration = true;
+    interactiveShellInit = ''
+      # Fix colors in bash
+      case $${TERM} in
+        xterm-color|*-256color|xterm-kitty) color_prompt=yes;;
+      esac
+    '';
   };
 
   # ZSH
   programs.zsh = {
     enable = true;
+    vteIntegration = true;
     syntaxHighlighting = {
       enable = true;
       highlighters = [
@@ -44,6 +59,7 @@
         "match_prev_cmd"
       ];
     };
+    enableLsColors = true;
     enableCompletion = true;
     enableBashCompletion = true;
   };
