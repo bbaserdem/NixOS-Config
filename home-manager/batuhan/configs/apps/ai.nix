@@ -18,9 +18,5 @@
       # Other AI assisted coding flows
       claude-code
       amp-cli
-    ])
-    ++ (with pkgs.unstable; [
-      # MCP's
-      task-master-ai
     ]);
 }
