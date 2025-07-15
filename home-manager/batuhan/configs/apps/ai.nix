@@ -9,7 +9,7 @@
     outputs.homeManagerModules.cursorFix
   ];
 
-  packages.code-cursor = {
+  programs.code-cursor = {
     freezingFix = true;
   };
 
