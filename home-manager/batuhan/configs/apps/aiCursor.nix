@@ -53,7 +53,7 @@
 
     # Keep only the 2 most recent backups, delete the rest
     cd "$DEST_DIR"
-    ls -1d Cursor-* | sort | tail -n +3 | xargs -r rm -rf --
+    ls -1d Cursor-* | sort -V | tail -n +3 | xargs -r rm -rf --
   '';
 in {
   home.packages = [
