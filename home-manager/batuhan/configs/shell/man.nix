@@ -30,7 +30,7 @@
 
   # Pager setting
   home.sessionVariables = {
-    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-    MANROFFOPT = "-c'";
+    MANPAGER = "sh -c 'col -bx | bat --language=man --plain'";
+    MANROFFOPT = "-c";
   };
 }
