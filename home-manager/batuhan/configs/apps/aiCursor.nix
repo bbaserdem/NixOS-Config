@@ -28,7 +28,7 @@ in {
             ${bash} -c '
               RAMDISK_DIR="/tmp/cursor-vscdb"
               CURSOR_STATE="${configRoot}/Cursor/User/globalStorage/state.vscdb"
-              BACKUP_STATE="${cacheRoot}/state.vscdb.backup"
+              BACKUP_STATE="${backupRoot}/state.vscdb.backup"
               TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 
               mkdir -p "$RAMDISK_DIR"
@@ -75,7 +75,7 @@ in {
           ExecStart = ''
             ${bash} -c '
               SRC="${configRoot}/Cursor"
-              DEST_DIR="${cacheRoot}/cursor-backups"
+              DEST_DIR="${backupRoot}/cursor-backups"
               TS=$(date +%Y%m%d-%H%M)
               DEST="$DEST_DIR/Cursor-$TS"
 
