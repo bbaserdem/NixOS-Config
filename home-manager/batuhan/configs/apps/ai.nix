@@ -1,21 +1,24 @@
 # Configuring AI assisted tools
 {
-  inputs,
   outputs,
-  config,
   pkgs,
   ...
 }: {
-  # Get cursor editor with fixes
+  # Get cursor fix
   imports = [
-    ./aiCursor.nix
+    outputs.homeManagerModules.cursorFix
   ];
+
+  packages.code-cursor = {
+    freezingFix = true;
+  };
 
   home.packages =
     # Node to be able to get MCP's
     [pkgs.nodePackages_latest.nodejs]
     ++ (with pkgs.unstable; [
-      # Other AI assisted coding flows
+      # AI assisted coding flows
+      code-cursor
       claude-code
       amp-cli
     ]);

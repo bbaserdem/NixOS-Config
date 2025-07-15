@@ -14,4 +14,7 @@
 
   # Powerlevel10k module
   powerlevel10k = import ./powerlevel10k.nix;
+
+  # Cursor ai fix for the weird freezing bug v1.2
+  cursorFix = import ./cursorFix.nix;
 }
