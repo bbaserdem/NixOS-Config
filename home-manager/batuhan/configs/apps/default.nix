@@ -86,7 +86,4 @@
   stylix.targets = {
     fzf.enable = true;
   };
-
-  # Common services
-  services.blueman-applet.enable = lib.mkDefault true;
 }

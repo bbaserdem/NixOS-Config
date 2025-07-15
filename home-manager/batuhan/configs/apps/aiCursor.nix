@@ -57,6 +57,7 @@
   '';
 in {
   home.packages = [
+    # Latest available cursor
     pkgs.unstable.code-cursor
   ];
 
