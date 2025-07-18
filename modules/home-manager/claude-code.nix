@@ -71,7 +71,7 @@ in {
       '';
     };
 
-    programs.claude-code.globalSettings = mkOption {
+    globalSettings = mkOption {
       type = types.nullOr globalSettingsSubmodule;
       default = null;
       description = ''
