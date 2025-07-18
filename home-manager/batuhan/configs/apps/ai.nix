@@ -22,7 +22,7 @@
       includeCoAuthoredBy = true;
       enableAllProjectMcpServers = true;
       permissions = {
-        defaultModel = "acceptEdits";
+        defaultMode = "acceptEdits";
         additionalDirectories = [
           "${config.xdg.dataHome}/docs"
         ];
