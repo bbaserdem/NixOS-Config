@@ -94,9 +94,8 @@ in {
 
     home.activation.claudeGlobalConfig = lib.hm.dag.entryAfter ["writeBoundary"] (
       let
-        settings = config.programs.claude-code.globalConfig;
-        filteredSettings = lib.filterAttrs (_: v: v != null) (settings or {});
-        rendered =
+        settings = cfg.globalConfig;
+        rendered = lib.concatStringsSep "\n" (
           lib.mapAttrsToList (
             key: val: let
               valStr =
@@ -107,19 +106,19 @@ in {
                     then "true"
                     else "false"
                   )
-                else val;
+                else toString val;
             in ''
               echo " - Setting ${key}..."
               claude config set -g ${key} '${valStr}'
             ''
-          )
-          filteredSettings;
+          ) (lib.filterAttrs (_: v: v != null) settings)
+        );
       in ''
         if command -v claude &>/dev/null; then
-          echo "Applying Claude global settings..."
-          ${lib.concatStringsSep "\n" rendered}
+          echo "Applying Claude global config..."
+          ${rendered}
         else
-          echo "⚠️ Claude not found in PATH; skipping globalSettings."
+          echo "⚠️ Claude not found in PATH; skipping globalConfig."
         fi
       ''
     );
