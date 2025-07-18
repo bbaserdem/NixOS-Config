@@ -9,7 +9,16 @@ with lib; let
   cfg = config.programs.claude-code;
   claudeSettings = import ./claude-settings-schema.nix {inherit lib;};
   # Pull the stripping function from our library
-  stripUtils = outputs.lib.stripUtils;
+  stripUtils = rec {
+    stripNullsDeep = value:
+      if value == null
+      then null
+      else if builtins.isAttrs value
+      then lib.attrsets.filterAttrs (_: v: v != null) (mapAttrs (_: stripNullsDeep) value)
+      else if builtins.isList value
+      then builtins.filter (v: v != null) (map stripNullsDeep value)
+      else value;
+  };
   strip = stripUtils.stripNullsDeep;
 
   settingsJSON = settings:
