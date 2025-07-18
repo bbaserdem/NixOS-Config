@@ -5,6 +5,7 @@
   ...
 }:
 with lib; let
+  cfg = config.programs.claude-code;
   claudeSettings = import ./claude-settings-schema.nix {inherit lib;};
   strip = claudeSettings.stripNullsDeep;
   settingsJSON = settings:
