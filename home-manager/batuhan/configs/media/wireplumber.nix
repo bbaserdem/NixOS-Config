@@ -24,6 +24,7 @@
           },
         },
         apply_properties = {
+          ["bluez5.roles"] = "[ a2dp_sink a2dp_source ]",
           ["bluez5.auto-connect"] = "[ a2dp_sink ]",
           ["bluez5.headset-backend"] = "none",
         },
