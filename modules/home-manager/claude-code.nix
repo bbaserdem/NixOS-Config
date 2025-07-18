@@ -92,9 +92,9 @@ in {
       source = settingsJSON config.programs.claude-code.settings;
     };
 
-    home.activation.claudeGlobalSettings = lib.hm.dag.entryAfter ["writeBoundary"] (
+    home.activation.claudeGlobalConfig = lib.hm.dag.entryAfter ["writeBoundary"] (
       let
-        settings = config.programs.claude-code.globalSettings;
+        settings = config.programs.claude-code.globalConfig;
         filteredSettings = lib.filterAttrs (_: v: v != null) (settings or {});
         rendered =
           lib.mapAttrsToList (
