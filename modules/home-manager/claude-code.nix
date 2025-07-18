@@ -63,7 +63,7 @@ in {
     };
 
     settings = mkOption {
-      type = types.nullOr settingsSchema;
+      type = types.nullOr claudeSettings.settingsType;
       default = null;
       description = ''
         Settings written to ~/.claude/settings.json.
