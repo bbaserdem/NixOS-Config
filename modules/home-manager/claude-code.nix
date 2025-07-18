@@ -2,27 +2,22 @@
   config,
   lib,
   pkgs,
-  outputs,
   ...
 }:
 with lib; let
   cfg = config.programs.claude-code;
   claudeSettings = import ./claude-settings-schema.nix {inherit lib;};
-  # Pull the stripping function from our library
-  stripUtils = rec {
-    stripNullsDeep = value:
-      if value == null
-      then null
-      else if builtins.isAttrs value
-      then lib.attrsets.filterAttrs (_: v: v != null) (mapAttrs (_: stripNullsDeep) value)
-      else if builtins.isList value
-      then builtins.filter (v: v != null) (map stripNullsDeep value)
-      else value;
-  };
-  strip = stripUtils.stripNullsDeep;
+  stripNullsDeep = value:
+    if value == null
+    then null
+    else if builtins.isAttrs value
+    then lib.attrsets.filterAttrs (_: v: v != null) (mapAttrs (_: stripNullsDeep) value)
+    else if builtins.isList value
+    then builtins.filter (v: v != null) (map stripNullsDeep value)
+    else value;
 
   settingsJSON = settings:
-    pkgs.writeText "claude-settings.json" (builtins.toJSON strip settings);
+    pkgs.writeText "claude-settings.json" (builtins.toJSON (stripNullsDeep settings));
   globalConfigSubmodule = types.submodule {
     options = {
       autoUpdates = mkOption {
