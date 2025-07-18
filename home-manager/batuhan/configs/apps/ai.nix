@@ -17,7 +17,7 @@
 
   programs.claude-code = {
     enable = true;
-    package = pkgs.unstable.code-cursor;
+    package = pkgs.unstable.claude-code;
     settings = {
       includeCoAuthoredBy = true;
       enableAllProjectMcpServers = true;
