@@ -1,7 +1,10 @@
 # Info from https://docs.anthropic.com/en/docs/claude-code/settings
 # Possible models; https://docs.anthropic.com/en/docs/about-claude/models/overview
-{lib, ...}:
-with lib; let
+{lib, ...}: let
+  # Load needed lib modules
+  types = lib.types;
+  submodule = types.submodule;
+  # Pre-set module names
   modelNames = [
     "claude-opus-4-20250514"
     "claude-sonnet-4-20250514"
@@ -13,7 +16,6 @@ with lib; let
     "claude-3-5-haiku-latest"
     "claude-3-haiku-20240307"
   ];
-
   hooksEventNames = [
     "PreToolUse"
     "PostToolUse"
