@@ -1,16 +1,16 @@
 [project]
-name = "flowgenius"
-version = "0.1.0"
+name = "flake_template"
+version = "0.0.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [
-    { name = "bbaserdem", email = "baserdemb@gmail.com" }
+    { name = "<name>", email = "<name>@gmail.com" }
 ]
 requires-python = ">=3.13"
 dependencies = []
 
 [project.scripts]
-flowgenius = "flowgenius:main"
+flowgenius = "flake_template:main"
 
 [build-system]
 requires = ["hatchling"]
