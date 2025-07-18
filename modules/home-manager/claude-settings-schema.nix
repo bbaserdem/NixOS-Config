@@ -138,14 +138,4 @@ in {
       };
     };
   };
-
-  # Recursively remove nulls from settings before writing JSON
-  stripNullsDeep = value:
-    if value == null
-    then null
-    else if builtins.isAttrs value
-    then lib.attrsets.filterAttrs (_: v: v != null) (mapAttrs (_: stripNullsDeep) value)
-    else if builtins.isList value
-    then lib.lists.filter (v: v != null) (map stripNullsDeep value)
-    else value;
 }

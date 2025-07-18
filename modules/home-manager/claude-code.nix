@@ -2,12 +2,16 @@
   config,
   lib,
   pkgs,
+  outputs,
   ...
 }:
 with lib; let
   cfg = config.programs.claude-code;
   claudeSettings = import ./claude-settings-schema.nix {inherit lib;};
-  strip = claudeSettings.stripNullsDeep;
+  # Pull the stripping function from our library
+  stripUtils = outputs.lib.stripUtils;
+  strip = stripUtils.stripNullsDeep;
+
   settingsJSON = settings:
     pkgs.writeText "claude-settings.json" (builtins.toJSON strip settings);
   globalConfigSubmodule = types.submodule {

@@ -19,6 +19,18 @@
     ];
   mkUnless = p: no: inputs.nixpkgs.lib.mkIf (!p);
 
+  # Stripping function
+  stripUtils = rec {
+    stripNullsDeep = value:
+      if value == null
+      then null
+      else if builtins.isAttrs value
+      then lib.attrsets.filterAttrs (_: v: v != null) (mapAttrs (_: stripNullsDeep) value)
+      else if builtins.isList value
+      then builtins.filter (v: v != null) (map stripNullsDeep value)
+      else value;
+  };
+
   # ========================== Buildables ========================== #
 
   # Generate NixOS configs for hosts
