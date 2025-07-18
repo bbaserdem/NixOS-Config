@@ -9,7 +9,7 @@ with lib; let
   strip = claudeSettings.stripNullsDeep;
   settingsJSON = settings:
     pkgs.writeText "claude-settings.json" (builtins.toJSON strip settings);
-  globalSettingsSubmodule = types.submodule {
+  globalConfigSubmodule = types.submodule {
     options = {
       autoUpdates = mkOption {
         type = types.nullOr types.bool;
@@ -71,8 +71,8 @@ in {
       '';
     };
 
-    globalSettings = mkOption {
-      type = types.nullOr globalSettingsSubmodule;
+    globalConfig = mkOption {
+      type = types.nullOr globalConfigSubmodule;
       default = null;
       description = ''
         Settings applied via `claude config set -g`. These are not written to JSON
