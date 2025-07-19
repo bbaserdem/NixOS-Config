@@ -54,8 +54,7 @@
     globalConfig = {
       autoUpdates = false;
     };
-    globalInstructions = ''
-    '';
+    globalInstructions = builtins.readFile ./Claude.md;
   };
 
   home.packages =
