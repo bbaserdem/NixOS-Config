@@ -16,7 +16,7 @@
   powerlevel10k = import ./powerlevel10k.nix;
 
   # Cursor ai fix for the weird freezing bug v1.2
-  cursor = import ./code-cursor.nix;
+  code-cursor = import ./code-cursor.nix;
 
   # Cursor ai fix for the weird freezing bug v1.2
   claude-code = import ./claude-code.nix;
