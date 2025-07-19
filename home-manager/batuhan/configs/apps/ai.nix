@@ -5,14 +5,16 @@
   config,
   ...
 }: {
-  # Get cursor fix
+  # Get our modules
   imports = [
-    outputs.homeManagerModules.cursorFix
+    outputs.homeManagerModules.code-cursor
     outputs.homeManagerModules.claude-code
   ];
 
   programs.code-cursor = {
-    freezingFix = false;
+    enable = false;
+    package = pkgs.unstable.code-cursor;
+    freezingFix = true;
   };
 
   programs.claude-code = {

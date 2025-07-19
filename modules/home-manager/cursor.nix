@@ -64,11 +64,25 @@
   '';
 in {
   # Set the option toggle
-  options.programs.code-cursor.freezingFix = lib.mkEnableOption "Apply tmpfs fix to Cursor's state.vscdb";
+  options.programs.code-cursor = {
+    enable = mkEnableOption "Enable installing Cursor";
+
+    package = mkOption {
+      type = types.package;
+      default = pkgs.code-cursor;
+      description = "Package to install for Cursor";
+    };
+
+    freezingFix = lib.mkEnableOption "Apply tmpfs fix to Cursor's state.vscdb";
+  };
 
   # The only thing that should be changed is the dropping of systemd units
-  config = lib.mkIf config.programs.code-cursor.freezingFix {
-    systemd.user = {
+
+  config = lib.mkIf config.programs.code-cursor.enable {
+    # Install code cursor
+    home.packages = [config.programs.code-cursor.package];
+    # Apply freezing fix
+    systemd.user = lib.mkIf config.programs.code-cursor.freezingFix {
       services = {
         # Ramdisk stuff
         cursor-ramdisk = {

@@ -103,7 +103,7 @@ in {
 
     home.activation.claudeGlobalConfig = lib.hm.dag.entryAfter ["writeBoundary"] (
       let
-        settings = cfg.globalConfig;
+        settings = cfg.globalConfig // {autoUpdates = false;};
         rendered = lib.concatStringsSep "\n" (
           lib.mapAttrsToList (
             key: val: let
