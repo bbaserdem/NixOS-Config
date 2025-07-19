@@ -68,7 +68,7 @@ in {
     enable = lib.mkEnableOption "Enable installing Cursor";
 
     package = lib.mkOption {
-      type = types.package;
+      type = lib.types.package;
       default = pkgs.code-cursor;
       description = "Package to install for Cursor";
     };
