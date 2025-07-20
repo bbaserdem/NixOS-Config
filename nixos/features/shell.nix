@@ -18,18 +18,17 @@
       shell = {
         disabled = false;
         bash_indicator = " ";
-        zsh_indicator = " ";
+        zsh_indicator = "󱉸 ";
         fish_indicator = "󰈺 ";
         powershell_indicator = " ";
         ion_indicator = " ";
+        style = "cyan";
       };
     };
   };
 
   # Bash options
   programs.bash = {
-    # Needed for starship prompt right side
-    blesh.enable = true;
     # Undistract me stuff
     undistractMe = {
       enable = true;
