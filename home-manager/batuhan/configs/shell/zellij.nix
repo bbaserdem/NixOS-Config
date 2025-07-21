@@ -11,7 +11,7 @@
     enableZshIntegration = true;
     enableFishIntegration = true;
     # Behavior
-    attachExistingSession = true;
+    attachExistingSession = false;
     exitShellOnExit = false;
     # Settings
     settings = {
