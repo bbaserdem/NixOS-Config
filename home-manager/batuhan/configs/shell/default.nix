@@ -12,6 +12,6 @@
     ./man.nix
     ./qmk.nix
     ./pass.nix
-    ./tmux.nix
+    ./zellij.nix
   ];
 }
