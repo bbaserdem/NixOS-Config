@@ -19,24 +19,35 @@ in {
   };
 
   # Create my own module, for setting worktree root and current repo root
-  xdg.configFile.${libDir}.text = ''
-    use_gitenv() {
-      log_status "Setting git environment variables..."
+  xdg.configFile = {
+    ${libDir}.text = ''
+      use_gitenv() {
+        log_status "Setting git environment variables..."
 
-      if git rev-parse --show-toplevel &>/dev/null; then
-        export GIT_ROOT="$(git rev-parse --show-toplevel)"
-      fi
-
-      if git rev-parse --git-common-dir &>/dev/null; then
-        git_common_dir="$(git rev-parse --git-common-dir)"
-        if [[ "$git_common_dir" = /* ]]; then
-          export GIT_REPO_ROOT="$(realpath "$git_common_dir/..")"
+        # Safely get current branch name
+        if git rev-parse --abbrev-ref HEAD &>/dev/null; then
+          export GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
         else
-          export GIT_REPO_ROOT="$(realpath "$GIT_ROOT/$git_common_dir/..")"
+          export GIT_BRANCH=""
         fi
-      fi
-    }
-  '';
+
+        # Get repo root dir
+        if git rev-parse --show-toplevel &>/dev/null; then
+          export GIT_ROOT="$(git rev-parse --show-toplevel)"
+        fi
+
+        # Get the root of the worktree
+        if git rev-parse --git-common-dir &>/dev/null; then
+          git_common_dir="$(git rev-parse --git-common-dir)"
+          if [[ "$git_common_dir" = /* ]]; then
+            export GIT_WORKTREE_ROOT="$(realpath "$git_common_dir/..")"
+          else
+            export GIT_WORKTREE_ROOT="$(realpath "$GIT_ROOT/$git_common_dir/..")"
+          fi
+        fi
+      }
+    '';
+  };
 
   # Reformat direnv output to be muted
   home.sessionVariables = {
