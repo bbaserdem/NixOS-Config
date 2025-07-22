@@ -65,9 +65,9 @@ in
     ' | while IFS='|' read wt_dir wt_branch; do
       # Window title is branch name
       ${tmux} new-window -t "$SESSION_NAME" -c "$wt_dir" -n "$wt_branch"
-      ${tmux} split-window -v -t "${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}')" -c "$wt_dir"
-      ${tmux} select-pane -t "${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}').0" -T "shell 1"
-      ${tmux} select-pane -t "${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}').1" -T "shell 2"
+      ${tmux} split-window -v -t "$${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}')" -c "$wt_dir"
+      ${tmux} select-pane -t "$${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}').0" -T "shell 1"
+      ${tmux} select-pane -t "$${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}').1" -T "shell 2"
     done
 
     # Focus second window (main worktree shell)
