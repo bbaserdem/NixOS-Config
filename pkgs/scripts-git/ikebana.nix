@@ -49,4 +49,4 @@ in
     done
 
     echo "All committed local and worktree branches are pushed."
-  '';
+  ''

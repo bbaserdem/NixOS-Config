@@ -63,4 +63,4 @@ in
     done
 
     echo "All remote branches now have a sanitized worktree in ./worktrees"
-  '';
+  ''
