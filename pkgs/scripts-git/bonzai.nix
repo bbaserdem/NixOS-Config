@@ -3,7 +3,7 @@
   awk = "${pkgs.gawk}/bin/awk";
   git = "${pkgs.git}/bin/git";
   grep = "${pkgs.gnugrep}/bin/grep";
-  lazygit = "${pkgs.lazygit}/bin/lazygit"
+  lazygit = "${pkgs.lazygit}/bin/lazygit";
   sed = "${pkgs.gnused}/bin/sed";
   tmux = "${pkgs.tmux}/bin/tmux";
   tr = "${pkgs.coreutils}/bin/tr";
