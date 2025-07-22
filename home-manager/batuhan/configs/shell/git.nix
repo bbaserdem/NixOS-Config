@@ -1,45 +1,51 @@
 # Configuring git
 {
+  outputs,
   pkgs,
   config,
   ...
 }: {
-  # Git settings
-  programs.git = {
-    enable = true;
-    userName = "bbaserdem";
-    userEmail = "baserdemb@gmail.com";
-    aliases = {
-      pu = "push";
-      co = "checkout";
-      cm = "commit";
-    };
-    extraConfig = {
-      core = {
-        editor = config.home.sessionVariables.EDITOR;
-        hooksPath = ".githooks/";
-      };
-      pull = {rebase = false;};
-      push = {autoSetupRemote = true;};
-      init = {defaultBranch = "main";};
-    };
-  };
+  # My git scripts
+  home.packages = [
+    outputs.packages.${pkgs.system}.user-git
+  ];
 
-  # Lazygit settings
-  programs.lazygit = {
-    enable = true;
-    package = pkgs.lazygit;
-    settings = {
-      git = {
-        commit.autoWrapWidth = 80;
-        mainBranches = ["main" "master"];
-        parseEmoji = true;
-      };
-    };
-  };
-
-  # Github cli
   programs = {
+    # Git settings
+    git = {
+      enable = true;
+      userName = "bbaserdem";
+      userEmail = "baserdemb@gmail.com";
+      aliases = {
+        pu = "push";
+        co = "checkout";
+        cm = "commit";
+      };
+      extraConfig = {
+        core = {
+          editor = config.home.sessionVariables.EDITOR;
+          hooksPath = ".githooks/";
+        };
+        pull = {rebase = false;};
+        push = {autoSetupRemote = true;};
+        init = {defaultBranch = "main";};
+      };
+    };
+
+    # Lazygit settings
+    lazygit = {
+      enable = true;
+      package = pkgs.lazygit;
+      settings = {
+        git = {
+          commit.autoWrapWidth = 80;
+          mainBranches = ["main" "master"];
+          parseEmoji = true;
+        };
+      };
+    };
+
+    # Github cli
     gh = {
       enable = true;
       settings = {

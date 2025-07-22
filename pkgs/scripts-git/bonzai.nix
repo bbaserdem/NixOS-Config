@@ -1,65 +1,80 @@
-# Git-bonzai; standalone script to launch zellij instances
+# git-bonzai; standalone script to launch tmux sessions
 {pkgs}: let
-  zellij = "${pkgs.zellij}/bin/zellij";
-  git = "${pkgs.git}/bin/git";
   awk = "${pkgs.gawk}/bin/awk";
+  git = "${pkgs.git}/bin/git";
   grep = "${pkgs.gnugrep}/bin/grep";
-  mktemp = "${pkgs.mktemp}/bin/mktemp";
+  lazygit = "${pkgs.lazygit}/bin/lazygit"
+  sed = "${pkgs.gnused}/bin/sed";
+  tmux = "${pkgs.tmux}/bin/tmux";
+  tr = "${pkgs.coreutils}/bin/tr";
+  wc = "${pkgs.coreutils}/bin/wc";
 in
   pkgs.writeShellScriptBin "git-bonzai" ''
-    # Determine repo location and branch
-    GIT_ROOT=$(${git} rev-parse --show-toplevel)
-    GIT_BRANCH=$(${git} rev-parse --abbrev-ref HEAD)
-    GIT_REPO_ROOT=$(realpath "$(${git} rev-parse --git-common-dir)/..")
+    # Save which directory we are in
+    CURRENT_DIR="$(pwd)"
 
-    # Only run on main or master
-    if [[ "$GIT_BRANCH" != "main" && "$GIT_BRANCH" != "master" ]]; then
-      echo "Not on main/master branch, skipping zellij session setup."
-      exit 0
-    elseif [[ "$GIT_ROOT" != "$GIT_REPO_ROOT" ]] ; then
-      echo "The worktree root is not the main/master branch, skipping setup"
-      exit 0
-    fi
+    # Find this worktree's repo root and where its .git points
+    CURRENT_WT_DIR=$(${git} rev-parse --show-toplevel)
+    cd "$CURRENT_WT_DIR" || exit 1
 
-    # Use the repo name as session name
-    REPO_NAME=$(basename "$GIT_ROOT")
-    SESSION_NAME="$(echo "$GIT_ROOT" | tr -c '[:alnum:]' '-')"
-
-    # If zellij session already exists, do nothing
-    if ${zellij} list-sessions | grep -q "^$SESSION_NAME\$"; then
-      echo "Zellij session '$SESSION_NAME' already running."
-      exit 0
-    fi
-
-    # Prepare layout: use .zellij-layout.kdl from repo or fallback to a default
-    if [[ -f "$GIT_ROOT/.zellij-layout.kdl" ]]; then
-      LAYOUT_FILE="$GIT_REPO_ROOT/.zellij-layout.kdl"
+    if [ -d "$CURRENT_WT_DIR/.git" ]; then
+      # Main worktree
+      GIT_WT_MAIN_DIR="$CURRENT_WT_DIR"
     else
-      LAYOUT_FILE="$(mktemp --suffix .zellij-layout.kdl)"
-      cat > "$LAYOUT_FILE" <<EOF
-    layout {
-      tab {
-        pane size=1 borderless=false { }
-        pane borderless=false { }
-      }
-    }
-    EOF
+      GITDIR=$(${sed} -n 's/^gitdir: //p' "$CURRENT_WT_DIR/.git")
+      GIT_WT_MAIN_DIR=$(dirname "$(dirname "$GITDIR")")
     fi
 
-    # Start new session with layout
-    ${zellij} --session "$SESSION_NAME" --layout "$ZELLIJ_LAYOUT" --cwd "$GIT_ROOT" &
-    sleep 0.5
+    GIT_REPO_NAME=$(basename "$GIT_WT_MAIN_DIR")
+    GIT_WT_MAIN_NAME=$(${git} -C "$GIT_WT_MAIN_DIR" symbolic-ref --short HEAD 2>/dev/null)
 
-    # Open tabs for all worktrees (skip the main repo)
-    mapfile -t WORKTREES < <(${git} worktree list --porcelain | ${awk} '/worktree/ { print $2 }' | ${grep} -v "^$GIT_ROOT\$")
+    GIT_WT_LINKED_DIR="$CURRENT_WT_DIR"
+    GIT_WT_LINKED_NAME=$(${git} symbolic-ref --short HEAD 2>/dev/null)
 
-    for wt in "$${WORKTREES[@]}"; do
-      ${zellij} --session "$SESSION_NAME" --layout "$ZELLIJ_LAYOUT" --cwd "$wt"
+    # Create sanitized session name (lowercase, non-alphanum to -)
+    SESSION_NAME=$(printf '%s\n' "$GIT_REPO_NAME" | ${tr} '[:upper:]' '[:lower:]' | ${sed} 's/[^a-z0-9]/-/g')
+
+    # Exit if tmux session exists
+    if ${tmux} has-session -t "$SESSION_NAME" 2>/dev/null; then
+      cd "$CURRENT_DIR"
+      exit 0
+    fi
+
+    # Window 0: lazygit (pane title GIT_REPO_NAME)
+    ${tmux} new-session -d -s "$SESSION_NAME" -c "$GIT_WT_MAIN_DIR" -n "$GIT_REPO_NAME" "${lazygit}"
+    ${tmux} select-pane -T "$GIT_REPO_NAME" -t "$${SESSION_NAME}:0.0"
+
+    # Window 1: main branch, 2-pane vertical split, title is branch name
+    ${tmux} new-window -t "$SESSION_NAME" -c "$GIT_WT_MAIN_DIR" -n "$GIT_WT_MAIN_NAME"
+    ${tmux} split-window -v -t "$${SESSION_NAME}:1" -c "$GIT_WT_MAIN_DIR"
+    ${tmux} select-pane -t "$${SESSION_NAME}:1.0" -T "shell 1"
+    ${tmux} select-pane -t "$${SESSION_NAME}:1.1" -T "shell 2"
+
+    # Parse all worktrees except main
+    ${git} worktree list --porcelain | \
+    ${awk} -v main="$GIT_WT_MAIN_DIR" '
+      BEGIN{RS="";FS="\n"}
+      {
+        wtdir=""; branch="";
+        for(i=1;i<=NF;i++){
+          if($i ~ /^worktree /) wtdir=substr($i,10)
+          if($i ~ /^branch /) branch=substr($i,8)
+        }
+        if(wtdir != main) print wtdir "|" branch
+      }
+    ' | while IFS='|' read wt_dir wt_branch; do
+      # Window title is branch name
+      ${tmux} new-window -t "$SESSION_NAME" -c "$wt_dir" -n "$wt_branch"
+      ${tmux} split-window -v -t "${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}')" -c "$wt_dir"
+      ${tmux} select-pane -t "${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}').0" -T "shell 1"
+      ${tmux} select-pane -t "${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}').1" -T "shell 2"
     done
 
-    # Go back to first tab (main repo)
-    ${zellij} action go-to-tab --session "$SESSION_NAME" --tab-index 0
+    # Focus second window (main worktree shell)
+    ${tmux} select-window -t "$${SESSION_NAME}:1"
+    ${tmux} select-pane -t "$${SESSION_NAME}:1.0"
 
-    echo "Zellij session '$SESSION_NAME' with worktrees launched."
+    cd "$CURRENT_DIR"
+    exit 0
 
   ''

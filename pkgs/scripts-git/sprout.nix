@@ -1,100 +1,119 @@
-# Git-bonzai; standalone script to launch zellij instances
+# git-sprout; create a new worktree branch from heuristics
 {pkgs}: let
-  zellij = "${pkgs.zellij}/bin/zellij";
   git = "${pkgs.git}/bin/git";
-  awk = "${pkgs.gawk}/bin/awk";
-  grep = "${pkgs.gnugrep}/bin/grep";
-  mktemp = "${pkgs.mktemp}/bin/mktemp";
+  sed = "${pkgs.gnused}/bin/sed";
+  tmux = "${pkgs.tmux}/bin/tmux";
+  tr = "${pkgs.coreutils}/bin/tr";
 in
   pkgs.writeShellScriptBin "git-bonzai" ''
-    NAME=""
-    FROM=""
-    DEFAULT_BRANCH="main"
+    # Save which directory we are in
+    CURRENT_DIR="$(pwd)"
 
-    # --- Parse args ---
-    while [[ $# -gt 0 ]]; do
-      case "$1" in
-        --from)
-          FROM="$2"
-          shift 2
-          ;;
-        *)
-          NAME="$1"
-          shift
-          ;;
-      esac
-    done
+    # Find current worktree root (the one user is in)
+    CURRENT_WT_DIR=$(${git} rev-parse --show-toplevel)
+    cd "$CURRENT_WT_DIR" || exit 1
 
-    if [[ -z "$NAME" ]]; then
-      echo "Usage: git-bloom NAME [--from BRANCH]"
+    # Find main worktree root (repository's main checkout)
+    git_common_dir=$(${git} rev-parse --git-common-dir 2>/dev/null)
+    case "$git_common_dir" in
+      /*) abs_git_common_dir="$git_common_dir" ;;
+      *) abs_git_common_dir="$CURRENT_WT_DIR/$git_common_dir" ;;
+    esac
+    GIT_WT_MAIN_DIR=$(cd "$abs_git_common_dir/.." 2>/dev/null && pwd)
+    GIT_REPO_NAME=$(basename "$GIT_WT_MAIN_DIR")
+    GIT_WT_MAIN_NAME=$(${git} -C "$GIT_WT_MAIN_DIR" symbolic-ref --short HEAD 2>/dev/null)
+
+    # --- ARGUMENT PARSING ---
+    if [ $# -ne 1 ]; then
+      echo "Usage: git-sprout <branch-name>"
       exit 1
     fi
 
-    # --- Determine root dirs ---
-    GIT_ROOT=$(${git} rev-parse --show-toplevel)
-    GIT_REPO_ROOT=$(realpath "$(${git} rev-parse --git-common-dir)/..")
-    WORKTREES_DIR="$GIT_REPO_ROOT/worktrees"
-    SANITIZED_NAME="$${NAME//\//-}"
+    GIT_WT_LINKED_NAME="$1"
 
-    TARGET_DIR="$WORKTREES_DIR/$SANITIZED_NAME"
-    BRANCH_EXISTS_LOCALLY=$(${git} show-ref --verify --quiet "refs/heads/$NAME" && echo yes || echo no)
-    BRANCH_EXISTS_REMOTELY=$(${git} ls-remote --exit-code --heads origin "$NAME" &>/dev/null && echo yes || echo no)
-
-    mkdir -p "$WORKTREES_DIR"
-
-    # --- Determine branch source ---
-    if [[ "$BRANCH_EXISTS_LOCALLY" == "yes" || "$BRANCH_EXISTS_REMOTELY" == "yes" ]]; then
-      if [[ -n "$FROM" ]]; then
-        echo "Got argument --from $FROM , but $NAME already exists!"
-        exit 1
-      else
-        echo "Using existing branch: $NAME"
-        ${git} worktree add "$TARGET_DIR" "$NAME"
-      fi
-    else
-      BASE="$DEFAULT_BRANCH"
-
-      if [[ -n "$FROM" ]]; then
-        BASE="$FROM"
-      else
-        IFS='/-_' read -ra PARTS <<< "$NAME"
-        for i in "$${!PARTS[@]}"; do
-          PREFIX="$${PARTS[*]:0:$((i+1))}"
-          CANDIDATE="$${PREFIX// /-}"
-          if ${git} show-ref --verify --quiet "refs/heads/$CANDIDATE"; then
-            BASE="$CANDIDATE"
-            break
-          fi
-        done
-      fi
-
-      echo "Creating new branch: $NAME from $BASE"
-      git worktree add -b "$NAME" "$TARGET_DIR" "$BASE"
-    fi
-
-    # --- Zellij Session Setup ---
-    # Only if there is already a session
-    SESSION_NAME=$(basename "$GIT_REPO_ROOT" | tr -c '[:alnum:]' '-')
-    if ${zellij} list-sessions | grep -q "^$SESSION_NAME\$"; then
-
-      # Check if there is a template, generate if none
-      TEMPLATE="$${GIT_REPO_ROOT}/.zellijrc.kdl"
-      if [[ ! -f "$TEMPLATE" ]]; then
-        TEMPLATE="$(${mktemp} --suffix .zellijrc.kdl)"
-        cat <<EOF >"$TEMPLATE"
-    layout {
-      tab name="$${NAME}" {
-        pane { }
-        pane { }
-      }
+    # --- NAME SANITIZATION ---
+    sanitize() {
+      printf '%s' "$1" | ${tr} '[:upper:]' '[:lower:]' | ${sed} 's#[/:]\+#:#g; s#[^a-z0-9:_-]#-#g'
     }
-    EOF
-      fi
-      
-      ${zellij} action load-layout "$TEMPLATE" --cwd "$TARGET_DIR" 
+    SANITIZED=$(sanitize "$GIT_WT_LINKED_NAME")
+    GIT_WT_LINKED_DIR="$GIT_WT_MAIN_DIR/worktrees/$SANITIZED"
 
-      echo "Opened worktree in zellij session: $SESSION_NAME (tab: $NAME)"
+    # --- CHECK IF WORKTREE ALREADY EXISTS ---
+    if [ -d "$GIT_WT_LINKED_DIR" ]; then
+      echo "Worktree directory already exists at $GIT_WT_LINKED_DIR"
+      exit 0
     fi
 
-    cd "$TARGET_DIR"
+    # --- DETERMINE EXISTING BRANCHES ---
+    local_branch=""
+    remote_branch=""
+
+    if ${git} show-ref --verify --quiet "refs/heads/$GIT_WT_LINKED_NAME"; then
+      local_branch="yes"
+    fi
+
+    if ${git} ls-remote --exit-code --heads origin "$GIT_WT_LINKED_NAME" >/dev/null 2>&1; then
+      remote_branch="yes"
+    fi
+
+    base_branch=""
+
+    # --- PRIMARY LOGIC ---
+
+    if [ -n "$local_branch" ]; then
+      base_branch="$GIT_WT_LINKED_NAME"
+    elif [ -n "$remote_branch" ]; then
+      base_branch="origin/$GIT_WT_LINKED_NAME"
+    else
+      # Try pattern <name>{:,-,/}<feat>
+      case "$GIT_WT_LINKED_NAME" in
+        *:*) parent_branch=$(printf '%s' "$GIT_WT_LINKED_NAME" | ${sed} 's/:.*//') ;;
+        *-*) parent_branch=$(printf '%s' "$GIT_WT_LINKED_NAME" | ${sed} 's/-.*//') ;;
+        */*) parent_branch=$(printf '%s' "$GIT_WT_LINKED_NAME" | ${sed} 's#/.*##') ;;
+        *) parent_branch="" ;;
+      esac
+
+      if [ -n "$parent_branch" ]; then
+        if ${git} show-ref --verify --quiet "refs/heads/$parent_branch"; then
+          base_branch="$parent_branch"
+        elif ${git} ls-remote --exit-code --heads origin "$parent_branch" >/dev/null 2>&1; then
+          base_branch="origin/$parent_branch"
+        fi
+      fi
+
+      # Fallback: common base (main/master)
+      if [ -z "$base_branch" ]; then
+        if ${git} show-ref --verify --quiet "refs/heads/main"; then
+          base_branch="main"
+        elif ${git} show-ref --verify --quiet "refs/heads/master"; then
+          base_branch="master"
+        elif ${git} ls-remote --exit-code --heads origin main >/dev/null 2>&1; then
+          base_branch="origin/main"
+        elif ${git} ls-remote --exit-code --heads origin master >/dev/null 2>&1; then
+          base_branch="origin/master"
+        else
+          echo "Could not determine a suitable base branch."
+          exit 1
+        fi
+      fi
+    fi
+
+    # --- CREATE WORKTREE ---
+    ${git} -C "$GIT_WT_MAIN_DIR" worktree add -b "$GIT_WT_LINKED_NAME" "$GIT_WT_LINKED_DIR" "$base_branch"
+    created=1
+
+    # --- TMUX INTEGRATION ---
+    # Session name sanitization (same as bonzai script)
+    SESSION_NAME=$(printf '%s\n' "$GIT_REPO_NAME" | ${tr} '[:upper:]' '[:lower:]' | ${sed} 's/[^a-z0-9]/-/g')
+
+    if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+      # Add a new window for the new worktree
+      win_idx=$(${tmux} new-window -d -P -F '#I' -t "$SESSION_NAME" -c "$GIT_WT_LINKED_DIR" -n "$GIT_WT_LINKED_NAME")
+      ${tmux} split-window -v -t "$SESSION_NAME:$win_idx" -c "$GIT_WT_LINKED_DIR"
+      ${tmux} select-pane -t "$SESSION_NAME:$win_idx.0" -T "shell 1"
+      ${tmux} select-pane -t "$SESSION_NAME:$win_idx.1" -T "shell 2"
+    fi
+
+    exit 0
+ 
   '';

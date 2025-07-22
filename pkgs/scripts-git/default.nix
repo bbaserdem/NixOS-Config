@@ -1,11 +1,15 @@
-# My git scripts
+# git-scripts: Collection of user git scripts
 {pkgs, ...}: let
-  bonzai = pkgs.callPackage ./bonzai.nix
-  bloom = pkgs.callPackage ./bloom.nix {};
+  arbor = pkgs.callPackage ./arbor.nix {};
+  bonzai = pkgs.callPackage ./bonzai.nix {};
+  ikebana = pkgs.callPackage ./ikebana.nix {};
+  sprout = pkgs.callPackage ./sprout.nix {};
 in (pkgs.symlinkJoin {
   name = "user-git";
   paths = [
+    arbor
     bonzai
-    bloom
+    ikebana
+    sprout
   ];
 })
