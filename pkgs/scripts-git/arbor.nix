@@ -9,7 +9,7 @@ in
     set -e
 
     # --- SETUP ---
-    DIR="${1:-.}"
+    DIR="$${1:-.}"
     cd "$DIR" || exit 1
 
     if [ ! -d ".git" ]; then
