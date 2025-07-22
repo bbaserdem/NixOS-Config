@@ -3,12 +3,10 @@
 {pkgs ? import <nixpkgs> {}, ...}: {
   # example = pkgs.callPackage ./example { };
 
-  # Audio related scripts, this is already a derivation
-  user-audio = pkgs.callPackage ./audio-scripts {};
-
-  # System related scripts
-  user-script-vifm-visualpreview = pkgs.callPackage ./userscripts/vifm-visualpreview.nix {};
-  user-script-vifm-preview = pkgs.callPackage ./userscripts/vifm-preview.nix {};
+  # Scripts for generic usage
+  user-audio = pkgs.callPackage ./scripts-audio {};
+  user-git = pkgs.callPackage ./scripts-git {};
+  user-vifm = pkgs.callPackage ./scripts-vifm {};
 
   # Drivers
   displaylink-driver = import ./drivers/displaylink-driver.nix {inherit pkgs;};
