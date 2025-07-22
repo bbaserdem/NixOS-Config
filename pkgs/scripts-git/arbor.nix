@@ -1,5 +1,6 @@
 # git-arbor: Creates a worktree for each remote branch using sanitized names
 {pkgs}: let
+  awk = "${pkgs.gawk}/bin/awk";
   git = "${pkgs.git}/bin/git";
   mkdir = "${pkgs.coreutils}/bin/mkdir";
   sed = "${pkgs.gnused}/bin/sed";
