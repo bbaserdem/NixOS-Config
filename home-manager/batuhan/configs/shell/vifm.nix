@@ -10,7 +10,7 @@ in {
   # Install the package
   home.packages = [
     pkgs.vifm-full
-    outputs.packages.${config._module.system}.user-vifm
+    outputs.packages.${pkgs.system}.user-vifm
   ];
   # Configure the package
   xdg.configFile."vifm/vifmrc".source = ./vifmrc;

@@ -75,8 +75,6 @@
     fzf
     wl-clipboard
     tree
-    # Scripts
-    user-audio
     # Apps to setup
     podgrab
     uv

@@ -1,5 +1,6 @@
 # Configuring music playing
 {
+  outputs,
   config,
   pkgs,
   ...
@@ -15,11 +16,11 @@
     ./wireplumber.nix
   ];
 
-  home.packages = with pkgs; [
+  home.packages = [
+    outputs.packages.${pkgs.system}.user-audio
     # Use cantata as graphical frontend
-    #pkgs.nur.repos.bandithedoge.cantata
-    cantata
+    pkgs.cantata
     # Music download tool
-    streamrip
+    pkgs.streamrip
   ];
 }
