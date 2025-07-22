@@ -5,7 +5,7 @@
   tmux = "${pkgs.tmux}/bin/tmux";
   tr = "${pkgs.coreutils}/bin/tr";
 in
-  pkgs.writeShellScriptBin "git-bonzai" ''
+  pkgs.writeShellScriptBin "git-sprout" ''
     # Save which directory we are in
     CURRENT_DIR="$(pwd)"
 
