@@ -10,6 +10,9 @@
   wc = "${pkgs.coreutils}/bin/wc";
 in
   pkgs.writeShellScriptBin "git-bonzai" ''
+    set -e
+    export LC_ALL=C
+
     # Save which directory we are in
     CURRENT_DIR="$(pwd)"
 

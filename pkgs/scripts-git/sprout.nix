@@ -6,6 +6,9 @@
   tr = "${pkgs.coreutils}/bin/tr";
 in
   pkgs.writeShellScriptBin "git-sprout" ''
+    set -e
+    export LC_ALL=C
+
     # Save which directory we are in
     CURRENT_DIR="$(pwd)"
 

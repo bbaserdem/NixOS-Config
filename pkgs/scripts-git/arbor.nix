@@ -7,6 +7,7 @@
 in
   pkgs.writeShellScriptBin "git-arbor" ''
     set -e
+    export LC_ALL=C
 
     # --- SETUP ---
     DIR="''${1:-.}"
@@ -20,7 +21,10 @@ in
     # --- INITIALIZE IF NEEDED ---
     # git init if needed, only if no HEAD/object files
     if [ ! -f ".git/HEAD" ] || ! ${git} rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-      git init
+      ${git} init
+      # Check the head in remote
+      REMOTE_DEFAULT=$(${git} remote show origin | ${awk} '/HEAD branch/ {print $NF}')
+      ${git} checkout "$REMOTE_DEFAULT"
     fi
 
     # Find first remote (or abort if none)

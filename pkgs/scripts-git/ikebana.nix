@@ -8,6 +8,7 @@
 in
   pkgs.writeShellScriptBin "git-ikebana" ''
     set -e
+    export LC_ALL=C
 
     # Find repository root
     REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
