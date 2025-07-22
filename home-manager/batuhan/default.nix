@@ -27,7 +27,6 @@
     ./configs/style
     ./configs/texlive
     ./configs/udiskie
-    ./configs/vifm
     ./configs/virt-manager
     ./configs/yt-dlp
   ];

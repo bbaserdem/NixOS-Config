@@ -2,15 +2,15 @@
 {
   config,
   pkgs,
+  outputs,
   ...
 }: let
   colors = config.colorScheme.palette;
 in {
   # Install the package
-  home.packages = with pkgs; [
-    vifm-full
-    user-script-vifm-visualpreview
-    user-script-vifm-preview
+  home.packages = [
+    pkgs.vifm-full
+    outputs.packages.${config._module.system}.user-vifm
   ];
   # Configure the package
   xdg.configFile."vifm/vifmrc".source = ./vifmrc;
