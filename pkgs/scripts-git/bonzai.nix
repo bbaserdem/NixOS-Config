@@ -42,13 +42,13 @@ in
 
     # Window 0: lazygit (pane title GIT_REPO_NAME)
     ${tmux} new-session -d -s "$SESSION_NAME" -c "$GIT_WT_MAIN_DIR" -n "$GIT_REPO_NAME" "${lazygit}"
-    ${tmux} select-pane -T "$GIT_REPO_NAME" -t "$${SESSION_NAME}:0.0"
+    ${tmux} select-pane -T "$GIT_REPO_NAME" -t "''${SESSION_NAME}:0.0"
 
     # Window 1: main branch, 2-pane vertical split, title is branch name
     ${tmux} new-window -t "$SESSION_NAME" -c "$GIT_WT_MAIN_DIR" -n "$GIT_WT_MAIN_NAME"
-    ${tmux} split-window -v -t "$${SESSION_NAME}:1" -c "$GIT_WT_MAIN_DIR"
-    ${tmux} select-pane -t "$${SESSION_NAME}:1.0" -T "shell 1"
-    ${tmux} select-pane -t "$${SESSION_NAME}:1.1" -T "shell 2"
+    ${tmux} split-window -v -t "''${SESSION_NAME}:1" -c "$GIT_WT_MAIN_DIR"
+    ${tmux} select-pane -t "''${SESSION_NAME}:1.0" -T "shell 1"
+    ${tmux} select-pane -t "''${SESSION_NAME}:1.1" -T "shell 2"
 
     # Parse all worktrees except main
     ${git} worktree list --porcelain | \
@@ -65,14 +65,14 @@ in
     ' | while IFS='|' read wt_dir wt_branch; do
       # Window title is branch name
       ${tmux} new-window -t "$SESSION_NAME" -c "$wt_dir" -n "$wt_branch"
-      ${tmux} split-window -v -t "$${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}')" -c "$wt_dir"
-      ${tmux} select-pane -t "$${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}').0" -T "shell 1"
-      ${tmux} select-pane -t "$${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}').1" -T "shell 2"
+      ${tmux} split-window -v -t "''${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}')" -c "$wt_dir"
+      ${tmux} select-pane -t "''${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}').0" -T "shell 1"
+      ${tmux} select-pane -t "''${SESSION_NAME}:$(tmux list-windows -t "$SESSION_NAME" | ${wc} -l | ${awk} '{print $1-1}').1" -T "shell 2"
     done
 
     # Focus second window (main worktree shell)
-    ${tmux} select-window -t "$${SESSION_NAME}:1"
-    ${tmux} select-pane -t "$${SESSION_NAME}:1.0"
+    ${tmux} select-window -t "''${SESSION_NAME}:1"
+    ${tmux} select-pane -t "''${SESSION_NAME}:1.0"
 
     cd "$CURRENT_DIR"
     exit 0
