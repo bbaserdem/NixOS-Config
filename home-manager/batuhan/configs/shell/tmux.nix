@@ -11,8 +11,8 @@
     mouse = true;
     prefix = "C-g";
     sensibleOnTop = true;
-    tmuxinator = true;
-    tmuxp = true;
+    tmuxinator.enable = true;
+    tmuxp.enable = true;
     enableSHellIntegration = true;
   };
 }
