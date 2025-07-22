@@ -13,6 +13,6 @@
     sensibleOnTop = true;
     tmuxinator.enable = true;
     tmuxp.enable = true;
-    enableSHellIntegration = true;
+    enableShellIntegration = true;
   };
 }
