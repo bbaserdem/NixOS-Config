@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  logFormat = "$'\\e[2;1;3mdirenv:\\e[22;23m %s\\e[0m'";
+  logFormat = "\"$(printf '\\033[2;1;3mdirenv:\\033[22;23m %%s\\033[0m')\"";
 in {
   # Enable direnv for our shells
   programs.direnv = {
