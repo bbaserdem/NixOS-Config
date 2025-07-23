@@ -2,6 +2,7 @@
 {pkgs}: let
   awk = "${pkgs.gawk}/bin/awk";
   git = "${pkgs.git}/bin/git";
+  grep = "${pkgs.gnugrep}/bin/grep";
   mkdir = "${pkgs.coreutils}/bin/mkdir";
   sed = "${pkgs.gnused}/bin/sed";
   tr = "${pkgs.coreutils}/bin/tr";
@@ -23,9 +24,6 @@ in
     # git init if needed, only if no HEAD/object files
     if [ ! -f ".git/HEAD" ] || ! ${git} rev-parse --is-inside-work-tree >/dev/null 2>&1; then
       ${git} init
-      # Check the head in remote
-      REMOTE_DEFAULT=$(${git} remote show origin | ${awk} '/HEAD branch/ {print $NF}')
-      ${git} checkout "$REMOTE_DEFAULT"
     fi
 
     # Find first remote (or abort if none)
@@ -34,6 +32,10 @@ in
       echo "No remote configured in git repository."
       exit 1
     fi
+
+    # Check the head in remote, and switch to it
+    REMOTE_DEFAULT=$(${git} remote show $REMOTE | ${awk} '/HEAD branch/ {print $NF}')
+    ${git} checkout "$REMOTE_DEFAULT"
 
     # --- FETCH REMOTE BRANCHES ---
     ${git} fetch "$REMOTE" --prune
@@ -46,9 +48,14 @@ in
     # --- CREATE WORKTREES FOR REMOTE BRANCHES ---
     ${mkdir} -p worktrees
 
+    # Currently set branch
+    CUR_BRANCH=$(${git} symbolic-ref --short HEAD)
+
+    # Do all remote branches
     ${git} for-each-ref --format='%(refname:strip=3)' refs/remotes/"$REMOTE"/ | \
     while read branch; do
       [ "$branch" = "HEAD" ] && continue
+      [ "$branch" = "$CUR_BRANCH" ] && continue
 
       WTNAME=$(sanitize "$branch")
       WTROOT="./worktrees/$WTNAME"
@@ -67,5 +74,27 @@ in
       ${git} worktree add "$WTROOT" "$branch"
     done
 
-    echo "All remote branches now have a sanitized worktree in ./worktrees"
+    # Do all local branches
+    existing_worktree_branches=$(${git} worktree list --porcelain | \
+      ${awk} '/^branch / {print $2}' | \
+      ${sed} 's|refs/heads/||')
+
+    # For each local branch, create a worktree if missing
+    ${git} branch --format='%(refname:short)' | while read branch; do
+      # Skip if already in a worktree
+      if echo "$existing_worktree_branches" | ${grep} -qx "$branch"; then
+        continue
+      fi
+
+      # Directory sanitization as before
+      sanitized_dir=$(echo "$branch" | \
+        ${tr} '[:upper:]' '[:lower:]' | \
+        ${sed} 's#[/:]\+#:#g; s#[^a-z0-9:_-]#-#g')
+      dir="./worktrees/$sanitized_dir"
+
+      # Create worktree, if not created yet
+      ${git} worktree add "$dir" "$branch"
+    done
+
+    echo "All branches now have a sanitized worktree in ./worktrees"
   ''
