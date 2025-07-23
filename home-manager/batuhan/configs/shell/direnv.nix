@@ -5,8 +5,7 @@
   lib,
   ...
 }: let
-  esc = "\u001b"; # ESC (hex 1b, decimal 27)
-  logFormat = "${esc}[2;1;3mdirenv:${esc}[22;23m %s${esc}[0m";
+  logFormat = "$'\\e[2;1;3mdirenv:\\e[22;23m %s\\e[0m'";
 in {
   # Enable direnv for our shells
   programs.direnv = {
@@ -18,14 +17,18 @@ in {
       global = {
         load_dotenv = false;
         warn_timeout = "0";
-        log_format = logFormat;
       };
       whitelist = {
         prefix = [
-          config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR
+          config.xdg.userDirs.extraConfig.XDG_PROJECT_DIR
         ];
         exact = [];
       };
     };
+  };
+
+  # Reformat direnv output to be muted
+  home.sessionVariables = {
+    "DIRENV_LOG_FORMAT" = logFormat;
   };
 }
