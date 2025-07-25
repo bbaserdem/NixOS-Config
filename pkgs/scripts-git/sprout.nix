@@ -36,7 +36,7 @@ in
 
     # --- NAME SANITIZATION ---
     sanitize() {
-      printf '%s' "$1" | ${tr} '[:upper:]' '[:lower:]' | ${sed} 's#[/:]\+#:#g; s#[^a-z0-9:_-]#-#g'
+      printf '%s' "$1" | ${tr} '[:upper:]' '[:lower:]' | ${sed} 's|[/:]\+|-|g; s|[^a-z0-9:_-]|-|g'
     }
     SANITIZED=$(sanitize "$GIT_WT_LINKED_NAME")
     GIT_WT_LINKED_DIR="$GIT_WT_MAIN_DIR/worktrees/$SANITIZED"

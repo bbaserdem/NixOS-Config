@@ -42,7 +42,7 @@ in
 
     # --- SANITIZE FUNCTION ---
     sanitize() {
-      printf '%s' "$1" | ${tr} '[:upper:]' '[:lower:]' | ${sed} 's#[/:]\+#:#g; s#[^a-z0-9:_-]#-#g'
+      printf '%s' "$1" | ${tr} '[:upper:]' '[:lower:]' | ${sed} 's|[/:]\+|-|g; s|[^a-z0-9:_-]|-|g'
     }
 
     # --- CREATE WORKTREES FOR REMOTE BRANCHES ---
@@ -89,7 +89,7 @@ in
       # Directory sanitization as before
       sanitized_dir=$(echo "$branch" | \
         ${tr} '[:upper:]' '[:lower:]' | \
-        ${sed} 's#[/:]\+#:#g; s#[^a-z0-9:_-]#-#g')
+        ${sed} 's|[/:]\+|-|g; s|[^a-z0-9:_-]|-|g')
       dir="./worktrees/$sanitized_dir"
 
       # Create worktree, if not created yet
