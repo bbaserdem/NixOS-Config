@@ -34,5 +34,5 @@
     end
   '';
 in {
-  home.file.${fName}.text = luaScript;
+  #home.file.${fName}.text = luaScript;
 }
