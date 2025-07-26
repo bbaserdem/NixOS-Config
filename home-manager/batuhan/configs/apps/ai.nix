@@ -11,15 +11,17 @@
     outputs.homeManagerModules.claude-code
   ];
 
+  # Cursor config (not in use anymore)
   programs.code-cursor = {
     enable = false;
     package = pkgs.unstable.code-cursor;
     freezingFix = true;
   };
 
+  # Claude config
   programs.claude-code = {
     enable = true;
-    package = pkgs.unstable.claude-code;
+    package = false;
     settings = {
       includeCoAuthoredBy = true;
       enableAllProjectMcpServers = true;
@@ -57,11 +59,6 @@
     globalInstructions = builtins.readFile ./Claude.md;
   };
 
-  home.packages =
-    # Node to be able to get MCP's
-    [pkgs.nodePackages_latest.nodejs]
-    ++ (with pkgs.unstable; [
-      # AI assisted coding flows
-      amp-cli
-    ]);
+  # Install amp-cli
+  home.packages = [pkgs.unstable.amp-cli];
 }

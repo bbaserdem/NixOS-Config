@@ -60,9 +60,9 @@ in {
     enable = mkEnableOption "Claude Code";
 
     package = mkOption {
-      type = types.package;
+      type = types.either types.package (types.enum [false]);
       default = pkgs.claude-code;
-      description = "Package to install for Claude Code.";
+      description = "Package to install for Claude Code. Set to false to disable installation.";
     };
 
     globalInstructions = mkOption {
@@ -91,7 +91,7 @@ in {
   };
 
   config = mkIf config.programs.claude-code.enable {
-    home.packages = [config.programs.claude-code.package];
+    home.packages = mkIf (cfg.package != false) [cfg.package];
 
     home.file.".claude/CLAUDE.md" = mkIf (config.programs.claude-code.globalInstructions != null) {
       text = config.programs.claude-code.globalInstructions;
@@ -101,7 +101,7 @@ in {
       source = settingsJSON config.programs.claude-code.settings;
     };
 
-    home.activation.claudeGlobalConfig = lib.hm.dag.entryAfter ["writeBoundary"] (
+    home.activation.claudeGlobalConfig = mkIf (cfg.package != false) (lib.hm.dag.entryAfter ["writeBoundary"] (
       let
         settings = cfg.globalConfig // {autoUpdates = false;};
         rendered = lib.concatStringsSep "\n" (
@@ -130,6 +130,6 @@ in {
           echo "⚠️ Claude not found in PATH; skipping globalConfig."
         fi
       ''
-    );
+    ));
   };
 }
