@@ -1,10 +1,159 @@
-# Python-generated files
-__pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
+# =============================================================================
+# Project Template .gitignore
+# Comprehensive ignore patterns for python development
+# =============================================================================
+# Git stuff
+/worktrees/
 
-# Virtual environments
-.venv
+# =============================================================================
+# SECRETS & CREDENTIALS (CRITICAL - NEVER COMMIT)
+# =============================================================================
+.env*
+!.env.example
+!.env.template
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets.json
+credentials.json
+
+# =============================================================================
+# NIX & DIRENV
+# =============================================================================
+!.envrc
+.direnv/
+result
+result-*
+
+# =============================================================================
+# NPM
+# =============================================================================
+node_modules/
+npm-debug.log*
+# Logs
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dev-debug.log
+
+# =============================================================================
+# PYTHON
+# =============================================================================
+__pycache__/
+# Distribution / packaging
+*.py[cod]
+*$py.class
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# =============================================================================
+# ASSETS
+# =============================================================================
+# Large media files
+*.mkv
+*.mp4
+*.mov
+*.webm
+
+# =============================================================================
+# LOGS & TEMPORARY FILES
+# =============================================================================
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+.tmp/
+temp/
+tmp/
+
+# =============================================================================
+# TOOLS & EDITORS
+# =============================================================================
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Quaestor
+.quaestor/
+
+# Claude
+.claude/settings.local.json
+
+# =============================================================================
+# OPERATING SYSTEM
+# =============================================================================
+# macOS
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# PROJECT SPECIFIC
+# =============================================================================
+# Add any project-specific ignores here
+# Environment variables
+.env
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,5 +1,5 @@
 [project]
-name = "flake_template"
+name = "template"
 version = "0.0.0"
 description = "Add your description here"
 readme = "README.md"
@@ -10,7 +10,7 @@ requires-python = ">=3.13"
 dependencies = []
 
 [project.scripts]
-flowgenius = "flake_template:main"
+template = "template:main"
 
 [build-system]
 requires = ["hatchling"]

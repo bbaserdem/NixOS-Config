@@ -1,0 +1,29 @@
+{
+	"mcpServers": {
+		"taskmaster-ai": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"-y",
+				"--package=task-master-ai",
+				"task-master-ai"
+			]
+		},
+		"github": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"@modelcontextprotocol/server-github"
+			]
+		},
+		"nixos": {
+			"type": "stdio",
+			"command": "nix",
+			"args": [
+				"run",
+				"github:utensils/mcp-nixos",
+				"--"
+			]
+		}
+	}
+}
