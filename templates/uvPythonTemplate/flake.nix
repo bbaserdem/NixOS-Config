@@ -30,26 +30,26 @@
     ...
   } @ inputs: let
     outputs = self;
-    projectName = "template";
+    pythonProject = import ./python.nix;
   in
     flake-utils.lib.eachDefaultSystem (system: let
       # Grab UV stuff
       uvBoilerplate = import nix/uv.nix {
-        inherit inputs system projectName;
+        inherit inputs system pythonProject;
       };
       pkgs = import nixpkgs {};
     in {
       checks = import ./nix/checks.nix {
-        inherit uvBoilerplate projectName;
+        inherit uvBoilerplate pythonProject;
       };
       apps = import ./nix/apps.nix {
-        inherit outputs pkgs uvBoilerplate projectName;
+        inherit outputs pkgs uvBoilerplate pythonProject;
       };
       packages = import ./nix/packages.nix {
-        inherit pkgs inputs system uvBoilerplate projectName;
+        inherit pkgs inputs system uvBoilerplate pythonProject;
       };
       devShells = import ./nix/shells.nix {
-        inherit pkgs inputs system uvBoilerplate projectName;
+        inherit pkgs inputs system uvBoilerplate;
       };
     });
 }

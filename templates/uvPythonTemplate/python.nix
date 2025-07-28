@@ -1,0 +1,5 @@
+{
+  name = "template";
+  directory = ./.;
+  #workspaces = [];
+}

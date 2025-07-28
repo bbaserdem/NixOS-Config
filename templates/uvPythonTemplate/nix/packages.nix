@@ -6,12 +6,20 @@
   ...
 }: let
   inherit (pkgs) lib stdenv testers callPackage;
-in {
-  # Default lapack image
-  #default = callPackage lapackDerivation {};
-  # Our python project projects here
-  ${projectName} =
-    uvBoilerplate.pythonSet.mkVirtualEnv
-    "${projectName}-env"
-    uvBoilerplate.workspace.deps.default;
-}
+
+  # Create packages for all workspaces that have executable outputs
+  pythonPackages = lib.listToAttrs (
+    map (ws: {
+      name = ws.name;
+      value =
+        uvBoilerplate.pythonSet.mkVirtualEnv
+        "${ws.name}-env"
+        uvBoilerplate.workspaces.${ws.name}.deps.default;
+    }) (lib.filter (ws: uvBoilerplate.pythonSet ? ${ws.name}) uvBoilerplate.allWorkspaces)
+  );
+in
+  {
+    # Default image
+    #default = callPackage derivation {};
+  }
+  // pythonPackages

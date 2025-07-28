@@ -6,13 +6,13 @@
   #   description = "<name> template flake";
   # };
 
-  default = {
-    path = ./default;
-    description = "Empty flake template";
+  uvPythonTemplate = {
+    path = ./uvPythonTemplate;
+    description = "Flake for starting a python (or integrated python) project.";
   };
 
-  cursorWebApp = {
-    path = ./cursorWebApp;
-    description = "WebApp project template, to be used for AI based development with cursor";
+  aiAgents = {
+    path = ./claudeAgents;
+    description = "List of claude AI agents";
   };
 }

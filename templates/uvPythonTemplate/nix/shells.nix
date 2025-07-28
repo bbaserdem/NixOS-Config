@@ -4,7 +4,6 @@
   inputs,
   system,
   uvBoilerplate,
-  projectName,
   ...
 }: let
   # UV stuff
@@ -27,7 +26,7 @@
     nodejs-slim
     pnpm
     uv
-    # Grab build tools
+    # Grab some basic tools for dev environment
     coreutils # Basic file, shell and text manipulation utilities
     findutils # Find, locate, and xargs commands
     gnugrep # GNU grep, egrep and fgrep
