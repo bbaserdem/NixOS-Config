@@ -24,7 +24,8 @@
   defaultPackages = with pkgs; [
     scripts
     git
-    nodePackages_latest.nodejs
+    nodejs-slim
+    pnpm
     uv
     # Grab build tools
     coreutils # Basic file, shell and text manipulation utilities
@@ -45,8 +46,12 @@
     zip # Zip utility
   ];
   defaultHooks = ''
+    # Setup node
+    export PATH="./node_modules/.bin:$PATH"
   '';
-  defaultEnv = {};
+  defaultEnv = {
+    NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations pipe-operators";
+  };
 in {
   # Main dev shell, contain everything
   default = pkgs.mkShell {

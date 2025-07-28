@@ -7,18 +7,29 @@
 }: {
   # Main dev shell
   default = pkgs.mkShell {
-    NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations pipe-operators";
-    nativeBuildInputs = with pkgs; [
+    packages = with pkgs; [
+      # Default stuff needed
       nix
       home-manager
       git
-
+      # Encryption
       sops
       ssh-to-age
       gnupg
       age
-      neovim
+      # Plugin installing
+      pnpm
+      nodejs-slim
+      uv
     ];
+    env = {
+      NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations pipe-operators";
+    };
+    # Shell hooks
+    shellHook = ''
+      # Setup node
+      export PATH="./node_modules/.bin:$PATH"
+    '';
   };
 
   # Extra dev shells
