@@ -37,7 +37,7 @@
       uvBoilerplate = import nix/uv.nix {
         inherit inputs system pythonProject;
       };
-      pkgs = import nixpkgs {};
+      pkgs = import nixpkgs {inherit system;};
     in {
       checks = import ./nix/checks.nix {
         inherit uvBoilerplate pythonProject;
@@ -46,7 +46,7 @@
         inherit outputs pkgs uvBoilerplate pythonProject;
       };
       packages = import ./nix/packages.nix {
-        inherit pkgs inputs system uvBoilerplate pythonProject;
+        inherit pkgs inputs system uvBoilerplate;
       };
       devShells = import ./nix/shells.nix {
         inherit pkgs inputs system uvBoilerplate;

@@ -2,7 +2,6 @@
   pkgs,
   inputs,
   uvBoilerplate,
-  projectName,
   ...
 }: let
   inherit (pkgs) lib stdenv testers callPackage;
