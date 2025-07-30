@@ -96,6 +96,14 @@
         setuptools = [];
         wheel = [];
       };
+      numpy = {
+        meson-python = [];
+        cython = [];
+      };
+      numba = {
+        setuptools = [];
+        wheel = [];
+      };
     };
 
     # Apply build system overrides
@@ -110,6 +118,14 @@
                 ++ resolveBuildSystem spec
                 ++ lib.optionals (name == "pygraphviz") [
                   pkgs.graphviz
+                  pkgs.pkg-config
+                ]
+                ++ lib.optionals (name == "numba") [
+                  pkgs.tbb_2021_11
+                ]
+                ++ lib.optionals (name == "numpy") [
+                  pkgs.ninja
+                  pkgs.meson
                   pkgs.pkg-config
                 ];
             })
