@@ -61,6 +61,7 @@
       tlp.enable = true;
       udev.enable = true;
       udisks.enable = true;
+      vpn.enable = true;
     };
   };
 
