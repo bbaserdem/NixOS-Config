@@ -5,9 +5,13 @@
   config,
   ...
 }: {
-  # My git scripts
   home.packages = [
+    # My git scripts
     outputs.packages.${pkgs.system}.user-git
+    # Gitleaks and hooks
+    pre-commit
+    pre-commit-hook-ensure-sops
+    gitleaks
   ];
 
   programs = {
@@ -80,11 +84,4 @@
 
   # Shell alias for working with our flake
   programs.zsh.shellAliases.git-flake = "git -C \"\${FLAKE}\"";
-
-  # Gitleaks
-  home.packages = with pkgs; [
-    pre-commit
-    pre-commit-hook-ensure-sops
-    gitleaks
-  ];
 }
