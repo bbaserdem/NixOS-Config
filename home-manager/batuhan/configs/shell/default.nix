@@ -12,6 +12,7 @@
     ./man.nix
     ./qmk.nix
     ./pass.nix
+    ./pnpm.nix
     ./tmux.nix
     ./vifm.nix
   ];
