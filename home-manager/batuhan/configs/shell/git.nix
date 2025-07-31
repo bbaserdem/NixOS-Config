@@ -80,4 +80,11 @@
 
   # Shell alias for working with our flake
   programs.zsh.shellAliases.git-flake = "git -C \"\${FLAKE}\"";
+
+  # Gitleaks
+  home.packages = with pkgs; [
+    pre-commit
+    pre-commit-hook-ensure-sops
+    gitleaks
+  ];
 }

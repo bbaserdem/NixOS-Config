@@ -6,11 +6,8 @@
 }: let
   pnpmHome = "${config.xdg.dataHome}/pnpm";
 in {
-  # Add qmk to home packages
-  home.packages = with pkgs; [
-    pnpm
-    nodejs-slim_24 # Node w/out npm
-  ];
+  # Enable pnpm
+  programs.pnpm.enable = true;
 
   # Drop environment variables
   home = {

@@ -10,9 +10,9 @@
     ./direnv.nix
     ./git.nix
     ./man.nix
-    ./qmk.nix
     ./pass.nix
     ./pnpm.nix
+    ./qmk.nix
     ./tmux.nix
     ./vifm.nix
   ];
