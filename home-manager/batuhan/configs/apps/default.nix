@@ -6,7 +6,7 @@
 }: {
   # Some app modules
   imports = [
-    ./ai.nix
+    #./ai.nix
     ./btop.nix
     ./discord.nix
     ./editor.nix
