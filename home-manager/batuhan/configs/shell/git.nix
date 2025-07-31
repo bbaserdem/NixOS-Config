@@ -5,7 +5,7 @@
   config,
   ...
 }: {
-  home.packages = [
+  home.packages = with pkgs; [
     # My git scripts
     outputs.packages.${pkgs.system}.user-git
     # Gitleaks and hooks
