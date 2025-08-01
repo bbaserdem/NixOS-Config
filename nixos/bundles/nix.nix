@@ -23,7 +23,11 @@
       options = "--delete-older-than 60d";
     };
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "pipe-operators"
+      ];
       auto-optimise-store = true;
     };
     extraOptions = ''
@@ -31,7 +35,7 @@
       keep-outputs = true
       keep-derivations = true
       # Include pipe operators
-      extra-experimental-features = pipe-operators
+      # extra-experimental-features = pipe-operators ca-derivations
     '';
   };
 
