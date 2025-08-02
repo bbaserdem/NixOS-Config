@@ -7,15 +7,8 @@
   pnpmHome = "${config.xdg.dataHome}/pnpm";
 in {
   home = {
-    # Enable pnpm
-    packages = with pkgs; [
-      pnpm
-      nodejs-slim
-    ];
-    # Drop environment variables
+    # Drop environment variables for global pnpm
     sessionVariables."PNPM_HOME" = pnpmHome;
-    sessionPath = [
-      pnpmHome
-    ];
+    sessionPath = [pnpmHome];
   };
 }
