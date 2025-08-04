@@ -60,9 +60,13 @@ in
       WTNAME=$(sanitize "$branch")
       WTROOT="./worktrees/$WTNAME"
 
-      # Skip if worktree already exists
+      # If worktree already exists, pull latest changes
       if [ -d "$WTROOT" ]; then
-        echo "Worktree $WTROOT already exists, skipping."
+        echo "Worktree $WTROOT already exists, pulling latest changes..."
+        (
+          cd "$WTROOT"
+          ${git} pull "$REMOTE" "$branch"
+        )
         continue
       fi
 
@@ -91,6 +95,17 @@ in
         ${tr} '[:upper:]' '[:lower:]' | \
         ${sed} 's|[/:]\+|-|g; s|[^a-z0-9:_-]|-|g')
       dir="./worktrees/$sanitized_dir"
+
+      # If worktree already exists, pull latest changes
+      if [ -d "$dir" ]; then
+        echo "Worktree $dir already exists, pulling latest changes..."
+        (
+          cd "$dir"
+          # Pull from the current tracking branch
+          ${git} pull
+        )
+        continue
+      fi
 
       # Create worktree, if not created yet
       ${git} worktree add "$dir" "$branch"
