@@ -58,12 +58,10 @@
     obsidian
     zotero
     #texlive.combined.scheme-full
-    # Programming
+    # Programming gui's, everything else needs project level stuff
     octaveFull
-    conda
-    pipx
+    spyder
     # Utilities
-    awscli2
     nemo-with-extensions
     virt-manager
     baobab
@@ -76,7 +74,6 @@
     tree
     # Apps to setup
     podgrab
-    uv
   ];
 
   # Enable stylix for apps
