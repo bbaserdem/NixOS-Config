@@ -23,6 +23,6 @@
     # Music download tool
     pkgs.streamrip
     # Visualizer
-    projectm-sdl-cpp
+    pkgs.projectm-sdl-cpp
   ];
 }
