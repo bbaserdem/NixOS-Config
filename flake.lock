@@ -1040,11 +1040,11 @@
         "vimspell-tr": "vimspell-tr"
       },
       "locked": {
-        "lastModified": 1753578679,
-        "narHash": "sha256-d4lhdYprw27HjPGjNdN3LBlh5PgVZxOJtezfavo2If8=",
+        "lastModified": 1754592782,
+        "narHash": "sha256-srM4tA+VkNI3gY8QFM9quy6qLFhP8Qp4Mlp4bMUZSx0=",
         "owner": "bbaserdem",
         "repo": "NixCats",
-        "rev": "33d3cb66773f1a079c91929e0ace402b123fcbc1",
+        "rev": "a9d3fb4ed90d91d61f74da019fdd34cf5771d477",
         "type": "github"
       },
       "original": {
