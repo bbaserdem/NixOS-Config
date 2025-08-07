@@ -57,7 +57,6 @@
       avahi.enable = true;
       cups.enable = true;
       droidcam.enable = true;
-      earlyoom.enable = true;
       geoclue.enable = false;
       fingerprint.enable = false;
       kdeconnect.enable = true;

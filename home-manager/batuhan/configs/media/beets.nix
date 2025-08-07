@@ -18,4 +18,10 @@
 
     settings = (import ./beetsSettings.nix) {inherit config pkgs;};
   };
+
+  # Tagger
+  home.packages = with pkgs; [
+    picard
+    chromaprint
+  ];
 }

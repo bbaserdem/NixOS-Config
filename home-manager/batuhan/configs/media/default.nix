@@ -22,5 +22,7 @@
     pkgs.cantata
     # Music download tool
     pkgs.streamrip
+    # Visualizer
+    pkgs.projectm-sdl-cpp
   ];
 }

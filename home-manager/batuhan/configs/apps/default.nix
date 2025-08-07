@@ -36,16 +36,13 @@
     # Video related
     vlc
     smplayer
-    droidcam
     handbrake
     flowblade
-    freetube
     # Communication
     signal-desktop
     ferdium
     slack
     zoom-us
-    webcord-vencord
     remmina
     thunderbird
     # Documents
@@ -54,13 +51,13 @@
     hunspell
     hunspellDicts.en_US
     kdePackages.okular
-    # hunspellDicts.tr_TR not available
     obsidian
     zotero
     #texlive.combined.scheme-full
-    # Programming gui's, everything else needs project level stuff
+    # Programming gui's
     octaveFull
     spyder
+    gitg
     # Utilities
     nemo-with-extensions
     virt-manager
@@ -72,6 +69,7 @@
     fzf
     wl-clipboard
     tree
+    # hunspellDicts.tr_TR not available
     # Apps to setup
     podgrab
   ];
