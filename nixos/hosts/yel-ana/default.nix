@@ -45,7 +45,7 @@
     services = {
       avahi.enable = true;
       cups.enable = true;
-      docker.enable = false;
+      docker.enable = true;
       droidcam.enable = true;
       geoclue.enable = true;
       fingerprint.enable = true;
@@ -54,7 +54,7 @@
       mariadb.enable = true;
       media.enable = true;
       nm.enable = true;
-      podman.enable = true;
+      podman.enable = false;
       rasdaemon.enable = true;
       samba.enable = true;
       syncthing.enable = true;
