@@ -19,4 +19,8 @@
   };
 
   users.users.${config.myNixOS.userName}.extraGroups = ["docker"];
+
+  environment.systemPackages = with pkgs; [
+    podman-compose
+  ];
 }
