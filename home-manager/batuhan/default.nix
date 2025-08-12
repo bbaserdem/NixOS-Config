@@ -14,7 +14,6 @@
     ./configs/calendar
     ./configs/email
     #./configs/gnome
-    #./configs/hyprland
     ./configs/keyboard
     ./configs/media
     ./configs/mimetypes

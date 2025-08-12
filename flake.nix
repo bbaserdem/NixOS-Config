@@ -51,22 +51,9 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # ----- Desktop ----- #
-    # Future desktop
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
     # AGS: Aylur's GTK Shell
     ags.url = "github:Aylur/ags";
-    # Declaratively managing plasma
+    # Declaratively manage plasma
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs = {
