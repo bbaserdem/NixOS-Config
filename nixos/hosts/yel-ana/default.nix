@@ -48,7 +48,7 @@
       docker.enable = true;
       droidcam.enable = true;
       geoclue.enable = true;
-      fingerprint.enable = false;
+      fingerprint.enable = true;
       fwupd.enable = true;
       kdeconnect.enable = true;
       mariadb.enable = true;
