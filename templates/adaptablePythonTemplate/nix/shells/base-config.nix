@@ -11,6 +11,7 @@
     nodejs-slim
     pnpm
     uv
+    awscli2
     # Basic tools for dev environment
     coreutils # Basic file, shell and text manipulation utilities
     findutils # Find, locate, and xargs commands
@@ -28,6 +29,8 @@
     tree # Display directories as trees
     unzip # Unzip utility
     zip # Zip utility
+    # Extra utilities
+    mermaid-cli # Mermaid diagrams
   ];
 
   # Base environment variables

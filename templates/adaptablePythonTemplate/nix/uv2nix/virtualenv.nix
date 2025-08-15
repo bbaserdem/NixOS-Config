@@ -17,7 +17,11 @@
   # Single virtualenv with only buildable packages
   virtualenv =
     editablePythonSet.mkVirtualEnv
-    "${if pythonProject.emptyRoot then "workspace" else pythonProject.projectName}-dev-env"
+    "${
+      if pythonProject.emptyRoot
+      then "workspace"
+      else pythonProject.projectName
+    }-dev-env"
     buildableDeps;
 
   # Shell configuration
@@ -34,12 +38,15 @@
 
       # Get repository root using git. This is expanded at runtime by the editable `.pth` machinery.
       export REPO_ROOT=$(git rev-parse --show-toplevel)
+
+      # Create symlink to virtualenv at .venv for ty compatibility
+      ln -snf ${virtualenv} $REPO_ROOT/.venv
     '';
   };
-
 in {
   inherit
     buildableDeps
     virtualenv
-    uvShellSet;
+    uvShellSet
+    ;
 }

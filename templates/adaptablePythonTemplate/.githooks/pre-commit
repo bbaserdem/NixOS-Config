@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Optional: allow a one-off bypass with env var
+#   GITLEAKS_BYPASS=1 git commit -m "..."
+if [[ "${GITLEAKS_BYPASS:-}" == "1" ]]; then
+  echo "[gitleaks] bypassed via GITLEAKS_BYPASS=1"
+  exit 0
+fi
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "[gitleaks] not installed. Install, and retry."
+  exit 1
+fi
+
+echo "[gitleaks] scanning staged changes…"
+# --staged keeps it fast and focused on what you're committing
+if ! gitleaks detect --staged --no-banner --redact --config ".gitleaks.toml"; then
+  cat <<'EOF'
+
+[gitleaks] Potential secrets detected. Commit blocked.
+- Unstage or edit the offending hunks:  git restore --staged <file>
+- If a finding is a false positive, refine .gitleaks.toml (allowlist/path or rule tweaks).
+- To force this one commit (not recommended): GITLEAKS_BYPASS=1 git commit ...
+
+EOF
+  exit 1
+fi
+
+echo "[gitleaks] clean"
+exit 0

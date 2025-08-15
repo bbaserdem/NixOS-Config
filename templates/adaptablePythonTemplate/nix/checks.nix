@@ -17,8 +17,7 @@
           ${packageName} = [];
         }
         // (lib.optionalAttrs (pythonSet ? pytest) {pytest = [];})
-        // (lib.optionalAttrs (pythonSet ? pytest-cov) {pytest-cov = [];})
-        // (lib.optionalAttrs (pythonSet ? pytest-asyncio) {pytest-asyncio = [];});
+        // (lib.optionalAttrs (pythonSet ? pytest-cov) {pytest-cov = [];});
 
       virtualenv = pythonSet.mkVirtualEnv "${packageName}-pytest-env" testEnv;
     in {
@@ -29,6 +28,8 @@
 
         # Set SSL certificates for httpx
         SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+        # Force SQLite for tests in Nix environment
+        USE_TEST_SQLITE = "1";
         dontConfigure = true;
 
         buildPhase = ''
@@ -85,8 +86,7 @@
           value = [];
         }) (map (ws: ws.projectName) pythonProject.workspaces))
         // (lib.optionalAttrs (pythonSet ? pytest) {pytest = [];})
-        // (lib.optionalAttrs (pythonSet ? pytest-cov) {pytest-cov = [];})
-        // (lib.optionalAttrs (pythonSet ? pytest-asyncio) {pytest-asyncio = [];});
+        // (lib.optionalAttrs (pythonSet ? pytest-cov) {pytest-cov = [];});
 
       virtualenv = pythonSet.mkVirtualEnv "integration-tests-env" testEnv;
     in {
@@ -97,6 +97,8 @@
 
         # Set SSL certificates for httpx
         SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+        # Force SQLite for tests in Nix environment
+        USE_TEST_SQLITE = "1";
         dontConfigure = true;
 
         buildPhase = ''
@@ -122,3 +124,4 @@
     else {};
 in
   packageChecks // integrationTests
+

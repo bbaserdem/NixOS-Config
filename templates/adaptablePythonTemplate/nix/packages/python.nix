@@ -46,11 +46,13 @@
               if [ -f "$exe" ] && [ -x "$exe" ]; then
                 exe_name=$(basename "$exe")
                 
-                # Create a wrapper script that sets up PYTHONPATH
+                # Create a wrapper script that uses the virtualenv Python with all dependencies
                 cat > "$out/bin/$exe_name" << EOF
           #!/usr/bin/env bash
-          export PYTHONPATH="${uvBoilerplate.pythonSet.${packageName}}/lib/python3.13/site-packages:\$PYTHONPATH"
-          exec "$exe" "\$@"
+          # Get Python version dynamically from the virtualenv
+          PYTHON_VERSION=\$(${uvBoilerplate.virtualenv}/bin/python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+          export PYTHONPATH="${uvBoilerplate.pythonSet.${packageName}}/lib/python\$PYTHON_VERSION/site-packages:\$PYTHONPATH"
+          exec ${uvBoilerplate.virtualenv}/bin/python "$exe" "\$@"
           EOF
                 
                 chmod +x "$out/bin/$exe_name"
@@ -62,8 +64,7 @@
           if [ ! -d "${uvBoilerplate.pythonSet.${packageName}}/bin" ] && [ "${packageName}" = "${pythonProject.projectName}" ]; then
             cat > $out/bin/${packageName} << EOF
           #!/usr/bin/env bash
-          export PYTHONPATH="${uvBoilerplate.pythonSet.${packageName}}/lib/python3.13/site-packages:\$PYTHONPATH"
-          exec ${uvBoilerplate.python}/bin/python -m ${packageName}.main "\$@"
+          exec ${uvBoilerplate.virtualenv}/bin/python -m ${packageName}.main "\$@"
           EOF
             
             chmod +x $out/bin/${packageName}

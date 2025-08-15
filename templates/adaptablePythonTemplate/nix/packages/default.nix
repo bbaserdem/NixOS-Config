@@ -5,6 +5,10 @@
   system,
   uvBoilerplate,
   pythonProject,
+  # Linux-specific inputs for Docker images
+  linuxPkgs ? null,
+  linuxUvBoilerplate ? null,
+  linuxSystem ? null,
   ...
 }: let
   inherit (pkgs) lib stdenv callPackage;
@@ -18,9 +22,31 @@
     inherit pkgs lib stdenv;
   };
 
-in {
-  # Default package (if needed)
-  # default = pythonPackages.template or null;
-} 
-// pythonPackages  # Python workspace packages
-// customPackages  # Custom utility packages
+  # For Docker images, use the Linux-specific packages if available
+  dockerPkgs = if linuxPkgs != null then linuxPkgs else pkgs;
+  dockerUvBoilerplate = if linuxUvBoilerplate != null then linuxUvBoilerplate else uvBoilerplate;
+  
+  # Import Python packages using the appropriate package set
+  dockerPythonPackages = if linuxPkgs != null && linuxUvBoilerplate != null
+    then import ./python.nix {
+      pkgs = dockerPkgs;
+      uvBoilerplate = dockerUvBoilerplate;
+      inherit pythonProject;
+    }
+    else pythonPackages;
+
+  dockerImages = import ../docker {
+    pkgs = dockerPkgs;
+    pythonPackages = dockerPythonPackages;
+    inherit inputs;
+  };
+in
+  {
+    # Default package (if needed)
+    # default = pythonPackages.template or null;
+  }
+  // pythonPackages # Python workspace packages
+  // customPackages
+  // dockerImages
+# Custom utility packages
+

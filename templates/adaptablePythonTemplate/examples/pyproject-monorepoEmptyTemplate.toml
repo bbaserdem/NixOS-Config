@@ -1,0 +1,11 @@
+# This workspace contains two members; which is frontend and backend
+# Better to not give this package a name, otherwise it tries to get built
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = [
+    "frontend"
+    "backend"
+]

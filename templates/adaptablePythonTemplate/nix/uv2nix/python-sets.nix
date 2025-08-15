@@ -30,50 +30,16 @@
     ]
   );
 
-  # Create editable fixups for all workspace packages
-  editableFixups = final: prev: let
-    # Get all package names from the python project config
-    allPackageNames =
-      (
-        if pythonProject.emptyRoot
-        then []
-        else [pythonProject.projectName]
-      )
-      ++ (map (ws: ws.projectName) pythonProject.workspaces);
-
-    # Create fixup for a single package
-    makeEditableFixup = pkgName: {
-      name = pkgName;
-      value = prev.${pkgName}.overrideAttrs (old: {
-        # Add editables to nativeBuildInputs for hatchling
-        nativeBuildInputs =
-          old.nativeBuildInputs
-          ++ final.resolveBuildSystem {
-            editables = [];
-          };
-      });
-    };
-
-    # Apply fixup to all packages that exist in prev
-    packageFixups = lib.listToAttrs (
-      lib.filter
-      (x: prev ? ${x.name})
-      (map makeEditableFixup allPackageNames)
-    );
-  in
-    packageFixups;
-
   # Editable python set with fixups for the main package
   editablePythonSet = pythonSet.overrideScope (
     lib.composeManyExtensions [
       editableOverlay
-      editableFixups
     ]
   );
+
 in {
   inherit
     baseSet
     pythonSet
-    editablePythonSet
-    ;
+    editablePythonSet;
 }
