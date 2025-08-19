@@ -60,9 +60,7 @@
     age.keyFile = "/home/batuhan/.ssh/batuhan_age_keys.txt";
     defaultSopsFile = ./secrets.yaml;
     secrets = {
-      openai-apk = {
-        mode = "0600";
-      };
+      gh-token = {mode = "0600";};
     };
   };
 

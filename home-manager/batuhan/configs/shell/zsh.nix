@@ -42,6 +42,8 @@
   '';
   zshConfigAfter = lib.mkOrder 1500 ''
     #--START--ZSH Config after everything else
+    # Make our export secrets
+    export GH_TOKEN="$(cat ${config.sops.secrets.gh-token.path})"
     #---END---ZSH Config after everything else
 
   '';
