@@ -52,13 +52,14 @@
     # Github cli
     gh = {
       enable = true;
+      gitCredentialHelper.enable = true;
       settings = {
         editor = config.home.sessionVariables.EDITOR;
         git_protocol = "ssh";
       };
       hosts = {
         "github.com" = {
-          userName = config.programs.git.userName;
+          user = config.programs.git.userName;
         };
       };
       extensions = with pkgs; [
