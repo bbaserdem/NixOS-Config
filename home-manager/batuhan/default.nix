@@ -60,7 +60,7 @@
     age.keyFile = "/home/batuhan/.ssh/batuhan_age_keys.txt";
     defaultSopsFile = ./secrets.yaml;
     secrets = {
-      gh-token = {mode = "0600";};
+      gh-auth = {mode = "0600";};
     };
   };
 

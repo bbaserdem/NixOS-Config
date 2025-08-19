@@ -43,9 +43,8 @@
   zshConfigAfter = lib.mkOrder 1500 ''
     #--START--ZSH Config after everything else
     # Make our export secrets
-    export GH_TOKEN="$(cat ${config.sops.secrets.gh-token.path})"
+    export GH_TOKEN="$(cat ${config.sops.secrets.gh-auth.path})"
     #---END---ZSH Config after everything else
-
   '';
 in {
   # We want FZF for our fuzzy completion menu
