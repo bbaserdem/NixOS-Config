@@ -33,8 +33,8 @@
 
   # Add mpv support to qtgreet, and add greetwl
   qtgreet = (prev.qtgreet.overrideAttrs (oldAttrs: {
-    mesonFlags = oldAttrs.mesonFlags ++ [(final.lib.mesonOption "build_greetwl" true)]
-  }).override {mpvSupport = true;};
+    mesonFlags = oldAttrs.mesonFlags ++ [(final.lib.mesonOption "build_greetwl" true)];
+  })).override {mpvSupport = true;};
 
   # Add packages to conda
   conda = prev.conda.override {
