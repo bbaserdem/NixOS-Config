@@ -16,7 +16,7 @@
     #./configs/gnome
     ./configs/keyboard
     ./configs/media
-    ./configs/mimetypes
+    #./configs/mimetypes
     ./configs/nnn
     ./configs/paths
     #./configs/plasma
