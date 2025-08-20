@@ -209,7 +209,7 @@
       settings = {
         # Set startup page; with different containers
         "network.protocol-handler.external.ext+container" = true;
-        "browser.startup.homepage" = pkgs.lib.strings.concatStringSep "|" [
+        "browser.startup.homepage" = pkgs.lib.strings.concatStringsSep "|" [
           "http://127.0.0.1:8384/"
           "https://mail.google.com/mail/u/0/#inbox"
           "ext+container:name=Work&url=https://mail.google.com/mail/u/0/#inbox"
