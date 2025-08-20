@@ -10,6 +10,7 @@
     ./discord.nix
     ./editor.nix
     ./firefox.nix
+    ./image.nix
     ./kitty.nix
     ./newsboat.nix
     ./syncthing.nix
@@ -19,15 +20,6 @@
 
   home.packages =
     (with pkgs; [
-      # Image editing
-      darktable
-      inkscape
-      gimp-with-plugins
-      vimiv-qt
-      qimgv
-      imagemagick
-      blender
-      digikam
       # Music related
       audacity
       musescore
