@@ -8,13 +8,14 @@
   # Install programs
   home.packages =
     ( # GIMP
-      with pkgs.gimp3plugins; [
+      with pkgs.gimp3Plugins; [
         pkgs.gimp3-with-plugins
         gmic
         bimp
         fourier
         texturize
         lightning
+        lensfun
         waveletSharpen
         exposureBlend
         resynthesizer
