@@ -12,13 +12,13 @@
         pkgs.gimp3-with-plugins
         gmic
         # bimp
-        fourier
-        texturize
-        lightning
-        gimplensfun
-        waveletSharpen
-        exposureBlend
-        resynthesizer
+        # fourier
+        # texturize
+        # lightning
+        # gimplensfun
+        # waveletSharpen
+        # exposureBlend
+        # resynthesizer
       ]
     )
     ++ (
