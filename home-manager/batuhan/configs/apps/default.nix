@@ -6,10 +6,10 @@
 }: {
   # Some app modules
   imports = [
+    ./browser.nix
     ./btop.nix
     ./discord.nix
     ./editor.nix
-    ./firefox.nix
     ./kitty.nix
     ./newsboat.nix
     ./syncthing.nix

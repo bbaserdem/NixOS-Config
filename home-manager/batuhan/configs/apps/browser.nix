@@ -1,5 +1,4 @@
 # Setup browsers to be used
-# TODO: Zotero connector as addon, and vdhcoapp as package
 {pkgs, ...}: {
   # Enable stylix color theme
   stylix.targets.firefox = {
@@ -199,7 +198,11 @@
       };
     };
   };
+
   home.packages = with pkgs; [
+    # Needed connection for VideoDownloadHelper
     vdhcoapp
+    # Also have chromium available for compatibility
+    ungoogled-chromium
   ];
 }
