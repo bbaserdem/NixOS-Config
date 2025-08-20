@@ -11,7 +11,7 @@
       with pkgs.gimp3Plugins; [
         pkgs.gimp3-with-plugins
         gmic
-        bimp
+        # bimp
         fourier
         texturize
         lightning
