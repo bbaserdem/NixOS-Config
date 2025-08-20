@@ -15,7 +15,7 @@
         fourier
         texturize
         lightning
-        lensfun
+        gimplensfun
         waveletSharpen
         exposureBlend
         resynthesizer
