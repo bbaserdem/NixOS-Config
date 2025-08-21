@@ -57,6 +57,7 @@
         languagetool
         mullvad
         multi-account-containers
+        open-url-in-container
         plasma-integration
         protondb-for-steam
         sponsorblock
@@ -402,6 +403,6 @@
     # Needed connection for VideoDownloadHelper
     vdhcoapp
     # Also have chromium available for compatibility
-    ungoogled-chromium
+    # ungoogled-chromium
   ];
 }
