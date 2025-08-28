@@ -1,6 +1,6 @@
 #
 {config, ...}: let
-  flakeDir = "${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/NixOS";
+  flakeDir = "${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}/Nix/NixOS";
 in {
   # Local binaries
   home.sessionPath = [
