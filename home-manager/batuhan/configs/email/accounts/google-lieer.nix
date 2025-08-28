@@ -18,7 +18,7 @@ in {
     address = "${address}@gmail.com";
     realName = name;
     maildir.path = account;
-    passwordCommand = "cat ${config.sops.secrets."google/${account}".path}";
+    # passwordCommand = "cat ${config.sops.secrets."google/${account}".path}";
 
     # Signature for sending mail
     signature = {
