@@ -7,6 +7,7 @@
 
   # Grab the password
   sops.secrets = {
+    "google/client_secret.json" = {};
     "google/orig" = {};
     "google/work" = {};
     "google/spam" = {};
