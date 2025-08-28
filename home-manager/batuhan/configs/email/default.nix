@@ -5,14 +5,6 @@
     ./accounts
   ];
 
-  # Grab the password
-  sops.secrets = {
-    "google/orig" = {};
-    "google/work" = {};
-    "google/spam" = {};
-    "google/nsfw" = {};
-  };
-
   # Global settings
   accounts.email = {
     maildirBasePath = "${config.xdg.dataHome}/mail";
