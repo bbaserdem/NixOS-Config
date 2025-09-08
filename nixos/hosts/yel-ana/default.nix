@@ -53,6 +53,7 @@
       kdeconnect.enable = true;
       mariadb.enable = true;
       media.enable = true;
+      neo4j.enable = true;
       nm.enable = true;
       podman.enable = false;
       rasdaemon.enable = true;
