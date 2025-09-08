@@ -25,22 +25,26 @@
 
   # Extend generated overlay with build fixups for all packages
   pyprojectOverrides = final: prev:
-    # Combine build system overrides
-    (buildSystemOverrides.mkBuildSystemOverrides final prev);
+  # Combine build system overrides
+  (buildSystemOverrides.mkBuildSystemOverrides final prev);
 
   # Create editable overlay for the main project and all workspace packages
   editableOverlay = workspace.mkEditablePyprojectOverlay {
     root = "$REPO_ROOT";
     # Include the main project (if not empty root) and all workspace packages
-    members = 
-      (if pythonProject.emptyRoot then [] else [ pythonProject.projectName ])
-      ++ (map (ws: ws.projectName) pythonProject.workspaces);
+    members =
+      (
+        if pythonProject.emptyRoot or false
+        then []
+        else [pythonProject.projectName]
+      )
+      ++ (map (ws: ws.projectName) (pythonProject.workspaces or []));
   };
-
 in {
-  inherit 
+  inherit
     baseOverlay
     overlay
     pyprojectOverrides
-    editableOverlay;
+    editableOverlay
+    ;
 }

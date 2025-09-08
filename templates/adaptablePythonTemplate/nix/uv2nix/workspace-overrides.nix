@@ -13,14 +13,15 @@
         passthru =
           old.passthru
           // {
-            tests = let 
+            tests = let
               # Include the package with core testing tools
-              testEnv = {
-                ${name} = [];
-              } 
-              // (lib.optionalAttrs (final ? pytest) { pytest = []; })
-              // (lib.optionalAttrs (final ? pytest-cov) { pytest-cov = []; });
-              
+              testEnv =
+                {
+                  ${name} = [];
+                }
+                // (lib.optionalAttrs (final ? pytest) {pytest = [];})
+                // (lib.optionalAttrs (final ? pytest-cov) {pytest-cov = [];});
+
               virtualenv = final.mkVirtualEnv "${name}-pytest-env" testEnv;
             in
               (old.tests or {})
@@ -48,17 +49,25 @@
       });
 
     # Create overrides for all workspace packages (including root if not empty)
-    allWorkspacePackages = 
-      (if pythonProject.emptyRoot then [] else [pythonProject.projectName])
-      ++ (map (ws: ws.projectName) pythonProject.workspaces);
+    allWorkspacePackages =
+      (
+        if pythonProject.emptyRoot or false
+        then []
+        else [pythonProject.projectName]
+      )
+      ++ (map (ws: ws.projectName) (pythonProject.workspaces or []));
 
     # Apply overrides to all workspace packages that exist in the package set
     workspaceOverrides = lib.listToAttrs (
-      lib.filter (x: x.value != null) 
-        (map (name: {
+      lib.filter (x: x.value != null)
+      (map (name: {
           inherit name;
-          value = if prev ? ${name} then overridePackage name else null;
-        }) allWorkspacePackages)
+          value =
+            if prev ? ${name}
+            then overridePackage name
+            else null;
+        })
+        allWorkspacePackages)
     );
   in
     workspaceOverrides;
@@ -100,7 +109,7 @@
 
     # Handle the root package
     rootPackageOverride =
-      if prev ? ${pythonProject.projectName} && !pythonProject.emptyRoot
+      if prev ? ${pythonProject.projectName} && !(pythonProject.emptyRoot or false)
       then {
         ${pythonProject.projectName} = prev.${pythonProject.projectName}.overrideAttrs (old: {
           src = lib.fileset.toSource {
@@ -123,8 +132,8 @@
 
     # Create overrides for all workspace packages
     workspaceOverrides = lib.listToAttrs (
-      lib.filter (x: x.value != null) 
-        (map makeWorkspaceEditable pythonProject.workspaces)
+      lib.filter (x: x.value != null)
+      (map makeWorkspaceEditable (pythonProject.workspaces or []))
     );
   in
     workspaceOverrides // rootPackageOverride;

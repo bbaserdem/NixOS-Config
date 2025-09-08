@@ -18,7 +18,7 @@
   virtualenv =
     editablePythonSet.mkVirtualEnv
     "${
-      if pythonProject.emptyRoot
+      if pythonProject.emptyRoot or false
       then "workspace"
       else pythonProject.projectName
     }-dev-env"

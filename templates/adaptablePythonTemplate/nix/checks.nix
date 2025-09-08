@@ -61,11 +61,11 @@
   # Get all package names (including root if not empty)
   allPackageNames =
     (
-      if pythonProject.emptyRoot
+      if pythonProject.emptyRoot or false
       then []
       else [pythonProject.projectName]
     )
-    ++ (map (ws: ws.projectName) pythonProject.workspaces);
+    ++ (map (ws: ws.projectName) (pythonProject.workspaces or []));
 
   # Create checks for all packages
   packageChecks =
@@ -77,14 +77,14 @@
 
   # Add integration tests for empty root if tests directory exists
   integrationTests =
-    if pythonProject.emptyRoot
+    if pythonProject.emptyRoot or false
     then let
       # Create test environment with all workspace packages
       testEnv =
         lib.listToAttrs (map (name: {
           name = name;
           value = [];
-        }) (map (ws: ws.projectName) pythonProject.workspaces))
+        }) (map (ws: ws.projectName) (pythonProject.workspaces or [])))
         // (lib.optionalAttrs (pythonSet ? pytest) {pytest = [];})
         // (lib.optionalAttrs (pythonSet ? pytest-cov) {pytest-cov = [];});
 
@@ -124,4 +124,3 @@
     else {};
 in
   packageChecks // integrationTests
-
