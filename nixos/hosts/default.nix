@@ -52,6 +52,7 @@
       generateKey = false;
     };
     secrets = {
+      # Password hashes
       "batuhan/password-hash" = {
         neededForUsers = true;
       };

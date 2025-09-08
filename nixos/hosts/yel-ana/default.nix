@@ -91,8 +91,5 @@
         then "syncthing"
         else config.users.users.nobody.group;
     };
-    "batuhan/password-hash" = {
-      neededForUsers = true;
-    };
   };
 }
