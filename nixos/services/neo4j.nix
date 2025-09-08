@@ -1,5 +1,11 @@
 # Configuring neo4j
 {config, ...}: {
+  # Load our secrets
+  sops.secrets = {
+    "neo4j/private-key" = {};
+    "neo4j/public-certificate" = {};
+  };
+
   services.neo4j = {
     enable = true;
     # Enable shell access
