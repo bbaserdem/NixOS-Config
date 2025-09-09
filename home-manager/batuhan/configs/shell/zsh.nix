@@ -106,10 +106,5 @@ in {
       zshConfig
       zshConfigAfter
     ];
-    shellAliases = {
-      ls = "ls --color";
-      ll = "ls -l";
-      dev = "nix develop --impure -c $SHELL";
-    };
   };
 }
