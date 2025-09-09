@@ -9,7 +9,7 @@
   services.neo4j = {
     enable = true;
     # Enable shell access
-    shell.enable = true;
+    # shell.enable = true;
 
     # Turn off login, we are only local
     extraServerConfig = ''
@@ -17,25 +17,27 @@
     '';
 
     # Define the SSL policy
-    ssl.policies.local-policy = {
-      publicCertificate = config.sops.secrets."neo4j/public-certificate".path;
-      privateKey = config.sops.secrets."neo4j/private-key".path;
-    };
+    # ssl.policies.local-policy = {
+    #   clientAuth = "REQUIRE";
+    #   publicCertificate = config.sops.secrets."neo4j/public-certificate".path;
+    #   privateKey = config.sops.secrets."neo4j/private-key".path;
+    # };
 
     # Interfaces
-    https = {
-      enable = true;
-      listenAddress = "localhost:7473";
-    };
     http = {
       enable = true;
-      listenAddress = "localhost:7474";
+      listenAddress = "127.0.0.1:7474";
+    };
+    https = {
+      enable = false;
+      listenAddress = "127.0.0.1:7473";
     };
     bolt = {
       enable = true;
-      listenAddress = "localhost:7687";
-      tlsLevel = "REQUIRED";
-      sslPolicy = "local-policy";
+      listenAddress = "127.0.0.1:7687";
+      tlsLevel = "DISABLED";
+      #tlsLevel = "REQUIRED";
+      #sslPolicy = "local-policy";
     };
   };
 }
