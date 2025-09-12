@@ -99,7 +99,7 @@ in {
       #enableAutosuggestions = true;
       enableBashCompletion = true;
       enableCompletion = true;
-      enableFastSyntaxHighlighting = true;
+      #enableFastSyntaxHighlighting = true;
       enableFzfCompletion = true;
       enableFzfGit = true;
       enableGlobalCompInit = true;
