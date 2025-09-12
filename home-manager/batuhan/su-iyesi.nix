@@ -9,7 +9,7 @@
     ./configs/apps/kitty.nix
     ./configs/security/ssh.nix
     ./configs/shell/direnv.nix
-    ./configs/shell/git.nix
+    #./configs/shell/git.nix
     ./configs/shell/man.nix
     ./configs/shell/zsh.nix
     ./configs/shell/tmux.nix
