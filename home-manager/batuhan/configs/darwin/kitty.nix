@@ -5,9 +5,6 @@
   lib,
   ...
 }: {
-  # Stylix color scheme
-  stylix.targets.kitty.enable = true;
-
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;

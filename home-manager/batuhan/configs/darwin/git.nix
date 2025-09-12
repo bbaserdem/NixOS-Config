@@ -1,13 +1,10 @@
 # Configuring git
 {
-  outputs,
   pkgs,
   config,
   ...
 }: {
   home.packages = with pkgs; [
-    # My git scripts
-    outputs.packages.${pkgs.system}.user-git
     # Gitleaks and hooks
     pre-commit
     pre-commit-hook-ensure-sops
@@ -27,7 +24,6 @@
       };
       extraConfig = {
         core = {
-          editor = config.home.sessionVariables.EDITOR;
           hooksPath = ".githooks/";
         };
         pull = {rebase = false;};
@@ -54,7 +50,6 @@
       enable = true;
       gitCredentialHelper.enable = true;
       settings = {
-        editor = config.home.sessionVariables.EDITOR;
         git_protocol = "ssh";
       };
       hosts = {
@@ -79,9 +74,6 @@
       enable = true;
     };
   };
-
-  # Style lazygit
-  stylix.targets.lazygit.enable = true;
 
   # Shell alias for working with our flake
   programs.zsh.shellAliases.git-flake = "git -C \"\${FLAKE}\"";

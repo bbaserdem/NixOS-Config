@@ -1,8 +1,5 @@
 # Zellij config
 {pkgs, ...}: {
-  # Enable theming
-  stylix.targets.tmux.enable = true;
-
   # Settings
   programs = {
     tmux = {

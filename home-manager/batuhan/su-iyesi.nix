@@ -8,23 +8,8 @@
   # Be selective what we import for now
   imports = [
     inputs.sops-nix.homeManagerModules.sops
-    ./configs/apps/kitty.nix
-    ./configs/security/sops.nix
-    ./configs/security/ssh.nix
-    ./configs/shell/git.nix
-    ./configs/shell/man.nix
-    ./configs/shell/zsh.nix
-    ./configs/shell/tmux.nix
+    ./configs/darwin
   ];
-
-  # Entry point for sops settings
-  # sops = {
-  #   age.keyFile = "/home/batuhan/.ssh/batuhan_age_keys.txt";
-  #   defaultSopsFile = ./secrets.yaml;
-  #   secrets = {
-  #     gh-auth = {mode = "0600";};
-  #   };
-  # };
 
   # Entry point for sops settings
   sops = {
