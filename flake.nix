@@ -18,6 +18,11 @@
     flake-utils.url = "github:numtide/flake-utils";
     # Hardware fixes
     hardware.url = "github:nixos/nixos-hardware";
+    # Nix darwin
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # ----- Utilities ----- #
     # Automated disk partitioning, and mounting
@@ -149,6 +154,15 @@
           # WIP hostnames, once done, put them in the <let in>
         }
         // (lib.mkConfiguredHost configuredHosts);
+
+      # MacOS configurations
+      # Available through darwin-rebuild --switch
+      darwinConfigurations = {
+        "su-iyesi" = inputs.nix-darwin.lib.darwinSystem {
+          modules = [./nixos/hosts/su-iyesi];
+          specialArgs = {inherit inputs outputs;};
+        };
+      };
 
       # Standalone HM configurations
       # Available through 'home-manager --flake .#your-username@your-hostname'
