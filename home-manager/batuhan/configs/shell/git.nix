@@ -80,9 +80,6 @@
     };
   };
 
-  # Style lazygit
-  stylix.targets.lazygit.enable = true;
-
   # Shell alias for working with our flake
   programs.zsh.shellAliases.git-flake = "git -C \"\${FLAKE}\"";
 }

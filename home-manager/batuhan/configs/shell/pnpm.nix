@@ -1,4 +1,4 @@
-# QMK
+# Npm stuff
 {
   pkgs,
   config,

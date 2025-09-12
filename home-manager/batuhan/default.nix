@@ -27,7 +27,6 @@
     ./configs/texlive
     ./configs/udiskie
     ./configs/virt-manager
-    ./configs/yt-dlp
   ];
 
   # System setup

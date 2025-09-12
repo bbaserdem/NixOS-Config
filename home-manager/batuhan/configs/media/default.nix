@@ -14,6 +14,7 @@
     ./mpv.nix
     ./ncmpcpp.nix
     ./wireplumber.nix
+    ./yt-dlp.nix
   ];
 
   home.packages = [

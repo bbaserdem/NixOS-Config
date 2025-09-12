@@ -64,6 +64,10 @@
       gtk.enable = true;
       kde.enable = true;
       xresources.enable = true;
+      # Apps
+      lazygit.enable = true;
+      kitty.enable = true;
+      tmux.enable = true;
     };
   };
 }
