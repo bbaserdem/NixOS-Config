@@ -66,6 +66,9 @@ in {
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     dotDir = ".config/zsh";
+    profileExtra = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    '';
     # History
     history = {
       expireDuplicatesFirst = true;
