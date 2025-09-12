@@ -25,8 +25,6 @@
       batdiff
     ];
   };
-  # Enable color for bat
-  stylix.targets.bat.enable = true;
 
   # Pager setting
   home.sessionVariables = {

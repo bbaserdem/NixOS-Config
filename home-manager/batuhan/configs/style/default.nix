@@ -65,6 +65,7 @@
       kde.enable = true;
       xresources.enable = true;
       # Apps
+      bat.enable = true;
       lazygit.enable = true;
       kitty.enable = true;
       tmux.enable = true;
