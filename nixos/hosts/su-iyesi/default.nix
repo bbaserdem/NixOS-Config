@@ -30,6 +30,7 @@ in {
 
   # Nixpkgs options
   nixpkgs = {
+    hostPlatform = "aarch64-darwin";
     overlays = [
       # My overlays
       outputs.overlays.additions
