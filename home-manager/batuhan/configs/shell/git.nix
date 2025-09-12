@@ -1,13 +1,10 @@
 # Configuring git
 {
-  outputs,
   pkgs,
   config,
   ...
 }: {
   home.packages = with pkgs; [
-    # My git scripts
-    outputs.packages.${pkgs.system}.user-git
     # Gitleaks and hooks
     pre-commit
     pre-commit-hook-ensure-sops
