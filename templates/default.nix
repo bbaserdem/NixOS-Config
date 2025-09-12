@@ -7,7 +7,7 @@
   # };
 
   uvPythonTemplate = {
-    path = ./uvPythonTemplate;
+    path = ./adaptablePythonTemplate;
     description = "Flake for starting a python (or integrated python) project.";
   };
 
