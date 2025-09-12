@@ -27,6 +27,15 @@
   #   };
   # };
 
+  # Entry point for sops settings
+  sops = {
+    age.keyFile = "/Users/batuhan/.ssh/batuhan_age_keys.txt";
+    defaultSopsFile = ./secrets.yaml;
+    secrets = {
+      gh-auth = {mode = "0600";};
+    };
+  };
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.05";
 }
