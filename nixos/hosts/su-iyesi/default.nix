@@ -38,7 +38,12 @@ in {
     isHidden = false;
     shell = pkgs.zsh;
   };
-  home-manager.users.${username} = import ../../../home-manager/batuhan/su-iyesi.nix;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = {inherit inputs outputs;};
+    users.${username} = import ../../../home-manager/batuhan/su-iyesi.nix;
+  };
 
   # Homebrew
   homebrew = {
