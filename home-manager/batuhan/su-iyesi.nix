@@ -14,6 +14,7 @@
     ./configs/shell/direnv.nix
     ./configs/shell/git.nix
     ./configs/shell/man.nix
+    ./configs/paths
     ./configs/shell/zsh.nix
     ./configs/shell/tmux.nix
   ];
