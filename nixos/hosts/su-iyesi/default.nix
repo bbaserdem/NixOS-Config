@@ -96,7 +96,7 @@ in {
     nix-index.enable = true;
     zsh = {
       enable = true;
-      enableAutosuggestions = true;
+      #enableAutosuggestions = true;
       enableBashCompletion = true;
       enableCompletion = true;
       enableFastSyntaxHighlighting = true;
