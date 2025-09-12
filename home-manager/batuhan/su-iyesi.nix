@@ -1,15 +1,18 @@
 # batuhan@su-iyesi home configuration
 {
+  inputs,
   lib,
   config,
   ...
 }: {
   # Be selective what we import for now
   imports = [
+    inputs.sops-nix.homeManagerModules.sops
     ./configs/apps/kitty.nix
+    ./configs/security/sops.nix
     ./configs/security/ssh.nix
     ./configs/shell/direnv.nix
-    #./configs/shell/git.nix
+    ./configs/shell/git.nix
     ./configs/shell/man.nix
     ./configs/shell/zsh.nix
     ./configs/shell/tmux.nix
