@@ -4,6 +4,7 @@
   inputs,
   outputs,
   pkgs,
+  host,
   ...
 }: let
   username = "batuhan";
@@ -43,7 +44,10 @@ in {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs outputs;};
+    extraSpecialArgs = {
+      inherit inputs outputs host;
+      user = "batuhan";
+    };
     users.${username} = import ../../../home-manager/batuhan/su-iyesi.nix;
   };
 

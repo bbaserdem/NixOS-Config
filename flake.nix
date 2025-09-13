@@ -160,7 +160,10 @@
       darwinConfigurations = {
         "su-iyesi" = inputs.nix-darwin.lib.darwinSystem {
           modules = [./nixos/hosts/su-iyesi];
-          specialArgs = {inherit inputs outputs;};
+          specialArgs = {
+            inherit inputs outputs;
+            host = "su-iyesi";
+          };
         };
       };
 
