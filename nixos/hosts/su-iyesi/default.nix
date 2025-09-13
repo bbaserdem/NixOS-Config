@@ -17,6 +17,9 @@ in {
     inputs.stylix.darwinModules.stylix
   ];
 
+  # Trying to make stylix work
+  stylix.image = "${pkgs.elementary-wallpapers}/share/backgrounds/Photo by SpaceX.jpg";
+
   # Nixpkgs options
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
