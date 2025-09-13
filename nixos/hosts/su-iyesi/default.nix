@@ -22,6 +22,8 @@ in {
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      # NUR overlay
+      inputs.nur.overlays.default
     ];
   };
 
