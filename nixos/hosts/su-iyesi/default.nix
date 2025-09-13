@@ -68,13 +68,11 @@ in {
       sopsFile = ./secrets.yaml;
       mode = "0440";
       owner = username;
-      group = config.users.users.nobody.group;
     };
     "syncthing/cert" = {
       sopsFile = ./secrets.yaml;
       mode = "0440";
       owner = username;
-      group = config.users.users.nobody.group;
     };
   };
 
