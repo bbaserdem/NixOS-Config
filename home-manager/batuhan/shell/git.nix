@@ -49,6 +49,9 @@
           mainBranches = ["main" "master"];
           parseEmoji = true;
         };
+        os = {
+          edit = "${config.home.sessionVariables.EDITOR} {{filename}}";
+        };
       };
     };
 
