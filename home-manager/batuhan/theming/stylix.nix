@@ -28,10 +28,6 @@
             package = pkgs.source-sans-pro;
             name = "Source Sans Pro";
           };
-          monospace = {
-            package = pkgs._3270font;
-            name = "IBM 3270";
-          };
           emoji = {
             package = pkgs.noto-fonts-color-emoji;
             name = "Noto Color Emoji";
@@ -62,11 +58,30 @@
     }
     (lib.mkIf pkgs.stdenv.isLinux {
       # Icons
-      stylix.iconTheme = {
-        enable = true;
-        package = pkgs.qogir-icon-theme;
-        dark = "Qogir-dark";
-        light = "Qogir";
+      stylix = {
+        iconTheme = {
+          enable = true;
+          package = pkgs.qogir-icon-theme;
+          dark = "Qogir-dark";
+          light = "Qogir";
+        };
+        fonts = {
+          monospace = {
+            package = pkgs._3270font;
+            name = "IBM 3270";
+          };
+        };
+      };
+    })
+    (lib.mkIf pkgs.stdenv.isDarwin {
+      # Icons
+      stylix = {
+        fonts = {
+          monospace = {
+            package = pkgs.fira-code;
+            name = "Fira Code";
+          };
+        };
       };
     })
   ];
