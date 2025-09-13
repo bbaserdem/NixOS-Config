@@ -15,7 +15,6 @@ in {
     inputs.sops-nix.darwinModules.sops
     inputs.home-manager.darwinModules.home-manager
     inputs.stylix.darwinModules.stylix
-    ../../../home-manager/batuhan/theming/stylix.nix
   ];
 
   # Nixpkgs options
