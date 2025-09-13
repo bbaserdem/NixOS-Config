@@ -44,14 +44,6 @@
           name = "Bibata-Modern-Ice";
         };
 
-        # Icons
-        iconTheme = {
-          enable = true;
-          package = pkgs.qogir-icon-theme;
-          dark = "Qogir-dark";
-          light = "Qogir";
-        };
-
         # Opacity options
         opacity = {
           applications = 1.0;
