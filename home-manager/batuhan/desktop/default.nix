@@ -7,6 +7,6 @@
   # Some app modules
   imports = [
     ./keyboard.nix
-    ./paths.nix
+    ./xdg-paths.nix
   ];
 }
