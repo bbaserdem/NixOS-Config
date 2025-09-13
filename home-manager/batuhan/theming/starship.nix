@@ -6,7 +6,7 @@ in {
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
-    enabledFishIntegration = true;
+    enableFishIntegration = true;
     enableIonIntegration = true;
     enableNushellIntegration = true;
     enableZshIntegration = true;
