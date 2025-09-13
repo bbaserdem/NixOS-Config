@@ -9,7 +9,10 @@
     enable = true;
     autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
-    image = config.myHome.wallpaper.path;
+    image =
+      if (config ? myHome) && (config.myHome ? wallpaper) && (config.myHome.wallpaper ? path)
+      then config.myHome.wallpaper.path
+      else null;
     polarity = "dark";
 
     # System fonts
