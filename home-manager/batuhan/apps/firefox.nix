@@ -9,22 +9,38 @@
     ];
   };
 
+  # Make default browser if linux
+  config = lib.mkIf pkgs.stdenv.isLinux {
+    xdg.mimeApps.defaultApplications = {
+      "text/html" = ["firefox.desktop"];
+      "text/xml" = ["firefox.desktop"];
+      "x-scheme-handler/http" = ["firefox.desktop"];
+      "x-scheme-handler/https" = ["firefox.desktop"];
+    };
+  };
+
   # Firefox settings
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox.override {
-      # See nixpkgs' firefox/wrapper.nix to check which options you can use
-      nativeMessagingHosts = with pkgs; [
-        browserpass
-        bukubrow
-        tridactyl-native
-        gnome-browser-connector
-        uget-integrator
-        fx-cast-bridge
-        vdhcoapp
-        kdePackages.plasma-browser-integration
-      ];
-    };
+    package = pkgs.firefox.override (lib.mkMerge [
+      {
+        # See nixpkgs' firefox/wrapper.nix to check which options you can use
+        nativeMessagingHosts = with pkgs; [
+          browserpass
+          bukubrow
+          tridactyl-native
+          uget-integrator
+          fx-cast-bridge
+          vdhcoapp
+        ];
+      }
+      (lib.mkIf pkgs.stdenv.isLinux {
+        nativeMessagingHosts = with pkgs; [
+          gnome-browser-connector
+          kdePackages.plasma-browser-integration
+        ];
+      })
+    ]);
     profiles.batuhan = {
       isDefault = true;
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
