@@ -11,9 +11,7 @@
   # Include some Plasma project packages
   environment.systemPackages = with pkgs.kdePackages; [
     pkgs.unstable.kdePackages.marble # Maps
-    kdenlive # Video editor
     dragon # Media player
-    kmail # Email client
     yakuake # Dropdown terminal
   ];
 }

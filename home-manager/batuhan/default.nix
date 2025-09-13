@@ -9,24 +9,13 @@
     # My variables
     outputs.homeManagerModules.userConfig
     # My modules
-    ./configs/apps
-    ./configs/autorandr
-    ./configs/calendar
-    ./configs/email
-    #./configs/gnome
-    ./configs/keyboard
-    ./configs/media
-    #./configs/mimetypes
-    ./configs/nnn
-    ./configs/paths
-    #./configs/plasma
-    ./configs/remmina
-    ./configs/security
-    ./configs/shell
-    ./configs/style
-    ./configs/texlive
-    ./configs/udiskie
-    ./configs/virt-manager
+    ./apps
+    ./email
+    ./desktop
+    ./media
+    ./security
+    ./shell
+    ./theming
   ];
 
   # System setup
@@ -34,6 +23,8 @@
     username = "batuhan";
     homeDirectory = "/home/batuhan";
   };
+
+  # Nixpkgs version
   nixpkgs = {
     overlays = [
       # My overlays
@@ -53,15 +44,6 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
-
-  # Entry point for sops settings
-  sops = {
-    age.keyFile = "/home/batuhan/.ssh/batuhan_age_keys.txt";
-    defaultSopsFile = ./secrets.yaml;
-    secrets = {
-      gh-auth = {mode = "0600";};
-    };
-  };
 
   # Make all our wallpapers elementary OS wallpapers
   myHome.wallpaper = {

@@ -1,22 +1,42 @@
-# batuhan@su-iyesi home configuration
+# Nix-darwin batuhan@su-iyesi home configuration
 {
   inputs,
+  outputs,
   lib,
   config,
   ...
 }: {
-  # Be selective what we import for now
+  # Be selective what we import since we are on darwin
   imports = [
+    # Module imports
+    inputs.nixCats.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
-    ./configs/darwin
+    inputs.stylix.darwinModules.stylix
+    # My modules to load
+    ../apps/firefox.nix
+    ../apps/kitty.nix
+    ../apps/neovim.nix
+    ../security/sops.nix
+    ../security/ssh.nix
+    ../shell/git.nix
+    ../shell/man.nix
+    ../shell/tmux.nix
+    ../shell/zsh.nix
+    ../theming/stylix.nix
   ];
 
-  # Entry point for sops settings
-  sops = {
-    age.keyFile = "/Users/batuhan/.ssh/batuhan_age_keys.txt";
-    defaultSopsFile = ./secrets.yaml;
-    secrets = {
-      gh-auth = {mode = "0600";};
+  # Nixpkgs version
+  nixpkgs = {
+    overlays = [
+      # My overlays
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+      # External overlays
+      inputs.nur.overlays.default
+    ];
+    config = {
+      allowUnfree = true;
     };
   };
 
