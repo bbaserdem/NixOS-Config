@@ -6,6 +6,6 @@
     ll = "ls -l";
     dev = "nix develop --impure -c $SHELL";
     claude-cc = "$HOME/.cc-profile/bin/cc-profile-wrapper";
-    cd-flake = "cd \${FLAKE}"
+    cd-flake = "cd \${FLAKE}";
   };
 }
