@@ -3,6 +3,7 @@
 {
   inputs,
   outputs,
+  config,
   pkgs,
   host,
   ...
@@ -64,19 +65,13 @@ in {
       sopsFile = ./secrets.yaml;
       mode = "0440";
       owner = username;
-      group =
-        if config.myNixOS.services.syncthing.enable
-        then "syncthing"
-        else config.users.users.nobody.group;
+      group = config.users.users.nobody.group;
     };
     "syncthing/cert" = {
       sopsFile = ./secrets.yaml;
       mode = "0440";
       owner = username;
-      group =
-        if config.myNixOS.services.syncthing.enable
-        then "syncthing"
-        else config.users.users.nobody.group;
+      group = config.users.users.nobody.group;
     };
   };
 
