@@ -18,7 +18,7 @@ in {
   ];
 
   # Trying to make stylix work
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
+  stylix.image = ./wallpaper.jpg;
 
   # Nixpkgs options
   nixpkgs = {
