@@ -18,6 +18,8 @@
     #./apps/neovim.nix
     ./security/sops.nix
     ./security/ssh.nix
+    ./shell/aliases.nix
+    ./shell/environment.nix
     ./shell/git.nix
     ./shell/man.nix
     ./shell/tmux.nix
