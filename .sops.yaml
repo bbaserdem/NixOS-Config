@@ -27,3 +27,8 @@ creation_rules:
     - age:
       - *hosts
       - *host_yertengri
+  - path_regex: nixos/hosts/su-iyesi/[^/]+\.(yaml|json|key)$
+    key_groups:
+    - age:
+      - *hosts
+      - *host_su-iyesi

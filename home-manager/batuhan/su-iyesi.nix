@@ -11,7 +11,6 @@
     # Module imports
     inputs.nixCats.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
-    inputs.stylix.homeManagerModules.stylix
     # My modules to load
     # ./apps/firefox.nix
     ./apps/kitty.nix

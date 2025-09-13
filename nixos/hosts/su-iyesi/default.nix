@@ -12,6 +12,7 @@ in {
   # You can import other modules here
   imports = [
     inputs.sops-nix.darwinModules.sops
+    inputs.stylix.darwinModules.stylix
     inputs.home-manager.darwinModules.home-manager
   ];
 
@@ -55,6 +56,28 @@ in {
   homebrew = {
     enable = true;
     casks = import ./casks.nix;
+  };
+
+  # Secrets management
+  sops.secrets = {
+    "syncthing/key" = {
+      sopsFile = ./secrets.yaml;
+      mode = "0440";
+      owner = username;
+      group =
+        if config.myNixOS.services.syncthing.enable
+        then "syncthing"
+        else config.users.users.nobody.group;
+    };
+    "syncthing/cert" = {
+      sopsFile = ./secrets.yaml;
+      mode = "0440";
+      owner = username;
+      group =
+        if config.myNixOS.services.syncthing.enable
+        then "syncthing"
+        else config.users.users.nobody.group;
+    };
   };
 
   # Setup nix
