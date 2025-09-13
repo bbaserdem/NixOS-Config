@@ -8,6 +8,7 @@
     ./discord.nix
     ./firefox.nix
     ./kitty.nix
+    ./neovide.nix
     ./neovim.nix
     ./newsboat.nix
     ./remmina.nix
