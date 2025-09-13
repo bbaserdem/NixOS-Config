@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    #./editor.nix
+    ./editor.nix
     ./git.nix
     ./kitty.nix
     ./man.nix
