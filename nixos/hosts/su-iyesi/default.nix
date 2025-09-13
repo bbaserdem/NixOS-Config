@@ -59,8 +59,8 @@ in {
 
   # Setup nix
   nix = {
-    # We want to use the determinate nix
-    enable = false;
+    # We don't want to use determinate nix cause hostname issues
+    enable = true;
     settings = {
       substituters = [
         "https://nix-community.cachix.org"
