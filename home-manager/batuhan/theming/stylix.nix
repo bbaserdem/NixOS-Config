@@ -18,8 +18,29 @@
           else null;
         polarity = "dark";
 
-        # System fonts
+        # Opacity options
+        opacity = {
+          applications = 1.0;
+          desktop = 0.9;
+          popups = 0.9;
+          terminal = 0.9;
+        };
+      };
+    }
+    (lib.mkIf pkgs.stdenv.isLinux {
+      # Icons
+      stylix = {
+        iconTheme = {
+          enable = true;
+          package = pkgs.qogir-icon-theme;
+          dark = "Qogir-dark";
+          light = "Qogir";
+        };
         fonts = {
+          monospace = {
+            package = pkgs._3270font;
+            name = "IBM 3270";
+          };
           serif = {
             package = pkgs.caladea;
             name = "Caladea";
@@ -40,47 +61,11 @@
           name = "Bibata-Modern-Ice";
         };
 
-        # Opacity options
-        opacity = {
-          applications = 1.0;
-          desktop = 0.9;
-          popups = 0.9;
-          terminal = 0.9;
-        };
-
         # Enable themeing systemwide
         targets = {
           gtk.enable = true;
           kde.enable = true;
           xresources.enable = true;
-        };
-      };
-    }
-    (lib.mkIf pkgs.stdenv.isLinux {
-      # Icons
-      stylix = {
-        iconTheme = {
-          enable = true;
-          package = pkgs.qogir-icon-theme;
-          dark = "Qogir-dark";
-          light = "Qogir";
-        };
-        fonts = {
-          monospace = {
-            package = pkgs._3270font;
-            name = "IBM 3270";
-          };
-        };
-      };
-    })
-    (lib.mkIf pkgs.stdenv.isDarwin {
-      # Icons
-      stylix = {
-        fonts = {
-          monospace = {
-            package = pkgs.fira-code;
-            name = "Fira Code";
-          };
         };
       };
     })
