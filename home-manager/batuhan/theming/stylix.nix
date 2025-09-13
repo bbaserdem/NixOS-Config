@@ -25,17 +25,7 @@
           popups = 0.9;
           terminal = 0.9;
         };
-      };
-    }
-    (lib.mkIf pkgs.stdenv.isLinux {
-      # Icons
-      stylix = {
-        iconTheme = {
-          enable = true;
-          package = pkgs.qogir-icon-theme;
-          dark = "Qogir-dark";
-          light = "Qogir";
-        };
+
         fonts = {
           monospace = {
             package = pkgs._3270font;
@@ -53,6 +43,17 @@
             package = pkgs.noto-fonts-color-emoji;
             name = "Noto Color Emoji";
           };
+        };
+      };
+    }
+    (lib.mkIf pkgs.stdenv.isLinux {
+      # Icons
+      stylix = {
+        iconTheme = {
+          enable = true;
+          package = pkgs.qogir-icon-theme;
+          dark = "Qogir-dark";
+          light = "Qogir";
         };
 
         # Cursor
