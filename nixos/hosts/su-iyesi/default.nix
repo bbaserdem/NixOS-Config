@@ -13,8 +13,9 @@ in {
   # You can import other modules here
   imports = [
     inputs.sops-nix.darwinModules.sops
-    inputs.stylix.darwinModules.stylix
     inputs.home-manager.darwinModules.home-manager
+    inputs.stylix.darwinModules.stylix
+    ../../../home-manager/batuhan/theming/stylix.nix
   ];
 
   # Nixpkgs options
