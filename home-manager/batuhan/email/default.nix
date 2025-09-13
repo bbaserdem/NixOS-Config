@@ -1,7 +1,7 @@
 # Neomutt config
 {config, ...}: {
   imports = [
-    ./applist
+    ./applist.nix
     ./neomutt
     ./accounts
   ];

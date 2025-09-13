@@ -1,9 +1,5 @@
 # Theming modules
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.stylix.homeManagerModules.stylix
     ./stylix.nix

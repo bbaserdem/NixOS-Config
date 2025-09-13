@@ -1,9 +1,5 @@
 # List of userspace applications
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   # Some app modules
   imports = [
     inputs.nixCats.homeManagerModules.default

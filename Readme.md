@@ -1,15 +1,13 @@
 # bbaserdem's configuration
 
-Personal configuration of my OSs.
-Currently migrating from Archlinux to NixOS, but some archlinux stuff might remain here.
+Personal configuration of my NixOS and MacOS computers
 
 # WIP
 
-[X] 📁 Modular and toggleable config
-[ ] 🔒 Luks disk encryption with btrfs
-[ ] 🖥️ Wayland desktop
-[ ] 📃 Neovim setup using external plugin management
-[X] 🤫 Secrets
+[ ] 🖥️ River desktop
+[ ] 📥 Email automation
+[ ] 📅 Calendar
+[ ]   Podcasts using podgrab
 
 ## Contents
 
@@ -20,7 +18,7 @@ Currently migrating from Archlinux to NixOS, but some archlinux stuff might rema
   - [🤰 Umay](nixos/hosts/umay) Virtual box
   - [🔥 Od İyesi](nixos/hosts/od-iyesi) Live USB
   - [🌳 Yertengri](nixos/hosts/yertengri) Home PC
-  - [🌊 Su İyesi](nixos/hosts/su-iyesi) Work computer
+  - [🌊 Su İyesi](nixos/hosts/su-iyesi) Work computer (MacOS)
   - [🎐 Yel Ana](nixos/hosts/yel-ana) Laptop
   - [🧟 Erlik](nixos/hosts/erlik) Phone (Very future project)
 - [ users](home-manager/users) Different users, named after themselves
@@ -31,7 +29,7 @@ Currently migrating from Archlinux to NixOS, but some archlinux stuff might rema
 
 ### NixOS
 
-My configuration is based on or uses the following resources.
+My configuration was created based on, or uses, the following resources.
 
 * [sioodmy's dotfiles](https://github.com/sioodmy/dotfiles)
 * [vimjoyer's configuration](https://github.com/vimjoyer/nixconf)
@@ -47,15 +45,8 @@ sudo nixos-install --root /mnt --no-root-passwd --flake .#<HOST>
 
 ### Archlinux
 
-My archlinux setup is based on the following
+My archlinux setup was based on the following
 [blog series](https://disconnected.systems/blog/archlinux-repo-in-aws-bucket).
-
-### Neovim
-
-Used multiple resources, and had many iterations of my configuration.
-Here are a few resources I can pinpoint as essential for my configuration.
-
-* [Neovim Starter Guide](https://www.youtube.com/watch?v=Co7gcSvq6jA) by vimjoyer.
 
 # Guide
 
@@ -85,5 +76,3 @@ The sops command to encrypt a binary file is the following;
 ```
 sops -e <INPUT>.file > <OUTPUT>.key
 ```
-
-
