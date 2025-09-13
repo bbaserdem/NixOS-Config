@@ -12,8 +12,6 @@ lib.mkMerge [
       enable = true;
       autoEnable = false;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
-      image = config.myHome.wallpaper.path;
-      polarity = "dark";
 
       # Opacity options
       opacity = {
@@ -46,6 +44,9 @@ lib.mkMerge [
   (lib.mkIf pkgs.stdenv.isLinux {
     # Icons
     stylix = {
+      image = config.myHome.wallpaper.path;
+      polarity = "dark";
+
       iconTheme = {
         enable = true;
         package = pkgs.qogir-icon-theme;
