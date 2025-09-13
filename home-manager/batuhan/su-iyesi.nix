@@ -10,6 +10,8 @@
   imports = [
     # Module imports
     inputs.nixCats.homeManagerModules.default
+    inputs.sops-nix.homeManagerModules.sops
+    inputs.stylix.darwinModules.stylix
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
