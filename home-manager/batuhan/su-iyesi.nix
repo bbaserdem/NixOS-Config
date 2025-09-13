@@ -11,6 +11,7 @@
     # Module imports
     inputs.nixCats.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
+    outputs.homeManagerModules.userConfig
     # My modules to load
     # ./apps/firefox.nix
     ./apps/kitty.nix
@@ -28,4 +29,7 @@
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.05";
+
+  # Define wallpaper
+  myHome.wallpaper.name = "Photo by SpaceX";
 }
