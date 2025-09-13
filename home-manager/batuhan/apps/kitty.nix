@@ -9,7 +9,7 @@
   stylix.targets.kitty.enable = true;
 
   programs.kitty = {
-    enable = pkgs.stdenv.isLinux;
+    enable = true;
     shellIntegration.enableZshIntegration = true;
 
     # We mkForce to override stylix

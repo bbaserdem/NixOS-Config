@@ -25,6 +25,7 @@
     ./shell/tmux.nix
     ./shell/zsh.nix
     ./theming/stylix.nix
+    ./theming/starship.nix
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
