@@ -9,6 +9,7 @@
   ...
 }: let
   username = "batuhan";
+  wallpaper = "${pkgs.pantheon.elementary-wallpapers}/share/backgrounds/Photo by SpaceX.jpg";
 in {
   # You can import other modules here
   imports = [
@@ -18,7 +19,7 @@ in {
   ];
 
   # Trying to make stylix work
-  stylix.image = "${pkgs.elementary-wallpapers}/share/backgrounds/Photo by SpaceX.jpg";
+  stylix.image = wallpaper;
 
   # Nixpkgs options
   nixpkgs = {
