@@ -20,7 +20,11 @@ in {
       };
       whitelist = {
         prefix = [
-          config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR
+          (
+            if (pkgs.stdenv.isLinux)
+            then config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR
+            else "${config.home.homeDirectory}/Projects"
+          )
         ];
         exact = [];
       };

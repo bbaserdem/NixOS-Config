@@ -91,6 +91,9 @@
       symbol_map U+276c-U+2771   Symbols Nerd Font Mono
       # Box Drawing
       symbol_map U+2500-U+259f    Symbols Nerd Font Mono
+
+      # Fix macos stuff
+      macos_titlebar_color system
     '';
   };
 }

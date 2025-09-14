@@ -19,6 +19,7 @@
     ./security/sops.nix
     ./security/ssh.nix
     ./shell/aliases.nix
+    ./shell/direnv.nix
     ./shell/environment.nix
     ./shell/git.nix
     ./shell/man.nix
