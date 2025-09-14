@@ -15,9 +15,11 @@ in {
     inputs.sops-nix.darwinModules.sops
     inputs.home-manager.darwinModules.home-manager
     inputs.stylix.darwinModules.stylix
+    # Own modules
+    ./desktop.nix
   ];
 
-  # Trying to make stylix work
+  # Trying to make stylix work, this is pain
   stylix.image = ./wallpaper.jpg;
 
   # Nixpkgs options
@@ -122,6 +124,10 @@ in {
 
   # Programs
   programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
     man.enable = true;
     nix-index.enable = true;
     zsh = {
@@ -163,7 +169,7 @@ in {
       };
       dock = {
         autohide = true;
-        autohide-delay = 3.0;
+        autohide-delay = 0.1;
         largesize = 32;
         launchanim = true;
         minimize-to-application = true;
