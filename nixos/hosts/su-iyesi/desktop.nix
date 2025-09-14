@@ -26,17 +26,17 @@
 
   services = {
     # SketchyBar config
-    # sketchybar = {
-    #   enable = true;
-    # };
+    sketchybar = {
+      enable = true;
+    };
 
     # AeroSpace config
 
     # JankyBorders config
     jankyborders = {
       enable = true;
-      active_color = "0xA0${config.lib.stylix.colors.cyan}";
-      inactive_color = "0xA0${config.lib.stylix.colors.base05}";
+      active_color = "0xB0${config.lib.stylix.colors.cyan}";
+      inactive_color = "0xB0${config.lib.stylix.colors.base07}";
     };
   };
 }
