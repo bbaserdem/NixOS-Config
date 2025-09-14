@@ -16,6 +16,7 @@
     # ./apps/firefox.nix
     ./apps/kitty.nix
     ./apps/neovim.nix
+    ./desktop/aerospace.nix
     ./security/sops.nix
     ./security/ssh.nix
     ./shell/aliases.nix
