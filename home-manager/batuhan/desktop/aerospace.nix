@@ -1,132 +1,161 @@
 {
-  config,
   pkgs,
+  lib,
   ...
 }: {
-  # Drop aerospace config
-  # The toml generator for aerospace in nix-darwin doesn't work well
-  xdg.configFile."aerospace/aerospace.toml" = {
-    enable = true;
-    text = ''
-      # Place a copy of this config to ~/.aerospace.toml
-      # After that, you can edit ~/.aerospace.toml to your liking
+  config = lib.mkIf (pkgs.stdenv.isDarwin) {
+    home.packages = [pkgs.aerospace];
 
-      # It's not necessary to copy all keys to your config.
-      # If the key is missing in your config, "default-config.toml" will serve as a fallback
+    # Drop aerospace config
+    # The toml generator for aerospace in nix-darwin doesn't work well
+    xdg.configFile."aerospace/aerospace.toml" = {
+      enable = true;
+      text = ''
+        # Start AeroSpace at login
+        start-at-login = true
 
-      # You can use it to add commands that run after login to macOS user session.
-      # 'start-at-login' needs to be 'true' for 'after-login-command' to work
-      # Available commands: https://nikitabobko.github.io/AeroSpace/commands
-      after-login-command = []
+        # Normalization settings
+        enable-normalization-flatten-containers = true
+        enable-normalization-opposite-orientation-for-nested-containers = true
 
-      # You can use it to add commands that run after AeroSpace startup.
-      # 'after-startup-command' is run after 'after-login-command'
-      # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-      after-startup-command = []
+        # Accordion layout settings
+        accordion-padding = 30
 
-      # Start AeroSpace at login
-      # No, this will be done by nix-darwin
-      start-at-login = false
+        # Default root container settings
+        default-root-container-layout = 'tiles'
+        default-root-container-orientation = 'auto'
 
-      # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-      enable-normalization-flatten-containers = true
-      enable-normalization-opposite-orientation-for-nested-containers = true
+        # Mouse follows focus settings
+        on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+        on-focus-changed = ['move-mouse window-lazy-center']
 
-      # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
-      # The 'accordion-padding' specifies the size of accordion padding
-      # You can set 0 to disable the padding feature
-      accordion-padding = 30
+        # Automatically unhide macOS hidden apps
+        automatically-unhide-macos-hidden-apps = true
 
-      # Possible values: tiles|accordion
-      default-root-container-layout = 'tiles'
+        # Key mapping preset
+        [key-mapping]
+        preset = 'qwerty'
 
-      # Possible values: horizontal|vertical|auto
-      # 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
-      #               tall monitor (anything higher than wide) gets vertical orientation
-      default-root-container-orientation = 'auto'
+        # Gaps settings
+        [gaps]
+        inner.horizontal = 6
+        inner.vertical =   6
+        outer.left =       6
+        outer.bottom =     6
+        outer.top =        6
+        outer.right =      6
 
-      # Possible values: (qwerty|dvorak)
-      # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
-      key-mapping.preset = 'qwerty'
+        # Main mode bindings
+        [mode.main.binding]
+        # Launch applications
+        alt-shift-enter = 'exec-and-forget open -na alacritty'
+        alt-shift-b = 'exec-and-forget open -a "Brave Browser"'
+        alt-shift-t = 'exec-and-forget open -a "Telegram"'
+        alt-shift-f = 'exec-and-forget open -a Finder'
 
+        # Window management
+        alt-q = "close"
+        alt-m = 'fullscreen'
+        alt-f = 'layout floating tiling'
 
-      # Gaps between windows (inner-*) and between monitor edges (outer-*).
-      # Possible values:
-      # - Constant:     gaps.outer.top = 8
-      # - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
-      #                 In this example, 24 is a default value when there is no match.
-      #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
-      #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-      [gaps]
-      inner.horizontal = 10
-      inner.vertical =   10
-      outer.left =       10
-      outer.bottom =     10
-      outer.top =        10
-      outer.right =      10
+        # Focus movement
+        alt-h = 'focus left'
+        alt-j = 'focus down'
+        alt-k = 'focus up'
+        alt-l = 'focus right'
 
-      # 'main' binding mode declaration
-      # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-      # 'main' binding mode must be always presented
-      [mode.main.binding]
+        # Window movement
+        alt-shift-h = 'move left'
+        alt-shift-j = 'move down'
+        alt-shift-k = 'move up'
+        alt-shift-l = 'move right'
 
-      # All possible keys:
-      # - Letters.        a, b, c, ..., z
-      # - Numbers.        0, 1, 2, ..., 9
-      # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
-      # - F-keys.         f1, f2, ..., f20
-      # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
-      #                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
-      # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
-      #                   keypadMinus, keypadMultiply, keypadPlus
-      # - Arrows.         left, down, up, right
+        # Resize windows
+        alt-shift-minus = 'resize smart -50'
+        alt-shift-equal = 'resize smart +50'
 
-      # All possible modifiers: cmd, alt, ctrl, shift
+        # Workspace management
+        alt-1 = 'workspace 1'
+        alt-2 = 'workspace 2'
+        alt-3 = 'workspace 3'
+        alt-4 = 'workspace 4'
+        alt-5 = 'workspace 5'
+        alt-6 = 'workspace 6'
+        alt-7 = 'workspace 7'
+        alt-8 = 'workspace 8'
+        alt-9 = 'workspace 9'
 
-      # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+        # Move windows to workspaces
+        alt-shift-1 = 'move-node-to-workspace --focus-follows-window 1'
+        alt-shift-2 = 'move-node-to-workspace --focus-follows-window 2'
+        alt-shift-3 = 'move-node-to-workspace --focus-follows-window 3'
+        alt-shift-4 = 'move-node-to-workspace --focus-follows-window 4'
+        alt-shift-5 = 'move-node-to-workspace --focus-follows-window 5'
+        alt-shift-6 = 'move-node-to-workspace --focus-follows-window 6'
+        alt-shift-7 = 'move-node-to-workspace --focus-follows-window 7'
+        alt-shift-8 = 'move-node-to-workspace --focus-follows-window 8'
+        alt-shift-9 = 'move-node-to-workspace --focus-follows-window 9'
 
-      # You can uncomment this line to open up terminal with alt + enter shortcut
-      # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-      # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
+        # Workspace navigation
+        alt-tab = 'workspace-back-and-forth'
+        alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-      # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-      alt-slash = 'layout tiles horizontal vertical'
-      alt-comma = 'layout accordion horizontal vertical'
+        # Enter passthrough mode for typing special characters
+        alt-p = 'mode passthrough'
 
-      # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-      cmd-h = 'focus left'
-      cmd-j = 'focus down'
-      cmd-k = 'focus up'
-      cmd-l = 'focus right'
+        # Enter service mode
+        alt-shift-semicolon = 'mode service'
 
-      # See: https://nikitabobko.github.io/AeroSpace/commands#move
-      cmd-left = 'move left'
-      cmd-down = 'move down'
-      cmd-up = 'move up'
-      cmd-right = 'move right'
+        # Service mode bindings
+        [mode.service.binding]
+        # Reload config and exit service mode
+        esc = ['reload-config', 'mode main']
 
+        # Reset layout
+        r = ['flatten-workspace-tree', 'mode main']
 
-      # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-      cmd-1 = 'workspace 1'
-      cmd-2 = 'workspace 2'
-      cmd-3 = 'workspace 3'
-      cmd-4 = 'workspace 4'
+        # Toggle floating/tiling layout
+        f = ['layout floating tiling', 'mode main']
 
-      # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-      alt-1 = 'move-node-to-workspace 1'
-      alt-2 = 'move-node-to-workspace 2'
-      alt-3 = 'move-node-to-workspace 3'
-      alt-4 = 'move-node-to-workspace 4'
+        # Close all windows but current
+        backspace = ['close-all-windows-but-current', 'mode main']
 
-      cmd-shift-f = 'fullscreen'
+        # Join with adjacent windows
+        alt-shift-h = ['join-with left', 'mode main']
+        alt-shift-j = ['join-with down', 'mode main']
+        alt-shift-k = ['join-with up', 'mode main']
+        alt-shift-l = ['join-with right', 'mode main']
 
-      # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-      alt-tab = 'workspace-back-and-forth'
-      # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-      cmd-ctrl-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+        # Passthrough mode to allow typing special characters (e.g., Polish letters)
+        # Enter with 'alt-p', exit with 'alt-p' or 'esc'.
+        [mode.passthrough.binding]
+        alt-p = 'mode main'
+        esc = 'mode main'
 
-      # Launch apps
-      cmd-enter = "exec-and-forget open -na '${pkgs.kitty}/Applications/Kitty.app/'"
-    '';
+        # Window detection rules
+        [[on-window-detected]]
+        if.app-id = 'com.brave.Browser'
+        run = 'move-node-to-workspace 1'
+
+        [[on-window-detected]]
+        if.app-id = 'org.alacritty'
+        run = 'move-node-to-workspace 2'
+
+        [[on-window-detected]]
+        if.app-id = 'com.tdesktop.Telegram'
+        run = 'move-node-to-workspace 3'
+
+        [[on-window-detected]]
+        if.app-id = 'com.obsproject.obs-studio'
+        run = 'move-node-to-workspace 4'
+
+        [[on-window-detected]]
+        if.app-id = 'us.zoom.xos'
+        run = 'move-node-to-workspace 5'
+
+        # Launch apps
+        cmd-enter = "exec-and-forget open -na '${pkgs.kitty}/Applications/Kitty.app/'"
+      '';
+    };
   };
 }

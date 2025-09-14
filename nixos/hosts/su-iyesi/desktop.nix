@@ -30,11 +30,6 @@
       enable = true;
     };
 
-    # AeroSpace config
-    aerospace = {
-      enable = true;
-    };
-
     # JankyBorders config
     jankyborders = {
       enable = true;
