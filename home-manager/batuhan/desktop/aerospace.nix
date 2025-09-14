@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   # Drop aerospace config
   # The toml generator for aerospace in nix-darwin doesn't work well
   xdg.configFile."aerospace/aerospace.toml" = {
@@ -122,7 +126,7 @@
       cmd-ctrl-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
       # Launch apps
-      cmd-enter = "exec-and-forget open -na '${pkgs.kitty}/Applications/Kitty.app/''"
+      cmd-enter = "exec-and-forget open -na '${pkgs.kitty}/Applications/Kitty.app/'"
     '';
   };
 }
