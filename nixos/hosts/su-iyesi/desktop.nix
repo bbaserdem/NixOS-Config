@@ -24,9 +24,19 @@
     ];
   };
 
-  # SketchyBar config
+  services = {
+    # SketchyBar config
+    # sketchybar = {
+    #   enable = true;
+    # };
 
-  # AeroSpace config
+    # AeroSpace config
 
-  # JankyBorders config
+    # JankyBorders config
+    jankyborders = {
+      enable = true;
+      active_color = "0xA0${config.lib.stylix.colors.cyan}";
+      inactive_color = "0xA0${config.lib.stylix.colors.base05}";
+    };
+  };
 }
