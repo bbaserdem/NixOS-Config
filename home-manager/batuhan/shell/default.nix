@@ -3,6 +3,7 @@
   imports = [
     # Shell necessities
     ./applist.nix
+    ./bash.nix
     ./zsh.nix
     ./aliases.nix
     ./environment.nix

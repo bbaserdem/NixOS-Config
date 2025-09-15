@@ -5,11 +5,6 @@
 in {
   programs.starship = {
     enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    enableIonIntegration = true;
-    enableNushellIntegration = true;
-    enableZshIntegration = true;
     enableInteractive = true;
     settings =
       nfSettings

@@ -48,18 +48,15 @@
     #---END---ZSH Config after everything else
   '';
 in {
-  # We want FZF for our fuzzy completion menu
-  programs.fzf = {
-    enable = true;
-    package = pkgs.fzf;
-    enableZshIntegration = true;
-  };
-  # Installing Zoxide
-  programs.zoxide = {
-    enable = true;
-    package = pkgs.zoxide;
-    enableZshIntegration = true;
-  };
+  # Integrations
+  home.shell.enableBashIntegration = true;
+  programs.fzf.enableZshIntegration = true;
+  programs.direnv.enableZshIntegration = true;
+  programs.kitty.shellIntegration.enableZshIntegration = true;
+  programs.nix-index.enableZshIntegration = true;
+  programs.starship.enableZshIntegration = true;
+  programs.zoxide.enableZshIntegration = true;
+
   # Setup zsh
   programs.zsh = {
     enable = true;

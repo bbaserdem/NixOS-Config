@@ -10,7 +10,6 @@
 
   programs.kitty = {
     enable = true;
-    shellIntegration.enableZshIntegration = true;
 
     # We mkForce to override stylix
     font = lib.mkForce {

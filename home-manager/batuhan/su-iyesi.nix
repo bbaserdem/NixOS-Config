@@ -20,12 +20,14 @@
     ./security/sops.nix
     ./security/ssh.nix
     ./shell/aliases.nix
+    ./shell/bash.nix
     ./shell/direnv.nix
     ./shell/environment.nix
     ./shell/git.nix
     ./shell/man.nix
     ./shell/pnpm.nix
     ./shell/tmux.nix
+    ./shell/vifm.nix
     ./shell/zsh.nix
     ./theming/stylix.nix
     ./theming/starship.nix
