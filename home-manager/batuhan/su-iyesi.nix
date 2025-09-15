@@ -16,7 +16,7 @@
     # ./apps/firefox.nix
     ./apps/kitty.nix
     ./apps/neovim.nix
-    ./desktop/aerospace.nix
+    # ./desktop/aerospace.nix
     ./security/sops.nix
     ./security/ssh.nix
     ./shell/aliases.nix
@@ -24,6 +24,7 @@
     ./shell/environment.nix
     ./shell/git.nix
     ./shell/man.nix
+    ./shell/pnpm.nix
     ./shell/tmux.nix
     ./shell/zsh.nix
     ./theming/stylix.nix

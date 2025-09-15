@@ -27,7 +27,7 @@
   services = {
     # SketchyBar config
     sketchybar = {
-      enable = true;
+      enable = false;
     };
 
     # JankyBorders config
