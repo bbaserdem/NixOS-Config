@@ -1,0 +1,27 @@
+{
+	"mcpServers": {
+		"taskmaster-ai": {
+			"type": "stdio",
+			"command": "pnpx",
+			"args": [
+				"task-master-ai"
+			]
+		},
+		"nixos": {
+			"type": "stdio",
+			"command": "nix",
+			"args": [
+				"run",
+				"github:utensils/mcp-nixos",
+				"--"
+			]
+		},
+		"mcp-compass": {
+			"type": "stdio",
+			"command": "pnpx",
+			"args": [
+				"@liuyoshio/mcp-compass"
+			]
+		}
+	}
+}

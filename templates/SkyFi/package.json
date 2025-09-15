@@ -1,0 +1,21 @@
+{
+	"name": "skyfi",
+	"version": "0.1.0",
+	"private": true,
+	"description": "SkyFi development environment template",
+	"devDependencies": {
+		"semantic-release": "^24.2.7",
+		"@semantic-release/changelog": "^6.0.3",
+		"@semantic-release/exec": "^6.0.3",
+		"@semantic-release/git": "^10.0.1",
+		"@commitlint/cli": "^19.3.0",
+		"@commitlint/config-conventional": "^19.2.2"
+	},
+	"dependencies": {
+		"task-master-ai": "^0.26.0"
+	},
+	"scripts": {
+		"semantic-release": "semantic-release",
+		"release:dry-run": "semantic-release --dry-run"
+	}
+}

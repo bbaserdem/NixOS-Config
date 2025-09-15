@@ -10,4 +10,9 @@
     path = ./adaptablePythonTemplate;
     description = "Flake for starting a python (or integrated python) project.";
   };
+
+  skyfi = {
+    path = ./SkyFi;
+    description = "Flake for starting a geospatial imaging project.";
+  };
 }

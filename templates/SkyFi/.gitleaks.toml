@@ -1,0 +1,12 @@
+title = "gitleaks minimal"
+
+[extend]
+  useDefault = true  # enable built-in rules
+
+[allowlist]
+  # Keep noise down; adjust as needed
+  paths = [
+    '''node_modules/''',
+    '''.git/''',
+    '''.gitleaks.toml'''
+  ]
