@@ -27,7 +27,6 @@
     ./shell/man.nix
     ./shell/pnpm.nix
     ./shell/tmux.nix
-    ./shell/vifm.nix
     ./shell/zsh.nix
     ./theming/stylix.nix
     ./theming/starship.nix
