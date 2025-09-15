@@ -19,6 +19,6 @@
     enable = true;
     enableCompletion = true;
     enableVteIntegration = true;
-    historyControl = "ignoredups";
+    historyControl = ["ignoredups"];
   };
 }
