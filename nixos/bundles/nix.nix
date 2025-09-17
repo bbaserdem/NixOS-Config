@@ -4,8 +4,8 @@
   inputs,
   ...
 }: {
-  # This needs disabling for nix-index flake to work
-  programs.command-not-found.enable = false;
+  # Use nix-index to find execs
+  programs.command-not-found.enable = true;
 
   # Nixpkgs config
   nixpkgs = {

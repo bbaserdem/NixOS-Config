@@ -5,6 +5,10 @@
   inputs,
   ...
 }: {
+  imports = [
+    inputs.nixCats.nixosModules.default
+  ];
+
   # Editor to use
   nixCats = {
     enable = true;

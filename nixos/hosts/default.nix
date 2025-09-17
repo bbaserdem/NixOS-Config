@@ -27,6 +27,11 @@ in {
     };
   };
 
+  # Wanted modules
+  imports = [
+    inputs.sops-nix.nixosModules.sops
+  ];
+
   # Nixos configuration
   config = lib.mkMerge [
     {
@@ -39,13 +44,6 @@ in {
           outputs.overlays.unstable-packages
         ];
       };
-
-      # Globally wanted modules
-      imports = [
-        inputs.sops-nix.nixosModules.sops
-        inputs.nix-index-database.nixosModules.nix-index
-        inputs.nixCats.nixosModules.default
-      ];
 
       # Default user, this should be named batuhan, unless overriden
       programs.zsh.enable = true;

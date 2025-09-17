@@ -30,11 +30,6 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Sets up nix database
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # Secret deployment
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -96,10 +91,10 @@
 
     # List of hosts that are already configured
     configuredHosts = [
-      {
-        arch = utils.system.x86_64-linux;
-        host = "umay";
-      }
+      # {
+      #   arch = utils.system.x86_64-linux;
+      #   host = "umay";
+      # }
       {
         arch = utils.system.x86_64-linux;
         host = "yertengri";
