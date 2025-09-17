@@ -7,13 +7,14 @@
   ...
 }: let
   startDir = "/home/${config.myNixOS.userName}/Projects";
+  python3 = pkgs.python313Packages;
 in {
   # Enable Jupyter service using built-in NixOS module
   services.jupyter = {
     enable = true;
 
     # Use JupyterLab instead of classic notebook
-    command = "jupyter-lab"; # This ensures we use JupyterLab
+    command = "jupyter-lab"; # Full command for JupyterLab
 
     # Network configuration
     ip = "127.0.0.1"; # Allow internal traffic only
@@ -26,21 +27,22 @@ in {
     notebookDir = startDir;
 
     # User configuration
-    user = "compute";
+    user = config.myNixOS.userName;
     group = "users";
 
-    # Python package for Jupyter with essential packages
-    package = pkgs.python313.withPackages (ps:
-      with ps; [
-        jupyterlab # JupyterLab interface
-        ipykernel # Python kernel
-        ipywidgets # Interactive widgets
+    # Jupyter package - must use python3Packages to match the module's python3
+    package = python3.jupyterlab;
 
-        # Essential scientific packages
-        numpy
-        matplotlib
-        pandas
-      ]);
+    # Extra Python packages - must be from the same Python version
+    extraPackages = with python3; [
+      ipykernel # Python kernel
+      ipywidgets # Interactive widgets
+      ipyparallel
+      # Essential scientific packages
+      numpy
+      matplotlib
+      pandas
+    ];
 
     # Additional Jupyter configuration
     notebookConfig = ''
