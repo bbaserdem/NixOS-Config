@@ -28,13 +28,39 @@ in
     # Function to get git repo name
     get_repo_name() {
       local dir="$1"
+      local repo_name=""
       local repo_root
 
-      # Check if it's a git repo
+      # Check if it's a git repo (including worktrees)
       if ${git} -C "$dir" rev-parse --git-dir >/dev/null 2>&1; then
+        # First try: Get repo name from remote URL
+        local remote_url=$(${git} -C "$dir" config --get remote.origin.url 2>/dev/null | ${tr} -d '\n')
+        if [ -n "$remote_url" ]; then
+          # Extract repo name from remote URL (handles both .git and non-.git URLs)
+          repo_name=$(${basename} "$remote_url" .git)
+          echo "$repo_name"
+          return 0
+        fi
+
+        # Second try: For worktrees, get the main repo name from .git file
+        if [ -f "$dir/.git" ]; then
+          # It's a worktree, parse the .git file to find main repo
+          local gitdir=$(${sed} -n 's/^gitdir: //p' "$dir/.git")
+          if [ -n "$gitdir" ]; then
+            # gitdir format: /path/to/main/repo/.git/worktrees/branch-name
+            # We want the main repo name
+            local main_repo_dir=$(echo "$gitdir" | ${sed} 's|/\.git/worktrees/.*|/|')
+            repo_name=$(${basename} "$main_repo_dir")
+            echo "$repo_name"
+            return 0
+          fi
+        fi
+
+        # Final fallback: use toplevel directory name
         repo_root=$(${git} -C "$dir" rev-parse --show-toplevel 2>/dev/null)
         if [ -n "$repo_root" ]; then
-          echo "$(${basename} "$repo_root")"
+          repo_name=$(${basename} "$repo_root")
+          echo "$repo_name"
           return 0
         fi
       fi

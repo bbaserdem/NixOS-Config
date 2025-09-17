@@ -10,7 +10,7 @@ pkgs.symlinkJoin {
     (pkgs.writeTextFile {
       name = "jupyter-kernel-autoselect";
       destination = "/share/jupyter/jupyter_kernel_autoselect.py";
-      text = builtins.readFile ./jupyter-kernel-autoselect.py;
+      text = builtins.readFile ./jupyter_kernel_autoselect.py;
     })
   ];
 
@@ -20,3 +20,4 @@ pkgs.symlinkJoin {
     ln -s $out/share/jupyter/jupyter_kernel_autoselect.py $out/lib/python/
   '';
 }
+
