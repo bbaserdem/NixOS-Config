@@ -153,7 +153,7 @@ def get_project_kernel(path, debug=False):
 
 def setup_kernel_autoselect(c):
     """
-    Setup kernel auto-selection in Jupyter configuration.
+    Setup kernel auto-selection in JupyterLab configuration.
     Call this function from your jupyter_server_config.py with:
 
         import sys
@@ -161,34 +161,35 @@ def setup_kernel_autoselect(c):
         from jupyter_kernel_autoselect import setup_kernel_autoselect
         setup_kernel_autoselect(c)
     """
-    try:
-        from notebook.services.contents.filemanager import FileContentsManager
+    # For JupyterLab, we need to hook into the FileContentsManager
+    from jupyter_server.services.contents.filemanager import FileContentsManager
 
-        original_new = FileContentsManager.new
+    original_new = FileContentsManager.new
 
-        def custom_new(self, model=None, path=""):
-            if model and model.get('type') == 'notebook':
-                # Get the directory where the notebook is being created
-                notebook_dir = os.path.join(self.root_dir, path)
+    def custom_new(self, model=None, path=""):
+        """Override the new method to auto-select kernels for new notebooks."""
+        if model and model.get('type') == 'notebook':
+            # Get the directory where the notebook is being created
+            notebook_dir = os.path.join(self.root_dir, path)
 
-                # Find appropriate kernel
-                project_kernel = get_project_kernel(notebook_dir)
+            # Find appropriate kernel
+            project_kernel = get_project_kernel(notebook_dir)
 
-                if project_kernel:
-                    # Set the kernel in the notebook metadata
-                    if 'content' in model and model['content'] is not None:
-                        if 'metadata' not in model['content']:
-                            model['content']['metadata'] = {}
-                        if 'kernelspec' not in model['content']['metadata']:
-                            model['content']['metadata']['kernelspec'] = {
-                                'name': project_kernel,
-                                'display_name': project_kernel
-                            }
+            if project_kernel:
+                # Ensure the model has content
+                if model.get('content') is None:
+                    model['content'] = {}
+                if 'metadata' not in model['content']:
+                    model['content']['metadata'] = {}
 
-            return original_new(self, model, path)
+                # Set the kernel in the notebook metadata
+                model['content']['metadata']['kernelspec'] = {
+                    'name': project_kernel,
+                    'display_name': project_kernel
+                }
+                print(f"Auto-selected kernel '{project_kernel}' for new notebook in {notebook_dir}")
 
-        FileContentsManager.new = custom_new
-        print(f"Jupyter kernel auto-selection enabled")
+        return original_new(self, model, path)
 
-    except ImportError as e:
-        print(f"Could not setup kernel auto-selection: {e}")
+    FileContentsManager.new = custom_new
+    print("JupyterLab kernel auto-selection enabled")
