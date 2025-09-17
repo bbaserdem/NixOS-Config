@@ -18,9 +18,6 @@
   # Set our name
   networking.hostName = "yertengri";
 
-  # Weird fix for plasma + gnome
-  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
-
   # Module toggles
   myNixOS = {
     # Desktop
@@ -29,7 +26,6 @@
       enable = true;
       name = "sddm";
     };
-    gnome.enable = false;
     kde.enable = true;
 
     # Features
@@ -47,11 +43,11 @@
       cups.enable = true;
       droidcam.enable = true;
       geoclue.enable = false;
-      fingerprint.enable = false;
       jupyter.enable = true;
       kdeconnect.enable = true;
       mariadb.enable = true;
       media.enable = true;
+      neo4j.enable = true;
       nm.enable = true;
       paperless.enable = true;
       rasdaemon.enable = true;

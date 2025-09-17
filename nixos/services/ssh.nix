@@ -1,6 +1,6 @@
 # nixos/services/ssh.nix
 # SSH server settings
-{...}: {
+{pkgs, ...}: {
   services = {
     # SSH server
     openssh = {
