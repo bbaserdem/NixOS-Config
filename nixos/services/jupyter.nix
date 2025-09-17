@@ -37,6 +37,15 @@
       ''
     }
     c.ServerApp.root_dir = '${cfg.notebookDir}'
+
+    # Auto-select kernel based on project directory
+    import sys
+    sys.path.append('${pkgs.scripts-jupyter}/lib/python')
+    try:
+        from jupyter_kernel_autoselect import setup_kernel_autoselect
+        setup_kernel_autoselect(c)
+    except ImportError as e:
+        print(f"Could not load kernel auto-selection: {e}")
   '';
 in {
   options.myNixOS.services.jupyter = {
@@ -135,7 +144,7 @@ in {
 
       serviceConfig = {
         Type = "oneshot";
-        ExecStart = "${pkgs.python-kernel-finder}/bin/python-kernel-finder ${cfg.notebookDir}";
+        ExecStart = "${pkgs.scripts-jupyter}/bin/python-kernel-finder ${cfg.notebookDir}";
         User = cfg.user;
         Group = cfg.group;
       };
@@ -164,7 +173,7 @@ in {
 
       preStart = ''
         # Discover and register Python kernels from virtual environments
-        ${pkgs.python-kernel-finder}/bin/python-kernel-finder "${cfg.notebookDir}"
+        ${pkgs.scripts-jupyter}/bin/python-kernel-finder "${cfg.notebookDir}"
       '';
 
       serviceConfig = {

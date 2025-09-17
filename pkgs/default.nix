@@ -7,7 +7,7 @@
   user-audio = pkgs.callPackage ./scripts-audio {};
   user-git = pkgs.callPackage ./scripts-git {};
   user-vifm = pkgs.callPackage ./scripts-vifm {};
-  python-kernel-finder = import ./python-kernel-finder.nix {inherit pkgs;};
+  scripts-jupyter = pkgs.callPackage ./scripts-jupyter {};
 
   # Drivers
   displaylink-driver = import ./drivers/displaylink-driver.nix {inherit pkgs;};
