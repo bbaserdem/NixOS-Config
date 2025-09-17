@@ -3,12 +3,7 @@
   config,
   pkgs,
   ...
-}: let
-  hostsList = [
-    "yel-ana"
-    "yertengri"
-  ];
-in {
+}: {
   services.syncthing = {
     # Syncthing runs for main user
     enable = true;
@@ -59,7 +54,16 @@ in {
           id = "DTELBJI-F7UOJXY-5DCXOKU-EL3DHZC-S7S7K4H-AFLV3KD-HBSNRUY-W6QOEQH";
           autoAcceptFolders = false;
         };
-        # Need su-ana and su-ata
+        su-ana = {
+          name = "Su Ana";
+          id = "5NIUMM2-CXTGG6I-4WMPQZX-L72XJOS-G44OFZI-TZOTPIU-UPOZG37-BFCODAS";
+          autoAcceptFolders = true;
+        };
+        su-ata = {
+          name = "Su Ata";
+          id = "IGJPOV2-76W3BKB-KC35WIQ-PHIOVTF-6CMMUMN-BNDEAO2-DHS3UMS-PVMEWQ4";
+          autoAcceptFolders = true;
+        };
       };
 
       # Folder layout
@@ -100,6 +104,20 @@ in {
           devices = [
             "yel-ana"
             "yertengri"
+          ];
+          versioning = {
+            type = "trashcan";
+            params = {cleanoutDays = "100";};
+          };
+        };
+        skyfi = {
+          label = "SkyFi";
+          id = "SkyFi_batuhan";
+          path = "~/SkyFi";
+          type = "sendreceive";
+          devices = [
+            "su-ana"
+            "su-ata"
           ];
           versioning = {
             type = "trashcan";

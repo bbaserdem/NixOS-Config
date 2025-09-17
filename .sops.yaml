@@ -8,6 +8,7 @@ keys:
   - &host_erlik     age19f4a8jyv8qa53t862gp03yyusdx73h932re5gvr6u6q3ejnduv7q7te5pn
   - &host_od-iyesi  age1xjnzlm6gg65dzlccld5qfy7kzqfzjfdxwd40snepgvkr9e3wegnqqzp6f8
   - &host_su-ana    age1w7hp5jwl8pzz3vk42d24vth6ady3r9gtq76svhqj5c47fd7paceszxyq9p
+  - &host_su-ata    age1hhgs3fkm6s8q845djuyud8je20q0fgu9tdd8hcuzj7y6jrthsfqqzj0qjs
 creation_rules:
   - path_regex: home-manager/batuhan/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -32,3 +33,8 @@ creation_rules:
     - age:
       - *hosts
       - *host_su-ana
+  - path_regex: nixos/hosts/su-ata/[^/]+\.(yaml|json|key)$
+    key_groups:
+    - age:
+      - *hosts
+      - *host_su-ata
