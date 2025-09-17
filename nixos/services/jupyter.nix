@@ -1,67 +1,198 @@
 # nixos/services/jupyter.nix
-# Jupyter Lab server setup
+# Custom Jupyter Lab server setup - independent of NixOS module
 {
   config,
   lib,
   pkgs,
   ...
 }: let
-  startDir = "/home/${config.myNixOS.userName}/Projects";
-  python3 = pkgs.python313Packages;
+  cfg = config.myNixOS.services.jupyter;
+
+  # Use whatever python version we want as base
+  pythonVersion = "313";
+  #pythonPackages = pkgs."python${pythonVersion}Packages";
+  python = pkgs."python${pythonVersion}";
+
+  # Build the Python environment with Jupyter and extra packages
+  package = python.withPackages (
+    ps:
+      [
+        ps.jupyterlab # The base jupyterlab package
+      ]
+      ++ cfg.extraPackages ps
+  );
+
+  # Jupyter configuration file
+  notebookConfig = pkgs.writeText "jupyter_server_config.py" ''
+    ${cfg.notebookConfig}
+    ${
+      if cfg.password == null
+      then ''
+        c.ServerApp.token = ""
+        c.ServerApp.password = ""
+        c.IdentityProvider.token = ""
+      ''
+      else ''
+        c.ServerApp.password = "${cfg.password}"
+      ''
+    }
+    c.ServerApp.root_dir = '${cfg.notebookDir}'
+  '';
 in {
-  # Enable Jupyter service using built-in NixOS module
-  services.jupyter = {
-    enable = true;
+  options.myNixOS.services.jupyter = {
+    # Enable switch already provided by module loading
 
-    # Use JupyterLab instead of classic notebook
-    command = "jupyter-lab"; # Full command for JupyterLab
+    ip = lib.mkOption {
+      type = lib.types.str;
+      default = "127.0.0.1";
+      description = "IP address Jupyter will be listening on";
+    };
 
-    # Network configuration
-    ip = "127.0.0.1"; # Allow internal traffic only
-    port = 8888;
+    port = lib.mkOption {
+      type = lib.types.port;
+      default = 8888;
+      description = "Port number Jupyter will be listening on";
+    };
 
-    # Authentication - Traefik handles this, so use empty password
-    password = "''"; # Empty password since Traefik provides auth
+    extraPackages = lib.mkOption {
+      type = lib.types.functionTo (lib.types.listOf lib.types.package);
+      default = ps: [];
+      example = lib.literalExpression ''
+        ps: with ps; [
+          ipykernel
+          numpy
+          pandas
+          matplotlib
+        ]
+      '';
+      description = "Function that returns extra Python packages for Jupyter";
+    };
 
-    # Working directory
-    notebookDir = startDir;
+    command = lib.mkOption {
+      type = lib.types.str;
+      default = "jupyter-lab";
+      description = "Command to run (jupyter-lab or jupyter-notebook)";
+    };
 
-    # User configuration
-    user = config.myNixOS.userName;
-    group = "users";
+    notebookDir = lib.mkOption {
+      type = lib.types.str;
+      default = "${config.users.users.${config.myNixOS.userName}.home}/Projects";
+      description = "Root directory for notebooks";
+    };
 
-    # Jupyter package - must use python3Packages to match the module's python3
-    package = python3.jupyterlab;
+    user = lib.mkOption {
+      type = lib.types.str;
+      default = config.users.users.${config.myNixOS.userName}.name;
+      description = "User to run the service as";
+    };
 
-    # Extra Python packages - must be from the same Python version
-    extraPackages = with python3; [
-      ipykernel # Python kernel
-      ipywidgets # Interactive widgets
-      ipyparallel
-      # Essential scientific packages
-      numpy
-      matplotlib
-      pandas
-    ];
+    group = lib.mkOption {
+      type = lib.types.str;
+      default = "users";
+      description = "Group to run the service as";
+    };
 
-    # Additional Jupyter configuration
-    notebookConfig = ''
-      # JupyterLab specific configuration
-      c.ServerApp.allow_remote_access = False
-      c.ServerApp.disable_check_xsrf = True
-      c.ServerApp.open_browser = False
+    password = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+      description = "Hashed password for Jupyter (null to disable auth)";
+    };
 
-      # Resource limits
-      c.ServerApp.max_buffer_size = 2147483648 # 2GB
-      c.ServerApp.max_body_size = 2147483648   # 2GB for large file uploads
+    notebookConfig = lib.mkOption {
+      type = lib.types.lines;
+      default = ''
+        # JupyterLab configuration
+        c.ServerApp.allow_remote_access = False
+        c.ServerApp.disable_check_xsrf = True
+        c.ServerApp.open_browser = False
 
-      # Kernel management
-      c.MappingKernelManager.cull_idle_timeout = 7200    # 2 hours
-      c.MappingKernelManager.cull_interval = 300         # Check every 5 minutes
-      c.MappingKernelManager.cull_connected = False      # Don't cull connected kernels
+        # Resource limits
+        c.ServerApp.max_buffer_size = 2147483648 # 2GB
+        c.ServerApp.max_body_size = 2147483648   # 2GB
 
-      # Working directory
-      c.ServerApp.root_dir = '${startDir}'
-    '';
+        # Kernel management
+        c.MappingKernelManager.cull_idle_timeout = 7200    # 2 hours
+        c.MappingKernelManager.cull_interval = 300         # Check every 5 minutes
+        c.MappingKernelManager.cull_connected = False      # Don't cull connected
+      '';
+      description = "Raw Jupyter configuration";
+    };
+
+    extraEnvironmentVariables = lib.mkOption {
+      type = lib.types.attrsOf lib.types.str;
+      default = {};
+      description = "Extra environment variables for Jupyter";
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    # Ensure the built-in service is disabled
+    services.jupyter.enable = false;
+
+    # Kernel discovery service (can be triggered manually)
+    systemd.services.jupyter-kernel-discovery = {
+      description = "Discover Python virtual environments for Jupyter";
+
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.python-kernel-finder}/bin/python-kernel-finder ${cfg.notebookDir}";
+        User = cfg.user;
+        Group = cfg.group;
+      };
+    };
+
+    # Timer to periodically rescan for kernels (every 5 minutes)
+    systemd.timers.jupyter-kernel-discovery = {
+      description = "Periodically discover Python kernels";
+      wantedBy = ["timers.target"];
+
+      timerConfig = {
+        OnBootSec = "1min";
+        OnUnitActiveSec = "5min";
+      };
+    };
+
+    # Custom systemd service for jupyter lab
+    systemd.services.jupyter = {
+      description = "Jupyter Lab server";
+      after = ["network.target"];
+      wantedBy = ["multi-user.target"];
+
+      path = [pkgs.bash]; # needed for sh in cell magic
+
+      environment = cfg.extraEnvironmentVariables;
+
+      preStart = ''
+        # Discover and register Python kernels from virtual environments
+        ${pkgs.python-kernel-finder}/bin/python-kernel-finder "${cfg.notebookDir}"
+      '';
+
+      serviceConfig = {
+        Restart = "always";
+        ExecStart = ''
+          ${package}/bin/${cfg.command} \
+            --no-browser \
+            --ip=${cfg.ip} \
+            --port=${toString cfg.port} --port-retries 0 \
+            --notebook-dir=${cfg.notebookDir} \
+            --JupyterApp.config_file=${notebookConfig}
+        '';
+        User = cfg.user;
+        Group = cfg.group;
+        WorkingDirectory = cfg.notebookDir;
+      };
+    };
+
+    # Set default packages if not already specified
+    myNixOS.services.jupyter.extraPackages = lib.mkDefault (ps:
+      with ps; [
+        ipykernel # Python kernel
+        ipywidgets # Interactive widgets
+        ipyparallel # Parallel computing
+        # Scientific packages
+        numpy
+        matplotlib
+        pandas
+      ]);
   };
 }
