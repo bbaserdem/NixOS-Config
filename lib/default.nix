@@ -30,7 +30,7 @@
       }: {
         name = "${host}";
         value = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs outputs;};
+          specialArgs = {inherit inputs outputs host;};
           modules = [
             ../nixos
             ../nixos/hosts/${host}

@@ -19,6 +19,7 @@ in {
     };
 
     userDesktop = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
       default = "gnome";
       description = "Default desktop session for default user";
     };
