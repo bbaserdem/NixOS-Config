@@ -14,8 +14,6 @@
 
   # Module toggles
   myNixOS = {
-    # Enable default user generation
-
     # Desktop
     userDesktop = "plasma";
     displayManager = {
@@ -26,12 +24,12 @@
 
     # Features
     bluetooth.enable = true;
-    gaming.enable = false;
     grub.flavor = "bigSur";
     keymap.enable = true;
     obs.enable = true;
     polkit.enable = true;
     virtualization.enable = true;
+
     # Services
     services = {
       avahi.enable = true;
