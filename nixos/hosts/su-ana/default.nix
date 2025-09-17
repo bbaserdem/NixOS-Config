@@ -37,8 +37,8 @@ in {
 
   # Set our name
   networking = {
-    computerName = "Su İyesi: Batuhan's MBP";
-    hostName = "su-iyesi";
+    computerName = "Su Ana: Batuhan's MBP";
+    hostName = "su-ana";
   };
 
   # Set our user
@@ -55,7 +55,7 @@ in {
       inherit inputs outputs host;
       user = "batuhan";
     };
-    users.${username} = import ../../../home-manager/batuhan/su-iyesi.nix;
+    users.${username} = import ../../../home-manager/batuhan/su-ana.nix;
   };
 
   # Homebrew

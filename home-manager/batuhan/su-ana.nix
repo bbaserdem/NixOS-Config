@@ -1,4 +1,4 @@
-# Nix-darwin batuhan@su-iyesi home configuration
+# Nix-darwin batuhan@su-ana home configuration
 {
   inputs,
   outputs,

@@ -158,11 +158,11 @@
       # MacOS configurations
       # Available through darwin-rebuild --switch
       darwinConfigurations = {
-        "su-iyesi" = inputs.nix-darwin.lib.darwinSystem {
-          modules = [./nixos/hosts/su-iyesi];
+        "su-ana" = inputs.nix-darwin.lib.darwinSystem {
+          modules = [./nixos/hosts/su-ana];
           specialArgs = {
             inherit inputs outputs;
-            host = "su-iyesi";
+            host = "su-ana";
           };
         };
       };

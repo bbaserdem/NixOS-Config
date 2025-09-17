@@ -59,6 +59,7 @@ in {
           id = "DTELBJI-F7UOJXY-5DCXOKU-EL3DHZC-S7S7K4H-AFLV3KD-HBSNRUY-W6QOEQH";
           autoAcceptFolders = false;
         };
+        # Need su-ana and su-ata
       };
 
       # Folder layout

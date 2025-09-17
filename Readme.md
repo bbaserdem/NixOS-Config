@@ -18,7 +18,8 @@ Personal configuration of my NixOS and MacOS computers
   - [🤰 Umay](nixos/hosts/umay) Virtual box
   - [🔥 Od İyesi](nixos/hosts/od-iyesi) Live USB
   - [🌳 Yertengri](nixos/hosts/yertengri) Home PC
-  - [🌊 Su İyesi](nixos/hosts/su-iyesi) Work computer (MacOS)
+  - [🌊 Su Ana](nixos/hosts/su-ana) Work computer (MacOS)
+  - [🌊 Su Ata](nixos/hosts/su-ata) Work server
   - [🎐 Yel Ana](nixos/hosts/yel-ana) Laptop
   - [🧟 Erlik](nixos/hosts/erlik) Phone (Very future project)
 - [ users](home-manager/users) Different users, named after themselves
