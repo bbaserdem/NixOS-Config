@@ -15,29 +15,20 @@
   # Module toggles
   myNixOS = {
     # Enable default user generation
-    defaultUser.enable = true;
-    userName = "batuhan";
-    userDesktop = "plasma";
 
     # Desktop
+    userDesktop = "plasma";
     displayManager = {
       enable = true;
       name = "sddm";
     };
-    gnome.enable = false;
-    hyprland.enable = true;
     kde.enable = true;
+
     # Features
     bluetooth.enable = true;
-    consolefont.enable = true;
-    fonts.enable = true;
     gaming.enable = false;
-    grub = {
-      enable = true;
-      flavor = "bigSur";
-    };
+    grub.flavor = "bigSur";
     keymap.enable = true;
-    matlab.enable = false;
     obs.enable = true;
     polkit.enable = true;
     virtualization.enable = true;
@@ -55,7 +46,6 @@
       media.enable = true;
       neo4j.enable = true;
       nm.enable = true;
-      podman.enable = false;
       rasdaemon.enable = true;
       samba.enable = true;
       syncthing.enable = true;

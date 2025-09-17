@@ -23,7 +23,11 @@
 
   # Generalized Personal module toggles
   myNixOS = {
-    # Bundles
+    # Main user config
+    defaultUser.enable = true;
+    userName = "batuhan";
+
+    # Bundles, I want these all in every PC
     bundles = {
       archives.enable = true;
       filesystems.enable = true;
@@ -31,11 +35,11 @@
       tools.enable = true;
       utils.enable = true;
     };
-    # Services
-    services = {
-      sunshine.enable = false;
-    };
-    # Features
+
+    # Features, we always want these
+    consolefont.enable = true;
+    fonts.enable = true;
+    grub.enable = true;
     shell.enable = true;
     locale.enable = true;
   };

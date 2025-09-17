@@ -23,31 +23,20 @@
 
   # Module toggles
   myNixOS = {
-    # Enable default user generation
-    defaultUser.enable = true;
-    userName = "batuhan";
-    userDesktop = "plasma";
-
     # Desktop
+    userDesktop = "plasma";
     displayManager = {
       enable = true;
       name = "sddm";
     };
-    gnome.enable = true;
-    hyprland.enable = true;
+    gnome.enable = false;
     kde.enable = true;
 
     # Features
     bluetooth.enable = true;
-    consolefont.enable = true;
-    fonts.enable = true;
     gaming.enable = true;
-    grub = {
-      enable = true;
-      flavor = "dark";
-    };
+    grub.flavor = "dark";
     keymap.enable = true;
-    matlab.enable = false;
     obs.enable = true;
     polkit.enable = true;
     virtualization.enable = true;
@@ -59,6 +48,7 @@
       droidcam.enable = true;
       geoclue.enable = false;
       fingerprint.enable = false;
+      jupyter.enable = true;
       kdeconnect.enable = true;
       mariadb.enable = true;
       media.enable = true;
