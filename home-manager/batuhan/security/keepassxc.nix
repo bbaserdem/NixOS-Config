@@ -3,6 +3,13 @@
   programs.keepassxc = {
     enable = true;
     settings = {
+      General = {
+        ConfigVersion = 2;
+      };
+      PasswordGenerator = {
+        AdditionalChars = "";
+        ExcludedChars = "";
+      };
       Browser.Enabled = true;
       GUI = {
         AdvancedSettings = true;

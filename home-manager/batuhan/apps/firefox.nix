@@ -13,6 +13,7 @@
         uget-integrator
         fx-cast-bridge
         vdhcoapp
+        keepassxc
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         gnome-browser-connector
