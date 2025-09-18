@@ -79,28 +79,9 @@ in {
   };
 
   # Setup nix
-  nix = {
-    # We don't want to use determinate nix cause hostname issues
-    enable = true;
-    settings = {
-      substituters = [
-        "https://nix-community.cachix.org"
-        "https://cache.nixos.org"
-      ];
-      trusted-public-keys = [
-        "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      ];
-      trusted-users = [
-        "@admin"
-        "${username}"
-      ];
-    };
-    # Turn this on to make command line easier
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
+  nix.enable = true;
+  # Sanitized module for darwin
+  myNixOS.bundles.nix.enable = true;
 
   # Fonts to install
   fonts.packages = with pkgs; [
