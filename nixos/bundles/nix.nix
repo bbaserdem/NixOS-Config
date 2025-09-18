@@ -7,9 +7,6 @@
   ...
 }:
 {
-  # Use nix-index to find execs
-  programs.command-not-found.enable = true;
-
   # Package manager config
   nix = {
     extraOptions = ''
@@ -44,6 +41,8 @@
   ];
 }
 // (lib.optionalAttrs (lib.hasSuffix "-linux" arch) {
+  # Use nix-index to find execs
+  programs.command-not-found.enable = true;
   # Linux-specific configuration
   programs.nix-ld.enable = true;
   nix.gc.dates = "weekly";
