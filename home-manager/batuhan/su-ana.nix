@@ -16,6 +16,7 @@
     # ./apps/firefox.nix
     ./apps/kitty.nix
     ./apps/neovim.nix
+    ./apps/syncthing-darwin.nix
     ./media/mpd.nix
     ./media/ncmpcpp.nix
     ./security/sops.nix
