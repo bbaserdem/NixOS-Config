@@ -17,6 +17,8 @@ in {
     inputs.stylix.darwinModules.stylix
     # Own modules
     ./desktop.nix
+    # Pick and select modules
+    ../../bundles/nix.nix
   ];
 
   # Trying to make stylix work, this is pain
@@ -80,8 +82,6 @@ in {
 
   # Setup nix
   nix.enable = true;
-  # Sanitized module for darwin
-  myNixOS.bundles.nix.enable = true;
 
   # Fonts to install
   fonts.packages = with pkgs; [
