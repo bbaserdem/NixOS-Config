@@ -4,11 +4,11 @@ Personal configuration of my NixOS and MacOS computers
 
 # WIP
 
-[ ] 🍏 Darwin/Linux agnostic home-manager layout
-[ ] 🖥️ River desktop
-[ ] 📥 Email automation
-[ ] 📅 Calendar
-[ ]   Podcasts using podgrab
+- [ ] 🍏 Darwin/Linux agnostic home-manager layout
+- [ ] 🖥️ River desktop
+- [ ] 📥 Email automation
+- [ ] 📅 Calendar
+- [ ]   Podcasts using podgrab
 
 ## TODOs
 
