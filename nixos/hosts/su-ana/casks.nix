@@ -6,6 +6,7 @@
 
   # Utility Tools
   "appcleaner"
+  "iterm2"
 
   # Productivity Tools
   "raycast"
