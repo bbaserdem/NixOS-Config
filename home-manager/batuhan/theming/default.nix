@@ -5,18 +5,18 @@
   ...
 }: {
   imports =
-    (
-      if pkgs.stdenv.isDarwin
+    [
+      ./stylix.nix
+    ]
+    ++ (
+      if pkgs.stdenv.hostPlatform.isDarwin
       then [
         ./starship.nix
       ]
-      else if pkgs.stdenv.isLinux
+      else if pkgs.stdenv.hostPlatform.isLinux
       then [
         inputs.stylix.homeManagerModules.stylix
       ]
       else []
-    )
-    ++ [
-      ./stylix.nix
-    ];
+    );
 }

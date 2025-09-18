@@ -6,7 +6,7 @@
   ...
 }: let
   srcDir =
-    if pkgs.stdenv.isLinux
+    if pkgs.stdenv.hostPlatform.isLinux
     then config.xdg.userDirs.music
     else "${config.home.homeDirectory}/Media/Music";
 in {
@@ -47,14 +47,14 @@ in {
                 format          "44100:16:2"
             }
           ''
-          + lib.optionalString pkgs.stdenv.isLinux ''
+          + lib.optionalString pkgs.stdenv.hostPlatform.isLinux ''
             # To pulseaudio
             audio_output {
                 type            "pipewire"
                 name            "PipeWire Sound Server"
             }
           ''
-          + lib.optionalString pkgs.stdenv.isDarwin ''
+          + lib.optionalString pkgs.stdenv.hostPlatform.isDarwin ''
             # To darwin
             audio_output {
                 type            "osx"
@@ -64,7 +64,7 @@ in {
           '';
       };
     }
-    (lib.mkIf pkgs.stdenv.isLinux {
+    (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
       # Media playback keys for mpd, but only for linux
       services.mpdris2 = {
         enable = true;

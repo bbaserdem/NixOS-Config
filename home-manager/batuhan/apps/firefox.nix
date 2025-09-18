@@ -15,13 +15,13 @@
         vdhcoapp
         keepassxc
       ]
-      ++ lib.optionals pkgs.stdenv.isLinux [
+      ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
         gnome-browser-connector
         kdePackages.plasma-browser-integration
       ];
   };
 in (lib.mkMerge [
-  (lib.mkIf pkgs.stdenv.isLinux {
+  (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     xdg.mimeApps.defaultApplications = {
       "text/html" = ["firefox.desktop"];
       "text/xml" = ["firefox.desktop"];

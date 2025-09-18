@@ -19,7 +19,7 @@ in {
       whitelist = {
         prefix = [
           (
-            if (pkgs.stdenv.isLinux)
+            if (pkgs.stdenv.hostPlatform.isLinux)
             then config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR
             else "${config.home.homeDirectory}/Projects"
           )

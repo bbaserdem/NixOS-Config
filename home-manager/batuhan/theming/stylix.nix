@@ -41,7 +41,7 @@ lib.mkMerge [
       };
     };
   }
-  (lib.mkIf pkgs.stdenv.isLinux {
+  (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     # Icons
     stylix = {
       image = config.myHome.wallpaper.path;

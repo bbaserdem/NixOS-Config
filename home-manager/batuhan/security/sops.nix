@@ -17,7 +17,7 @@ lib.mkMerge [
       SOPS_AGE_KEY_FILE = "${config.home.homeDirectory}/.ssh/batuhan_age_keys.txt";
     };
   }
-  (lib.mkIf pkgs.stdenv.isLinux {
+  (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     # Set environment variable so systemd can find it
     systemd.user.sessionVariables = {
       EDITOR = config.home.sessionVariables.EDITOR;
