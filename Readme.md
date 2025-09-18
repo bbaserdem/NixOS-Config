@@ -4,6 +4,7 @@ Personal configuration of my NixOS and MacOS computers
 
 # WIP
 
+- [ ] 🍏 Darwin syncthing module
 - [ ] 🍏 Darwin/Linux agnostic home-manager layout
 - [ ] 🖥️ River desktop
 - [ ] 📥 Email automation
