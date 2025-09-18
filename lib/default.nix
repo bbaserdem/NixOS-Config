@@ -30,7 +30,7 @@
       }: {
         name = "${host}";
         value = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs outputs host;};
+          specialArgs = {inherit inputs outputs host arch;};
           modules = [
             ../nixos
             ../nixos/hosts/${host}
@@ -50,7 +50,7 @@
         name = "${user}@${host}";
         value = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor arch;
-          extraSpecialArgs = {inherit inputs outputs user host;};
+          extraSpecialArgs = {inherit inputs outputs user host arch;};
           modules = [
             ../home-manager/${user}/${host}.nix
           ];
