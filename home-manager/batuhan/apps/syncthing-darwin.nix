@@ -1,7 +1,7 @@
 # Syncthing for darwin
 {pkgs, ...}: {
   # Disable some folders
-  settings.options.folders = {
+  services.syncthing.settings.options.folders = {
     media.enable = true;
     sort.enable = false;
     work.enable = false;
