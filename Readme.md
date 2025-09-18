@@ -4,10 +4,17 @@ Personal configuration of my NixOS and MacOS computers
 
 # WIP
 
+[ ] 🍏 Darwin/Linux agnostic home-manager layout
 [ ] 🖥️ River desktop
 [ ] 📥 Email automation
 [ ] 📅 Calendar
 [ ]   Podcasts using podgrab
+
+## TODOs
+
+### Darwin
+
+- Use brew to install mac-media-key-forwarder, register it LaunchAgent, and configure for mpd.
 
 ## Contents
 

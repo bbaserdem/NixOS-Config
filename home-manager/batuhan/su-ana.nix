@@ -17,6 +17,8 @@
     ./apps/kitty.nix
     ./apps/neovim.nix
     # ./desktop/aerospace.nix
+    ./media/mpd.nix
+    ./media/ncmpcpp.nix
     ./security/sops.nix
     ./security/ssh.nix
     ./shell/aliases.nix

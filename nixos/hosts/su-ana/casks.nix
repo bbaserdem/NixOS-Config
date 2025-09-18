@@ -10,7 +10,4 @@
   # Productivity Tools
   "raycast"
   "asana"
-
-  # Browsers
-  "firefox"
 ]
