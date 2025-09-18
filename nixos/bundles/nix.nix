@@ -10,13 +10,6 @@
   # Use nix-index to find execs
   programs.command-not-found.enable = true;
 
-  # Nixpkgs config
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   # Package manager config
   nix = {
     extraOptions = ''
@@ -57,6 +50,7 @@
 })
 // (lib.optionalAttrs (lib.hasSuffix "-darwin" arch) {
   # Darwin-specific configuration
+  nix.enable = true;
   nix.gc.interval = [
     {
       Hour = 3;

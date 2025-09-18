@@ -35,6 +35,9 @@ in {
   # Nixos configuration
   config = lib.mkMerge [
     {
+      config = {
+        allowUnfree = true;
+      };
       # Nixpkgs options
       nixpkgs = {
         overlays = [

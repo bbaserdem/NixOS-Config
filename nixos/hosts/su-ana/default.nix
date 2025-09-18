@@ -26,6 +26,9 @@ in {
 
   # Nixpkgs options
   nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
     hostPlatform = "aarch64-darwin";
     overlays = [
       # My overlays

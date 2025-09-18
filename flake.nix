@@ -157,6 +157,7 @@
           modules = [./nixos/hosts/su-ana];
           specialArgs = {
             inherit inputs outputs;
+            arch = utils.system.aarch64-darwin;
             host = "su-ana";
           };
         };
