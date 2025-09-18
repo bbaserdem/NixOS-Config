@@ -4,6 +4,7 @@
   pkgs,
   config,
   lib,
+  system,
   ...
 }:
 lib.mkMerge [
@@ -41,7 +42,7 @@ lib.mkMerge [
       };
     };
   }
-  (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+  (lib.mkIf (lib.hasInfix "linux" system) {
     # Icons
     stylix = {
       image = config.myHome.wallpaper.path;
