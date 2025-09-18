@@ -16,7 +16,6 @@
     # ./apps/firefox.nix
     ./apps/kitty.nix
     ./apps/neovim.nix
-    # ./desktop/aerospace.nix
     ./media/mpd.nix
     ./media/ncmpcpp.nix
     ./security/sops.nix
@@ -30,8 +29,7 @@
     ./shell/pnpm.nix
     ./shell/tmux.nix
     ./shell/zsh.nix
-    ./theming/stylix.nix
-    ./theming/starship.nix
+    ./theming
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
