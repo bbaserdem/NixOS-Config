@@ -6,12 +6,14 @@
   config,
   pkgs,
   host,
+  arch,
   ...
 }: let
   username = "batuhan";
 in {
   # You can import other modules here
   imports = [
+    inputs.mac-app-util.darwinModules.default
     inputs.sops-nix.darwinModules.sops
     inputs.home-manager.darwinModules.home-manager
     inputs.stylix.darwinModules.stylix
@@ -57,7 +59,7 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {
-      inherit inputs outputs host;
+      inherit inputs outputs host arch;
       user = "batuhan";
     };
     users.${username} = import ../../../home-manager/batuhan/su-ana.nix;

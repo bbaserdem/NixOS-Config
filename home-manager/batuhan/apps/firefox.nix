@@ -2,6 +2,7 @@
 {
   pkgs,
   lib,
+  arch,
   ...
 }: let
   nmhOverride = {
@@ -10,12 +11,12 @@
         browserpass
         bukubrow
         tridactyl-native
-        uget-integrator
-        fx-cast-bridge
-        vdhcoapp
         keepassxc
       ]
       ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+        vdhcoapp
+        fx-cast-bridge
+        uget-integrator
         gnome-browser-connector
         kdePackages.plasma-browser-integration
       ];
@@ -409,11 +410,17 @@ in (lib.mkMerge [
       };
     };
 
-    home.packages = with pkgs; [
-      # Needed connection for VideoDownloadHelper
-      vdhcoapp
-      # Also have chromium available for compatibility
-      # ungoogled-chromium
-    ];
+    home.packages = (
+      if lib.hasSuffix "-darwin" arch
+      then []
+      else if lib.hasSuffix "-linux" arch
+      then [
+        # Needed connection for VideoDownloadHelper
+        pkgs.vdhcoapp
+        # Also have chromium available for compatibility
+        # ungoogled-chromium
+      ]
+      else []
+    );
   }
 ])

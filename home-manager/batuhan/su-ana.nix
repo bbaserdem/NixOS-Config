@@ -10,10 +10,11 @@
   imports = [
     # Module imports
     outputs.homeManagerModules.userConfig
+    inputs.mac-app-util.homeManagerModules.default
     inputs.nixCats.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
     # My modules to load
-    # ./apps/firefox.nix
+    ./apps/firefox.nix
     ./apps/kitty.nix
     ./apps/neovim.nix
     ./apps/syncthing-darwin.nix
