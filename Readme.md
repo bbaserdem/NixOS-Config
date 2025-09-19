@@ -24,7 +24,7 @@ Personal configuration of my NixOS and MacOS computers
   - [ nixos](nixos) Systemwide NixOS config
 - [󱩊 hosts](nixos/hosts) Different systems, named after gods of Tengrism
   - [🤰 Umay](nixos/hosts/umay) Virtual box
-  - [🔥 Od İyesi](nixos/hosts/od-iyesi) Live USB
+  - [🔥 Od Ata](nixos/hosts/od-ata) Home VPN
   - [🌳 Yertengri](nixos/hosts/yertengri) Home PC
   - [🌊 Su Ana](nixos/hosts/su-ana) Work computer (MacOS)
   - [🌊 Su Ata](nixos/hosts/su-ata) Work server

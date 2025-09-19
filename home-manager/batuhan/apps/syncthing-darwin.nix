@@ -1,14 +1,5 @@
 # Syncthing for darwin
 {pkgs, ...}: {
-  # Disable some folders
-  services.syncthing.settings.options.folders = {
-    media.enable = true;
-    sort.enable = false;
-    work.enable = false;
-    skyfi.enable = true;
-    phone.enable = false;
-  };
-
   services.syncthing = {
     # We use systemwide syncthing, don't start a user instance
     enable = true;

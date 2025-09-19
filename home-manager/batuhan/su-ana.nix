@@ -44,6 +44,15 @@
     NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations pipe-operators";
   };
 
+  # Disable some syncthing folders
+  services.syncthing.settings.options.folders = {
+    media.enable = true;
+    sort.enable = false;
+    work.enable = false;
+    skyfi.enable = true;
+    phone.enable = false;
+  };
+
   # Define wallpaper
   myHome.wallpaper.name = "Photo by SpaceX";
 }
