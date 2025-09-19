@@ -39,11 +39,6 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.05";
 
-  # Dunno why but have to do this
-  home.sessionVariables = {
-    NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations pipe-operators";
-  };
-
   # Define wallpaper
   myHome.wallpaper.name = "Photo by SpaceX";
 }
