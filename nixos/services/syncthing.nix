@@ -76,6 +76,7 @@
           devices = [
             "yel-ana"
             "yertengri"
+            "su-ana"
           ];
           versioning = {
             type = "trashcan";

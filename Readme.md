@@ -11,28 +11,6 @@ Personal configuration of my NixOS and MacOS computers
 - [ ] 📅 Calendar
 - [ ]   Podcasts using podgrab
 
-## TODOs
-
-Starting Home Manager activation
-Sanity checking Nix
-This is a live run
-Using Nix version: nix-env (Lix, like Nix) 2.93.0
-System type: aarch64-darwin
-Additional system types: 
-Features: gc, signed-caches
-System configuration file: /etc/nix/nix.conf
-User configuration files: /Users/batuhan/.config/nix/nix.conf:/Users/batuhan/.nix-profile/etc/xdg/nix/nix.conf:/etc/profiles/per-user/batuhan/etc/xdg/nix/nix.conf:/run/current-system/sw/etc/xdg/nix/nix.conf:/nix/var/nix/profiles/default/etc/xdg/nix/nix.conf
-Store directory: /nix/store
-State directory: /nix/var/nix
-Data directory: /nix/store/0vn9444lszwlxrg98krrpyfdl4hgdzy6-lix-2.93.0/share
-Activation variables:
-  oldGenPath undefined (first run?)
-  newGenPath=/nix/store/lfkc6lvncinlmw9qch6s0zab70w0vygl-home-manager-generation
-  genProfilePath=/Users/batuhan/.local/state/nix/profiles/home-manager
-  newGenGcPath=/Users/batuhan/.local/state/home-manager/gcroots/new-home
-  currentGenGcPath=/Users/batuhan/.local/state/home-manager/gcroots/current-home
-  legacyGenGcPath=/nix/var/nix/gcroots/per-user/batuhan/current-home
-
 ### Darwin
 
 - Use brew to install mac-media-key-forwarder, register it LaunchAgent, and configure for mpd.
