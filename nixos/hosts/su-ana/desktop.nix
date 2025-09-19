@@ -12,14 +12,17 @@
     enable = true;
     username = "batuhan";
     entries = [
-      {path = "/Applications/Slack.app/";}
-      {path = "/Applications/Firefox.app/";}
-      {path = "/System/Applications/Mail.app/";}
-      {path = "${pkgs.kitty}/Applications/kitty.app/";}
-      {path = "/System/Applications/Utilities/Terminal.app/";}
-      {path = "/Applications/Claude.app/";}
-      {path = "/System/Applications/System Settings.app/";}
       {path = "/System/Applications/Home.app/";}
+      {path = "/System/Applications/swmpc.app/";}
+      {path = "/Applications/iTerm.app/";}
+      {path = "/Users/batuhan/Applications/Home Manager Trampolines/Firefox.app/";}
+      {path = "/Applications/Slack.app/";}
+      {path = "/System/Applications/Mail.app/";}
+      {path = "/Applications/Repo Prompt.app/";}
+      {path = "/Applications/Cursor.app/";}
+      {path = "/Applications/Claude.app/";}
+      {path = "/Applications/Perplexity.app/";}
+      {path = "/System/Applications/System Settings.app/";}
       {path = "/System/Applications/Utilities/Activity Monitor.app/";}
     ];
   };

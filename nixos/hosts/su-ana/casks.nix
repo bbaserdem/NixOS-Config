@@ -1,8 +1,8 @@
 [
-  # Development Tools
+  # AI tools
   "claude"
-  "insomnia"
-  "wireshark-app"
+  "cursor"
+  "repo-prompt"
 
   # Utility Tools
   "appcleaner"
@@ -10,5 +10,4 @@
 
   # Productivity Tools
   "raycast"
-  "asana"
 ]

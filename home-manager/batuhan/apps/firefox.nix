@@ -65,6 +65,7 @@ in (lib.mkMerge [
           gruvbox-dark-theme
           h264ify
           hulu-ad-blocker
+          keepassxc-browser
           languagetool
           mullvad
           multi-account-containers
