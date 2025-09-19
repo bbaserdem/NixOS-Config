@@ -15,7 +15,6 @@
     inputs.sops-nix.homeManagerModules.sops
     # My modules to load
     ./apps/firefox.nix
-    ./apps/kitty.nix
     ./apps/neovim.nix
     ./apps/syncthing-darwin.nix
     ./media/mpd.nix

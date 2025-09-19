@@ -4,10 +4,15 @@
   "cursor"
   "repo-prompt"
 
+  # Comms
+  "slack"
+  "google-drive"
+
+  # Programming
+  "iterm2"
+  "github"
+
   # Utility Tools
   "appcleaner"
-  "iterm2"
-
-  # Productivity Tools
   "raycast"
 ]

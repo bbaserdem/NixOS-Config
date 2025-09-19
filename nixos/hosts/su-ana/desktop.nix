@@ -13,7 +13,7 @@
     username = "batuhan";
     entries = [
       {path = "/System/Applications/Home.app/";}
-      {path = "/System/Applications/swmpc.app/";}
+      {path = "/Applications/swmpc.app/";}
       {path = "/Applications/iTerm.app/";}
       {path = "/Users/batuhan/Applications/Home Manager Trampolines/Firefox.app/";}
       {path = "/Applications/Slack.app/";}
