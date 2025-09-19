@@ -85,9 +85,6 @@ in {
     };
   };
 
-  # Setup nix
-  nix.enable = true;
-
   # Fonts to install
   fonts.packages = with pkgs; [
     unstable.nerd-fonts.symbols-only
