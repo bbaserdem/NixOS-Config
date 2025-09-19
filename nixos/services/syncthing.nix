@@ -18,7 +18,7 @@
     ];
 
     # Behavior
-    overrideFolders = false;
+    overrideFolders = true;
     overrideDevices = true;
     openDefaultPorts = true;
     guiAddress = "127.0.0.1:8384";
@@ -42,12 +42,12 @@
         yel-ana = {
           name = "Yel Ana";
           id = "DRKKHJC-XAHARAB-JEMMSOW-4IU2OAH-6NMU6SI-DTVDCD2-2RLUPX2-EWQNHQN";
-          autoAcceptFolders = true;
+          autoAcceptFolders = false;
         };
         yertengri = {
           name = "Yertengri";
           id = "JGK6FDM-ALFF5XB-XEHIJSU-ZKZ2UVA-WYB2VLA-X4ETL3B-Q77ZL5D-OFGSGAL";
-          autoAcceptFolders = true;
+          autoAcceptFolders = false;
         };
         erlik = {
           name = "Erlik";
@@ -57,12 +57,12 @@
         su-ana = {
           name = "Su Ana";
           id = "5NIUMM2-CXTGG6I-4WMPQZX-L72XJOS-G44OFZI-TZOTPIU-UPOZG37-BFCODAS";
-          autoAcceptFolders = true;
+          autoAcceptFolders = false;
         };
         su-ata = {
           name = "Su Ata";
           id = "IGJPOV2-76W3BKB-KC35WIQ-PHIOVTF-6CMMUMN-BNDEAO2-DHS3UMS-PVMEWQ4";
-          autoAcceptFolders = true;
+          autoAcceptFolders = false;
         };
       };
 
