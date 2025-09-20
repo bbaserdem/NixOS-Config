@@ -63,6 +63,9 @@ in {
             }
           '';
       };
+      home.packages = with pkgs; [
+        mpc
+      ];
     }
     (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
       # Media playback keys for mpd, but only for linux
@@ -75,6 +78,15 @@ in {
         };
         multimediaKeys = true;
         notifications = false;
+      };
+    })
+    (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+      # Create the necessary folders if not existing
+      home.activation = {
+        mpd-directories-darwin = lib.hm.dag.entryAfter ["writeBoundary"] ''
+          mkdir -p ${config.home.homeDirectory}/Library/Logs/mpd
+          mkdir -p ${config.home.homeDirectory}/.local/share/mpd
+        '';
       };
     })
   ];
