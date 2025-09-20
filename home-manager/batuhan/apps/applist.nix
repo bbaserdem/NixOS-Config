@@ -27,7 +27,6 @@
     wl-clipboard # Clipboard manager
     # Small tools & libraries
     wifi-qr # QR code for wifi
-    dconf2nix # Dconf to nix converter
     qt5.qtwayland # Wayland support for old qt apps
   ];
 }

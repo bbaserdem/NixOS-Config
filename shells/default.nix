@@ -21,6 +21,10 @@
       pnpm
       nodejs-slim
       uv
+      # Useful packages to have
+      dconf2nix
+      update-nix-fetchgit
+      nix-prefetch-github
     ];
     env = {
       NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations pipe-operators";
