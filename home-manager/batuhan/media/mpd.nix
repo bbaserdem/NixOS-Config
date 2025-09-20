@@ -63,6 +63,9 @@ in {
             }
           '';
       };
+      home.packages = with pkgs; [
+        mpc
+      ];
     }
     (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
       # Media playback keys for mpd, but only for linux

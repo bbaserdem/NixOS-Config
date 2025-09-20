@@ -26,18 +26,4 @@
       {path = "/System/Applications/Utilities/Activity Monitor.app/";}
     ];
   };
-
-  services = {
-    # SketchyBar config
-    sketchybar = {
-      enable = false;
-    };
-
-    # JankyBorders config
-    jankyborders = {
-      enable = true;
-      active_color = "0xB0${config.lib.stylix.colors.cyan}";
-      inactive_color = "0xB0${config.lib.stylix.colors.base07}";
-    };
-  };
 }
