@@ -7,19 +7,16 @@
 }: {
   programs.xplr = {
     enable = true;
-    plugins = with pkgs.xplrPlugins; (
-      [
-        tree-view-xplr
-        tri-pane-xplr
-      ]
-      ++ (
-        if pkgs.stdenv.platform.isLinux
-        then [
-          trash-cli-xplr
-          wl-clibboard-xplr
-        ]
-        else []
-      )
+    plugins = with pkgs.xplrPlugins; {
+      tree-view = tree-view-xplr;
+      tri-pane = tri-pane-xplr;
+    } // (
+      if pkgs.stdenv.hostPlatform.isLinux
+      then {
+        trash-cli = trash-cli-xplr;
+        wl-clipboard = wl-clipboard-xplr;
+      }
+      else {}
     );
     extraConfig = ''
       xplr.config.general.enable_mouse = true
