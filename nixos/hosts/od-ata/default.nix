@@ -7,9 +7,9 @@
   ...
 }: {
   imports = [
-    inputs.nixos-raspberrypi.nixosModules.raspberry-pi-5.base
-    inputs.nixos-raspberrypi.nixosModules.raspberry-pi-5.display-vc4
     ./hardware-configuration.nix
+    ./network.nix
+    ./console.nix
   ];
 
   # Set our network name
@@ -49,12 +49,6 @@
   # Allow nix-copy to live system
   nix.settings.trusted-users = ["nixos"];
 
-  # Stateless machine
-  system.stateVersion = config.system.nixos.release;
-
-  # Console keymap
-  console.keyMap = "dvorak";
-
   # Timezone
   time.timeZone = "UTC";
 
@@ -62,4 +56,7 @@
   environment.systemPackages = with pkgs; [
     tree
   ];
+
+  # Stateless machine
+  system.stateVersion = config.system.nixos.release;
 }

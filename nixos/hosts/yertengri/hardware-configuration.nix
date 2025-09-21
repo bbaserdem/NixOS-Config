@@ -1,6 +1,7 @@
 # Hardware configuration file
 {
   config,
+  inputs,
   lib,
   modulesPath,
   ...
@@ -34,6 +35,10 @@
         device = "nodev";
       };
     };
+    # Enable cross compilation to ARM
+    binfmt.emulatedSystems = [
+      inputs.flake-utils.lib.system.aarch64-linux
+    ];
   };
 
   # Use crypttab to unlock partition after init
