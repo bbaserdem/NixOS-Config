@@ -13,5 +13,5 @@
   displaylink-driver = import ./drivers/displaylink-driver.nix {inherit pkgs;};
 
   # Plugin collections
-  xplrPlugins = pkgs.callPackage ./xplrPlugins.nix {};
+  xplrPlugins = pkgs.callPackage ./xplr-plugins.nix {};
 }
