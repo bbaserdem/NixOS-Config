@@ -23,6 +23,8 @@
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Raspberry Pi
+    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
 
     # ----- Utilities ----- #
     # Automated disk partitioning, and mounting
@@ -111,10 +113,6 @@
         arch = utils.system.x86_64-linux;
         host = "yel-ana";
       }
-      {
-        arch = utils.system.aarch64-linux;
-        host = "od-ata";
-      }
     ];
   in
     utils.eachDefaultSystem (system: let
@@ -158,7 +156,13 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations =
         {
-          # WIP hostnames, once done, put them in the <let in>
+          od-ata = inputs.nixos-raspberrypi.lib.nixosSystemFull {
+            specialArgs = {inherit inputs outputs;};
+            modules = [
+              ./nixos
+              ./nixos/hosts/od-ata
+            ];
+          };
         }
         // (lib.mkConfiguredHost configuredHosts);
 
