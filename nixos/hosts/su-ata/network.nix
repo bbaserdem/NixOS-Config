@@ -15,16 +15,14 @@
       anyInterface = true; # Don't wait for all interfaces, just any working one
     };
 
-    # Match any ethernet interface and configure static IP
+    # Match specific ethernet interface by MAC and configure DHCP
     networks."10-ethernet" = {
       matchConfig = {
-        Name = "en* eth*"; # Match any ethernet interface
+        MACAddress = "10:ff:e0:8c:3d:0c"; # Match specific ethernet interface
       };
       networkConfig = {
-        DHCP = "no";
-        Address = ["192.168.1.100/24"];
-        Gateway = "192.168.1.1";
-        DNS = ["1.1.1.1" "8.8.8.8"];
+        DHCP = "ipv4"; # Use DHCP for IPv4
+        DNS = ["1.1.1.1" "8.8.8.8"]; # Fallback DNS servers
 
         # Network configuration options
         IPv6AcceptRA = false; # Disable IPv6 router advertisements
@@ -32,6 +30,7 @@
       };
       linkConfig = {
         RequiredForOnline = "routable"; # Wait until interface is routable
+        Name = "eth0"; # Predictable interface name
       };
     };
   };
@@ -53,6 +52,7 @@
         22 # SSH
         443 # HTTPS (Traefik)
         8384 # Syncthing Web UI (fallback)
+        8888 # Jupyter Lab
       ];
 
       allowedUDPPorts = [
@@ -72,19 +72,34 @@
         # Allow established and related connections
         iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
-        # Allow local network traffic
-        iptables -A OUTPUT -d 192.168.1.0/24 -j ACCEPT
+        # Allow local network traffic (RFC1918 private networks)
+        iptables -A OUTPUT -d 10.0.0.0/8 -j ACCEPT
+        iptables -A OUTPUT -d 172.16.0.0/12 -j ACCEPT
+        iptables -A OUTPUT -d 192.168.0.0/16 -j ACCEPT
 
         # Restrict inbound services to local network only
         iptables -I INPUT 1 -i lo -j ACCEPT
         iptables -I INPUT 2 -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-        iptables -I INPUT 3 -s 192.168.1.0/24 -p tcp --dport 22 -j ACCEPT
-        iptables -I INPUT 4 -s 192.168.1.0/24 -p tcp --dport 443 -j ACCEPT
-        iptables -I INPUT 5 -s 192.168.1.0/24 -p tcp --dport 8384 -j ACCEPT
-        iptables -I INPUT 6 -s 192.168.1.0/24 -p udp --dport 21027 -j ACCEPT
-        iptables -I INPUT 7 -s 192.168.1.0/24 -p udp --dport 22000 -j ACCEPT
-        iptables -I INPUT 8 -j LOG --log-prefix "INPUT_BLOCKED: " --log-level 4
-        iptables -I INPUT 9 -j DROP
+        iptables -I INPUT 3 -s 10.0.0.0/8 -p tcp --dport 22 -j ACCEPT
+        iptables -I INPUT 3 -s 172.16.0.0/12 -p tcp --dport 22 -j ACCEPT
+        iptables -I INPUT 3 -s 192.168.0.0/16 -p tcp --dport 22 -j ACCEPT
+        iptables -I INPUT 4 -s 10.0.0.0/8 -p tcp --dport 443 -j ACCEPT
+        iptables -I INPUT 4 -s 172.16.0.0/12 -p tcp --dport 443 -j ACCEPT
+        iptables -I INPUT 4 -s 192.168.0.0/16 -p tcp --dport 443 -j ACCEPT
+        iptables -I INPUT 5 -s 10.0.0.0/8 -p tcp --dport 8384 -j ACCEPT
+        iptables -I INPUT 5 -s 172.16.0.0/12 -p tcp --dport 8384 -j ACCEPT
+        iptables -I INPUT 5 -s 192.168.0.0/16 -p tcp --dport 8384 -j ACCEPT
+        iptables -I INPUT 6 -s 10.0.0.0/8 -p udp --dport 21027 -j ACCEPT
+        iptables -I INPUT 6 -s 172.16.0.0/12 -p udp --dport 21027 -j ACCEPT
+        iptables -I INPUT 6 -s 192.168.0.0/16 -p udp --dport 21027 -j ACCEPT
+        iptables -I INPUT 7 -s 10.0.0.0/8 -p udp --dport 22000 -j ACCEPT
+        iptables -I INPUT 7 -s 172.16.0.0/12 -p udp --dport 22000 -j ACCEPT
+        iptables -I INPUT 7 -s 192.168.0.0/16 -p udp --dport 22000 -j ACCEPT
+        iptables -I INPUT 8 -s 10.0.0.0/8 -p tcp --dport 8888 -j ACCEPT
+        iptables -I INPUT 8 -s 172.16.0.0/12 -p tcp --dport 8888 -j ACCEPT
+        iptables -I INPUT 8 -s 192.168.0.0/16 -p tcp --dport 8888 -j ACCEPT
+        iptables -I INPUT 9 -j LOG --log-prefix "INPUT_BLOCKED: " --log-level 4
+        iptables -I INPUT 10 -j DROP
 
         # Essential services for Nix operations
         iptables -A OUTPUT -p udp --dport 53 -j ACCEPT    # DNS

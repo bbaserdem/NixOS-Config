@@ -3,7 +3,7 @@
   inputs,
   outputs,
   config,
-  pkgs,
+  lib,
   host,
   ...
 }: let
@@ -11,29 +11,34 @@
 in {
   imports = [
     ../default.nix
-    #./hardware-configuration.nix
+    ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
-    # ./disk-layout.nix
+    ./disk-layout.nix
     # Do user as home-manager module
     inputs.home-manager.nixosModules.home-manager
     # Configuration modules
     ./network.nix
   ];
 
-  # Set our name, and our air-gapped server settings
+  # Set our name, and our server settings
   networking.hostName = host;
 
   # Module toggles
   myNixOS = {
-    # We won't have a desktop in the server
-    userDesktop = null;
+    # We will have a desktop for now, but in general we won't have this
+    userDesktop = "gnome";
+    dispalManager = {
+      enable = true;
+      name = "gdm";
+    };
+    gnome.enable = true;
 
     # Features
     consolefont.enable = true;
     fonts.enable = true;
     grub = {
       enable = true;
-      flavor = "dark";
+      flavor = "orange";
     };
     keymap.enable = true;
     polkit.enable = true;
@@ -41,6 +46,7 @@ in {
     # Services
     services = {
       avahi.enable = true;
+      docker.enable = true;
       jupyter.enable = true;
       rasdaemon.enable = true;
       samba.enable = true;
@@ -53,13 +59,16 @@ in {
   # Making syncthing network available to outside
   services.syncthing.guiAddress = lib.mkForce "0.0.0.0:8384";
 
+  # Making jupyter available from network
+  myNixOS.services.jupyter.ip = lib.mkForce "0.0.0.0";
+
   # Use home-manager as nixos module
-  #home-manager = {
-  #  extraSpecialArgs = { inherit inputs outputs; };
-  #  users = {
-  #    "${user}" = ../../../home-manager/${user}/${host}.nix;
-  #  };
-  #};
+  home-manager = {
+    extraSpecialArgs = {inherit inputs outputs;};
+    users = {
+      "${user}" = ../../../home-manager/${user}/${host}.nix;
+    };
+  };
 
   # Secrets management
   sops.secrets = {
