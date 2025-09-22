@@ -40,7 +40,6 @@
       };
       linkConfig = {
         RequiredForOnline = "routable"; # Wait until interface is routable
-        Name = "eth0"; # Predictable interface name
       };
     };
   };
