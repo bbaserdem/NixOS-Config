@@ -23,6 +23,7 @@
     ./security/sops.nix
     ./security/ssh.nix
     ./shell/aliases.nix
+    ./shell/applist.nix
     ./shell/bash.nix
     ./shell/direnv.nix
     ./shell/environment.nix
