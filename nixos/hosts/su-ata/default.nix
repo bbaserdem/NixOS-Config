@@ -51,6 +51,9 @@ in {
       syncthing.enable = true;
       udev.enable = true;
     };
+
+    # Disables
+    grub.enable = lib.mkForce false;
   };
 
   # Making syncthing network available to outside
