@@ -113,6 +113,10 @@
         arch = utils.system.x86_64-linux;
         host = "yel-ana";
       }
+      {
+        arch = utils.system.x86_64-linux;
+        host = "su-ata";
+      }
     ];
   in
     utils.eachDefaultSystem (system: let
