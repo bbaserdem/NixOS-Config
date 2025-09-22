@@ -47,7 +47,7 @@
     };
 
     # Disable the built-in firewall since we're using custom nftables
-    firewall.enable = false;
+    firewall.enable = lib.mkForce false;
   };
 
   # Security services
