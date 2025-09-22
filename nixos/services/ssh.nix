@@ -73,7 +73,7 @@
     # Monitoring tools
     nethogs # Per-process network usage
     iftop # Network bandwidth monitoring
-    net-tools # Connection monitoring, this is renamed to net-tools
+    nettools # Connection monitoring, <TODO> this is renamed to net-tools in unstable
     tcpdump # Packet capture
 
     # Security tools
