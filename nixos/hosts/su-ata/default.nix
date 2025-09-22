@@ -5,6 +5,7 @@
   config,
   lib,
   host,
+  arch,
   ...
 }: let
   user = "batuhan";
@@ -64,7 +65,7 @@ in {
 
   # Use home-manager as nixos module
   home-manager = {
-    extraSpecialArgs = {inherit inputs outputs host user;};
+    extraSpecialArgs = {inherit inputs outputs host user arch;};
     users = {
       "${user}" = ../../../home-manager/${user}/${host}.nix;
     };
