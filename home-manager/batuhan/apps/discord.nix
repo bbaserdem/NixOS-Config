@@ -56,7 +56,6 @@
         copyUserURLs.enable = true;
         fakeNitro.enable = true;
         fixImagesQuality.enable = true;
-        hideAttachments.enable = true;
         moreKaomoji.enable = true;
         noTypingAnimation.enable = true;
         noUnblockToJump.enable = true;
