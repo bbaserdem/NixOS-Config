@@ -73,7 +73,7 @@
     # Monitoring tools
     nethogs # Per-process network usage
     iftop # Network bandwidth monitoring
-    netstat-nat # Connection monitoring
+    net-tools # Connection monitoring, this is renamed to net-tools
     tcpdump # Packet capture
 
     # Security tools
