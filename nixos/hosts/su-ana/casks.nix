@@ -13,6 +13,7 @@
   "github"
 
   # Utility Tools
+  "obsidian"
   "appcleaner"
   "raycast"
 ]
