@@ -35,10 +35,10 @@
       };
     };
 
-    # Enable OpenGL for CUDA compute
-    opengl = {
+    # Enable OpenGL for CUDA compute with 32bit libraries
+    graphics = {
       enable = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
 
     # Enable nvidia inside containers
@@ -65,4 +65,3 @@
   # Ensure proper permissions for GPU access
   users.users.batuhan.extraGroups = ["video"];
 }
-
