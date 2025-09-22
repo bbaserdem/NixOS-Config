@@ -5,12 +5,17 @@
     # SSH server
     openssh = {
       enable = true;
+      # Listen on all interfaces (DHCP IP will be assigned dynamically)
+      listenAddresses = [
+        {
+          addr = "0.0.0.0";
+          port = 22;
+        }
+      ];
       settings = {
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "no";
-        # Only listen on local network (not specific interface)
-        ListenAddress = ["192.168.1.100" "127.0.0.1"];
         # Security settings
         MaxAuthTries = 3;
         ClientAliveInterval = 300;
@@ -23,7 +28,7 @@
     fail2ban = {
       enable = true;
       maxretry = 3;
-      ignoreIP = ["127.0.0.0/8" "192.168.1.0/24"]; # Don't ban local network
+      ignoreIP = ["127.0.0.0/8" "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16"]; # Don't ban private networks
       jails = {
         ssh = {
           settings = {
