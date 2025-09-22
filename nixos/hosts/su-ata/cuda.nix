@@ -41,7 +41,7 @@
       enable32Bit = true;
     };
 
-    # Enable nvidia inside containers
+    # Enable container runtime for NVIDIA
     nvidia-container-toolkit.enable = true;
   };
 
@@ -51,9 +51,6 @@
     cudaPackages.cudnn
     nvidia-docker
   ];
-
-  # Enable container runtime for NVIDIA
-  virtualisation.docker.enableNvidia = true;
 
   # Add CUDA to system environment
   environment.variables = {
