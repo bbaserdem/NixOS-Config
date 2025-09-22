@@ -15,5 +15,5 @@
   # Utility Tools
   "obsidian"
   "appcleaner"
-  "raycast"
+  "karabiner-elements"
 ]

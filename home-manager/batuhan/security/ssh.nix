@@ -14,6 +14,12 @@
         identitiesOnly = true;
         extraOptions.IdentityFile = "~/.ssh/id_ed25519_GITHUB";
       };
+      "su-ata" = {
+        user = "batuhan";
+        hostname = "su-ata";
+        identitiesOnly = true;
+        extraOptions.IdentityFile = "~/.ssh/id_ed25519_SU-ATA";
+      };
     };
   };
 }
