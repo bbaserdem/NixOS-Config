@@ -15,6 +15,16 @@
       anyInterface = true; # Don't wait for all interfaces, just any working one
     };
 
+    # Link configuration for predictable interface naming
+    links."10-ethernet" = {
+      matchConfig = {
+        MACAddress = "10:ff:e0:8c:3d:0c";
+      };
+      linkConfig = {
+        Name = "eth0"; # Predictable interface name
+      };
+    };
+
     # Match specific ethernet interface by MAC and configure DHCP
     networks."10-ethernet" = {
       matchConfig = {
