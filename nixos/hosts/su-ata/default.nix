@@ -64,7 +64,7 @@ in {
 
   # Use home-manager as nixos module
   home-manager = {
-    extraSpecialArgs = {inherit inputs outputs host;};
+    extraSpecialArgs = {inherit inputs outputs host user;};
     users = {
       "${user}" = ../../../home-manager/${user}/${host}.nix;
     };
