@@ -36,7 +36,10 @@
     };
 
     # Enable OpenGL for CUDA compute
-    opengl.enable = true;
+    opengl = {
+      enable = true;
+      driSupport32Bit = true;
+    };
 
     # Enable nvidia inside containers
     nvidia-container-toolkit.enable = true;
