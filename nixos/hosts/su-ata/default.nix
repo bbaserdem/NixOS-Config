@@ -27,7 +27,7 @@ in {
   myNixOS = {
     # We will have a desktop for now, but in general we won't have this
     userDesktop = "gnome";
-    dispalManager = {
+    displayManager = {
       enable = true;
       name = "gdm";
     };
