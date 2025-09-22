@@ -40,99 +40,14 @@
     networkmanager.enable = false;
     useDHCP = false;
 
-    # Use nftables (modern firewall backend)
-    nftables.enable = true;
-
-    # Firewall configuration
-    firewall = {
+    # Use nftables with custom ruleset
+    nftables = {
       enable = true;
-
-      # Basic ports for local network access only
-      allowedTCPPorts = [
-        22 # SSH
-        443 # HTTPS (Traefik)
-        8384 # Syncthing Web UI (fallback)
-        8888 # Jupyter Lab
-      ];
-
-      allowedUDPPorts = [
-        21027 # Syncthing discovery
-        22000 # Syncthing data
-      ];
-
-      # Outbound filtering - Development mode (controlled internet access)
-      extraCommands = ''
-        # Flush any existing OUTPUT rules
-        iptables -F OUTPUT 2>/dev/null || true
-        iptables -P OUTPUT DROP
-
-        # Allow loopback
-        iptables -A OUTPUT -o lo -j ACCEPT
-
-        # Allow established and related connections
-        iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-
-        # Allow local network traffic (RFC1918 private networks)
-        iptables -A OUTPUT -d 10.0.0.0/8 -j ACCEPT
-        iptables -A OUTPUT -d 172.16.0.0/12 -j ACCEPT
-        iptables -A OUTPUT -d 192.168.0.0/16 -j ACCEPT
-
-        # Restrict inbound services to local network only
-        iptables -I INPUT 1 -i lo -j ACCEPT
-        iptables -I INPUT 2 -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-        iptables -I INPUT 3 -s 10.0.0.0/8 -p tcp --dport 22 -j ACCEPT
-        iptables -I INPUT 3 -s 172.16.0.0/12 -p tcp --dport 22 -j ACCEPT
-        iptables -I INPUT 3 -s 192.168.0.0/16 -p tcp --dport 22 -j ACCEPT
-        iptables -I INPUT 4 -s 10.0.0.0/8 -p tcp --dport 443 -j ACCEPT
-        iptables -I INPUT 4 -s 172.16.0.0/12 -p tcp --dport 443 -j ACCEPT
-        iptables -I INPUT 4 -s 192.168.0.0/16 -p tcp --dport 443 -j ACCEPT
-        iptables -I INPUT 5 -s 10.0.0.0/8 -p tcp --dport 8384 -j ACCEPT
-        iptables -I INPUT 5 -s 172.16.0.0/12 -p tcp --dport 8384 -j ACCEPT
-        iptables -I INPUT 5 -s 192.168.0.0/16 -p tcp --dport 8384 -j ACCEPT
-        iptables -I INPUT 6 -s 10.0.0.0/8 -p udp --dport 21027 -j ACCEPT
-        iptables -I INPUT 6 -s 172.16.0.0/12 -p udp --dport 21027 -j ACCEPT
-        iptables -I INPUT 6 -s 192.168.0.0/16 -p udp --dport 21027 -j ACCEPT
-        iptables -I INPUT 7 -s 10.0.0.0/8 -p udp --dport 22000 -j ACCEPT
-        iptables -I INPUT 7 -s 172.16.0.0/12 -p udp --dport 22000 -j ACCEPT
-        iptables -I INPUT 7 -s 192.168.0.0/16 -p udp --dport 22000 -j ACCEPT
-        iptables -I INPUT 8 -s 10.0.0.0/8 -p tcp --dport 8888 -j ACCEPT
-        iptables -I INPUT 8 -s 172.16.0.0/12 -p tcp --dport 8888 -j ACCEPT
-        iptables -I INPUT 8 -s 192.168.0.0/16 -p tcp --dport 8888 -j ACCEPT
-        iptables -I INPUT 9 -j LOG --log-prefix "INPUT_BLOCKED: " --log-level 4
-        iptables -I INPUT 10 -j DROP
-
-        # Essential services for Nix operations
-        iptables -A OUTPUT -p udp --dport 53 -j ACCEPT    # DNS
-        iptables -A OUTPUT -p tcp --dport 53 -j ACCEPT    # DNS over TCP
-        iptables -A OUTPUT -p udp --dport 123 -j ACCEPT   # NTP
-
-        # Development services (no rate limiting for smooth development)
-        iptables -A OUTPUT -p tcp --dport 80 -j ACCEPT    # HTTP
-        iptables -A OUTPUT -p tcp --dport 443 -j ACCEPT   # HTTPS
-        iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT    # SSH (for git)
-        iptables -A OUTPUT -p tcp --dport 9418 -j ACCEPT  # Git protocol
-
-        # Log blocked outbound connections
-        iptables -A OUTPUT -j LOG --log-prefix "DEV_BLOCKED: " --log-level 4
-        iptables -A OUTPUT -j DROP
-      '';
-
-      # Clean up rules when firewall stops
-      extraStopCommands = ''
-        iptables -P OUTPUT ACCEPT 2>/dev/null || true
-        iptables -P INPUT ACCEPT 2>/dev/null || true
-        iptables -F OUTPUT 2>/dev/null || true
-        iptables -F INPUT 2>/dev/null || true
-      '';
-
-      # Additional security settings
-      logRefusedConnections = true;
-      logRefusedPackets = true;
-      logRefusedUnicastsOnly = false;
-
-      # Reverse path filtering (anti-spoofing)
-      checkReversePath = "strict";
+      rulesetFile = ./firewall.nft;
     };
+
+    # Disable the built-in firewall since we're using custom nftables
+    firewall.enable = false;
   };
 
   # Security services
@@ -155,11 +70,15 @@
           commands = [
             # Allow wheel users to manage firewall without password
             {
-              command = "${pkgs.iptables}/bin/iptables";
+              command = "${pkgs.nftables}/bin/nft";
               options = ["NOPASSWD"];
             }
             {
               command = "${pkgs.systemd}/bin/systemctl restart fail2ban";
+              options = ["NOPASSWD"];
+            }
+            {
+              command = "${pkgs.systemd}/bin/systemctl restart nftables";
               options = ["NOPASSWD"];
             }
           ];

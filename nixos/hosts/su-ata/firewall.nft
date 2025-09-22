@@ -1,0 +1,74 @@
+#!/usr/bin/env nft -f
+# nftables firewall rules for su-ata server
+# Converted from iptables rules with restrictive inbound/outbound filtering
+
+table inet filter {
+  # INPUT chain - restrict inbound connections to private networks only
+  chain input {
+    type filter hook input priority filter; policy drop;
+
+    # Allow loopback traffic
+    iifname "lo" accept
+
+    # Allow established and related connections
+    ct state { established, related } accept
+
+    # Allow ICMP (ping, etc.)
+    icmp type echo-request accept
+    icmpv6 type echo-request accept
+
+    # SSH - only from private networks
+    ip saddr { 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 } tcp dport 22 accept
+
+    # HTTPS/Traefik - only from private networks
+    ip saddr { 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 } tcp dport 443 accept
+
+    # Syncthing Web UI - only from private networks
+    ip saddr { 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 } tcp dport 8384 accept
+
+    # Jupyter Lab - only from private networks
+    ip saddr { 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 } tcp dport 8888 accept
+
+    # Syncthing discovery - only from private networks
+    ip saddr { 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 } udp dport 21027 accept
+
+    # Syncthing data - only from private networks
+    ip saddr { 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 } udp dport 22000 accept
+
+    # Log and drop everything else
+    log prefix "INPUT_BLOCKED: " level info counter drop
+  }
+
+  # OUTPUT chain - restrictive outbound filtering for development mode
+  chain output {
+    type filter hook output priority filter; policy drop;
+
+    # Allow loopback traffic
+    oifname "lo" accept
+
+    # Allow established and related connections
+    ct state { established, related } accept
+
+    # Allow traffic to private networks (RFC1918)
+    ip daddr { 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 } accept
+
+    # Essential services for system operations
+    udp dport 53 accept      # DNS
+    tcp dport 53 accept      # DNS over TCP
+    udp dport 123 accept     # NTP
+
+    # Development/deployment services
+    tcp dport 80 accept      # HTTP
+    tcp dport 443 accept     # HTTPS
+    tcp dport 22 accept      # SSH (for git)
+    tcp dport 9418 accept    # Git protocol
+
+    # Log and drop blocked outbound connections
+    log prefix "DEV_BLOCKED: " level info counter drop
+  }
+
+  # FORWARD chain - allow forwarding (needed for Docker)
+  chain forward {
+    type filter hook forward priority filter; policy accept;
+  }
+}
