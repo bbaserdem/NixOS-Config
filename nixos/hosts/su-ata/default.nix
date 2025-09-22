@@ -37,10 +37,6 @@ in {
     # Features
     consolefont.enable = true;
     fonts.enable = true;
-    grub = {
-      enable = true;
-      flavor = "orange";
-    };
     keymap.enable = true;
     polkit.enable = true;
 
