@@ -16,4 +16,6 @@
   "obsidian"
   "appcleaner"
   "raycast"
+  "vox"
+  "vox-preferences-pane"
 ]
