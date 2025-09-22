@@ -13,9 +13,9 @@ in {
     ../default.nix
     #./hardware-configuration.nix
     inputs.disko.nixosModules.disko
-    #./disk-layout.nix
+    # ./disk-layout.nix
     # Do user as home-manager module
-    #inputs.home-manager.nixosModules.home-manager
+    inputs.home-manager.nixosModules.home-manager
     # Configuration modules
     ./network.nix
   ];
@@ -25,9 +25,7 @@ in {
 
   # Module toggles
   myNixOS = {
-    # Enable default user generation
-    defaultUser.enable = true;
-    userName = user;
+    # We won't have a desktop in the server
     userDesktop = null;
 
     # Features
@@ -43,6 +41,7 @@ in {
     # Services
     services = {
       avahi.enable = true;
+      jupyter.enable = true;
       rasdaemon.enable = true;
       samba.enable = true;
       ssh.enable = true;

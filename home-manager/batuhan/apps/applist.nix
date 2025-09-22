@@ -15,7 +15,7 @@
     hunspell
     hunspellDicts.en_US
     kdePackages.okular
-    obsidian
+    unstable.obsidian
     zotero
     # Programming
     octaveFull
