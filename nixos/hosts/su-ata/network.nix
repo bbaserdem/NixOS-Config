@@ -166,33 +166,33 @@
         }
       ];
     };
+  };
 
-    # Kernel security settings
-    kernel.sysctl = {
-      # Network security
-      "net.ipv4.ip_forward" = 0;
-      "net.ipv4.conf.all.send_redirects" = 0;
-      "net.ipv4.conf.default.send_redirects" = 0;
-      "net.ipv4.conf.all.accept_redirects" = 0;
-      "net.ipv4.conf.default.accept_redirects" = 0;
-      "net.ipv4.conf.all.accept_source_route" = 0;
-      "net.ipv4.conf.default.accept_source_route" = 0;
+  # Kernel security settings
+  boot.kernel.sysctl = {
+    # Network security
+    "net.ipv4.ip_forward" = 0;
+    "net.ipv4.conf.all.send_redirects" = 0;
+    "net.ipv4.conf.default.send_redirects" = 0;
+    "net.ipv4.conf.all.accept_redirects" = 0;
+    "net.ipv4.conf.default.accept_redirects" = 0;
+    "net.ipv4.conf.all.accept_source_route" = 0;
+    "net.ipv4.conf.default.accept_source_route" = 0;
 
-      # IP spoofing protection
-      "net.ipv4.conf.all.rp_filter" = 1;
-      "net.ipv4.conf.default.rp_filter" = 1;
+    # IP spoofing protection
+    "net.ipv4.conf.all.rp_filter" = 1;
+    "net.ipv4.conf.default.rp_filter" = 1;
 
-      # ICMP redirect acceptance
-      "net.ipv4.conf.all.secure_redirects" = 0;
-      "net.ipv4.conf.default.secure_redirects" = 0;
+    # ICMP redirect acceptance
+    "net.ipv4.conf.all.secure_redirects" = 0;
+    "net.ipv4.conf.default.secure_redirects" = 0;
 
-      # Log suspicious packets
-      "net.ipv4.conf.all.log_martians" = 1;
-      "net.ipv4.conf.default.log_martians" = 1;
+    # Log suspicious packets
+    "net.ipv4.conf.all.log_martians" = 1;
+    "net.ipv4.conf.default.log_martians" = 1;
 
-      # Ignore ping requests (optional - uncomment if desired)
-      # "net.ipv4.icmp_echo_ignore_all" = 1;
-    };
+    # Ignore ping requests (optional - uncomment if desired)
+    # "net.ipv4.icmp_echo_ignore_all" = 1;
   };
 
   # Logging configuration
