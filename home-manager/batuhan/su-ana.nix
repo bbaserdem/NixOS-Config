@@ -31,7 +31,7 @@
     ./shell/man.nix
     ./shell/pnpm.nix
     ./shell/tmux.nix
-    ./shell/xplr.nix
+    ./shell/yazi.nix
     ./shell/zsh.nix
     ./theming/stylix.nix
     ./theming/starship.nix

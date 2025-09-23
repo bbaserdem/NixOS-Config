@@ -16,7 +16,7 @@
     ./pass.nix
     ./pnpm.nix
     ./tmux.nix
-    ./xplr.nix
     ./vifm.nix
+    ./yazi.nix
   ];
 }
