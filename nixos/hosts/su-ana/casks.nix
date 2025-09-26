@@ -13,6 +13,7 @@
   "github"
 
   # Utility Tools
+  "qgis"
   "obsidian"
   "appcleaner"
   "karabiner-elements"
