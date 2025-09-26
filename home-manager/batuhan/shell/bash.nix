@@ -12,6 +12,7 @@
   programs.kitty.shellIntegration.enableBashIntegration = true;
   programs.nix-index.enableBashIntegration = true;
   programs.starship.enableBashIntegration = true;
+  programs.yazi.enableBashIntegration = true;
   programs.zoxide.enableBashIntegration = true;
 
   # Setup zsh

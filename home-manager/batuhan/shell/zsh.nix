@@ -55,6 +55,7 @@ in {
   programs.kitty.shellIntegration.enableZshIntegration = true;
   programs.nix-index.enableZshIntegration = true;
   programs.starship.enableZshIntegration = true;
+  programs.yazi.enableZshIntegration = true;
   programs.zoxide.enableZshIntegration = true;
 
   # Setup zsh
