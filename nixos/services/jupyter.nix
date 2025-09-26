@@ -18,6 +18,7 @@
     ps:
       [
         ps.jupyterlab # The base jupyterlab package
+        ps.nbformat # Notebook generator
       ]
       ++ cfg.extraPackages ps
   );
