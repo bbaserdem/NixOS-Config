@@ -30,9 +30,13 @@
 
       # Power management (important for servers)
       powerManagement = {
-        enable = true;
+        enable = false;
         finegrained = false;
       };
+
+      # Additional settings
+      modesetting.enable = false;
+      nvidiaSettings = true;
     };
 
     # Enable OpenGL for CUDA compute with 32bit libraries
