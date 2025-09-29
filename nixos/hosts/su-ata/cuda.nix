@@ -51,16 +51,16 @@
 
   # CUDA toolkit system-wide
   environment.systemPackages = with pkgs; [
-    cudatoolkit
+    cudaPackages.cudatoolkit
     cudaPackages.cudnn
     nvidia-docker
   ];
 
   # Add CUDA to system environment
   environment.variables = {
-    CUDA_PATH = "${pkgs.cudatoolkit}";
-    CUDA_ROOT = "${pkgs.cudatoolkit}";
-    LD_LIBRARY_PATH = "${pkgs.cudatoolkit}/lib:${pkgs.cudatoolkit.lib}/lib";
+    CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";
+    CUDA_ROOT = "${pkgs.cudaPackages.cudatoolkit}";
+    LD_LIBRARY_PATH = "${pkgs.cudaPackages.cudatoolkit}/lib:${pkgs.cudaPackages.cudatoolkit.lib}/lib";
   };
 
   # Ensure proper permissions for GPU access
