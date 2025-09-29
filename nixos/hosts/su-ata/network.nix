@@ -4,43 +4,55 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  macAddress = "10:ff:e0:8c:3d:0c";
+in {
   # Network config for systemd
-  systemd.network = {
-    enable = true;
-
-    # Wait for network to be online before considering boot complete
-    wait-online = {
+  systemd = {
+    network = {
       enable = true;
-      anyInterface = true; # Don't wait for all interfaces, just any working one
+
+      # Wait for network to be online before considering boot complete
+      wait-online = {
+        enable = true;
+        anyInterface = true; # Don't wait for all interfaces, just any working one
+      };
+
+      # Link configuration for predictable interface naming
+      links."10-ethernet" = {
+        matchConfig = {
+          MACAddress = macAddress;
+        };
+        linkConfig = {
+          Name = "eth0"; # Predictable interface name
+        };
+      };
+
+      # Match specific ethernet interface by MAC and configure DHCP
+      networks."10-ethernet" = {
+        matchConfig = {
+          MACAddress = macAddress; # Match specific ethernet interface
+        };
+        networkConfig = {
+          DHCP = "ipv4"; # Use DHCP for IPv4
+          DNS = ["1.1.1.1" "8.8.8.8"]; # Fallback DNS servers
+
+          # Network configuration options
+          IPv6AcceptRA = false; # Disable IPv6 router advertisements
+          LinkLocalAddressing = "no"; # Disable link-local addressing
+        };
+        linkConfig = {
+          RequiredForOnline = "routable"; # Wait until interface is routable
+        };
+      };
     };
 
-    # Link configuration for predictable interface naming
-    links."10-ethernet" = {
-      matchConfig = {
-        MACAddress = "10:ff:e0:8c:3d:0c";
-      };
-      linkConfig = {
-        Name = "eth0"; # Predictable interface name
-      };
-    };
-
-    # Match specific ethernet interface by MAC and configure DHCP
-    networks."10-ethernet" = {
-      matchConfig = {
-        MACAddress = "10:ff:e0:8c:3d:0c"; # Match specific ethernet interface
-      };
-      networkConfig = {
-        DHCP = "ipv4"; # Use DHCP for IPv4
-        DNS = ["1.1.1.1" "8.8.8.8"]; # Fallback DNS servers
-
-        # Network configuration options
-        IPv6AcceptRA = false; # Disable IPv6 router advertisements
-        LinkLocalAddressing = "no"; # Disable link-local addressing
-      };
-      linkConfig = {
-        RequiredForOnline = "routable"; # Wait until interface is routable
-      };
+    # Networkmanager doesn't do this automatically, we should do it
+    resolved = {
+      enable = true;
+      extraConfig = ''
+        MulticastDNS=yes
+      '';
     };
   };
 
