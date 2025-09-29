@@ -6,7 +6,6 @@
   ...
 }: let
   macAddress = "10:ff:e0:8c:3d:0c";
-  deviceName = "eth0";
 in {
   # Network config for systemd
   systemd.network = {
@@ -18,15 +17,15 @@ in {
       anyInterface = true; # Don't wait for all interfaces, just any working one
     };
 
-    # Link configuration for predictable interface naming
-    links."10-ethernet" = {
-      matchConfig = {
-        MACAddress = macAddress;
-      };
-      linkConfig = {
-        Name = deviceName; # Predictable interface name
-      };
-    };
+    # # Link configuration for predictable interface naming
+    # links."10-ethernet" = {
+    #   matchConfig = {
+    #     MACAddress = macAddress;
+    #   };
+    #   linkConfig = {
+    #     Name = deviceName; # Predictable interface name
+    #   };
+    # };
 
     # Match specific ethernet interface by MAC and configure DHCP
     networks."10-ethernet" = {
@@ -62,7 +61,7 @@ in {
     firewall.enable = lib.mkForce false;
 
     # Enable our interface's wake-on-lan capabilities
-    interfaces.${deviceName}.wakeOnLan.enable = true;
+    # interfaces.${deviceName}.wakeOnLan.enable = true;
   };
 
   # Security services
