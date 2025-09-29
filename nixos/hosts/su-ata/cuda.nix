@@ -6,6 +6,7 @@
 }: {
   # Accept nvidia license
   nixpkgs.config.nvidia.acceptLicense = true;
+
   # Add to cachix
   nix.settings = {
     substituters = [
@@ -47,20 +48,6 @@
 
     # Enable container runtime for NVIDIA
     nvidia-container-toolkit.enable = true;
-  };
-
-  # CUDA toolkit system-wide
-  environment.systemPackages = with pkgs; [
-    cudaPackages.cudatoolkit
-    cudaPackages.cudnn
-    nvidia-docker
-  ];
-
-  # Add CUDA to system environment
-  environment.variables = {
-    CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";
-    CUDA_ROOT = "${pkgs.cudaPackages.cudatoolkit}";
-    LD_LIBRARY_PATH = "${pkgs.cudaPackages.cudatoolkit}/lib:${pkgs.cudaPackages.cudatoolkit.lib}/lib";
   };
 
   # Ensure proper permissions for GPU access
