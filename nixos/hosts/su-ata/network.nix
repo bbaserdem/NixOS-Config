@@ -6,6 +6,7 @@
   ...
 }: let
   macAddress = "10:ff:e0:8c:3d:0c";
+  interfaceName = "enp130s0";
 in {
   # Network config for systemd
   systemd.network = {
@@ -61,7 +62,7 @@ in {
     firewall.enable = lib.mkForce false;
 
     # Enable our interface's wake-on-lan capabilities
-    # interfaces.${deviceName}.wakeOnLan.enable = true;
+    interfaces.${interfaceName}.wakeOnLan.enable = true;
   };
 
   # Security services
