@@ -25,6 +25,15 @@ in {
   # Set our name, and our server settings
   networking.hostName = host;
 
+  # Disable sleep
+  systemd.sleep.extraConfig = ''
+    [Sleep]
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
+
   # Module toggles
   myNixOS = {
     # We will have a desktop for now, but in general we won't have this
