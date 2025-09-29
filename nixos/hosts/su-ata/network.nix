@@ -6,6 +6,7 @@
   ...
 }: let
   macAddress = "10:ff:e0:8c:3d:0c";
+  deviceName = "eth0";
 in {
   # Network config for systemd
   systemd.network = {
@@ -23,7 +24,7 @@ in {
         MACAddress = macAddress;
       };
       linkConfig = {
-        Name = "eth0"; # Predictable interface name
+        Name = deviceName; # Predictable interface name
       };
     };
 
@@ -59,6 +60,9 @@ in {
 
     # Disable the built-in firewall since we're using custom nftables
     firewall.enable = lib.mkForce false;
+
+    # Enable our interface's wake-on-lan capabilities
+    interfaces.${deviceName}.wakeOnLan.enable = true;
   };
 
   # Security services
