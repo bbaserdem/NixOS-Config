@@ -38,7 +38,7 @@
   ];
 
   # Syncthing folders
-  services.syncthing.settings.devices = {
+  services.syncthing.settings.folders = {
     media.enable = true;
     skyfi.enable = true;
     work.enable = false;

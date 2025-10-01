@@ -68,7 +68,36 @@ in {
   # Homebrew
   homebrew = {
     enable = true;
-    casks = import ./casks.nix;
+    brews = [
+      "mas"
+    ];
+    casks = [
+      # AI tools
+      "claude"
+      "cursor"
+      "repo-prompt"
+
+      # Comms
+      "slack"
+      "google-drive"
+
+      # Programming
+      "iterm2"
+      "github"
+      "bitwarden"
+
+      # Utility Tools
+      "qgis"
+      "obsidian"
+      "appcleaner"
+      "karabiner-elements"
+    ];
+    masApps = {};
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "zap";
+      upgrade = true;
+    };
   };
 
   # Secrets management
@@ -84,6 +113,8 @@ in {
       owner = username;
     };
   };
+
+  # Add brew to shell environment
 
   # Fonts to install
   fonts.packages = with pkgs; [

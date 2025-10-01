@@ -18,10 +18,7 @@
       {
         # Package manager config
         nix = {
-          gc = {
-            automatic = true;
-            options = "--delete-older-than 60d";
-          };
+          gc.options = "--delete-older-than 60d";
           nixPath = ["nixpkgs=${inputs.nixpkgs}"];
           settings = {
             experimental-features = [
@@ -46,6 +43,7 @@
       }
       (lib.mkIf (lib.hasSuffix "-linux" arch) (
         lib.optionalAttrs (lib.hasSuffix "-linux" arch) {
+          nix.gc.automatic = true;
           programs = {
             # Linux-specific configuration
             nix-ld.enable = true;
