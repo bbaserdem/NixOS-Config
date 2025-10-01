@@ -11,6 +11,7 @@
   # Programming
   "iterm2"
   "github"
+  "bitwarden"
 
   # Utility Tools
   "qgis"
