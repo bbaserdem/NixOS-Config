@@ -79,6 +79,50 @@
             params = {cleanoutDays = "100";};
           };
         };
+
+        sort = {
+          label = "Sort";
+          id = "Sort_batuhan";
+          path = "~/Sort";
+          type = "sendreceive";
+          devices = [
+            "yel-ana"
+            "yertengri"
+          ];
+          versioning = {
+            type = "trashcan";
+            params = {cleanoutDays = "10";};
+          };
+        };
+        work = {
+          label = "Work";
+          id = "Work_batuhan";
+          path = "~/Work";
+          type = "sendreceive";
+          devices = [
+            "yel-ana"
+            "yertengri"
+          ];
+          versioning = {
+            type = "trashcan";
+            params = {cleanoutDays = "100";};
+          };
+        };
+        phone = {
+          label = "Android";
+          id = "Android_batuhan";
+          path = "~/Shared/Android";
+          type = "sendreceive";
+          devices = [
+            "yel-ana"
+            "yertengri"
+            "erlik"
+          ];
+          versioning = {
+            type = "trashcan";
+            params = {cleanoutDays = "30";};
+          };
+        };
       };
     };
   };

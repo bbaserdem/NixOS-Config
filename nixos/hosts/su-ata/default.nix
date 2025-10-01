@@ -66,6 +66,15 @@ in {
     grub.enable = lib.mkForce false;
   };
 
+  # Syncthing folders
+  services.syncthing.settings.folders = {
+    media.enable = false;
+    sort.enable = false;
+    work.enable = false;
+    skyfi.enable = true;
+    phone.enable = false;
+  };
+
   # SECURITY TODO: When Traefik is setup, change back to localhost
   # Making syncthing network available to outside
   services.syncthing.guiAddress = lib.mkForce "0.0.0.0:8384"; # TODO: Change to "127.0.0.1:8384" with Traefik

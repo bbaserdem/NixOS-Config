@@ -37,6 +37,15 @@
     ./theming/starship.nix
   ];
 
+  # Syncthing folders
+  services.syncthing.settings.devices = {
+    media.enable = true;
+    skyfi.enable = true;
+    work.enable = false;
+    sort.enable = false;
+    phone.enable = false;
+  };
+
   # Add this directory for mac ports
   home.sessionPath = [
     "/opt/local/bin"

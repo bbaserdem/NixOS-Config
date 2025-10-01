@@ -57,6 +57,15 @@
     };
   };
 
+  # Syncthing folders
+  services.syncthing.settings.folders = {
+    media.enable = true;
+    sort.enable = true;
+    work.enable = true;
+    skyfi.enable = false;
+    phone.enable = true;
+  };
+
   # Joey's account
   users.users.joeysaur = {
     # Account setup for login
