@@ -6,6 +6,8 @@
   ...
 }: {
   imports = [
+    # External modules
+    inputs.nix-index-database.homeModules.nix-index
     # My variables
     outputs.homeManagerModules.userConfig
     # My modules

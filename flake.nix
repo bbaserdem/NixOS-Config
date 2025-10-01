@@ -37,6 +37,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Nix database w/out running nix-index
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     # Nixcats for neovim management
     nixCats = {
       url = "github:bbaserdem/NixCats";
