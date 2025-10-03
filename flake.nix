@@ -167,10 +167,7 @@
         {
           od-ata = inputs.nixos-raspberrypi.lib.nixosSystemFull {
             specialArgs = {inherit inputs outputs;};
-            modules = [
-              ./nixos
-              ./nixos/hosts/od-ata
-            ];
+            modules = [./nixos/hosts/od-ata];
           };
         }
         // (lib.mkConfiguredHost configuredHosts);
