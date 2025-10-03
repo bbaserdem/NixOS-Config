@@ -17,8 +17,6 @@
     ./apps/firefox.nix
     ./apps/neovim.nix
     ./apps/syncthing-darwin.nix
-    ./media/mpd.nix
-    ./media/ncmpcpp.nix
     ./security/keepassxc.nix
     ./security/sops.nix
     ./security/ssh.nix
