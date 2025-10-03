@@ -91,6 +91,7 @@ in {
       "obsidian"
       "appcleaner"
       "karabiner-elements"
+      "foobar2000"
     ];
     masApps = {};
     onActivation = {
