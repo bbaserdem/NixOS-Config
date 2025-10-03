@@ -17,13 +17,12 @@
       listenPort = 51820;
 
       # Path to the private key file, as a string
-      privateKeyFile = "/etc/wireguard/private";
+      privateKeyFile = config.sops.secrets."wireguard/private/od-ata".path;
 
       # Peers are managed dynamically using wg command, not in NixOS config
       peers = [];
     };
   };
-
 
   # Install WireGuard tools and management scripts
   environment.systemPackages = with pkgs; [
@@ -47,7 +46,6 @@
       };
     };
   };
-
 
   # Instructions for dynamic key management
   environment.etc."wireguard/README.md" = {
@@ -123,3 +121,4 @@
     '';
   };
 }
+

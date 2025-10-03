@@ -42,6 +42,9 @@
       "root/password-hash" = {
         neededForUsers = true;
       };
+      "wireguard/private/od-ata" = {};
+      "wireguard/public/od-ata" = {};
+      "wireguard/public/su-ana" = {};
     }
   };
 
