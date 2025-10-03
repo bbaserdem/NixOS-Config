@@ -48,18 +48,24 @@ def get_project_kernel(path, debug=False):
 
                         for line in content.splitlines():
                             if line.startswith('gitdir: '):
-                                gitdir = line.replace('gitdir: ', '').strip()
+                                gitdir = line[8:].strip()  # Remove 'gitdir: ' prefix
                                 if debug:
                                     print(f"DEBUG: gitdir: {gitdir}")
 
-                                # gitdir format: /path/to/main/repo/.git/worktrees/branch-name
-                                # Extract the main repo path
-                                main_repo_path = gitdir.split('/.git/worktrees/')[0]
-                                project_name = Path(main_repo_path).name.lower()
-
-                                if debug:
-                                    print(f"DEBUG: Main repo path: {main_repo_path}")
-                                    print(f"DEBUG: Project name: {project_name}")
+                                # Parse the gitdir path to find the main repo
+                                gitdir_path = Path(gitdir)
+                                parts = gitdir_path.parts
+                                for i, part in enumerate(parts):
+                                    if part == ".git":
+                                        # Found .git directory, main repo is the parent
+                                        main_repo_parts = parts[:i]
+                                        if main_repo_parts:
+                                            main_repo_path = Path(*main_repo_parts)
+                                            project_name = main_repo_path.name.lower()
+                                            if debug:
+                                                print(f"DEBUG: Main repo path: {main_repo_path}")
+                                                print(f"DEBUG: Project name: {project_name}")
+                                            break
                                 break
                 except Exception as e:
                     if debug:

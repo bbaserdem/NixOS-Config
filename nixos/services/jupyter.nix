@@ -41,12 +41,15 @@
 
     # Auto-select kernel based on project directory
     import sys
-    sys.path.append('${pkgs.scripts-jupyter}/lib/python')
+    sys.path.insert(0, '${pkgs.scripts-jupyter}/lib/python')
     try:
         from jupyter_kernel_autoselect import setup_kernel_autoselect
         setup_kernel_autoselect(c)
+        print("Kernel auto-selection enabled")
     except ImportError as e:
         print(f"Could not load kernel auto-selection: {e}")
+    except Exception as e:
+        print(f"Error setting up kernel auto-selection: {e}")
   '';
 in {
   options.myNixOS.services.jupyter = {
@@ -143,6 +146,16 @@ in {
     systemd.services.jupyter-kernel-discovery = {
       description = "Discover Python virtual environments for Jupyter";
 
+      path = [
+        pkgs.nix # needed for nix develop testing
+        pkgs.git # needed for git operations
+      ];
+
+      environment = {
+        NIX_PATH = "nixpkgs=${pkgs.path}";
+        NIX_CONFIG = "experimental-features = nix-command flakes";
+      };
+
       serviceConfig = {
         Type = "oneshot";
         ExecStart = "${pkgs.scripts-jupyter}/bin/python-kernel-finder ${cfg.notebookDir}";
@@ -168,9 +181,18 @@ in {
       after = ["network.target"];
       wantedBy = ["multi-user.target"];
 
-      path = [pkgs.bash]; # needed for sh in cell magic
+      path = [
+        pkgs.bash # needed for sh in cell magic
+        pkgs.nix # needed for nix develop in devshell kernels
+        pkgs.git # needed for git operations in kernel discovery
+      ];
 
-      environment = cfg.extraEnvironmentVariables;
+      environment =
+        cfg.extraEnvironmentVariables // {
+          # Ensure nix is available for devshell kernels
+          NIX_PATH = "nixpkgs=${pkgs.path}";
+          NIX_CONFIG = "experimental-features = nix-command flakes";
+        };
 
       preStart = ''
         # Discover and register Python kernels from virtual environments

@@ -7,6 +7,7 @@
   user-audio = pkgs.callPackage ./scripts-audio {};
   user-git = pkgs.callPackage ./scripts-git {};
   user-vifm = pkgs.callPackage ./scripts-vifm {};
+  user-wireguard = pkgs.callPackage ./scripts-wireguard {};
   scripts-jupyter = pkgs.callPackage ./scripts-jupyter {};
 
   # Drivers

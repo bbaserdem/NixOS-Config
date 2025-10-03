@@ -1,23 +1,39 @@
 # Jupyter-related scripts and utilities
-{pkgs}:
-pkgs.symlinkJoin {
+{pkgs}: let
+  python = pkgs.python3;
+
+  # Create a Python environment with our scripts
+  jupyterScripts = python.withPackages (ps: []);
+
+in pkgs.stdenv.mkDerivation {
   name = "scripts-jupyter";
-  paths = [
-    # Python kernel finder script
-    (import ./python-kernel-finder.nix {inherit pkgs;})
 
-    # Jupyter kernel autoselect Python module
-    (pkgs.writeTextFile {
-      name = "jupyter-kernel-autoselect";
-      destination = "/share/jupyter/jupyter_kernel_autoselect.py";
-      text = builtins.readFile ./jupyter_kernel_autoselect.py;
-    })
-  ];
+  src = ./.;
 
-  postBuild = ''
-    # Create a convenience symlink for the Python module
-    mkdir -p $out/lib/python
-    ln -s $out/share/jupyter/jupyter_kernel_autoselect.py $out/lib/python/
+  buildInputs = [ python ];
+
+  installPhase = ''
+    mkdir -p $out/bin $out/lib/python $out/share/jupyter
+
+    # Install Python scripts as executables
+    cp python_kernel_finder.py $out/bin/python-kernel-finder
+    cp kernel_devshell.py $out/bin/kernel-devshell-helper
+    cp kernel_json_generator.py $out/bin/kernel-json-generator
+
+    # Install Python modules for importing
+    cp python_kernel_finder.py $out/lib/python/
+    cp kernel_devshell.py $out/lib/python/
+    cp kernel_json_generator.py $out/lib/python/
+    cp jupyter_kernel_autoselect.py $out/lib/python/
+    cp jupyter_kernel_autoselect.py $out/share/jupyter/
+
+    # Make scripts executable
+    chmod +x $out/bin/*
+
+    # Add Python shebang and make them use the right interpreter
+    for script in $out/bin/*; do
+      sed -i "1s|.*|#!${python}/bin/python3|" "$script"
+    done
   '';
 }
 

@@ -15,10 +15,5 @@
       # Allows excluding apps
       enableExcludeWrapper = true;
     };
-
-    # Enable tailscale
-    tailscale = {
-      enable = true;
-    };
   };
 }
