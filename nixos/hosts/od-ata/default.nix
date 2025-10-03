@@ -7,13 +7,43 @@
   ...
 }: {
   imports = [
+    # External
+    inputs.sops-nix.nixosModules.sops
+    # Internal modules
     ./hardware-configuration.nix
     ./network.nix
     ./console.nix
+    ./wireguard.nix
+  ];
+
+  # Apply our overlay
+  nixpkgs.overlays = [
+    outputs.overlays.additions
   ];
 
   # Set our network name
   networking.hostName = "od-ata";
+
+  # Sops config
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    gnupg.sshKeyPaths = [];
+    age = {
+      sshKeyPaths = [
+        "/etc/ssh/ssh_all_ed25519_key"
+        "/etc/ssh/ssh_host_ed25519_key"
+      ];
+      generateKey = false;
+    };
+    secrets = {
+      "nixos/password-hash" = {
+        neededForUsers = true;
+      };
+      "root/password-hash" = {
+        neededForUsers = true;
+      };
+    }
+  };
 
   users.users = {
     # Establish my unprivileged user
@@ -23,10 +53,10 @@
         "wheel"
         "networkmanager"
       ];
-      initialHashedPassword = "";
+      hashedPasswordFile = config.sops.secrets."nixos/password-hash".path;
     };
     # Root password should be 0
-    root.initialHashedPassword = "";
+    root.hashedPasswordFile = config.sops.secrets."root/password-hash".path;
   };
 
   security = {
