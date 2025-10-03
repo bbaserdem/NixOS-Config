@@ -11,7 +11,6 @@
   user = "batuhan";
 in {
   imports = [
-    ../default.nix
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
     ./disk-layout.nix

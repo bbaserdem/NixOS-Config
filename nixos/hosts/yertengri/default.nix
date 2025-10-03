@@ -8,7 +8,6 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../default.nix
     inputs.disko.nixosModules.disko
     ./disk-layout.nix
     # Do joey as home-manager module

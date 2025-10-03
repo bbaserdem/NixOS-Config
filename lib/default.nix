@@ -33,6 +33,7 @@
           specialArgs = {inherit inputs outputs host arch;};
           modules = [
             ../nixos
+            ../nixos/hosts
             ../nixos/hosts/${host}
           ];
         };
