@@ -6,6 +6,8 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    inputs.disko.nixosModules.disko
+    ./disk-layout.nix
   ];
 
   # Set our name

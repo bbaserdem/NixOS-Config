@@ -66,7 +66,6 @@
       kernelModules = [
         "evdi"
       ];
-      luks.devices."Yel-Ana_Linux".device = "/dev/disk/by-partlabel/Crypt_Yel-Ana_Linux";
     };
     kernel.sysctl = {"vm.swappiness" = 0;};
     kernelModules = ["kvm-amd"];
@@ -86,106 +85,6 @@
   };
   # Use crypttab to unlock partition after init
   environment.etc.crypttab.source = ./crypttab;
-
-  # File system layout
-  fileSystems = {
-    # BTRFS main partition mount points
-    "/" = {
-      label = "Yel-Ana_Linux";
-      fsType = "btrfs";
-      options = [
-        "subvol=@nixos-root"
-        "compress=zstd"
-        "noatime"
-      ];
-    };
-    "/swap" = {
-      label = "Yel-Ana_Linux";
-      fsType = "btrfs";
-      options = [
-        "subvol=@nixos-swap"
-        "compress=zstd"
-        "noatime"
-      ];
-    };
-    "/nix" = {
-      label = "Yel-Ana_Linux";
-      fsType = "btrfs";
-      options = [
-        "subvol=@nixos-store"
-        "compress=zstd"
-        "noatime"
-      ];
-    };
-    "/persist" = {
-      label = "Yel-Ana_Linux";
-      fsType = "btrfs";
-      options = [
-        "subvol=@nixos-persist"
-        "compress=zstd"
-        "strictatime"
-        "lazytime"
-      ];
-    };
-    "/var/log" = {
-      label = "Yel-Ana_Linux";
-      fsType = "btrfs";
-      options = [
-        "subvol=@nixos-log"
-        "compress=zstd"
-        "strictatime"
-        "lazytime"
-      ];
-    };
-    "/var/lib/machines" = {
-      label = "Yel-Ana_Linux";
-      fsType = "btrfs";
-      options = [
-        "subvol=@nixos-machines"
-        "compress=zstd"
-        "noatime"
-      ];
-    };
-    "/var/lib/portables" = {
-      label = "Yel-Ana_Linux";
-      fsType = "btrfs";
-      options = [
-        "subvol=@nixos-portables"
-        "compress=zstd"
-        "noatime"
-      ];
-    };
-    "/home" = {
-      label = "Yel-Ana_Linux";
-      fsType = "btrfs";
-      options = [
-        "subvol=@home"
-        "compress=zstd"
-        "strictatime"
-        "lazytime"
-      ];
-    };
-    "/mnt/filesystem" = {
-      label = "Yel-Ana_Linux";
-      fsType = "btrfs";
-      options = [
-        "compress=zstd"
-        "strictatime"
-        "lazytime"
-      ];
-    };
-    # Data partition
-    "/home/data" = {
-      label = "Yel-Ana_Data";
-      fsType = "ext4";
-      options = [
-        "strictatime"
-        "lazytime"
-      ];
-    };
-    # ESP
-    "/boot" = {label = "Yel-Ana_ESP";};
-  };
 
   systemd.services = {
     # Fixing a systemd bug
@@ -218,16 +117,6 @@
   boot.initrd.systemd.enable = true;
   swapDevices = [
     {device = "/swap/swapfile";}
-  ];
-
-  # DisplayLink device enabling
-  services.xserver.videoDrivers = [
-    "displaylink"
-    "modesetting"
-  ];
-  environment.systemPackages = with pkgs; [
-    displaylink
-    displaylink-driver
   ];
 
   # System options
