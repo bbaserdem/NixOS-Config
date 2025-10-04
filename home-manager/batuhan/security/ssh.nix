@@ -19,7 +19,7 @@
         hostname = "su-ata";
         identitiesOnly = true;
         serverAliveInterval = 60;
-        serverAliveInterval = 3;
+        serverAliveCountMax = 3;
         extraOptions.IdentityFile = "~/.ssh/id_ed25519_SU-ATA";
       };
     };
