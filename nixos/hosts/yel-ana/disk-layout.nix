@@ -87,21 +87,20 @@
           Crypt_Data = {
             size = "100%";
             label = "Crypt_Yel-Ana_Data";
-            priority = 1000;
+            priority = 2000;
             content = {
               type = "luks";
               name = "Yel-Ana_Data";
               initrdUnlock = true;
               passwordFile = "/tmp/Yel-Ana_Data.key";
-              additionalKeyFiles = [
-                "/tmp/Yel-Ana_Data.key"
-              ];
+              additionalKeyFiles = ["/tmp/Yel-Ana_Data.key"];
               extraFormatArgs = ["--label" "Crypt_Yel-Ana_Data"];
               settings = {
                 allowDiscards = true;
               };
               content = {
-                type = "ext4";
+                type = "filesystem";
+                format = "ext4";
                 extraArgs = ["-L" "Yel-Ana_Data"];
                 mountpoint = "/home/data";
               };
