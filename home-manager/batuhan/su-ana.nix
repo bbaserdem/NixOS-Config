@@ -13,10 +13,12 @@
     inputs.mac-app-util.homeManagerModules.default
     inputs.nixCats.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
+    # Load syncthing from the main modules directory, it should mirror hm module
+    ../../nixos/services/syncthing.nix
     # My modules to load
     ./apps/firefox.nix
     ./apps/neovim.nix
-    ./apps/syncthing-darwin.nix
+    #./apps/syncthing-darwin.nix
     ./security/keepassxc.nix
     ./security/sops.nix
     ./security/ssh.nix
