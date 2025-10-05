@@ -42,6 +42,7 @@
       cups.enable = true;
       droidcam.enable = true;
       geoclue.enable = false;
+      jupyterlab.enable = true;
       kdeconnect.enable = true;
       mariadb.enable = true;
       media.enable = true;

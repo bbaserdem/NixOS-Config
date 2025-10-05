@@ -53,7 +53,7 @@ in {
     services = {
       avahi.enable = true;
       docker.enable = true;
-      jupyter.enable = true;
+      jupyterlab.enable = true;
       rasdaemon.enable = true;
       samba.enable = true;
       ssh.enable = true;
