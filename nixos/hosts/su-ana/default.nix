@@ -86,12 +86,15 @@ in {
       "github"
       "bitwarden"
 
+      # Other apps
+      "obsidian"
+      "foobar2000"
+
       # Utility Tools
       "qgis"
-      "obsidian"
       "appcleaner"
       "karabiner-elements"
-      "foobar2000"
+      "xquartz"
     ];
     masApps = {};
     onActivation = {

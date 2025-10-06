@@ -6,7 +6,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.myNixOS.services.jupyter;
+  cfg = config.myNixOS.services.jupyterlab;
 
   # Use whatever python version we want as base
   pythonVersion = "313";
@@ -52,7 +52,7 @@
         print(f"Error setting up kernel auto-selection: {e}")
   '';
 in {
-  options.myNixOS.services.jupyter = {
+  options.myNixOS.services.jupyterlab = {
     # Enable switch already provided by module loading
 
     ip = lib.mkOption {
@@ -69,7 +69,16 @@ in {
 
     extraPackages = lib.mkOption {
       type = lib.types.functionTo (lib.types.listOf lib.types.package);
-      default = ps: [];
+      default = ps:
+        with ps; [
+          ipykernel # Python kernel
+          ipywidgets # Interactive widgets
+          ipyparallel # Parallel computing
+          # Scientific packages
+          numpy
+          matplotlib
+          pandas
+        ];
       example = lib.literalExpression ''
         ps: with ps; [
           ipykernel
@@ -188,7 +197,8 @@ in {
       ];
 
       environment =
-        cfg.extraEnvironmentVariables // {
+        cfg.extraEnvironmentVariables
+        // {
           # Ensure nix is available for devshell kernels
           NIX_PATH = "nixpkgs=${pkgs.path}";
           NIX_CONFIG = "experimental-features = nix-command flakes";
@@ -216,15 +226,15 @@ in {
     };
 
     # Set default packages if not already specified
-    myNixOS.services.jupyter.extraPackages = lib.mkDefault (ps:
-      with ps; [
-        ipykernel # Python kernel
-        ipywidgets # Interactive widgets
-        ipyparallel # Parallel computing
-        # Scientific packages
-        numpy
-        matplotlib
-        pandas
-      ]);
+    # myNixOS.services.jupyterlab.extraPackages = lib.mkDefault (ps:
+    #   with ps; [
+    #     ipykernel # Python kernel
+    #     ipywidgets # Interactive widgets
+    #     ipyparallel # Parallel computing
+    #     # Scientific packages
+    #     numpy
+    #     matplotlib
+    #     pandas
+    #   ]);
   };
 }
