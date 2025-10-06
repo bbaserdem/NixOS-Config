@@ -84,7 +84,6 @@ in {
         # Features, we always want these
         consolefont.enable = true;
         fonts.enable = true;
-        grub.enable = true;
         shell.enable = true;
         locale.enable = true;
       };

@@ -48,6 +48,7 @@ in {
     fonts.enable = true;
     keymap.enable = true;
     polkit.enable = true;
+    # systemdboot = true;
 
     # Services
     services = {
@@ -60,9 +61,6 @@ in {
       syncthing.enable = true;
       udev.enable = true;
     };
-
-    # Disables
-    grub.enable = lib.mkForce false;
   };
 
   # Syncthing folders

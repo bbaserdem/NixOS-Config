@@ -30,7 +30,10 @@
     # Features
     bluetooth.enable = true;
     gaming.enable = true;
-    grub.flavor = "dark";
+    grub = {
+      enable = true;
+      flavor = "dark";
+    };
     keymap.enable = true;
     obs.enable = true;
     polkit.enable = true;

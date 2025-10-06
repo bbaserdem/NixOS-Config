@@ -25,7 +25,10 @@
 
     # Features
     bluetooth.enable = true;
-    grub.flavor = "bigSur";
+    grub = {
+      enable = true;
+      flavor = "bigSur";
+    };
     keymap.enable = true;
     obs.enable = true;
     polkit.enable = true;
