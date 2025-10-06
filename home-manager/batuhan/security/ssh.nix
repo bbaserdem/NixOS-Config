@@ -22,7 +22,7 @@
         serverAliveCountMax = 3;
         extraOptions.IdentityFile = "~/.ssh/id_ed25519_SU-ATA";
         forwardX11 = true;
-        forwardX11trusted = true;
+        forwardX11Trusted = true;
       };
     };
   };
