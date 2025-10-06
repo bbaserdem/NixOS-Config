@@ -22,6 +22,7 @@
         ClientAliveCountMax = 2;
       };
       openFirewall = false; # We handle firewall manually
+      forwardX11 = true; # We need graphical forwarding
     };
 
     # Fail2ban for additional SSH protection
