@@ -80,8 +80,8 @@ in {
 
   # SECURITY TODO: When Traefik is setup, secure these settings
   # Making jupyter available from network
-  myNixOS.services.jupyter.ip = lib.mkForce "0.0.0.0"; # TODO: Change to "127.0.0.1" with Traefik
-  myNixOS.services.jupyter.notebookConfig = lib.mkForce ''
+  myNixOS.services.jupyterlab.ip = lib.mkForce "0.0.0.0"; # TODO: Change to "127.0.0.1" with Traefik
+  myNixOS.services.jupyterlab.notebookConfig = lib.mkForce ''
     # JupyterLab configuration for remote access
     c.ServerApp.allow_remote_access = True # TODO: Change to False with Traefik
     c.ServerApp.disable_check_xsrf = True  # TODO: Consider enabling XSRF with Traefik auth
