@@ -37,6 +37,15 @@
     ./theming/starship.nix
   ];
 
+  sops.secrets = {
+    "syncthing/key" = {
+      sopsFile = ./su-ana.secrets.yaml;
+    };
+    "syncthing/cert" = {
+      sopsFile = ./su-ana.secrets.yaml;
+    };
+  };
+
   # Syncthing folders
   services.syncthing.settings.folders = {
     media.enable = true;
