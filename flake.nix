@@ -159,6 +159,7 @@
 
       # Modules provided by this flake
       nixosModules = import ./modules/nixos {inherit inputs outputs;};
+      darwinModules = import ./modules/nix-darwin {inherit inputs outputs;};
       homeManagerModules = import ./modules/home-manager {inherit inputs outputs;};
 
       # NixOS configurations
