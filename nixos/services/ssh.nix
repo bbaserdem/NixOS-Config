@@ -20,9 +20,9 @@
         MaxAuthTries = 3;
         ClientAliveInterval = 300;
         ClientAliveCountMax = 2;
+        X11Forwarding = true; # We need graphical forwarding
       };
       openFirewall = false; # We handle firewall manually
-      forwardX11 = true; # We need graphical forwarding
     };
 
     # Fail2ban for additional SSH protection
