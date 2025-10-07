@@ -112,18 +112,6 @@
             devices = [
               "yel-ana"
               "yertengri"
-            ];
-            versioning = {
-              type = "trashcan";
-              params = {cleanoutDays = "100";};
-            };
-          };
-          skyfi = {
-            label = "SkyFi";
-            id = "SkyFi_batuhan";
-            path = "~/SkyFi";
-            type = "sendreceive";
-            devices = [
               "su-ana"
               "su-ata"
             ];
