@@ -65,7 +65,6 @@
     media.enable = true;
     sort.enable = true;
     work.enable = true;
-    skyfi.enable = false;
     phone.enable = true;
   };
 

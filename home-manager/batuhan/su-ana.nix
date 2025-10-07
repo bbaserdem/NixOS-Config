@@ -49,8 +49,7 @@
   # Syncthing folders
   services.syncthing.settings.folders = {
     media.enable = true;
-    skyfi.enable = true;
-    work.enable = false;
+    work.enable = true;
     sort.enable = false;
     phone.enable = false;
   };
