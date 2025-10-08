@@ -25,6 +25,7 @@
       dconf2nix
       update-nix-fetchgit
       nix-prefetch-github
+      nixos-anywhere
     ];
     env = {
       NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations pipe-operators";
