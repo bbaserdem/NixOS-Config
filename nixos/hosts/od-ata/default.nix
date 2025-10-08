@@ -5,14 +5,18 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  nixosUser = "batuhan";
+in {
   imports = [
     # External
     inputs.sops-nix.nixosModules.sops
+    inputs.disko.nixosModules.disko
     # Internal modules
+    ./console.nix
+    ./disk-layout.nix
     ./hardware-configuration.nix
     ./network.nix
-    ./console.nix
     ./wireguard.nix
   ];
 
@@ -30,7 +34,6 @@
     gnupg.sshKeyPaths = [];
     age = {
       sshKeyPaths = [
-        "/etc/ssh/ssh_all_ed25519_key"
         "/etc/ssh/ssh_host_ed25519_key"
       ];
       generateKey = false;
@@ -45,20 +48,21 @@
       "wireguard/private/od-ata" = {};
       "wireguard/public/od-ata" = {};
       "wireguard/public/su-ana" = {};
-    }
+    };
   };
 
   users.users = {
     # Establish my unprivileged user
-    nixos = {
+    # Password is my old router password
+    "${nixosUser}" = {
       isNormalUser = true;
       extraGroups = [
         "wheel"
         "networkmanager"
       ];
-      hashedPasswordFile = config.sops.secrets."nixos/password-hash".path;
+      hashedPasswordFile = config.sops.secrets."${nixosUser}/password-hash".path;
     };
-    # Root password should be 0
+    # Root password should also be done
     root.hashedPasswordFile = config.sops.secrets."root/password-hash".path;
   };
 
@@ -71,7 +75,7 @@
   };
 
   # Auto login to user
-  services.getty.autologinUser = "nixos";
+  services.getty.autologinUser = "${nixosUser}";
 
   # Will need passwords in /home/nixos/.ssh/authorized_keys
   services.openssh = {
@@ -80,7 +84,7 @@
   };
 
   # Allow nix-copy to live system
-  nix.settings.trusted-users = ["nixos"];
+  nix.settings.trusted-users = ["${nixosUser}"];
 
   # Timezone
   time.timeZone = "UTC";

@@ -4,6 +4,12 @@
   ls = "${pkgs.coreutils}/bin/ls";
 in
   pkgs.writeShellScriptBin "wireguard-list-clients" ''
+    # Check if WireGuard interface exists
+    if ! ${wg} show wg0 >/dev/null 2>&1; then
+      echo "Error: WireGuard interface wg0 not found or not running"
+      exit 1
+    fi
+
     echo "Active WireGuard peers:"
     ${wg} show wg0 peers | while read peer; do
       if [ -n "$peer" ]; then
@@ -18,6 +24,16 @@ in
         echo ""
       fi
     done
+
+    echo "Client name mappings:"
+    if [ -f "/etc/wireguard/client-keys" ]; then
+      cat /etc/wireguard/client-keys | while IFS=: read name pubkey ip; do
+        echo "  $name -> $ip ($pubkey)"
+      done
+    else
+      echo "  No client mappings found"
+    fi
+    echo ""
 
     echo "Available client configs:"
     ${ls} -la /etc/wireguard/clients/ 2>/dev/null || echo "No client configs found"

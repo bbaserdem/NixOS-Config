@@ -13,6 +13,20 @@ in
     if [ -z "$CLIENT_NAME" ]; then
       echo "Usage: $0 <client-name> [client-ip]"
       echo "Example: $0 laptop 10.100.0.2"
+      echo "Environment: WIREGUARD_SERVER_ENDPOINT=your.server.com:51820"
+      exit 1
+    fi
+
+    # Check if WireGuard interface exists
+    if ! ${wg} show wg0 >/dev/null 2>&1; then
+      echo "Error: WireGuard interface wg0 not found or not running"
+      exit 1
+    fi
+
+    # Check if client already exists
+    CLIENT_KEY_MAP="/etc/wireguard/client-keys"
+    if [ -f "$CLIENT_KEY_MAP" ] && ${grep} -q "^$CLIENT_NAME:" "$CLIENT_KEY_MAP"; then
+      echo "Error: Client '$CLIENT_NAME' already exists"
       exit 1
     fi
 
@@ -37,15 +51,42 @@ in
     CLIENT_PUBLIC_KEY=$(echo $CLIENT_PRIVATE_KEY | ${wg} pubkey)
 
     # Add peer to server
-    ${wg} set wg0 peer "$CLIENT_PUBLIC_KEY" allowed-ips "$CLIENT_IP/32"
+    if ! ${wg} set wg0 peer "$CLIENT_PUBLIC_KEY" allowed-ips "$CLIENT_IP/32"; then
+      echo "Error: Failed to add peer to WireGuard interface"
+      exit 1
+    fi
+
+    # Store client public key for removal later
+    CLIENT_KEY_MAP="/etc/wireguard/client-keys"
+    mkdir -p "$(dirname "$CLIENT_KEY_MAP")"
+    echo "$CLIENT_NAME:$CLIENT_PUBLIC_KEY:$CLIENT_IP" >> "$CLIENT_KEY_MAP"
 
     # Get server public key and endpoint
     SERVER_PUBLIC_KEY=$(${wg} show wg0 public-key)
-    SERVER_ENDPOINT=$(${ip} route get 1.1.1.1 | ${awk} '{print $7; exit}'):51820
+    if [ -z "$SERVER_PUBLIC_KEY" ]; then
+      echo "Error: Could not get server public key. Is WireGuard running?"
+      exit 1
+    fi
+
+    # Use configurable endpoint or auto-detect
+    if [ -n "$WIREGUARD_SERVER_ENDPOINT" ]; then
+      SERVER_ENDPOINT="$WIREGUARD_SERVER_ENDPOINT"
+    else
+      SERVER_IP=$(${ip} route get 1.1.1.1 2>/dev/null | ${awk} '{print $7; exit}')
+      if [ -z "$SERVER_IP" ]; then
+        echo "Warning: Could not auto-detect server IP. Set WIREGUARD_SERVER_ENDPOINT environment variable."
+        SERVER_ENDPOINT="YOUR_SERVER_IP:51820"
+      else
+        SERVER_ENDPOINT="$SERVER_IP:51820"
+      fi
+    fi
 
     # Generate client config
     CLIENT_CONFIG_DIR="/etc/wireguard/clients"
-    mkdir -p "$CLIENT_CONFIG_DIR"
+    if ! mkdir -p "$CLIENT_CONFIG_DIR"; then
+      echo "Error: Could not create client config directory"
+      exit 1
+    fi
 
     cat > "$CLIENT_CONFIG_DIR/$CLIENT_NAME.conf" <<EOF
     [Interface]

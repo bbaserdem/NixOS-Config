@@ -8,7 +8,7 @@ keys:
   - &host_yertengri age1zmcdylr608puzyt0yq43vedfhemhfxy4pmaxge82qfzmpt66d5jqeepj3m
   - &host_su-ana    age1w7hp5jwl8pzz3vk42d24vth6ady3r9gtq76svhqj5c47fd7paceszxyq9p
   - &host_su-ata    age1hhgs3fkm6s8q845djuyud8je20q0fgu9tdd8hcuzj7y6jrthsfqqzj0qjs
-  - &host_od-ata    age1xjnzlm6gg65dzlccld5qfy7kzqfzjfdxwd40snepgvkr9e3wegnqqzp6f8
+  - &host_od-ata    age1a03rv9szhgfemufat0qeaw08gcgcfhg6ds85evs78jeyc6fxmams2hut0c
 creation_rules:
   - path_regex: home-manager/batuhan/[^/]+\.(yaml|json|env|ini)$
     key_groups:

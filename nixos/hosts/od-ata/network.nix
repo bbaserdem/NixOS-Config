@@ -26,25 +26,25 @@
 
       extraForwardRules = ''
         # Allow WireGuard clients to access local networks
-        iifname "wg0" oifname "eth0" ip saddr 10.100.0.0/24 ip daddr { 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12 } accept
-        iifname "eth0" oifname "wg0" ip saddr { 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12 } ip daddr 10.100.0.0/24 accept
+        iifname "wg0" oifname "end0" ip saddr 10.100.0.0/24 ip daddr { 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12 } accept
+        iifname "end0" oifname "wg0" ip saddr { 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12 } ip daddr 10.100.0.0/24 accept
 
         # Allow forwarding between WireGuard interface and ethernet
-        iifname "wg0" oifname "eth0" accept
-        iifname "eth0" oifname "wg0" accept
+        iifname "wg0" oifname "end0" accept
+        iifname "end0" oifname "wg0" accept
       '';
     };
 
     # NAT configuration for WireGuard VPN
     nat = {
       enable = true;
-      externalInterface = "eth0";
+      externalInterface = "end0";
       internalInterfaces = ["wg0"];
 
       # Enable masquerading for VPN clients
       extraCommands = ''
         # NAT for WireGuard clients to access internet/local network
-        nft add rule ip nat postrouting oifname "eth0" ip saddr 10.100.0.0/24 masquerade
+        nft add rule ip nat postrouting oifname "end0" ip saddr 10.100.0.0/24 masquerade
       '';
 
       extraStopCommands = ''
@@ -71,15 +71,15 @@
               iifname "lo" accept
 
               # WireGuard forwarding rules
-              iifname "wg0" oifname "eth0" ip saddr 10.100.0.0/24 accept
-              iifname "eth0" oifname "wg0" ip daddr 10.100.0.0/24 accept
+              iifname "wg0" oifname "end0" ip saddr 10.100.0.0/24 accept
+              iifname "end0" oifname "wg0" ip daddr 10.100.0.0/24 accept
             }
 
             chain postrouting {
               type nat hook postrouting priority srcnat; policy accept;
 
               # Masquerade WireGuard traffic going out ethernet
-              oifname "eth0" ip saddr 10.100.0.0/24 masquerade
+              oifname "end0" ip saddr 10.100.0.0/24 masquerade
             }
           '';
         };

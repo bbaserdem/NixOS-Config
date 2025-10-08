@@ -3,9 +3,10 @@
   config,
   ...
 }: {
-  imports = [
-    inputs.nixos-raspberrypi.nixosModules.raspberry-pi-5.base
-    inputs.nixos-raspberrypi.nixosModules.raspberry-pi-5.display-vc4
+  imports = with inputs.nixos-raspberrypi.nixosModules.raspberry-pi5; [
+    base
+    page-size-16k
+    display-vc4
   ];
 
   # Tags
