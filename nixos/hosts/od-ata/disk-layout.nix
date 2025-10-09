@@ -60,8 +60,9 @@
         };
 
         Swap = {
-          type = "0200"; # Linux swap
+          type = "8200"; # Linux swap
           size = "9G"; # RAM + 1G
+          priority = 200;
           content = {
             type = "swap";
             resumeDevice = true; # hibernation swap

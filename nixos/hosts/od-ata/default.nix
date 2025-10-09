@@ -17,7 +17,7 @@ in {
     ./disk-layout.nix
     ./hardware-configuration.nix
     ./network.nix
-    ./wireguard.nix
+    # ./wireguard.nix  # Temporarily disabled to fix systemd-networkd
   ];
 
   # Apply our overlay
@@ -39,7 +39,7 @@ in {
       generateKey = false;
     };
     secrets = {
-      "nixos/password-hash" = {
+      "${nixosUser}/password-hash" = {
         neededForUsers = true;
       };
       "root/password-hash" = {
