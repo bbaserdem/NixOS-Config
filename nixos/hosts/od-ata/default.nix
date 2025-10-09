@@ -77,14 +77,21 @@ in {
   # Auto login to user
   services.getty.autologinUser = "${nixosUser}";
 
-  # Will need passwords in /home/nixos/.ssh/authorized_keys
+  # Will need passwords in /home/${nixosUser}/.ssh/authorized_keys
   services.openssh = {
     enable = true;
     settings.PermitRootLogin = "yes";
   };
 
-  # Allow nix-copy to live system
-  nix.settings.trusted-users = ["${nixosUser}"];
+  nix.settings = {
+    # Enable flakes
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    # Allow nix-copy to live system
+    trusted-users = ["${nixosUser}"];
+  };
 
   # Timezone
   time.timeZone = "UTC";
@@ -92,6 +99,7 @@ in {
   # Available packages
   environment.systemPackages = with pkgs; [
     tree
+    git
   ];
 
   # Stateless machine
