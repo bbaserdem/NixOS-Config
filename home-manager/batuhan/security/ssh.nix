@@ -24,6 +24,12 @@
         forwardX11 = true;
         forwardX11Trusted = true;
       };
+      "od-ata" = {
+        user = "batuhan";
+        hostname = "od-ata";
+        identitiesOnly = true;
+        extraOptions.IdentityFile = "~/.ssh/id_ed25519_OD-ATA";
+      };
     };
   };
 }
