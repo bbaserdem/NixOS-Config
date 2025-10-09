@@ -108,19 +108,19 @@
             subvolumes = {
               "/rootfs" = {
                 mountpoint = "/";
-                mountoptions = ["noatime"];
+                mountOptions = ["noatime"];
               };
               "/nix" = {
                 mountpoint = "/nix";
-                mountoptions = ["noatime"];
+                mountOptions = ["noatime"];
               };
               "/home" = {
                 mountpoint = "/home";
-                mountoptions = ["noatime"];
+                mountOptions = ["noatime"];
               };
               "/log" = {
                 mountpoint = "/var/log";
-                mountoptions = ["noatime"];
+                mountOptions = ["noatime"];
               };
               "/swap" = {
                 mountpoint = "/.swapvol";

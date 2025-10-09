@@ -15,8 +15,6 @@
     firewall = {
       allowedUDPPorts = [5353 51820]; # mDNS + WireGuard
 
-      # Use nftables backend
-      backend = "nftables";
 
       # Custom nftables rules for WireGuard VPN
       extraInputRules = ''
@@ -40,17 +38,6 @@
       enable = true;
       externalInterface = "end0";
       internalInterfaces = ["wg0"];
-
-      # Enable masquerading for VPN clients
-      extraCommands = ''
-        # NAT for WireGuard clients to access internet/local network
-        nft add rule ip nat postrouting oifname "end0" ip saddr 10.100.0.0/24 masquerade
-      '';
-
-      extraStopCommands = ''
-        # Clean up NAT rules
-        nft flush table ip nat 2>/dev/null || true
-      '';
     };
 
     nftables = {
