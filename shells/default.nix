@@ -29,6 +29,7 @@
     ];
     env = {
       NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations pipe-operators";
+      LC_ALL = "C";
     };
     # Shell hooks
     shellHook = ''
