@@ -29,7 +29,7 @@
     # ----- Utilities ----- #
     # Automated disk partitioning, and mounting
     disko = {
-      url = "github:nix-community/disko/latest";
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Secret deployment
@@ -167,7 +167,7 @@
       nixosConfigurations =
         {
           od-ata = inputs.nixos-raspberrypi.lib.nixosSystemFull {
-            specialArgs = {inherit inputs outputs;};
+            specialArgs = {inherit inputs outputs; nixos-raspberrypi = inputs.nixos-raspberrypi;};
             modules = [./nixos/hosts/od-ata];
           };
         }

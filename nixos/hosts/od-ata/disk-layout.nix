@@ -1,5 +1,9 @@
 # Od Ata disk setup
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   disko.devices.disk.Linux = {
     type = "disk";
     device = "/dev/disk/by-id/mmc-ED2S5_0xb8cb6881";
