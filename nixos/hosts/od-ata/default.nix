@@ -60,9 +60,10 @@ in {
         "wheel"
         "networkmanager"
       ];
+      # Old wifi password
       hashedPasswordFile = config.sops.secrets."${nixosUser}/password-hash".path;
     };
-    # Root password should also be done
+    # Improved version of old wifi password
     root.hashedPasswordFile = config.sops.secrets."root/password-hash".path;
   };
 
