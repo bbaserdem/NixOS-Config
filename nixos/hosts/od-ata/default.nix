@@ -17,7 +17,7 @@ in {
     ./disk-layout.nix
     ./hardware-configuration.nix
     ./network.nix
-    # ./wireguard.nix  # Temporarily disabled to fix systemd-networkd
+    ./wireguard.nix
   ];
 
   # Apply our overlay
