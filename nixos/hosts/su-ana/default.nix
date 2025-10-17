@@ -89,6 +89,7 @@ in {
       # Other apps
       "obsidian"
       "foobar2000"
+      "zotero"
 
       # Utility Tools
       "qgis"
