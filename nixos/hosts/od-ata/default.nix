@@ -7,6 +7,12 @@
   ...
 }: let
   nixosUser = "batuhan";
+  sopsWgConfig = {
+    sopsFile = ../secrets.yaml;
+    mode = "640";
+    owner = "systemd-network";
+    group = "systemd-network";
+  };
 in {
   imports = [
     # External
@@ -46,8 +52,14 @@ in {
         neededForUsers = true;
       };
       "wireguard/private/od-ata" = {};
-      "wireguard/public/od-ata" = {};
-      "wireguard/public/su-ana" = {};
+      # Public wireguard keys
+      "wireguard/preshared/od-ata/od-ata" = sopsWgConfig;
+      "wireguard/preshared/od-ata/su-ana" = sopsWgConfig;
+      "wireguard/preshared/od-ata/su-ata" = sopsWgConfig;
+      "wireguard/preshared/od-ata/yel-ana" = sopsWgConfig;
+      "wireguard/preshared/od-ata/yertengri" = sopsWgConfig;
+      "wireguard/preshared/od-ata/umay" = sopsWgConfig;
+      "wireguard/preshared/od-ata/erlik" = sopsWgConfig;
     };
   };
 

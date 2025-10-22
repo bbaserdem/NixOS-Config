@@ -20,7 +20,36 @@
       privateKeyFile = config.sops.secrets."wireguard/private/od-ata".path;
 
       # Peers are managed dynamically using wg command, not in NixOS config
-      peers = [];
+      peers = [
+        {
+          name = "od-ata";
+          publicKey = "9JZyVGNWJhkIWFxxcOcqYg4zzqs+EJ12/AQd+jwa0AE=";
+        }
+        {
+          name = "su-ana";
+          publicKey = "VILvBUQ2QhzbElggn7ucZwqKtkRBAh1mTH67lqGsbgs=";
+        }
+        {
+          name = "su-ata";
+          publicKey = "yghguVcCM3M2luZqnxK1W5Dc0foNUiv9w7/KICllSHI=";
+        }
+        {
+          name = "umay";
+          publicKey = "Gsns044B7Ko+qO/+KCqQJQlHAvoTBbYowvbV0Ju83VQ=";
+        }
+        {
+          name = "yel-ana";
+          publicKey = "rv7/yz5zO9QYqB7iCl7nHehn+xEPZUB90IgLIOyJKG8=";
+        }
+        {
+          name = "yertengri";
+          publicKey = "F312+qWkfs+WjYW8/DhtVACQeL2x4L+vRzTUjQj6Vi8=";
+        }
+        {
+          name = "erlik";
+          publicKey = "spHODlp8m++x+EKFMq12GypzLQSDYwwRewee4Kaiahw=";
+        }
+      ];
     };
   };
 
