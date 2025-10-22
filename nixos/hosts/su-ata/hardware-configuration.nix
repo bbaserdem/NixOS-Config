@@ -21,10 +21,16 @@
         "usbhid"
         "sd_mod"
       ];
-      kernelModules = [];
+      kernelModules = [
+      ];
     };
     kernel.sysctl = {"vm.swappiness" = 0;};
-    kernelModules = ["kvm-intel"];
+    kernelModules = [
+      "kvm-intel"
+      "corsair-psu"
+      "hid"
+      "usb_hid"
+    ];
     extraModulePackages = [];
     loader = {
       systemd-boot = {
@@ -40,5 +46,10 @@
 
   # System options
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # Hardware options
+  hardware = {
+    sensors.enable = true;
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  };
 }
