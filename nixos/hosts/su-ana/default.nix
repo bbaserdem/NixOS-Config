@@ -80,6 +80,7 @@ in {
       # Comms
       "slack"
       "google-drive"
+      "defguard-client"
 
       # Programming
       "iterm2"
