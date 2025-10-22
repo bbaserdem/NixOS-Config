@@ -107,8 +107,6 @@ in {
           "joeysaur/password-hash" = {
             neededForUsers = true;
           };
-          "wireguard/public/su-ana" = {};
-          "wireguard/public/od-ata" = {};
         };
       };
 
