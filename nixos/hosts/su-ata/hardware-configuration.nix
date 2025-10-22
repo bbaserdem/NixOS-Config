@@ -3,6 +3,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   modulesPath,
   ...
 }: {
@@ -28,6 +29,8 @@
     kernelModules = [
       "kvm-intel"
       "corsair-psu"
+      "coretemp"
+      "nct6775"
       "hid"
       "usb_hid"
     ];
@@ -49,7 +52,11 @@
 
   # Hardware options
   hardware = {
-    sensors.enable = true;
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
+
+  environment.systemPackages = with pkgs; [
+    lm_sensors
+    liquidctl
+  ];
 }
