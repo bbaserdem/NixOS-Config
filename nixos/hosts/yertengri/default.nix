@@ -5,7 +5,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  hostname = "yertengri";
+in {
   imports = [
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
@@ -15,7 +17,7 @@
   ];
 
   # Set our name
-  networking.hostName = "yertengri";
+  networking.hostName = hostname;
 
   # Module toggles
   myNixOS = {
@@ -118,6 +120,13 @@
     };
     "joeysaur/cryptkey/dvorak" = {
       sopsFile = ./secrets.yaml;
+    };
+    "wireguard/private/${hostname}" = {
+      sopsFile = ./secrets.yaml;
+      mode = "600";
+    };
+    "wireguard/preshared/od-ata/${hostname}" = {
+      mode = "600";
     };
   };
 }

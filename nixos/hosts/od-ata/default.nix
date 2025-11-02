@@ -9,9 +9,7 @@
   nixosUser = "batuhan";
   sopsWgConfig = {
     sopsFile = ../secrets.yaml;
-    mode = "640";
-    owner = "systemd-network";
-    group = "systemd-network";
+    mode = "600";
   };
 in {
   imports = [
