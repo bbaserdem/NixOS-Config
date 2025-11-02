@@ -46,6 +46,7 @@ in {
       avahi.enable = true;
       cups.enable = true;
       droidcam.enable = true;
+      filefly-iii.enable = true;
       geoclue.enable = false;
       jupyterlab.enable = true;
       kdeconnect.enable = true;
