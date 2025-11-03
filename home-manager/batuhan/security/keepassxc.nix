@@ -10,7 +10,13 @@
         AdditionalChars = "";
         ExcludedChars = "";
       };
-      Browser.Enabled = true;
+      Browser = {
+        Enabled = true;
+        CustomProxyLocation = false;
+        UpdateBinaryPath = false;
+        AlwaysAllowAccess = true;
+        AlwaysAllowUpdate = true;
+      };
       GUI = {
         AdvancedSettings = true;
         CompactMode = true;
