@@ -6,6 +6,9 @@
     "firefly-iii/key" = {
       owner = "firefly-iii";
     };
+    "firefly-iii/db-password" = {
+      owner = "firefly-iii";
+    };
   };
 
   services = {
@@ -15,6 +18,9 @@
       # Virtual host for nginx
       enableNginx = true;
       virtualHost = "localhost";
+
+      # Add firefly-iii user to mysql group for socket access
+      group = "mysql";
 
       # Settings for Firefly's .env vars
       settings = {
@@ -26,6 +32,7 @@
         DB_PORT = 3306;
         DB_DATABASE = "firefly";
         DB_USERNAME = "firefly";
+        DB_PASSWORD_FILE = config.sops.secrets."firefly-iii/db-password".path;
         DB_SOCKET = config.services.mysql.settings.mysqld.socket or "/run/mysqld/mysqld.sock";
         # Timezone
         TZ = "America/Chicago";
@@ -54,5 +61,13 @@
         }
       ];
     };
+
+    # Setup Unix socket authentication for firefly user
+    systemd.services.mysql.postStart = ''
+      ${pkgs.mariadb}/bin/mysql -e "
+        ALTER USER 'firefly'@'localhost' IDENTIFIED VIA unix_socket;
+        FLUSH PRIVILEGES;
+      " || true
+    '';
   };
 }
