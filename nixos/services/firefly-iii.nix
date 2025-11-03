@@ -1,6 +1,10 @@
 # nixos/services/firefly-iii.nix
 # Firefly budgeting service
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   # Load our secrets
   sops.secrets = {
     "firefly-iii/key" = {
@@ -19,8 +23,8 @@
       enableNginx = true;
       virtualHost = "localhost";
 
-      # Add firefly-iii user to mysql group for socket access
-      group = "mysql";
+      # Add firefly-iii user to nginx for access to php-fpm socket
+      group = "nginx";
 
       # Settings for Firefly's .env vars
       settings = {
@@ -61,13 +65,31 @@
         }
       ];
     };
+  };
 
-    # Setup Unix socket authentication for firefly user
-    systemd.services.mysql.postStart = ''
-      ${pkgs.mariadb}/bin/mysql -e "
-        ALTER USER 'firefly'@'localhost' IDENTIFIED VIA unix_socket;
-        FLUSH PRIVILEGES;
-      " || true
+  # Systemd service to set the password
+  systemd.services.firefly-db-setup = {
+    description = "Setup Firefly III database password";
+    after = ["mysql.service"];
+    requires = ["mysql.service"];
+    before = ["firefly-iii-setup.service"];
+    wantedBy = ["multi-user.target"];
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      LoadCredential = "db-password:${config.sops.secrets."firefly-iii/db-password".path}";
+    };
+
+    script = ''
+      # Wait for MySQL to be ready
+      until ${pkgs.mariadb}/bin/mysqladmin ping --silent; do
+        sleep 1
+      done
+
+      # Read password and set it
+      PASSWORD=$(cat "$CREDENTIALS_DIRECTORY/db-password")
+      ${pkgs.mariadb}/bin/mysql -e "ALTER USER 'firefly'@'localhost' IDENTIFIED BY '$PASSWORD'; FLUSH PRIVILEGES;"
     '';
   };
 }
