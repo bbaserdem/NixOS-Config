@@ -1,30 +1,59 @@
 # nixos/services/firefly-iii.nix
 # Firefly budgeting service
-{...}: {
+{config, ...}: {
+  # Load our secrets
+  sops.secrets = {
+    "firefly-iii/key" = {
+      owner = "firefly-iii";
+    };
+    "firefly-iii/pass" = {
+      owner = "firefly-iii";
+    };
+  };
+
   services = {
     firefly-iii = {
       enable = true;
-      settings = {
-        #APP_ENV = "production";
-        #APP_KEY_FILE = "/var/secrets/firefly-iii-app-key.txt";
-        #SITE_OWNER = "mail@example.com";
-        #DB_CONNECTION = "mysql";
-        #DB_HOST = "db";
-        #DB_PORT = 3306;
-        #DB_DATABASE = "firefly";
-        #DB_USERNAME = "firefly";
-        #DB_PASSWORD_FILE = "/var/secrets/firefly-iii-mysql-password.txt";
-      };
-      enableNginx = true;
-    };
 
-    firefly-iii-data-importer = {
-      enable = true;
+      # Virtual host for nginx
+      enableNginx = true;
+      virtualHost = "localhost";
+
+      # Settings for Firefly's .env vars
       settings = {
         APP_ENV = "local";
-        LOG_CHANNEL = "syslog";
-        FIREFLY_III_ACCESS_TOKEN = "/var/secrets/firefly-iii-access-token.txt";
+        APP_KEY_FILE = config.sops.secrets."firefly-iii/key".path;
+        # Database connection
+        DB_CONNECTION = "mysql";
+        DB_HOST = "localhost";
+        DB_PORT = 3306;
+        DB_DATABASE = "firefly";
+        DB_USERNAME = "firefly";
+        DB_PASSWORD_FILE = config.sops.secrets."firefly-iii/pass".path;
+        # Timezone
+        TZ = "America/Chicago";
       };
+    };
+
+    # Configure nginx to listen on a given port
+    nginx.virtualHosts.${config.services.firefly-iii.virtualHost} = {
+      listen = [
+        {
+          addr = "127.0.0.1";
+          port = 8084;
+        }
+      ];
+    };
+  
+    # MariaDB setup, assuming the same computer is the mariadb host
+    mysql = {
+      ensureDatabases = ["firefly"];
+      ensureUsers = [{
+        name = "firefly";
+        ensurePermissions = {
+          "firefly.*" = "ALL PRIVILEGES";
+        };
+      }]
     };
   };
 }
