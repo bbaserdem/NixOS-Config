@@ -6,9 +6,6 @@
     "firefly-iii/key" = {
       owner = "firefly-iii";
     };
-    "firefly-iii/pass" = {
-      owner = "firefly-iii";
-    };
   };
 
   services = {
@@ -29,7 +26,7 @@
         DB_PORT = 3306;
         DB_DATABASE = "firefly";
         DB_USERNAME = "firefly";
-        DB_PASSWORD_FILE = config.sops.secrets."firefly-iii/pass".path;
+        DB_SOCKET = config.services.mysql.settings.mysqld.socket or "/run/mysqld/mysqld.sock";
         # Timezone
         TZ = "America/Chicago";
       };
@@ -44,16 +41,18 @@
         }
       ];
     };
-  
+
     # MariaDB setup, assuming the same computer is the mariadb host
     mysql = {
       ensureDatabases = ["firefly"];
-      ensureUsers = [{
-        name = "firefly";
-        ensurePermissions = {
-          "firefly.*" = "ALL PRIVILEGES";
-        };
-      }]
+      ensureUsers = [
+        {
+          name = "firefly";
+          ensurePermissions = {
+            "firefly.*" = "ALL PRIVILEGES";
+          };
+        }
+      ];
     };
   };
 }
