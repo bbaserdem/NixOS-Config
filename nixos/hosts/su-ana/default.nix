@@ -91,6 +91,7 @@ in {
       "obsidian"
       "foobar2000"
       "zotero"
+      "google-chrome"
 
       # Utility Tools
       "qgis"
