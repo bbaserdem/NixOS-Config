@@ -13,7 +13,7 @@
   nixCats = {
     enable = true;
     nixpkgs_version = inputs.nixpkgs-unstable;
-    packageNames = ["neovim-nixCats-none"];
+    packageNames = ["nixCats-none"];
   };
 
   environment = {

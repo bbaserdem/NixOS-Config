@@ -16,20 +16,9 @@ in {
   nixCats = {
     enable = true;
     nixpkgs_version = inputs.nixpkgs-unstable;
-    packageNames = ["neovim-nixCats-full"];
+    packageNames = ["nixCats"];
     packageDefinitions.replace = {
-      neovim-nixCats-full = {pkgs, ...}: {
-        settings = {
-          aliases = [
-            # Don't need the full prefix
-            "neovim-nixCats"
-            "nvim-nixCats"
-            "neovimCats"
-            "nvimCats"
-            "nx"
-          ];
-          configDirName = "nvim-nixCats";
-        };
+      nixCats = {pkgs, ...}: {
         extra = {
           # Pass configuration to nixd
           nix = {
@@ -46,6 +35,6 @@ in {
 
   # Make us the default
   home.sessionVariables.EDITOR = let
-    nvimpkg = config.nixCats.out.packages.neovim-nixCats-full;
+    nvimpkg = config.nixCats.out.packages.nixCats;
   in "${nvimpkg}/bin/${nvimpkg.nixCats_packageName}";
 }
