@@ -10,10 +10,13 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.hardware.nixosModules.framework-13-7040-amd
+    inputs.hardware.nixosModules.framework-13-7040-amd
     inputs.fw-fanctrl.nixosModules.default
   ];
 
   # Fan control
+  # TODO: change this to nixos module in new version
+  # hardware.fw-fanctrl = {
   programs.fw-fanctrl = {
     enable = true;
     config = {
