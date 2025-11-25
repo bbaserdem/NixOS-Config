@@ -48,6 +48,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     # Fan control for framework laptop
+    # TODO: The fw-fanctrl Flake will be deprecated by the release of NixOS 25-11! Please switch to the modules `hardware.fw-fanctrl` from nixpkgs!
     fw-fanctrl = {
       url = "github:TamtamHero/fw-fanctrl/packaging/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -167,7 +168,10 @@
       nixosConfigurations =
         {
           od-ata = inputs.nixos-raspberrypi.lib.nixosSystemFull {
-            specialArgs = {inherit inputs outputs; nixos-raspberrypi = inputs.nixos-raspberrypi;};
+            specialArgs = {
+              inherit inputs outputs;
+              nixos-raspberrypi = inputs.nixos-raspberrypi;
+            };
             modules = [./nixos/hosts/od-ata];
           };
         }
