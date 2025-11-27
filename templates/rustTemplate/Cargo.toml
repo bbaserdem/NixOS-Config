@@ -1,0 +1,33 @@
+[package]
+name = "rust-template"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "A Rust project template"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/username/rust-template"
+
+[dependencies]
+# Add your dependencies here
+# Examples:
+# serde = { version = "1.0", features = ["derive"] }
+# tokio = { version = "1.0", features = ["full"] }
+# clap = { version = "4.0", features = ["derive"] }
+
+[dev-dependencies]
+# Add development dependencies here
+# Examples:
+# criterion = "0.5"
+
+[[bin]]
+name = "rust-template"
+path = "src/main.rs"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+debug = true

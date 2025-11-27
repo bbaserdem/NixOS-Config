@@ -15,4 +15,9 @@
     path = ./SkyFi;
     description = "Flake for starting a geospatial imaging project.";
   };
+
+  rustTemplate = {
+    path = ./rustTemplate;
+    description = "Flake for starting a Rust project with direnv integration.";
+  };
 }
