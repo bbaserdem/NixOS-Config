@@ -1,0 +1,68 @@
+# Rust/Cargo build artifacts
+/target/           # Build output directory
+Cargo.lock         # Lock file (include for applications, exclude for libraries)
+
+# Rust analyzer and IDE files
+rust-analyzer.json
+.vscode/           # VS Code settings
+.idea/             # IntelliJ IDEA settings
+
+# Environment and configuration
+.env               # Environment variables (may contain secrets)
+.env.*             # Environment files for different stages
+config.toml        # Local configuration files
+*.local            # Local override files
+
+# Operating System files
+.DS_Store          # macOS Finder metadata
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db          # Windows thumbnails
+Desktop.ini        # Windows folder settings
+/worktrees         # Working with worktrees
+/.worktrees
+
+# Editor temporary files
+*~                 # Emacs backup files
+*.swp              # Vim swap files
+*.swo              # Vim swap files
+.#*                # Emacs lock files
+#*#                # Emacs auto-save files
+
+# Log files
+*.log
+logs/              # Log directory
+log/
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Runtime and temporary files
+*.pid              # Process ID files
+*.tmp              # Temporary files
+*.temp
+/tmp/
+
+# Documentation build artifacts
+/docs/build/       # Built documentation
+/book/             # mdBook output (if using mdBook)
+
+# Test and coverage artifacts
+tarpaulin-report.html   # Tarpaulin coverage report
+coverage/               # Coverage reports directory
+.nyc_output/           # Coverage tool output
+
+# Profiling and debugging
+*.prof             # Profiler output
+perf.data          # Linux perf data
+flamegraph.svg     # Flamegraph output
+
+# Nix-specific
+result             # Nix build result symlink
+result-*           # Nix build result variations
+.direnv/           # direnv cache directory

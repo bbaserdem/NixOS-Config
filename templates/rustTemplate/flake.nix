@@ -34,6 +34,9 @@
           uv
           nodejs-slim
           pnpm
+          # Git tooling for semver workflow
+          git-cliff
+          commitlint
         ]);
 
       # Native build inputs

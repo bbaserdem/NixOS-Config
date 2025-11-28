@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+#
+# Auto-version bump and changelog generation using git-cliff
+# Runs after each commit to maintain semver and changelog
+# Works with worktrees and when committing from subdirectories
+#
+
+set -e
+
+# Get repo root for file paths
+repo_root=$(git rev-parse --show-toplevel)
+cd "$repo_root"
+
+# Check if this is a conventional commit that should trigger versioning
+commit_msg=$(git log -1 --pretty=format:"%s")
+
+# Skip if this is a merge commit or version bump commit
+if [[ "$commit_msg" =~ ^(Merge|chore\(release\):) ]]; then
+    echo "🔄 Skipping version bump for: $commit_msg"
+    exit 0
+fi
+
+# Check if commit matches conventional format (basic check)
+if [[ "$commit_msg" =~ ^(feat|fix|perf|BREAKING) ]]; then
+    echo "🔍 Conventional commit detected: $commit_msg"
+
+    # Bump version in Cargo.toml based on commit type
+    echo "📦 Bumping version with git-cliff..."
+    if git cliff --config "$repo_root/cliff.toml" --bump; then
+        echo "✅ Version bumped successfully"
+
+        # Generate/update changelog
+        echo "📝 Updating changelog..."
+        git cliff --config "$repo_root/cliff.toml" --output "$repo_root/CHANGELOG.md"
+
+        # Stage the updated files (using repo root relative paths)
+        git add "$repo_root/Cargo.toml" "$repo_root/CHANGELOG.md"
+
+        # Create a follow-up commit for the version bump
+        new_version=$(grep '^version = ' "$repo_root/Cargo.toml" | head -1 | sed 's/version = "\(.*\)"/\1/')
+        git commit -m "chore(release): bump version to $new_version"
+
+        echo "🎉 Version bumped to $new_version and changelog updated"
+    else
+        echo "⚠️  Version bump failed or no changes needed"
+    fi
+else
+    echo "ℹ️  Non-versioning commit: $commit_msg"
+fi

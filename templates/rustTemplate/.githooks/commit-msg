@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Conventional Commits validation using commitlint
+# Enforces semver-compatible commit message format
+# Works with worktrees and when committing from subdirectories
+#
+
+set -e
+
+commit_msg_file="$1"
+repo_root=$(git rev-parse --show-toplevel)
+
+# Use commitlint with repo root config
+commitlint --config "$repo_root/commitlint.config.js" --edit "$commit_msg_file"
+
+echo "✅ Commit message validated with commitlint"
