@@ -6,17 +6,17 @@
   #   description = "<name> template flake";
   # };
 
-  uvPythonTemplate = {
+  uvPython = {
     path = ./adaptablePythonTemplate;
     description = "Flake for starting a python (or integrated python) project.";
   };
 
-  skyfi = {
-    path = ./SkyFi;
-    description = "Flake for starting a geospatial imaging project.";
+  cudaPython = {
+    path = ./cudaPythonTemplate;
+    description = "Flake for starting a CUDA using Python project.";
   };
 
-  rustTemplate = {
+  rust = {
     path = ./rustTemplate;
     description = "Flake for starting a Rust project with direnv integration.";
   };

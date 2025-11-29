@@ -37,6 +37,9 @@
           # Git tooling for semver workflow
           git-cliff
           commitlint
+          # Pre-commit hooks and security
+          pre-commit
+          gitleaks
         ]);
 
       # Native build inputs
@@ -58,7 +61,14 @@
         inherit buildInputs nativeBuildInputs;
         packages = devTools;
 
-        shellHook = "";
+        shellHook = ''
+          # Initialize pre-commit hooks if not already done
+          if [ ! -f .git/hooks/pre-commit ]; then
+            echo "Setting up pre-commit hooks..."
+            pre-commit install
+            pre-commit install --hook-type commit-msg
+          fi
+        '';
 
         # Environment variables
         RUST_BACKTRACE = "1";

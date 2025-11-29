@@ -1,0 +1,268 @@
+# =============================================================================
+# PYTHON
+# =============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions (from CUDA/PyTorch native extensions)
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller (creates standalone executables)
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# =============================================================================
+# VIRTUAL ENVIRONMENTS & PACKAGE MANAGERS
+# =============================================================================
+
+# Virtual environments (various naming conventions)
+.env
+.env.local
+.env.development
+.env.development.local
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# UV package manager
+.uv/
+
+# =============================================================================
+# CUDA & GPU DEVELOPMENT
+# =============================================================================
+
+# CUDA compilation cache
+.nv_fatb/
+.nvcc_log
+
+# CuPy cache
+.cupy/
+
+# PyTorch compiled models and checkpoints
+*.pth
+*.pt
+checkpoints/
+runs/
+
+# NVIDIA profiling
+*.nvprof
+*.qdrep
+*.prof
+
+# =============================================================================
+# JUPYTER & DATA SCIENCE
+# =============================================================================
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Large data files (should use Git LFS or separate storage)
+*.csv
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+data/
+datasets/
+
+# =============================================================================
+# DEVELOPMENT TOOLS
+# =============================================================================
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope
+.ropeproject
+
+# mypy type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# =============================================================================
+# SECRETS & CONFIGURATION
+# =============================================================================
+
+# Environment variables containing secrets
+.env.local
+.env.*.local
+secrets.txt
+*.key
+*.pem
+
+# Configuration files that may contain sensitive data
+config.ini
+settings.local.py
+
+# =============================================================================
+# OPERATING SYSTEM
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# BUILD ARTIFACTS & TEMPORARY FILES
+# =============================================================================
+
+# C/C++ build artifacts (from CUDA extensions)
+*.o
+*.a
+*.so.*
+*.dylib
+*.dll
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+*.backup
+
+# =============================================================================
+# GIT & VERSION CONTROL
+# =============================================================================
+
+# Git conflict markers
+*.orig
+
+# Patch files
+*.patch
+*.diff
+
+# =============================================================================
+# CI/CD & DEPLOYMENT
+# =============================================================================
+
+# Docker
+.dockerignore
+
+# Deployment artifacts
+deploy/
+staging/
+
+# =============================================================================
+# PROJECT SPECIFIC
+# =============================================================================
+
+# Large model files (use Git LFS or external storage)
+models/
+*.model
+*.bin
+
+# Experiment outputs
+experiments/
+outputs/
+results/
+
+# Cache directories
+.cache/
+cache/

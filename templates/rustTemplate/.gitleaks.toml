@@ -1,0 +1,30 @@
+title = "gitleaks config"
+
+[extend]
+useDefault = true
+
+[[rules]]
+description = "Generic API Key"
+id = "generic-api-key"
+regex = '''(?i)(?:key|api|token|secret|password)\s*[:=]\s*['"][0-9a-zA-Z]{32,}['"]'''
+tags = ["key", "API", "generic"]
+
+[[rules]]
+description = "AWS Access Key"
+id = "aws-access-key"
+regex = '''AKIA[0-9A-Z]{16}'''
+tags = ["key", "AWS"]
+
+[[rules]]
+description = "OpenAI API Key"
+id = "openai-api-key"
+regex = '''sk-[0-9a-zA-Z]{48}'''
+tags = ["key", "OpenAI"]
+
+[allowlist]
+description = "global allow lists"
+paths = [
+    '''gitleaks.toml''',
+    '''(.*?)(jpg|gif|doc|pdf|bin)$''',
+    '''.gitleaks.toml''',
+]
