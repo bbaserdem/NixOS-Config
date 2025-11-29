@@ -1,7 +1,0 @@
-{
-  "enabledMcpjsonServers": [
-    "taskmaster-ai",
-    "nixos"
-  ],
-  "enableAllProjectMcpServers": true
-}

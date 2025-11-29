@@ -1,1 +1,0 @@
-# SkyFi Project Template
