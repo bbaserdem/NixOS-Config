@@ -22,6 +22,13 @@
       in {
         default = pkgs.mkShell {
           packages = with pkgs; [
+            # Git tooling
+            git
+            pre-commit
+            gitleaks
+            commitlint
+            ruff
+
             # Packaging
             uv
             nodejs-slim

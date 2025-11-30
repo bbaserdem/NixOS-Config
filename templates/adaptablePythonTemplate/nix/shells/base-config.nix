@@ -12,6 +12,10 @@
     pnpm
     uv
     awscli2
+    # Git tooling
+    pre-commit
+    gitleaks
+    commitlint
     # Basic tools for dev environment
     coreutils # Basic file, shell and text manipulation utilities
     findutils # Find, locate, and xargs commands
