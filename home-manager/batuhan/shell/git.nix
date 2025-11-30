@@ -31,7 +31,6 @@
       extraConfig = {
         core = {
           editor = config.home.sessionVariables.EDITOR;
-          hooksPath = ".githooks/";
         };
         pull = {rebase = false;};
         push = {autoSetupRemote = true;};
