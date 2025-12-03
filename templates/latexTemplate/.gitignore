@@ -1,0 +1,37 @@
+# LaTeX artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.idx
+*.ind
+*.ilg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.xdv
+*.pdf
+
+# Node
+node_modules/
+.pnpm-store/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.uv/
+
+# Nix
+result
+result-*
+.direnv/

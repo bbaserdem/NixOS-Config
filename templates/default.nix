@@ -20,4 +20,9 @@
     path = ./rustTemplate;
     description = "Flake for starting a Rust project with direnv integration.";
   };
+
+  latex = {
+    path = ./latexTemplate;
+    description = "Flake for starting a latex project.";
+  };
 }
