@@ -58,7 +58,6 @@ in {
         kdePackages.qtmultimedia
         kdePackages.qtvirtualkeyboard
         kdePackages.qtsvg
-        greetd.qtgreet
       ];
     })
 

@@ -21,14 +21,16 @@
     # Git settings
     git = {
       enable = true;
-      userName = "bbaserdem";
-      userEmail = "baserdemb@gmail.com";
-      aliases = {
-        pu = "push";
-        co = "checkout";
-        cm = "commit";
-      };
-      extraConfig = {
+      settings = {
+        alias = {
+          pu = "push";
+          co = "checkout";
+          cm = "commit";
+        };
+        user = {
+          name = "bbaserdem";
+          email = "baserdemb@gmail.com";
+        };
         core = {
           editor = config.home.sessionVariables.EDITOR;
         };

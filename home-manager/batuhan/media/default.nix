@@ -19,7 +19,7 @@
   ];
 
   home.packages = [
-    outputs.packages.${pkgs.system}.user-audio
+    outputs.packages.${pkgs.stdenv.hostPlatform.system}.user-audio
     # Use cantata as graphical frontend
     pkgs.cantata
     # Music download tool

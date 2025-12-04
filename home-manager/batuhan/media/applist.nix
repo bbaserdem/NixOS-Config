@@ -8,7 +8,7 @@
   home.packages =
     [
       # My scripts
-      outputs.packages.${pkgs.system}.user-audio
+      outputs.packages.${pkgs.stdenv.hostPlatform.system}.user-audio
     ]
     ++ (with pkgs; [
       cantata # MPD graphical frontend

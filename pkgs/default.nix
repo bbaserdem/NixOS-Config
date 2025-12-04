@@ -9,7 +9,4 @@
   user-vifm = pkgs.callPackage ./scripts-vifm {};
   user-wireguard = pkgs.callPackage ./scripts-wireguard {};
   scripts-jupyter = pkgs.callPackage ./scripts-jupyter {};
-
-  # Drivers
-  displaylink-driver = import ./drivers/displaylink-driver.nix {inherit pkgs;};
 }

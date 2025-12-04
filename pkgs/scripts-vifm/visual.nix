@@ -10,7 +10,7 @@
   convert = "${pkgs.imagemagick}/bin/convert";
   ffmpegthumbnailer = "${pkgs.ffmpegthumbnailer}/bin/ffmpegthumbnailer";
   epub-thumbnailer = "${pkgs.epub-thumbnailer}/bin/epub-thumbnailer";
-  pdftoppm = "${pkgs.poppler_utils}/bin/pdftoppm";
+  pdftoppm = "${pkgs.poppler-utils}/bin/pdftoppm";
   ffmpeg = "${pkgs.ffmpeg}/bin/ffmpeg";
   fontpreview = "${pkgs.fontpreview}/bin/fontpreview";
 in

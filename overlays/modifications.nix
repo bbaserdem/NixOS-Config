@@ -28,12 +28,12 @@
 
   # Compile waybar with experimental support built in
   waybar = prev.waybar.overrideAttrs (oldAttrs: {
-    mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+    mesonFlags = oldAttrs.mesonFlags ++ [(final.lib.mesonBool "experimental" true)];
   });
 
   # Add mpv support to qtgreet, and add greetwl
   qtgreet = (prev.qtgreet.overrideAttrs (oldAttrs: {
-    mesonFlags = oldAttrs.mesonFlags ++ [(final.lib.mesonOption "build_greetwl" true)];
+    mesonFlags = oldAttrs.mesonFlags ++ [(final.lib.mesonOption "build_greetwl" "true")];
   })).override {mpvSupport = true;};
 
   # Add packages to conda
@@ -50,22 +50,6 @@
       prev.xorg.libXi
       prev.xorg.libX11
     ];
-  };
-
-  # # Add external plugins to beets
-  beets = prev.beets.override {
-    pluginOverrides = {
-      alternatives = {
-        enable = true;
-        propagatedBuildInputs = [prev.beetsPackages.alternatives];
-      };
-      copyartifacts = {
-        enable = true;
-        propagatedBuildInputs = [prev.beetsPackages.copyartifacts];
-      };
-      # Bucket plugin failing test, disable for now for build
-      bucket.enable = false;
-    };
   };
 
   # Add different variants of the cattpuccin packages

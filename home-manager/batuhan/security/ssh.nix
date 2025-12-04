@@ -6,6 +6,8 @@
 }: {
   programs.ssh = {
     enable = true;
+    # TODO: Remove this after migration
+    enableDefaultConfig = false;
     matchBlocks = {
       # Servers to connect to
       "github.com" = {
@@ -29,6 +31,18 @@
         hostname = "od-ata";
         identitiesOnly = true;
         extraOptions.IdentityFile = "~/.ssh/id_ed25519_OD-ATA";
+      };
+      "*" = {
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = false;
+        serverAliveInterval = 0;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "${config.home.homeDirectory}/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "${config.home.homeDirectory}/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
       };
     };
   };

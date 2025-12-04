@@ -5,11 +5,11 @@
   inputs = {
     # ----- System Flakes ----- #
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Home manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Nix user repository
@@ -46,12 +46,6 @@
     nixCats = {
       url = "github:bbaserdem/NixCats";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-    # Fan control for framework laptop
-    # TODO: The fw-fanctrl Flake will be deprecated by the release of NixOS 25-11! Please switch to the modules `hardware.fw-fanctrl` from nixpkgs!
-    fw-fanctrl = {
-      url = "github:TamtamHero/fw-fanctrl/packaging/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     # Fix applications on mac
     mac-app-util = {
