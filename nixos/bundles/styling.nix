@@ -54,24 +54,24 @@ in {
       stylix = {
         enable = true;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-      };
 
-      fonts = {
-        monospace = {
-          package = pkgs._3270font;
-          name = "IBM 3270";
-        };
-        serif = {
-          package = pkgs.caladea;
-          name = "Caladea";
-        };
-        sansSerif = {
-          package = pkgs.source-sans-pro;
-          name = "Source Sans Pro";
-        };
-        emoji = {
-          package = pkgs.noto-fonts-color-emoji;
-          name = "Noto Color Emoji";
+        fonts = {
+          monospace = {
+            package = pkgs._3270font;
+            name = "IBM 3270";
+          };
+          serif = {
+            package = pkgs.caladea;
+            name = "Caladea";
+          };
+          sansSerif = {
+            package = pkgs.source-sans-pro;
+            name = "Source Sans Pro";
+          };
+          emoji = {
+            package = pkgs.noto-fonts-color-emoji;
+            name = "Noto Color Emoji";
+          };
         };
       };
 
