@@ -22,6 +22,7 @@
       name = "gdm";
     };
     gnome.enable = true;
+    wallpaper.name = "Sunset by the Pier";
 
     # Features
     bluetooth.enable = true;
@@ -46,7 +47,6 @@
       kdeconnect.enable = true;
       mariadb.enable = true;
       media.enable = true;
-      neo4j.enable = true;
       nm.enable = true;
       rasdaemon.enable = true;
       samba.enable = true;

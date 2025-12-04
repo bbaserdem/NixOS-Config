@@ -77,6 +77,7 @@ in {
           archives.enable = true;
           filesystems.enable = true;
           nix.enable = true;
+          styling.enable = true;
           tools.enable = true;
           utils.enable = true;
         };
@@ -113,6 +114,7 @@ in {
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       system.stateVersion = "23.05";
     }
+
     # Conditionally set the default desktop session
     (lib.mkIf (cfg.userDesktop != null) {
       services.displayManager.defaultSession = cfg.userDesktop;

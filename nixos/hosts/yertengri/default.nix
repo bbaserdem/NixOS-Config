@@ -28,6 +28,7 @@ in {
       name = "sddm";
     };
     kde.enable = true;
+    wallpaper.name = "Snow-Capped Mountain";
 
     # Features
     bluetooth.enable = true;
@@ -52,6 +53,7 @@ in {
       kdeconnect.enable = true;
       mariadb.enable = true;
       media.enable = true;
+      neo4j.enable = true;
       nm.enable = true;
       paperless.enable = true;
       rasdaemon.enable = true;
