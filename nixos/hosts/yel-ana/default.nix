@@ -16,10 +16,10 @@
   # Module toggles
   myNixOS = {
     # Desktop
-    userDesktop = "plasma";
+    userDesktop = "gnome";
     displayManager = {
       enable = true;
-      name = "sddm";
+      name = "gdm";
     };
     kde.enable = true;
 
