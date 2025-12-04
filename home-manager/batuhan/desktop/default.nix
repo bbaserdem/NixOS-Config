@@ -6,6 +6,7 @@
 }: {
   # Some app modules
   imports = [
+    ./gnome.nix
     ./keyboard.nix
     ./xdg-paths.nix
   ];
