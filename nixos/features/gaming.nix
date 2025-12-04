@@ -25,7 +25,7 @@
     heroic
     rpcs3
     mangohud
-    protonup
+    protonup-ng
     bubblewrap
   ];
 }
