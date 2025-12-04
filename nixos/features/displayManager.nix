@@ -33,7 +33,7 @@ in {
   config = lib.mkMerge [
     # GDM config
     (lib.mkIf (cfg.displayManager.name == "gdm") {
-      services.xserver.displayManager.gdm = {
+      services.displayManager.gdm = {
         enable = true;
         wayland = true;
       };

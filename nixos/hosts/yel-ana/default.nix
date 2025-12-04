@@ -21,7 +21,7 @@
       enable = true;
       name = "gdm";
     };
-    kde.enable = true;
+    gnome.enable = true;
 
     # Features
     bluetooth.enable = true;
