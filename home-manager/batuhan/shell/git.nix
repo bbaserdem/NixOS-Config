@@ -66,7 +66,7 @@
       };
       hosts = {
         "github.com" = {
-          user = config.programs.git.userName;
+          user = config.programs.git.settings.user.name;
         };
       };
       extensions = with pkgs; [
