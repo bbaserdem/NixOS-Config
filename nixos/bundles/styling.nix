@@ -73,6 +73,21 @@ in {
             name = "Noto Color Emoji";
           };
         };
+
+        autoEnable = false;
+        targets = {
+          console.enable = true;
+          font-packages.enable = true;
+          fontconfig.enable = true;
+          gnome-text-editor.enable = true;
+          gnome.enable = true;
+          grub.enable = false;
+          gtk.enable = true;
+          gtksourceview.enable = true;
+          nixos-icons.enable = true;
+          qt.enable = true;
+          regreet.enable = true;
+        };
       };
 
       environment.defaultPackages = [pkgs.base16-schemes];
