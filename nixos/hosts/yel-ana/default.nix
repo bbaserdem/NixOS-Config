@@ -22,7 +22,10 @@
       name = "gdm";
     };
     gnome.enable = true;
-    wallpaper.name = "Sunset by the Pier";
+    wallpaper = {
+      name = "Sunset by the Pier";
+      extension = "jpg";
+    };
 
     # Features
     bluetooth.enable = true;

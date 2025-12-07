@@ -89,6 +89,11 @@ in {
 
       # Generalized Personal module toggles
       myNixOS = {
+        # We use elementary wallpapers;
+        wallpaper = {
+          package = pkgs.pantheon.elementary-wallpapers;
+          directory = "share/backgrounds";
+        };
         # Bundles, I want these all in every PC
         bundles = {
           archives.enable = true;
