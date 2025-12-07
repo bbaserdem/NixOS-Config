@@ -5,6 +5,8 @@
   lib,
   config,
   pkgs,
+  host,
+  arch,
   ...
 }: let
   cfg = config.myNixOS;
@@ -28,8 +30,9 @@ in {
   };
 
   # Wanted modules
-  imports = [
-    inputs.sops-nix.nixosModules.sops
+  imports = with inputs; [
+    sops-nix.nixosModules.sops
+    home-manager.nixosModules.home-manager
   ];
 
   # Nixos configuration
@@ -48,7 +51,7 @@ in {
         ];
       };
 
-      # Default user, this should be named batuhan, unless overriden
+      # Default user with home-manager, this should be named batuhan
       programs.zsh.enable = true;
       users.users.${cfg.userName} =
         {
@@ -69,6 +72,18 @@ in {
       nix.settings.trusted-users = [
         cfg.userName
       ];
+      # Home manager setup for default user
+      home-manager = {
+        useGlobalPkgs = true;
+        useuserPackages = true;
+        users = {
+          "${cfg.userName}" = ../../home-manager/${cfg.userName}/${host}.nix;
+        };
+        extraSpecialArgs = {
+          inherit inputs outputs host arch;
+          user = cfg.userName;
+        };
+      };
 
       # Generalized Personal module toggles
       myNixOS = {
@@ -84,7 +99,7 @@ in {
 
         # Features, we always want these
         consolefont.enable = true;
-        fonts.enable = true;
+        fonts.enable = false; # Using with stylix
         shell.enable = true;
         locale.enable = true;
       };

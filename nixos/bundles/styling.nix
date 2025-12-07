@@ -55,23 +55,62 @@ in {
         enable = true;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 
-        fonts = {
+        fonts = with pkgs; {
           monospace = {
-            package = pkgs._3270font;
+            package = _3270font;
             name = "IBM 3270";
           };
           serif = {
-            package = pkgs.caladea;
+            package = caladea;
             name = "Caladea";
           };
           sansSerif = {
-            package = pkgs.source-sans-pro;
+            package = source-sans-pro;
             name = "Source Sans Pro";
           };
           emoji = {
-            package = pkgs.noto-fonts-color-emoji;
+            package = noto-fonts-color-emoji;
             name = "Noto Color Emoji";
           };
+          # List of fonts that we want available
+          packages = [
+            nerd-fonts.symbols-only
+            noto-fonts-monochrome-emoji # Emoji fonts
+            noto-fonts-color-emoji
+            _3270font # Monospace
+            fira-code # Monospace with ligatures
+            liberation_ttf # Windows compat.
+            caladea #   Office fonts alternative
+            carlito #   Calibri/georgia alternative
+            inconsolata # Monospace font, for prints
+            iosevka # Monospace font, for terminal mostly
+            jetbrains-mono # Readable monospace font
+            noto-fonts
+            source-serif-pro
+            source-sans-pro
+            curie # Bitmap fonts
+            tamsyn
+          ];
+        };
+
+        icons = {
+          enable = true;
+          package = pkgs.qogir-icon-theme;
+          dark = "Qogir-dark";
+          light = "Qogir";
+        };
+
+        cursor = {
+          package = pkgs.bibata-cursors;
+          name = "Bibata-Modern-Ice";
+          size = 24;
+        };
+
+        opacity = {
+          applications = 1.0;
+          desktop = 0.9;
+          popups = 0.9;
+          terminal = 0.9;
         };
 
         autoEnable = false;
@@ -99,7 +138,7 @@ in {
         (cfg.name != null)
         (cfg.extension != null)
       ]) {
-        stylix.wallpaper = "${cfg.package}/${cfg.directory}/${cfg.name}.${cfg.extension}";
+        stylix.image = "${cfg.package}/${cfg.directory}/${cfg.name}.${cfg.extension}";
         environment.defaultPackages = [cfg.package];
       }
     )
