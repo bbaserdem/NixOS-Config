@@ -6,7 +6,7 @@
 }: {
   # Some app modules
   imports = [
-    ./gnome.nix
+    # ./gnome.nix
     ./keyboard.nix
     ./xdg-paths.nix
   ];
@@ -18,7 +18,9 @@
     };
     qt = {
       enable = true;
-      platform = "qtct";
+    };
+    kde = {
+      enable = true;
     };
   };
 

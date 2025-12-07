@@ -74,6 +74,7 @@ in {
       ];
       # Home manager setup for default user
       home-manager = {
+        backupFileExtension = "hm-backup";
         users = {
           "${cfg.userName}" = ../../home-manager/${cfg.userName}/${host}.nix;
         };
