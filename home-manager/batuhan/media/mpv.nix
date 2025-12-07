@@ -1,5 +1,6 @@
 # Configuring MPV
 {pkgs, ...}: {
+  stylix.targets.mpv.enable = true;
   programs.mpv = {
     enable = true;
     package = pkgs.mpv;

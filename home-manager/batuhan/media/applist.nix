@@ -47,4 +47,9 @@
       imagemagick # Image editing library
       exiftool # Image info extraction
     ]);
+
+  # Theming where enabled
+  stylix.targets = {
+    blender.enable = true;
+  };
 }

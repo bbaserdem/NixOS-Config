@@ -53,6 +53,7 @@ in {
   programs.fzf.enableZshIntegration = true;
   programs.direnv.enableZshIntegration = true;
   programs.kitty.shellIntegration.enableZshIntegration = true;
+  programs.lazygit.enableZshIntegration = true;
   programs.nix-index.enableZshIntegration = true;
   programs.starship.enableZshIntegration = true;
   programs.yazi.enableZshIntegration = true;

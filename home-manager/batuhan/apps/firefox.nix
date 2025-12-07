@@ -34,6 +34,7 @@ in (lib.mkMerge [
     # Enable stylix color theme
     stylix.targets.firefox = {
       enable = true;
+      colorTheme.enable = true;
       firefoxGnomeTheme.enable = true;
       profileNames = [
         "batuhan"

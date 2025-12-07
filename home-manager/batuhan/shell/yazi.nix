@@ -1,5 +1,9 @@
 # Yazi config
 {pkgs, ...}: {
+  stylix.targets.yazi = {
+    boldDirectory = true;
+    enable = true;
+  };
   # Settings
   programs.yazi = {
     enable = true;

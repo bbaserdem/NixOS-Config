@@ -17,7 +17,6 @@
     ./media
     ./security
     ./shell
-    ./theming
   ];
 
   # System setup

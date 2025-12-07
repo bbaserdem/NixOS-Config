@@ -7,9 +7,12 @@
     ./applist.nix
     ./discord.nix
     ./firefox.nix
+    ./foliate.nix
     ./kitty.nix
+    ./mangohud.nix
     ./neovim.nix
     ./newsboat.nix
+    ./obsidian.nix
     ./remmina.nix
     ./syncthing.nix
     ./udiskie.nix

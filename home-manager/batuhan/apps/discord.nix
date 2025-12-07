@@ -7,8 +7,8 @@
   # Enable themeing
   # nixcord & vencord in stylix unstable
   stylix.targets = {
-    #nixcord.enable = true;
-    #vencord.enable = true;
+    nixcord.enable = true;
+    vencord.enable = true;
     vesktop.enable = true;
   };
 

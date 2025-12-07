@@ -5,6 +5,7 @@
     enable = true;
     package = pkgs.fzf;
   };
+  stylix.targets.fzf.enable = true;
 
   # Smarter cd
   programs.zoxide = {

@@ -14,9 +14,6 @@
   home.file."Shared/Android".source = config.lib.file.mkOutOfStoreSymlink "/home/data/Android";
   home.file."Work".source = config.lib.file.mkOutOfStoreSymlink "/home/data/Work";
 
-  # Disable autorandr in gnome for now
-  services.autorandr.enable = lib.mkOverride 500 false;
-
   # Define wallpaper
   myHome.wallpaper.name = "Sunset by the Pier";
 }

@@ -40,6 +40,7 @@ in {
   home.sessionVariables.EDITOR = nvimExe;
 
   # Enable neovide; ide for neovim
+  stylix.targets.neovide.enable = true;
   programs.neovide = {
     enable = true;
     settings = {

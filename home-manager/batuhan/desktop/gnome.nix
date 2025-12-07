@@ -6,10 +6,19 @@
 }: {
   # Enable stylix themeing
   stylix.targets = {
+    eog.enable = true;
+    gnome-text-editor.enable = true;
     gnome.enable = true;
+    gtksourceview.enable = true;
     # In unstable
-    #gnome-text-editor.enable = true;
   };
+
+  # QT fix
+  stylix.targets.qt.platform = "gnome";
+  home.packages = with pkgs; [
+    qgnomeplatform
+    qgnomeplatform-qt6
+  ];
 
   # Some gnome extensions
   programs.gnome-shell = {
