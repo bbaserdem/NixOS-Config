@@ -18,6 +18,25 @@
     };
     qt = {
       enable = true;
+      platform = "qtct";
     };
   };
+
+  qt = {
+    enable = true;
+    style.name = "kvantum";
+  };
+  xdg.configFile = {
+    "Kvantum/Gruvbox-Dark-Brown".source = "${pkgs.gruvbox-kvantum}/share/Kvantum/Gruvbox-Dark-Brown";
+    "Kvantum/kvantum.kvconfig".text = ''
+      [General]
+      theme=Gruvbox-Dark-Brown
+    '';
+  };
+
+  home.packages = with pkgs; [
+    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtstyleplugin-kvantum
+    gruvbox-kvantum
+  ];
 }

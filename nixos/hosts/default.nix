@@ -74,8 +74,6 @@ in {
       ];
       # Home manager setup for default user
       home-manager = {
-        useGlobalPkgs = true;
-        useuserPackages = true;
         users = {
           "${cfg.userName}" = ../../home-manager/${cfg.userName}/${host}.nix;
         };
@@ -84,6 +82,10 @@ in {
           user = cfg.userName;
         };
       };
+      environment.pathsToLink = [
+        "/share/xdg-desktop-portal"
+        "/share/applications"
+      ];
 
       # Generalized Personal module toggles
       myNixOS = {

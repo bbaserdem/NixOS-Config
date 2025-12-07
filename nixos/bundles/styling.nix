@@ -72,25 +72,6 @@ in {
             package = noto-fonts-color-emoji;
             name = "Noto Color Emoji";
           };
-          # List of fonts that we want available
-          packages = [
-            nerd-fonts.symbols-only
-            noto-fonts-monochrome-emoji # Emoji fonts
-            noto-fonts-color-emoji
-            _3270font # Monospace
-            fira-code # Monospace with ligatures
-            liberation_ttf # Windows compat.
-            caladea #   Office fonts alternative
-            carlito #   Calibri/georgia alternative
-            inconsolata # Monospace font, for prints
-            iosevka # Monospace font, for terminal mostly
-            jetbrains-mono # Readable monospace font
-            noto-fonts
-            source-serif-pro
-            source-sans-pro
-            curie # Bitmap fonts
-            tamsyn
-          ];
         };
 
         icons = {
@@ -129,7 +110,26 @@ in {
         };
       };
 
-      environment.defaultPackages = [pkgs.base16-schemes];
+      environment.defaultPackages = with pkgs; [
+        base16-schemes
+        # Fonts
+        nerd-fonts.symbols-only
+        noto-fonts-monochrome-emoji # Emoji fonts
+        noto-fonts-color-emoji
+        _3270font # Monospace
+        fira-code # Monospace with ligatures
+        liberation_ttf # Windows compat.
+        caladea #   Office fonts alternative
+        carlito #   Calibri/georgia alternative
+        inconsolata # Monospace font, for prints
+        iosevka # Monospace font, for terminal mostly
+        jetbrains-mono # Readable monospace font
+        noto-fonts
+        source-serif-pro
+        source-sans-pro
+        curie # Bitmap fonts
+        tamsyn
+      ];
     }
     (
       lib.mkIf (mkAll [

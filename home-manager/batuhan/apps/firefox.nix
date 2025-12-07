@@ -47,39 +47,42 @@ in (lib.mkMerge [
       package = pkgs.firefox.override nmhOverride;
       profiles.batuhan = {
         isDefault = true;
-        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-          augmented-steam
-          automatic-dark
-          batchcamp
-          behind-the-overlay-revival
-          betterttv
-          castkodi
-          catppuccin-web-file-icons
-          containerise
-          control-panel-for-twitter
-          don-t-fuck-with-paste
-          duckduckgo-privacy-essentials
-          enhanced-github
-          flagfox
-          gnome-shell-integration
-          greasemonkey
-          gruvbox-dark-theme
-          h264ify
-          hulu-ad-blocker
-          keepassxc-browser
-          languagetool
-          mullvad
-          multi-account-containers
-          open-url-in-container
-          plasma-integration
-          protondb-for-steam
-          sponsorblock
-          steam-database
-          ublock-origin
-          user-agent-string-switcher
-          video-downloadhelper
-          zotero-connector
-        ];
+        extensions = {
+          force = true;
+          packages = with pkgs.nur.repos.rycee.firefox-addons; [
+            augmented-steam
+            automatic-dark
+            batchcamp
+            behind-the-overlay-revival
+            betterttv
+            castkodi
+            catppuccin-web-file-icons
+            containerise
+            control-panel-for-twitter
+            don-t-fuck-with-paste
+            duckduckgo-privacy-essentials
+            enhanced-github
+            flagfox
+            gnome-shell-integration
+            greasemonkey
+            gruvbox-dark-theme
+            h264ify
+            hulu-ad-blocker
+            keepassxc-browser
+            languagetool
+            mullvad
+            multi-account-containers
+            open-url-in-container
+            plasma-integration
+            protondb-for-steam
+            sponsorblock
+            steam-database
+            ublock-origin
+            user-agent-string-switcher
+            video-downloadhelper
+            zotero-connector
+          ];
+        };
         search = {
           default = "google";
           privateDefault = "google";

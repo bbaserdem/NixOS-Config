@@ -18,11 +18,6 @@
     flake-utils.url = "github:numtide/flake-utils";
     # Hardware fixes
     hardware.url = "github:nixos/nixos-hardware";
-    # Nix darwin
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # Raspberry Pi
     nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
 
@@ -47,6 +42,13 @@
       url = "github:bbaserdem/NixCats";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    # ----- MacOS ----- #
+    # Nix darwin
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Fix applications on mac
     mac-app-util = {
       url = "github:hraban/mac-app-util";
@@ -63,14 +65,6 @@
     # ----- Desktop ----- #
     # AGS: Aylur's GTK Shell
     ags.url = "github:Aylur/ags";
-    # Declaratively manage plasma
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
 
     # ----- Flair and small functionality ----- #
     # Nixifying theming and styling
@@ -78,7 +72,6 @@
       url = "github:danth/stylix/release-25.11";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
       };
     };
     # Discord client
@@ -184,12 +177,12 @@
         };
       };
 
-      # Standalone HM configurations
-      # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations =
-        {
-          # Put standalone HM configs here
-        }
-        // (lib.mkConfiguredUser "batuhan" configuredHosts);
+      # # Standalone HM configurations
+      # # Available through 'home-manager --flake .#your-username@your-hostname'
+      # homeConfigurations =
+      #   {
+      #     # Put standalone HM configs here
+      #   }
+      #   // (lib.mkConfiguredUser "batuhan" configuredHosts);
     };
 }

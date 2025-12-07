@@ -12,7 +12,7 @@
     ./mangohud.nix
     ./neovim.nix
     ./newsboat.nix
-    ./obsidian.nix
+    #./obsidian.nix
     ./remmina.nix
     ./syncthing.nix
     ./udiskie.nix
