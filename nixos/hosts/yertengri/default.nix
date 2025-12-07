@@ -28,7 +28,10 @@ in {
       name = "sddm";
     };
     kde.enable = true;
-    wallpaper.name = "Snow-Capped Mountain";
+    wallpaper = {
+      name = "Snow-Capped Mountain";
+      extension = "jpg";
+    };
 
     # Features
     bluetooth.enable = true;
@@ -49,7 +52,6 @@ in {
       droidcam.enable = true;
       firefly-iii.enable = true;
       geoclue.enable = false;
-      jupyterlab.enable = true;
       kdeconnect.enable = true;
       mariadb.enable = true;
       media.enable = true;

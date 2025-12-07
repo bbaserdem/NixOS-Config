@@ -16,12 +16,12 @@
   # Module toggles
   myNixOS = {
     # Desktop
-    userDesktop = "gnome";
+    userDesktop = "plasma";
     displayManager = {
       enable = true;
-      name = "gdm";
+      name = "sddm";
     };
-    gnome.enable = true;
+    kde.enable = true;
     wallpaper = {
       name = "Sunset by the Pier";
       extension = "jpg";
