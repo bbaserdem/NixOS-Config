@@ -16,6 +16,7 @@
     hunspellDicts.en_US
     kdePackages.okular
     zotero
+    obsidian
     # Programming
     octaveFull
     gitg
