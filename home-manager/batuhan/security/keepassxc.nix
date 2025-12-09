@@ -5,6 +5,7 @@
     settings = {
       General = {
         ConfigVersion = 2;
+        MinimizeAfterUnlock = true;
       };
       PasswordGenerator = {
         AdditionalChars = "";
@@ -21,6 +22,7 @@
         AdvancedSettings = true;
         CompactMode = true;
         HidePasswords = true;
+        MinimizeOnStartup = true;
       };
       SSHAgent.Enabled = true;
     };
