@@ -178,6 +178,7 @@
       };
 
       # # Standalone HM configurations
+      # Don't need this unless we do nix-darwin again
       # # Available through 'home-manager --flake .#your-username@your-hostname'
       # homeConfigurations =
       #   {

@@ -28,8 +28,12 @@ in {
             flake = outputs.lib.rootDir;
           };
           colorscheme = {
-            name = "stylix";
+            # Inject the base16 colorset to the stylix theme (uses mini.base16)
             base16 = stylix16;
+            translucent = false;
+            # Set dark and light colorschemes
+            dark = "kanagawa-dragon";
+            light = "catppuccin-latte";
           };
         };
       };
