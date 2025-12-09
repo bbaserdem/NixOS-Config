@@ -112,7 +112,7 @@
       vscodeVersion = "1.101.2";
       version = appVersion;
       src =
-        if prev.hostPlatform.isLinux
+        if prev.stdenv.hostPlatform.isLinux
         then
           prev.appimageTools.extract {
             pname = oldAttrs.pname;
@@ -121,7 +121,7 @@
           }
         else source;
       sourceRoot =
-        if prev.hostPlatform.isLinux
+        if prev.stdenv.hostPlatform.isLinux
         then "${oldAttrs.pname}-${appVersion}-extracted/usr/share/cursor"
         else "Cursor.app";
       nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ addedFonts ++ addedPackages;
