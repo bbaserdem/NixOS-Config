@@ -107,7 +107,6 @@ in {
 
         # Features, we always want these
         consolefont.enable = true;
-        fonts.enable = false; # Using with stylix
         shell.enable = true;
         locale.enable = true;
       };
