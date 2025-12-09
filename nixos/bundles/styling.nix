@@ -124,7 +124,7 @@ in {
         inconsolata # Monospace font, for prints
         iosevka # Monospace font, for terminal mostly
         jetbrains-mono # Readable monospace font
-        viktor-mono # Nice monospace font with ligatures
+        victor-mono # Nice monospace font with ligatures
         noto-fonts
         source-serif-pro
         source-sans-pro
