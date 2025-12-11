@@ -70,15 +70,9 @@
         "uas"
         "sd_mod"
       ];
-      kernelModules = [
-        "evdi"
-      ];
     };
     kernel.sysctl = {"vm.swappiness" = 0;};
     kernelModules = ["kvm-amd"];
-    extraModulePackages = [
-      config.boot.kernelPackages.evdi
-    ];
     loader = {
       efi = {
         canTouchEfiVariables = true;
