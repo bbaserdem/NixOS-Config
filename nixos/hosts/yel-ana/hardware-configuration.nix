@@ -98,7 +98,8 @@
       "amdgpu.ppfeaturemask=0xffffffff" # Enable all powerplay features
       "iommu=pt" # Passthrough mode for IOMMU
       "amd_iommu=on" # Enable AMD IOMMU
-      "video=DP-1:D video=DP-2:D" # Force detection of DP outputs
+      "video=DP-1:D"
+      "video=DP-2:D" # Force detection of DP outputs
     ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
