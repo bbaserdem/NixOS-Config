@@ -10,46 +10,52 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.hardware.nixosModules.framework-13-7040-amd
-    inputs.hardware.nixosModules.framework-13-7040-amd
   ];
 
   # Fan control
   # TODO: change this to nixos module in new version
-  hardware.fw-fanctrl = {
-    enable = true;
-    config = {
-      defaultStrategy = "medium";
-      strategyOnDischarging = "lazy";
-      strategies = {
-        "lazy" = {
-          fanSpeedUpdateFrequency = 5;
-          movingAverageInterval = 30;
-          speedCurve = [
-            {
-              temp = 0;
-              speed = 15;
-            }
-            {
-              temp = 50;
-              speed = 15;
-            }
-            {
-              temp = 65;
-              speed = 25;
-            }
-            {
-              temp = 70;
-              speed = 35;
-            }
-            {
-              temp = 75;
-              speed = 50;
-            }
-            {
-              temp = 85;
-              speed = 100;
-            }
-          ];
+  hardware = {
+    # MST fix
+    enableRedistributableFirmware = true;
+    cpu.amd.updateMicrocode = true;
+
+    # Fan control
+    fw-fanctrl = {
+      enable = true;
+      config = {
+        defaultStrategy = "medium";
+        strategyOnDischarging = "lazy";
+        strategies = {
+          "lazy" = {
+            fanSpeedUpdateFrequency = 5;
+            movingAverageInterval = 30;
+            speedCurve = [
+              {
+                temp = 0;
+                speed = 15;
+              }
+              {
+                temp = 50;
+                speed = 15;
+              }
+              {
+                temp = 65;
+                speed = 25;
+              }
+              {
+                temp = 70;
+                speed = 35;
+              }
+              {
+                temp = 75;
+                speed = 50;
+              }
+              {
+                temp = 85;
+                speed = 100;
+              }
+            ];
+          };
         };
       };
     };
@@ -83,6 +89,18 @@
         device = "nodev";
       };
     };
+
+    # MST fixes
+    kernelParams = [
+      "amdgpu.sg_display=0" # Disable scatter-gather for display (fixes Phoenix MST)
+      "amdgpu.dc=1" # Ensure DC is enabled
+      "amdgpu.dpm=1" # Dynamic power management
+      "amdgpu.ppfeaturemask=0xffffffff" # Enable all powerplay features
+      "iommu=pt" # Passthrough mode for IOMMU
+      "amd_iommu=on" # Enable AMD IOMMU
+      "video=DP-1:D video=DP-2:D" # Force detection of DP outputs
+    ];
+    kernelPackages = pkgs.linuxPackages_latest;
   };
   # Use crypttab to unlock partition after init
   environment.etc.crypttab.source = ./crypttab;
@@ -101,5 +119,4 @@
   # System options
   networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
