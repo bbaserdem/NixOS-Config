@@ -84,16 +84,9 @@
       };
     };
 
-    # MST fixes
+    # MST fix for AMD Phoenix APU - minimal parameters to avoid boot issues
     kernelParams = [
       "amdgpu.sg_display=0" # Disable scatter-gather for display (fixes Phoenix MST)
-      "amdgpu.dc=1" # Ensure DC is enabled
-      "amdgpu.dpm=1" # Dynamic power management
-      "amdgpu.ppfeaturemask=0xffffffff" # Enable all powerplay features
-      "iommu=pt" # Passthrough mode for IOMMU
-      "amd_iommu=on" # Enable AMD IOMMU
-      "video=DP-1:D"
-      "video=DP-2:D" # Force detection of DP outputs
     ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
