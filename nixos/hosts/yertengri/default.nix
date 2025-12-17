@@ -40,6 +40,7 @@ in {
       enable = true;
       flavor = "dark";
     };
+    hyprland.enable = true;
     keymap.enable = true;
     obs.enable = true;
     polkit.enable = true;

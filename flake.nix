@@ -63,8 +63,17 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # ----- Desktop ----- #
-    # AGS: Aylur's GTK Shell
-    ags.url = "github:Aylur/ags";
+    # Astal: Widget toolkit foundation
+    astal = {
+      url = "github:aylur/astal";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # AGS: Aylur's GTK Shell v3
+    ags = {
+      url = "github:aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.astal.follows = "astal";
+    };
 
     # ----- Flair and small functionality ----- #
     # Nixifying theming and styling
