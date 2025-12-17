@@ -25,6 +25,7 @@
               "nix-command"
               "flakes"
               "pipe-operators"
+              "ca-derivations"
             ];
             auto-optimise-store = true;
             # For dev related things
