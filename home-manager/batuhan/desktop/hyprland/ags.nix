@@ -4,7 +4,9 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  system = pkgs.stdenv.hostPlatform.system;
+in {
   imports = [inputs.ags.homeManagerModules.default];
 
   programs.ags = {
@@ -17,13 +19,13 @@
     # additional packages to add to gjs runtime
     extraPackages = with pkgs; [
       # Astal libraries for various functionalities
-      inputs.astal.packages.${pkgs.system}.battery
-      inputs.astal.packages.${pkgs.system}.bluetooth
-      inputs.astal.packages.${pkgs.system}.hyprland
-      inputs.astal.packages.${pkgs.system}.network
-      inputs.astal.packages.${pkgs.system}.notifd
-      inputs.astal.packages.${pkgs.system}.powerprofiles
-      inputs.astal.packages.${pkgs.system}.wireplumber
+      inputs.astal.packages.${system}.battery
+      inputs.astal.packages.${system}.bluetooth
+      inputs.astal.packages.${system}.hyprland
+      inputs.astal.packages.${system}.network
+      inputs.astal.packages.${system}.notifd
+      inputs.astal.packages.${system}.powerprofiles
+      inputs.astal.packages.${system}.wireplumber
 
       # Additional runtime executables
       fzf
@@ -33,12 +35,10 @@
     ];
   };
 
-  # Also add the development tools to your environment
-  home.packages = with pkgs; [
-    # AGS development shell
-    inputs.ags.packages.${pkgs.system}.agsFull
-
+  # Development tools (separate from runtime AGS)
+  home.packages = [
     # Astal CLI tools
-    inputs.astal.packages.${pkgs.system}.notifd
+    inputs.astal.packages.${system}.notifd
   ];
 }
+
