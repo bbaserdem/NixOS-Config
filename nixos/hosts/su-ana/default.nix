@@ -23,8 +23,8 @@ in {
     ../../bundles/nix.nix
   ];
 
-  # Trying to make stylix work, this is pain
-  stylix.image = ./wallpaper.jpg;
+  # Stylix
+  stylix.image = "${pkgs.pantheon.elementary-wallpapers}/share/backgrounds/Photo by SpaceX.jpg";
 
   # Nixpkgs options
   nixpkgs = {
@@ -94,7 +94,6 @@ in {
       "google-chrome"
 
       # Utility Tools
-      "qgis"
       "appcleaner"
       "karabiner-elements"
       "xquartz"
@@ -125,7 +124,7 @@ in {
 
   # Fonts to install
   fonts.packages = with pkgs; [
-    unstable.nerd-fonts.symbols-only
+    nerd-fonts.symbols-only
     noto-fonts-monochrome-emoji # Emoji fonts
     noto-fonts-color-emoji
     _3270font # Monospace
@@ -136,6 +135,7 @@ in {
     inconsolata # Monospace font, for prints
     iosevka # Monospace font, for terminal mostly
     jetbrains-mono # Readable monospace font
+    victor-mono
     noto-fonts
     source-serif-pro
     source-sans-pro

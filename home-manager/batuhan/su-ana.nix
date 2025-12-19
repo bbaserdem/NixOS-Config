@@ -15,8 +15,7 @@
     inputs.sops-nix.homeManagerModules.sops
     # Load syncthing from the main modules directory, it should mirror hm module
     ../../nixos/services/syncthing.nix
-    # My modules to load
-    ./apps/firefox.nix
+    # My modules to load, we do this separately
     ./apps/neovim.nix
     #./apps/syncthing-darwin.nix
     ./security/keepassxc.nix
