@@ -13,7 +13,6 @@
 in {
   # You can import other modules here
   imports = [
-    # inputs.mac-app-util.darwinModules.default
     inputs.sops-nix.darwinModules.sops
     inputs.home-manager.darwinModules.home-manager
     inputs.stylix.darwinModules.stylix
