@@ -20,9 +20,14 @@
       };
       GUI = {
         AdvancedSettings = true;
+        ColorPasswords = true;
         CompactMode = true;
         HidePasswords = true;
+        MinimizeOnClose = true;
         MinimizeOnStartup = true;
+        MinimizeToTray = true;
+        ShowTrayIcon = true;
+        TrayIconAppearance = "colorful";
       };
       SSHAgent.Enabled = true;
     };
