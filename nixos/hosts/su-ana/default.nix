@@ -83,12 +83,12 @@ in {
 
       # Programming
       "iterm2"
+      "kitty"
       "github"
       "bitwarden"
 
       # Other apps
       "obsidian"
-      "foobar2000"
       "zotero"
       "google-chrome"
 
