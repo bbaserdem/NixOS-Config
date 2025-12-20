@@ -10,7 +10,7 @@
   imports = [
     # Module imports
     outputs.homeManagerModules.userConfig
-    inputs.mac-app-util.homeManagerModules.default
+    # inputs.mac-app-util.homeManagerModules.default
     inputs.nixCats.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
     inputs.stylix.homeModules.stylix
