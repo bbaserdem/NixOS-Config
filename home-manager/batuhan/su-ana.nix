@@ -13,6 +13,7 @@
     inputs.mac-app-util.homeManagerModules.default
     inputs.nixCats.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
+    inputs.stylix.homeModules.stylix
     # Load syncthing from the main modules directory, it should mirror hm module
     ../../nixos/services/syncthing.nix
     # My modules to load, we do this separately
