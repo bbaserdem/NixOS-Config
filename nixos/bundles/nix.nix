@@ -27,7 +27,6 @@
               "pipe-operators"
               "ca-derivations"
             ];
-            auto-optimise-store = true;
             # For dev related things
             keep-outputs = true;
             keep-derivations = true;
@@ -44,7 +43,10 @@
       }
       (lib.mkIf (lib.hasSuffix "-linux" arch) (
         lib.optionalAttrs (lib.hasSuffix "-linux" arch) {
-          nix.gc.automatic = true;
+          nix = {
+            gc.automatic = true;
+            auto-optimise-store = true;
+          };
           programs = {
             # Linux-specific configuration
             nix-ld.enable = true;
@@ -57,6 +59,7 @@
         lib.optionalAttrs (lib.hasSuffix "-darwin" arch) {
           # Darwin-specific configuration
           nix = {
+            optimise.automatic = true;
             enable = true;
             gc.interval = [
               {
