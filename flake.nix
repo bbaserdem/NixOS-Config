@@ -50,13 +50,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Fix applications on mac
-    mac-app-util = {
-      url = "github:hraban/mac-app-util";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
+    # mac-app-util = {
+    #   url = "github:hraban/mac-app-util";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #     flake-utils.follows = "flake-utils";
+    #   };
+    # };
 
     # Eventually want to set up disk impermanence
     # TODO: Set this up
