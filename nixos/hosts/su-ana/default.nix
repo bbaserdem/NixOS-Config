@@ -91,6 +91,7 @@ in {
       "obsidian"
       "zotero"
       "google-chrome"
+      "keepassxc"
 
       # Utility Tools
       "appcleaner"

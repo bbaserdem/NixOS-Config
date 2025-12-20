@@ -1,11 +1,32 @@
 # Configuring KeepassXC
-{pkgs, ...}: {
-  programs.keepassxc = {
-    enable = true;
-    settings = {
-      General = {
-        ConfigVersion = 2;
-        MinimizeAfterUnlock = true;
+{
+  pkgs,
+  lib,
+  ...
+}:
+lib.mkMerge [
+  {
+    programs.keepassxc = {
+      enable = true;
+      settings = {
+        General = {
+          ConfigVersion = 2;
+          MinimizeAfterUnlock = true;
+        };
+        PasswordGenerator = {
+          AdditionalChars = "";
+          ExcludedChars = "";
+        };
+        Browser = {
+          Enabled = true;
+        };
+        GUI = {
+          AdvancedSettings = true;
+          CompactMode = true;
+          HidePasswords = true;
+          MinimizeOnStartup = true;
+        };
+        SSHAgent.Enabled = true;
       };
       PasswordGenerator = {
         AdditionalChars = "";
@@ -13,10 +34,6 @@
       };
       Browser = {
         Enabled = true;
-        CustomProxyLocation = false;
-        UpdateBinaryPath = false;
-        AlwaysAllowAccess = true;
-        AlwaysAllowUpdate = true;
       };
       GUI = {
         AdvancedSettings = true;
@@ -31,5 +48,13 @@
       };
       SSHAgent.Enabled = true;
     };
-  };
-}
+  }
+  (lib.mkIf (pkgs.stdenv.hostPlatform.isLinux) {
+    programs.keepassxc.settings.Browser = {
+      CustomProxyLocation = false;
+      UpdateBinaryPath = false;
+      AlwaysAllowAccess = true;
+      AlwaysAllowUpdate = true;
+    };
+  })
+]

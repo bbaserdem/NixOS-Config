@@ -15,8 +15,8 @@
       {path = "/System/Applications/Home.app/";}
       {path = "/Applications/Obsidian.app/";}
       {path = "/Applications/iTerm.app/";}
-      {path = "/Users/batuhan/Home Manager Apps/kitty.app/";}
-      {path = "/Users/batuhan/Home Manager Apps/KeePassXC.app/";}
+      {path = "/Applications/kitty.app/";}
+      {path = "/Applications/KeePassXC.app/";}
       {path = "/Applications/Slack.app/";}
       {path = "/System/Applications/Mail.app/";}
       {path = "/Applications/Repo Prompt.app/";}
