@@ -20,4 +20,7 @@
 
   # Cursor ai fix for the weird freezing bug v1.2
   claude-code = import ./claude-code.nix;
+
+  # Deluge torrent daemon with VPN support
+  deluge = import ./deluge;
 }

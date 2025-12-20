@@ -11,6 +11,7 @@
     # My variables
     outputs.homeManagerModules.userConfig
     # My modules
+    outputs.homeManagerModules.deluge
     ./apps
     ./email
     ./desktop

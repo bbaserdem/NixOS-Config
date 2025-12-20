@@ -5,6 +5,7 @@
     inputs.nixCats.homeManagerModules.default
     inputs.nixcord.homeModules.nixcord
     ./applist.nix
+    # ./bittorrent.nix
     ./discord.nix
     ./firefox.nix
     ./foliate.nix
