@@ -57,7 +57,7 @@
         lib.optionalAttrs (lib.hasSuffix "-darwin" arch) {
           # Darwin-specific configuration
           nix = {
-            enable = false;
+            enable = true;
             gc.interval = [
               {
                 Hour = 3;
