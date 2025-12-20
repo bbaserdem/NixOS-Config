@@ -17,6 +17,7 @@
     ../../nixos/services/syncthing.nix
     # My modules to load, we do this separately
     ./apps/neovim.nix
+    ./apps/kitty.nix
     #./apps/syncthing-darwin.nix
     ./security/keepassxc.nix
     ./security/sops.nix
