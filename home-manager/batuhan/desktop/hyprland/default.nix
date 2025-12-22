@@ -7,7 +7,8 @@
   ...
 }: {
   imports = [
-    ./ags.nix
+    inputs.dms.homeModules.dankMaterialShell.default
+    ./shell.nix
   ];
 
   # Entry point

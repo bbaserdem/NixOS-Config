@@ -55,16 +55,10 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # ----- Desktop ----- #
-    # Astal: Widget toolkit foundation
-    astal = {
-      url = "github:aylur/astal";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # AGS: Aylur's GTK Shell v3
-    ags = {
-      url = "github:aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.astal.follows = "astal";
+    # Dank Material Shell; based on quickshell
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # ----- Flair and small functionality ----- #
