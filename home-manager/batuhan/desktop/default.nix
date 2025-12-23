@@ -7,8 +7,8 @@
   # Some app modules
   imports = [
     # ./gnome.nix
-    ./riverwm
     ./hyprland
+    ./kanshi
     ./keyboard.nix
     ./xdg-paths.nix
   ];
