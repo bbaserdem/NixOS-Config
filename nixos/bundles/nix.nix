@@ -45,7 +45,7 @@
         lib.optionalAttrs (lib.hasSuffix "-linux" arch) {
           nix = {
             gc.automatic = true;
-            auto-optimise-store = true;
+            settings.auto-optimise-store = true;
           };
           programs = {
             # Linux-specific configuration
