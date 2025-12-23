@@ -1,6 +1,6 @@
 # home-manager/batuhan/desktop/hyprland/default.nix
 # Hyprland entry point
-{...}: {
+{config, ...}: {
   imports = [
     ./shell.nix
   ];
@@ -10,6 +10,9 @@
     colors.enable = true;
     enable = true;
   };
+
+  # Systemd fix
+  xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
 
   # Enable hyprland
   wayland.windowManager.hyprland = {
