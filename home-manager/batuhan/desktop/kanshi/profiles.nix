@@ -1,10 +1,6 @@
-# home-manager/batuhan/desktop/kanshi/monitors.nix
-# Kanshi; list of all the monitors to be used
+# home-manager/batuhan/desktop/kanshi/profiles.nix
+# Kanshi; profile definitions for monitor configurations
 {...}: {
-  imports = [
-    ./monitors.nix
-  ];
-
   services.kanshi.profiles = {
     yel-ana-default = {
       name = "Yel Ana: Default";

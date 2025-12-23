@@ -1,10 +1,6 @@
 # home-manager/batuhan/desktop/kanshi/monitors.nix
 # Kanshi; list of all the monitors to be used
 {...}: {
-  imports = [
-    ./monitors.nix
-  ];
-
   services.kanshi.settings = [
     {
       # The laptop internal monitor
