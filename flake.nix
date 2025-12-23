@@ -55,9 +55,9 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # ----- Desktop ----- #
-    # Dank Material Shell; based on quickshell
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
+    # Caelestia Shell; based on quickshell
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 

@@ -2,21 +2,27 @@
 # The shell config, using dank material shell
 {
   inputs,
-  pkgs,
+  config,
   ...
 }: {
   imports = [
-    inputs.dms.homeModules.dankMaterialShell.default
+    inputs.caelestia-shell.homeManagerModules.default
   ];
 
-  programs.dankMaterialShell = {
+  programs.caelestia = {
     enable = true;
-    # Core features
-    enableSystemMonitoring = false; # System monitoring widgets (dgop)
-    enableClipboard = false; # Clipboard history manager
-    enableVPN = false; # VPN management widget
-    enableDynamicTheming = false; # Wallpaper-based theming (matugen)
-    enableAudioWavelength = false; # Audio visualizer (cava)
-    enableCalendarEvents = false; # Calendar integration (khal)
+    systemd.enable = false;
+    settings = {
+      bar.status = {
+        showBattery = false;
+      };
+      paths.wallpaperDir = "${config.xdg.userDirs.pictures}/Wallpapers";
+    };
+    cli = {
+      enable = true;
+      settings = {
+        theme.enableGtk = false;
+      };
+    };
   };
 }
