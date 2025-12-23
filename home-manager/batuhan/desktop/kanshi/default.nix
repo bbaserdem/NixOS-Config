@@ -32,7 +32,7 @@
       # PROFILES
       {
         profile = {
-          name = "Yel Ana: Default";
+          name = "yel-ana_default";
           outputs = [
             {
               criteria = "$yel-ana_internal";
@@ -44,7 +44,7 @@
       }
       {
         profile = {
-          name = "Yel Ana: Home (Left)";
+          name = "yel-ana_home-left";
           outputs = [
             {
               criteria = "$yel-ana_internal";
@@ -60,7 +60,7 @@
       }
       {
         profile = {
-          name = "Yel Ana: Home (Right)";
+          name = "yel-ana_home-left";
           outputs = [
             {
               criteria = "$yel-ana_internal";
@@ -76,7 +76,7 @@
       }
       {
         profile = {
-          name = "Yertengri: Default";
+          name = "yertengri_default";
           outputs = [
             {
               criteria = "$yertengri_flat";
