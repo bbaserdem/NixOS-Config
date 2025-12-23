@@ -26,10 +26,10 @@
     };
   };
 
-  qt = {
-    enable = true;
-  };
-
+  # qt = {
+  #   enable = true;
+  #   style.name = "kvantum";
+  # };
   xdg.configFile = {
     "Kvantum/Gruvbox-Dark-Brown".source = "${pkgs.gruvbox-kvantum}/share/Kvantum/Gruvbox-Dark-Brown";
     "Kvantum/kvantum.kvconfig".text = ''
