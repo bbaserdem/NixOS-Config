@@ -1,5 +1,8 @@
 # Deluge VPN configuration
-{...}: {
+{outputs, ...}: {
+  imports = [
+    outputs.homeManagerModules.deluge-vpn
+  ];
   services.deluge-vpn = {
     enable = true;
 
@@ -50,3 +53,4 @@
     generateConfig = true;
   };
 }
+

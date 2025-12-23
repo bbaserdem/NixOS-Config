@@ -4,7 +4,7 @@
   programs = {
     hyprland = {
       enable = true;
-      withUWSM = true; # LAunch with Universal Wayland Session Manager
+      withUWSM = true; # Launch with Universal Wayland Session Manager
       xwayland.enable = true;
     };
     hyprlock.enable = true;

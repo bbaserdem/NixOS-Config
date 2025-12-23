@@ -22,31 +22,17 @@ lib.mkMerge [
         };
         GUI = {
           AdvancedSettings = true;
+          ColorPasswords = true;
           CompactMode = true;
           HidePasswords = true;
+          MinimizeOnClose = true;
           MinimizeOnStartup = true;
+          MinimizeToTray = true;
+          ShowTrayIcon = true;
+          TrayIconAppearance = "colorful";
         };
         SSHAgent.Enabled = true;
       };
-      PasswordGenerator = {
-        AdditionalChars = "";
-        ExcludedChars = "";
-      };
-      Browser = {
-        Enabled = true;
-      };
-      GUI = {
-        AdvancedSettings = true;
-        ColorPasswords = true;
-        CompactMode = true;
-        HidePasswords = true;
-        MinimizeOnClose = true;
-        MinimizeOnStartup = true;
-        MinimizeToTray = true;
-        ShowTrayIcon = true;
-        TrayIconAppearance = "colorful";
-      };
-      SSHAgent.Enabled = true;
     };
   }
   (lib.mkIf (pkgs.stdenv.hostPlatform.isLinux) {
