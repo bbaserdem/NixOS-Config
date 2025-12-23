@@ -1,11 +1,16 @@
 # home-manager/batuhan/desktop/hyprland/default.nix
 # Hyprland entry point
 {...}: {
+  imports = [
+    ./shell.nix
+  ];
+
   # Styling
   stylix.targets.hyprland = {
     colors.enable = true;
     enable = true;
   };
+
   # Enable hyprland
   wayland.windowManager.hyprland = {
     enable = true;
