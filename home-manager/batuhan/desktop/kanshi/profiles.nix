@@ -8,7 +8,7 @@
         {
           criteria = "$yel-ana_internal";
           position = "0,0";
-          scale = 1;
+          scale = 1.0;
         }
       ];
     };
@@ -22,7 +22,7 @@
         {
           criteria = "$yertengri_flat";
           position = "0,0";
-          scale = 1;
+          scale = 1.0;
         }
       ];
     };
@@ -36,7 +36,7 @@
         {
           criteria = "$yertengri_curved";
           position = "0,0";
-          scale = 1;
+          scale = 1.0;
         }
       ];
     };
@@ -51,7 +51,7 @@
         {
           criteria = "$yertengri_curved";
           position = "3840,0";
-          scale = 1;
+          scale = 1.0;
         }
       ];
     };
