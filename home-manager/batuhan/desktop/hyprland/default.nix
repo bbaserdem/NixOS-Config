@@ -2,7 +2,7 @@
 # Hyprland entry point
 {...}: {
   # Styling
-  stylix.ttargets.hyprland = {
+  stylix.targets.hyprland = {
     colors.enable = true;
     enable = true;
   };
