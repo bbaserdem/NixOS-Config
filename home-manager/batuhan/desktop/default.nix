@@ -19,17 +19,16 @@
       flatpakSupport.enable = true;
     };
     qt = {
-      #enable = true;
+      enable = true;
     };
     kde = {
       enable = true;
     };
   };
 
-  # qt = {
-  #   enable = true;
-  #   style.name = "kvantum";
-  # };
+  qt = {
+    enable = true;
+  };
   xdg.configFile = {
     "Kvantum/Gruvbox-Dark-Brown".source = "${pkgs.gruvbox-kvantum}/share/Kvantum/Gruvbox-Dark-Brown";
     "Kvantum/kvantum.kvconfig".text = ''
