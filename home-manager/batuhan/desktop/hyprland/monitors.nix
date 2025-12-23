@@ -7,7 +7,7 @@
   ...
 }: {
   services.kanshi = {
-    enable = true;
+    #enable = true;
 
     # All possible monitors
     settings = [

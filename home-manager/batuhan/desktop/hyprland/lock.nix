@@ -8,7 +8,7 @@
   };
 
   programs.hyprlock = {
-    enable = true;
+    #enable = true;
     settings = {
       general = {
         no_fade_in = false;

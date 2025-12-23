@@ -22,6 +22,7 @@
       name = "sddm";
     };
     kde.enable = true;
+    hyprland.enable = true;
     wallpaper = {
       name = "Sunset by the Pier";
       extension = "jpg";
