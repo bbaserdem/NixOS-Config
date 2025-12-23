@@ -6,7 +6,7 @@
       name = "Yel Ana: Default";
       outputs = [
         {
-          alias = "yel-ana_internal";
+          criteria = "$yel-ana_internal";
           position = "0,0";
           scale = 1;
         }
@@ -16,11 +16,11 @@
       name = "Yel Ana: Home (Left)";
       outputs = [
         {
-          alias = "yel-ana_internal";
+          criteria = "$yel-ana_internal";
           status = "disable";
         }
         {
-          alias = "yertengri_flat";
+          criteria = "$yertengri_flat";
           position = "0,0";
           scale = 1;
         }
@@ -30,11 +30,11 @@
       name = "Yel Ana: Home (Right)";
       outputs = [
         {
-          alias = "yel-ana_internal";
+          criteria = "$yel-ana_internal";
           status = "disable";
         }
         {
-          alias = "yertengri_curved";
+          criteria = "$yertengri_curved";
           position = "0,0";
           scale = 1;
         }
@@ -44,12 +44,12 @@
       name = "Yertengri: Default";
       outputs = [
         {
-          alias = "yertengri_flat";
+          criteria = "$yertengri_flat";
           position = "0,0";
           scale = 1.5;
         }
         {
-          alias = "yertengri_curved";
+          criteria = "$yertengri_curved";
           position = "3840,0";
           scale = 1;
         }
