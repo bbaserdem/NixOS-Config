@@ -13,10 +13,10 @@
 
     # We mkForce to override stylix
     font = lib.mkForce {
-      name = "Victor Mono";
-      package = pkgs.victor-mono;
-      # name = "Iosevka Light";
-      # package = pkgs.iosevka;
+      #name = "Victor Mono";
+      #package = pkgs.victor-mono;
+      name = "Iosevka Light";
+      package = pkgs.iosevka;
       size = 15;
     };
 
@@ -46,13 +46,13 @@
       map ctrl+shift+tab  send_text normal,application \x1b[9;6u
 
       # Iosevka overrides Fonts I want
-      #bold_font           Iosevka Heavy
-      #italic_font         Iosevka Light Italic
-      #bold_italic_font    Iosevka ExtraBold Oblique
-      #font_features       Iosevka-Light               +dlig +ss05
-      #font_features       Iosevka-Heavy               +dlig +ss05
-      #font_features       Iosevka-Light-Italic        +dlig +ss05
-      #font_features       Iosevka-ExtraBold-Oblique   +dlig +ss05
+      bold_font           Iosevka Heavy
+      italic_font         Iosevka Light Italic
+      bold_italic_font    Iosevka ExtraBold Oblique
+      font_features       Iosevka-Light               +dlig +ss05
+      font_features       Iosevka-Heavy               +dlig +ss05
+      font_features       Iosevka-Light-Italic        +dlig +ss05
+      font_features       Iosevka-ExtraBold-Oblique   +dlig +ss05
 
       # Nerd Font override
       # https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
