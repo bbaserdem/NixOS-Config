@@ -6,23 +6,22 @@
   ...
 }: {
   imports = [
-    inputs.caelestia-shell.homeManagerModules.default
+    inputs.dms.homeModules.dankMaterialShell.default
   ];
 
-  programs.caelestia = {
+  programs.dankMaterialShell = {
     enable = true;
-    systemd.enable = false;
-    settings = {
-      bar.status = {
-        showBattery = false;
-      };
-      paths.wallpaperDir = "${config.xdg.userDirs.pictures}/Wallpapers";
+    # We are on uwsm, let hyprland launch us
+    systemd = {
+      enable = false;
+      restartIfChanged = true;
     };
-    cli = {
-      enable = true;
-      settings = {
-        theme.enableGtk = false;
-      };
-    };
+    # Features
+    enableSystemMonitoring = true;
+    enableClipboard = true;
+    enableVPN = true;
+    enableDynamicTheming = true;
+    enableAudioWavelength = true;
+    enableCalendarEvents = false;
   };
 }

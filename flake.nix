@@ -56,8 +56,8 @@
 
     # ----- Desktop ----- #
     # Caelestia Shell; based on quickshell
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     # Hyprland dynamic monitor setup
