@@ -1,8 +1,7 @@
-# home-manager/batuhan/desktop/kanshi/default.nix
-# Kanshi; monitor hotswap manager entry point
+# home-manager/batuhan/desktop/monitors/yel-ana.nix
+# Kanshi; monitor hotswap for yel-ana
 {...}: {
   services.kanshi = {
-    enable = true;
     settings = [
       # MONITORS
       {
@@ -11,6 +10,8 @@
           criteria = "BOE 0x0BCA Unknown";
           alias = "yel-ana_internal";
           mode = "2256x1504@60.00Hz";
+          position = "0,0";
+          scale = 1.0;
         };
       }
       {
@@ -19,6 +20,8 @@
           criteria = "Dell Inc. DELL U2723QE 945Q834";
           alias = "yertengri_flat";
           mode = "3840x2160@60.00Hz";
+          position = "2256,0";
+          scale = 1.0;
         };
       }
       {
@@ -27,6 +30,8 @@
           criteria = "Dell Inc. DELL U3425WE B8KFV84";
           alias = "yertengri_curved";
           mode = "3440x1440@59.97Hz";
+          position = "2256,0";
+          scale = 1.0;
         };
       }
       # PROFILES
@@ -36,8 +41,7 @@
           outputs = [
             {
               criteria = "$yel-ana_internal";
-              position = "0,0";
-              scale = 1.0;
+              status = "enable";
             }
           ];
         };
@@ -52,8 +56,7 @@
             }
             {
               criteria = "$yertengri_flat";
-              position = "0,0";
-              scale = 1.0;
+              status = "enable";
             }
           ];
         };
@@ -68,25 +71,7 @@
             }
             {
               criteria = "$yertengri_curved";
-              position = "0,0";
-              scale = 1.0;
-            }
-          ];
-        };
-      }
-      {
-        profile = {
-          name = "yertengri_default";
-          outputs = [
-            {
-              criteria = "$yertengri_flat";
-              position = "0,0";
-              scale = 1.5;
-            }
-            {
-              criteria = "$yertengri_curved";
-              position = "3840,0";
-              scale = 1.0;
+              status = "enable";
             }
           ];
         };

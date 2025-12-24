@@ -8,7 +8,7 @@
   imports = [
     # ./gnome.nix
     ./hyprland
-    ./kanshi.nix
+    ./monitors
     ./keyboard.nix
     ./xdg-paths.nix
   ];
