@@ -3,6 +3,7 @@
 {
   config,
   inputs,
+  arch,
   ...
 }: let
   outPath = "${config.xdg.configHome}/hypr/monitor.conf";
@@ -13,6 +14,11 @@ in {
     inputs.hyprdynamicmonitors.homeManagerModules.default
   ];
 
+  # Include us in binary list
+  home.packages = [
+    inputs.hyprdynamicmonitors.packages.${arch}.default
+  ];
+
   # Enable hyprdynamicmonitors in hyprland
   wayland.windowManager.hyprland.settings.source = [
     #"${outPath}"
@@ -21,14 +27,14 @@ in {
   home.hyprdynamicmonitors = {
     enable = true;
     extraFiles = {
-      "${hdmName}/${confName}/generic" = ./generic.conf;
-      "${hdmName}/${confName}/home-left" = ./home-left.conf;
-      "${hdmName}/${confName}/home-right" = ./home-right.conf;
-      "${hdmName}/${confName}/home" = ./home.conf;
-      "${hdmName}/${confName}/yel-ana" = ./yel-ana.tmpl;
-      "${hdmName}/${confName}/yel-ana_present" = ./yel-ana_present.tmpl;
-      "${hdmName}/${confName}/yel-ana_home-left" = ./yel-ana_home-left.tmpl;
-      "${hdmName}/${confName}/yel-ana_home-right" = ./yel-ana_home-right.tmpl;
+      "${hdmName}/${confName}/generic.conf" = ./generic.conf;
+      "${hdmName}/${confName}/home-left.conf" = ./home-left.conf;
+      "${hdmName}/${confName}/home-right.conf" = ./home-right.conf;
+      "${hdmName}/${confName}/home.conf" = ./home.conf;
+      "${hdmName}/${confName}/yel-ana.tmpl" = ./yel-ana.tmpl;
+      "${hdmName}/${confName}/yel-ana_present.tmpl" = ./yel-ana_present.tmpl;
+      "${hdmName}/${confName}/yel-ana_home-left.tmpl" = ./yel-ana_home-left.tmpl;
+      "${hdmName}/${confName}/yel-ana_home-right.tmpl" = ./yel-ana_home-right.tmpl;
     };
     config = ''
       [general]
