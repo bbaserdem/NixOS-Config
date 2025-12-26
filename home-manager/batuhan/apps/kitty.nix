@@ -17,7 +17,7 @@
       #package = pkgs.victor-mono;
       name = "Iosevka Light";
       package = pkgs.iosevka;
-      size = 12;
+      size = 13;
     };
 
     # General settings

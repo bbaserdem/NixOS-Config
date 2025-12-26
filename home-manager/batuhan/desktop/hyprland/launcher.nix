@@ -1,19 +1,21 @@
 # home-manager/batuhan/desktop/hyprland/launcher.nix
 # Fuzzel; app launcher
 {...}: {
+  stylix.targets.fuzzel = {
+    enable = true;
+    colors.enable = true;
+    fonts.enable = true;
+    icons.enable = true;
+    opacity.enable = true;
+    polarity.enable = true;
+  };
+
   programs.fuzzel = {
     enable = true;
     settings = {
       main = {
-        font = "monospace:size=14";
-        icons-enabled = false;
-        prompt = "";
-        dpi-aware = "no";
-        use-bold = false;
-        inner-pad = 5;
-        vertical-pad = 20;
-        horizontal-pad = 20;
-        minimal-lines = true;
+        dpi-aware = "auto";
+        minimal-lines = false;
       };
     };
   };
