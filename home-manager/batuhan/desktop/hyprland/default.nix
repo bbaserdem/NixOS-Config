@@ -8,6 +8,7 @@
   imports = [
     ./settings.nix
     ./idle.nix
+    ./launcher.nix
     ./keybinds
     ./monitors
     ./shell

@@ -4,7 +4,7 @@
   services.hypridle = {
     enable = true;
     # Launch when the uwsm unit launches
-    systemd.target = "wayland-session@Hyprland.target";
+    systemdTarget = "wayland-session@Hyprland.target";
     settings = {
       general = {
         before_sleep_cmd = "loginctl lock-session";
