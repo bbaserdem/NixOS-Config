@@ -21,10 +21,10 @@ in {
   home.hyprdynamicmonitors = {
     enable = true;
     extraFiles = {
-      "${hdmName}/${confName}/generic" = ./generic.tmpl;
-      "${hdmName}/${confName}/home-left" = ./home-left.tmpl;
-      "${hdmName}/${confName}/home-right" = ./home-right.tmpl;
-      "${hdmName}/${confName}/home" = ./home.tmpl;
+      "${hdmName}/${confName}/generic" = ./generic.conf;
+      "${hdmName}/${confName}/home-left" = ./home-left.conf;
+      "${hdmName}/${confName}/home-right" = ./home-right.conf;
+      "${hdmName}/${confName}/home" = ./home.conf;
       "${hdmName}/${confName}/yel-ana" = ./yel-ana.tmpl;
       "${hdmName}/${confName}/yel-ana_present" = ./yel-ana_present.tmpl;
       "${hdmName}/${confName}/yel-ana_home-left" = ./yel-ana_home-left.tmpl;
@@ -41,7 +41,7 @@ in {
       debounce_time_ms = 1000
 
       [fallback_profile]
-      config_file = "${confName}/generic"
+      config_file = "${confName}/generic.conf"
       config_file_type = "static"
 
       [profiles.home-left]

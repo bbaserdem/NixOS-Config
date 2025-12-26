@@ -4,7 +4,7 @@
   imports = [
     ./settings.nix
     ./keybinds.nix
-    ./monitors.nix
+    ./monitors
     ./shell.nix
   ];
 
