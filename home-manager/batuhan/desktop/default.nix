@@ -17,9 +17,7 @@
       enable = true;
       flatpakSupport.enable = true;
     };
-    qt = {
-      enable = true;
-    };
+    # qt = { enable = true; };
     kde = {
       enable = true;
     };

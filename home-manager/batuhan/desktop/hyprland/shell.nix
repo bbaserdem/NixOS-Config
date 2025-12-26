@@ -24,4 +24,9 @@
     enableAudioWavelength = true;
     enableCalendarEvents = false;
   };
+
+  # Enable us to launch on start with uwsm
+  wayland.windowManager.hyprland.settings.exec-once = [
+    "uwsm app -- dms run"
+  ];
 }
