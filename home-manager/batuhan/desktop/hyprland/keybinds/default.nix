@@ -2,6 +2,7 @@
 # Keybindings entry point
 {...}: {
   imports = [
+    ./launchers.nix
     ./workspaces.nix
   ];
 

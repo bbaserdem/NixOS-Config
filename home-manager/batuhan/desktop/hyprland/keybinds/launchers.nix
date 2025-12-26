@@ -7,9 +7,8 @@
 
   # Enable hyprland
   wayland.windowManager.hyprland.settings = {
-    "$mainMod" = "SUPER";
     bind = [
-      "$mainMod, Enter, exec, uwsm app -- kitty"
+      "$mainMod, Return, exec, uwsm app -- kitty"
       "$mainMod, Space, exec, uwsm app -- fuzzel"
       "$mainMod, Escape, exec, loginctl lock-session"
       "$mainMod ALT SHIFT, Escape, exec, uwsm stop"

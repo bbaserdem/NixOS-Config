@@ -42,6 +42,9 @@ in {
       destination = "${outPath}"
       debounce_time_ms = 1500
 
+      [notifications]
+      timeout_ms = 2000
+
       [hot_reload_section]
       debounce_time_ms = 1000
 

@@ -22,5 +22,7 @@
     gnupg
     wireguard-tools
     neofetch
+    powertop
+    btop
   ];
 }
