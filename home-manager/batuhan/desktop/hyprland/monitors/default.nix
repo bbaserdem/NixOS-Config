@@ -21,7 +21,7 @@ in {
 
   # Enable hyprdynamicmonitors in hyprland
   wayland.windowManager.hyprland.settings.source = [
-    #"${outPath}"
+    "${outPath}"
   ];
 
   home.hyprdynamicmonitors = {
@@ -36,12 +36,11 @@ in {
       "${hdmName}/${confName}/yel-ana_home-left.tmpl" = ./yel-ana_home-left.tmpl;
       "${hdmName}/${confName}/yel-ana_home-right.tmpl" = ./yel-ana_home-right.tmpl;
     };
+    extraFlags = ["--enable-lid-events"];
     config = ''
       [general]
       destination = "${outPath}"
       debounce_time_ms = 1500
-      pre_apply_exec = "notify-send 'HyprDynamicMonitors' 'Switching profile ...'"
-      post_apply_exec = "notify-send 'HyprDynamicMonitors' 'Profile applied'"
 
       [hot_reload_section]
       debounce_time_ms = 1000

@@ -1,4 +1,4 @@
-# home-manager/batuhan/desktop/hyprland/shell.nix
+# home-manager/batuhan/desktop/hyprland/shell/default.nix
 # The shell config, using dank material shell
 {
   inputs,

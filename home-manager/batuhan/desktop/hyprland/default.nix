@@ -1,11 +1,17 @@
 # home-manager/batuhan/desktop/hyprland/default.nix
 # Hyprland entry point
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./settings.nix
-    ./keybinds.nix
+    ./idle.nix
+    ./keybinds
     ./monitors
-    ./shell.nix
+    ./shell
+    ./plugins
   ];
 
   # Styling
@@ -24,4 +30,10 @@
     portalPackage = null;
     systemd.enable = false;
   };
+
+  # Environment packages
+  home.packages = with pkgs; [
+    playerctl
+    brightnessctl
+  ];
 }
