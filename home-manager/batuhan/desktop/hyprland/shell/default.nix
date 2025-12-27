@@ -2,7 +2,7 @@
 # The shell config, using dank material shell
 {
   inputs,
-  config,
+  pkgs,
   ...
 }: {
   imports = [
@@ -28,5 +28,9 @@
   # Enable us to launch on start with uwsm
   wayland.windowManager.hyprland.settings.exec-once = [
     "uwsm app -- dms run"
+  ];
+
+  home.packages = with pkgs; [
+    papirus-icon-theme
   ];
 }

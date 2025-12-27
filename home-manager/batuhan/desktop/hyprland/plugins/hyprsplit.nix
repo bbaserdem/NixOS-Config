@@ -9,7 +9,7 @@
     settings = {
       plugin.hyprsplit = {
         num_workspaces = 10;
-        persistent_workspaces = false;
+        persistent_workspaces = true;
       };
     };
   };
