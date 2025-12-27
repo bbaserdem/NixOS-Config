@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    ./autostart.nix
     ./settings.nix
     ./idle.nix
     ./launcher.nix
