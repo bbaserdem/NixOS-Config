@@ -1,5 +1,9 @@
 # Language and keyboard settings
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   # Home settings
   home = {
     # Set layout
@@ -14,6 +18,20 @@
       base = "en_US.UTF-8";
       collate = "tr_TR.UTF-8";
       name = "tr_TR.UTF-8";
+    };
+  };
+
+  # fcitx5 for emoji and glyphs
+  i18n.inputMethod = {
+    typel = "fcitx5";
+    fcitx5 = {
+      waylandFrontend = true;
+      addons = with pkgs; [
+        fcitx5-m17n
+        fcitx5-qt5
+        fcitx5-qt6
+        fcitx5-gtk
+      ];
     };
   };
 
