@@ -20,6 +20,7 @@
     displayManager = {
       enable = true;
       name = "sddm";
+      # greetdProvider = "dms-greeter";
     };
     kde.enable = true;
     hyprland.enable = true;

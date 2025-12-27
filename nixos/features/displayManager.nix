@@ -3,9 +3,11 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: let
   cfg = config.myNixOS;
+  homeDir = "${config.users.users.${cfg.userName}.home}";
 in {
   options.myNixOS = {
     displayManager.name = lib.mkOption {
@@ -26,9 +28,14 @@ in {
         "regreet"
         "qtgreet"
         "gtkgreet"
+        "dms-greeter"
       ];
     };
   };
+
+  imports = [
+    inputs.dms.nixosModules.greeter
+  ];
 
   config = lib.mkMerge [
     # GDM config
@@ -76,6 +83,13 @@ in {
           default_session = {
             command = "${pkgs.greetd.qtgreet} --cmd sway";
           };
+        };
+      })
+      (lib.mkIf (cfg.displayManager.greetdProvider == "dms-greeter") {
+        programs.dankMaterialShell.greeter = {
+          enable = true;
+          compositor.name = "hyprland";
+          configHome = homeDir;
         };
       })
     ]))
