@@ -18,6 +18,7 @@
     bash
     dash
     zsh
+    nushell
     openssh
     gnupg
     wireguard-tools
