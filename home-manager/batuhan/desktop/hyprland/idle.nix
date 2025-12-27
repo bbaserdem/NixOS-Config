@@ -1,6 +1,8 @@
 # home-manager/batuhan/desktop/hyprland/idle.nix
 # Hypridle config
-{...}: {
+{pkgs, ...}: let
+  bctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+in {
   services.hypridle = {
     enable = true;
     # Launch when the uwsm unit launches
@@ -15,14 +17,14 @@
         {
           # 3:00 - Dim screen on idle
           timeout = 150;
-          on-timeout = "systemd-ac-power || brightnessctl -s set 10";
-          on-resume = "systemd-ac-power || brightnessctl -r";
+          on-timeout = "systemd-ac-power || ${bctl} -s set 10";
+          on-resume = "systemd-ac-power || ${bctl} -r";
         }
         {
           # 5:00 - Turn screen off
           timeout = 300;
           on-timeout = "systemd-ac-power || hyprctl dispatch dpms off";
-          on-resume = "systemd-ac-power || (hyprctl dispatch dpms on && brightnessctl -r)";
+          on-resume = "systemd-ac-power || (hyprctl dispatch dpms on && ${bctl} -r)";
         }
         {
           # 5:10 - Lock screen
@@ -39,7 +41,7 @@
           # 10:00 - Display off
           timeout = 600;
           on-timeout = "systemd-ac-power && hyprctl dispatch dpms off";
-          on-resume = "systemd-ac-power && (hyprctl dispatch dpms on && brightnessctl -r)";
+          on-resume = "systemd-ac-power && (hyprctl dispatch dpms on && ${bctl} -r)";
         }
         {
           # 10:30 - Lock screen

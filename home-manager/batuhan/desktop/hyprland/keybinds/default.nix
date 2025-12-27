@@ -10,14 +10,24 @@
   wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
     bind = [
-      "$mainMod, Q, killactive,"
-      "$mainMod, V, togglefloating,"
-      "$mainMod, P, pseudo, # dwindle"
-      "$mainMod, J, togglesplit, # dwindle"
-      "$mainMod, left, movefocus, l"
+      # Window management
+      "$mainMod, Q, killactive," # Closes window
+      "$mainMod, F, togglefloating," # Makes floating window
+      "$mainMod, P, pseudo," # Switch to pseudo-tiling
+      # Split modifiers
+      "$mainMod, Period,  layoutmsg, togglesplit," # Change split direction
+      "$mainMod, Comma,   layoutmsg, swapsplit," # Swap windows in split
+      "$mainMod, Quote,   layoutmsg, movetoroot unstable" # Bring to front
+      # Preselect split
+      "$mainMod ALT, left,  layoutmsg, preselect l"
+      "$mainMod ALT, right, layoutmsg, preselect r"
+      "$mainMod ALT, up,    layoutmsg, preselect u"
+      "$mainMod ALT, down,  layoutmsg, preselect d"
+      # Change window focus
+      "$mainMod, left,  movefocus, l"
       "$mainMod, right, movefocus, r"
-      "$mainMod, up, movefocus, u"
-      "$mainMod, down, movefocus, d"
+      "$mainMod, up,    movefocus, u"
+      "$mainMod, down,  movefocus, d"
     ];
     bindm = [
       "$mainMod, mouse:272, movewindow"

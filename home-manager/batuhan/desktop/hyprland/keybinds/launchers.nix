@@ -17,6 +17,8 @@
       "$mainMod, Escape, exec, loginctl lock-session"
       "$mainMod ALT SHIFT, Escape, exec, uwsm stop"
     ];
+    # l: Want to still work if input is disabled
+    # e: Repeatable
     bindel = [
       ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
       ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
@@ -32,4 +34,7 @@
       ", XF86AudioPrev, exec, playerctl previous"
     ];
   };
+
+  home.packages = with pkgs; [
+  ];
 }
