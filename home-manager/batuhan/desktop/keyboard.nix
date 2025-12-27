@@ -23,7 +23,7 @@
 
   # fcitx5 for emoji and glyphs
   i18n.inputMethod = {
-    typel = "fcitx5";
+    type = "fcitx5";
     fcitx5 = {
       waylandFrontend = true;
       addons = with pkgs; [

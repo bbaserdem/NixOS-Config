@@ -17,27 +17,16 @@
       enable = true;
       flatpakSupport.enable = true;
     };
-    # qt = { enable = true; };
     kde = {
       enable = true;
     };
   };
 
-  # qt = {
-  #   enable = true;
-  #   style.name = "kvantum";
-  # };
-  xdg.configFile = {
-    "Kvantum/Gruvbox-Dark-Brown".source = "${pkgs.gruvbox-kvantum}/share/Kvantum/Gruvbox-Dark-Brown";
-    "Kvantum/kvantum.kvconfig".text = ''
-      [General]
-      theme=Gruvbox-Dark-Brown
-    '';
-  };
+  # Enable autostarting stuff
+  xdg.autostart.enable = true;
 
   home.packages = with pkgs; [
-    libsForQt5.qtstyleplugin-kvantum
-    kdePackages.qtstyleplugin-kvantum
-    gruvbox-kvantum
+    libsForQt5.qt5ct
+    kdePackages.qt6ct
   ];
 }

@@ -1,10 +1,6 @@
 # home-manager/batuhan/desktop/hyprland/keybinds/default.nix
 # Keybindings entry point
-{...}: {
-  imports = [
-    ./workspaces.nix
-  ];
-
+{pkgs, ...}: {
   # Enable hyprland
   wayland.windowManager.hyprland.settings = {
     bind = [

@@ -22,14 +22,14 @@ in {
     displayManager.greetdProvider = lib.mkOption {
       default = null;
       description = "Greetd provider";
-      type = lib.types.nullOr lib.types.enum [
+      type = lib.types.nullOr (lib.types.enum [
         "wlgreet"
         "tuigreet"
         "regreet"
         "qtgreet"
         "gtkgreet"
         "dms-greeter"
-      ];
+      ]);
     };
   };
 
@@ -69,12 +69,11 @@ in {
     })
 
     # Greetd config
-    (lib.mkIf (cfg.displayManager.name == "qtgreet") (lib.mkMerge [
+    (lib.mkIf (cfg.displayManager.name == "greetd") (lib.mkMerge [
       {
         # Unconditional
         services.greetd = {
           enable = true;
-          vt = 1;
           restart = true;
         };
       }
@@ -90,6 +89,10 @@ in {
           enable = true;
           compositor.name = "hyprland";
           configHome = homeDir;
+          logs = {
+            save = true;
+            path = "/tmp/dms-greeter.log";
+          };
         };
       })
     ]))

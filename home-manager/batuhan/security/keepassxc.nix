@@ -8,6 +8,7 @@ lib.mkMerge [
   {
     programs.keepassxc = {
       enable = true;
+      autostart = true;
       settings = {
         General = {
           ConfigVersion = 2;

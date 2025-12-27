@@ -20,6 +20,7 @@
     displayManager = {
       enable = true;
       name = "sddm";
+      # name = "greetd";
       # greetdProvider = "dms-greeter";
     };
     kde.enable = true;
