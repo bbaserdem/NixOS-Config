@@ -33,7 +33,7 @@
     undistractMe = {
       enable = true;
       timeout = 20;
-      playSound = true;
+      playSound = false;
     };
     # Bash settings
     vteIntegration = true;
