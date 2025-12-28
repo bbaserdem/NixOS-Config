@@ -2,8 +2,8 @@
 {config, ...}: {
   imports = [
     ./applist.nix
-    ./neomutt
-    ./accounts
+    # ./neomutt
+    # ./accounts
   ];
 
   # Grab the password
@@ -22,22 +22,17 @@
 
   # Specific apps usage
   programs = {
-    lieer.enable = true;
-    msmtp.enable = true;
-    notmuch = {
-      enable = true;
-      new.tags = [];
-    };
-    astroid = {
-      enable = true;
-      externalEditor = null;
-      pollScript = "";
-    };
+    # lieer.enable = true;
+    # msmtp.enable = true;
+    # notmuch = {
+    #   enable = true;
+    #   new.tags = [];
+    # };
   };
 
   services = {
-    imapnotify.enable = true;
-    lieer.enable = true;
+    # imapnotify.enable = true;
+    # lieer.enable = true;
   };
 
   # A shell alias
