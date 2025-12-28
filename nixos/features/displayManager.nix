@@ -49,24 +49,23 @@ in {
         };
       };
       environment.systemPackages = with pkgs; [
-        # The theme is in unstable only for now
-        sddm-astronaut-blackHole
+        (sddm-astronaut.override {embeddedTheme = "pixel_sakura";})
         kdePackages.qtmultimedia
         kdePackages.qtvirtualkeyboard
         kdePackages.qtsvg
       ];
     })
 
-    # Greetd config
+    # Greetd configs
     (lib.mkIf (cfg.displayManager.name == "regreet") {
       stylix.targets.regreet = {
+        enable = true;
         colors.enable = true;
         cursor.enable = true;
         fonts.enable = true;
         icons.enable = true;
         image.enable = true;
         imageScalingMode.enable = true;
-        enable = true;
       };
       programs.regreet = {
         enable = true;

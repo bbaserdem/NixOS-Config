@@ -63,14 +63,6 @@
     variant = "mocha";
   };
 
-  # SDDM QT6 theme with different themes, need to pull from unstable for now
-  sddm-astronaut-pixelSakura = prev.sddm-astronaut.override {
-    embeddedTheme = "pixel_sakura";
-  };
-  sddm-astronaut-blackHole = prev.sddm-astronaut .override {
-    embeddedTheme = "black_hole";
-  };
-
   # Add some fonts to cursor code
   # Get the latest version
   # Pull from unstable, to use vscode generic builder
