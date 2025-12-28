@@ -37,5 +37,6 @@
   home.packages = with pkgs; [
     playerctl
     brightnessctl
+    poweralertd
   ];
 }

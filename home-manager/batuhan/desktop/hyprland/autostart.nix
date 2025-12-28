@@ -7,5 +7,7 @@
     "uwsm app -- dms run"
     # Password manager
     "uwsm app -- keepassxc"
+    # Power alert daemon
+    "uwsm app -- poweralertd -s"
   ];
 }
