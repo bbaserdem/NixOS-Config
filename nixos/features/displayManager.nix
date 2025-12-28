@@ -59,7 +59,7 @@ in {
 
     # Greetd config
     (lib.mkIf (cfg.displayManager.name == "regreet") {
-      stylix.target.regreet = {
+      stylix.targets.regreet = {
         colors.enable = true;
         cursor.enable = true;
         fonts.enable = true;
