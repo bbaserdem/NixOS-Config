@@ -19,9 +19,9 @@
     userDesktop = "plasma";
     displayManager = {
       enable = true;
-      name = "sddm";
-      # name = "greetd";
-      # greetdProvider = "dms-greeter";
+      # name = "sddm";
+      name = "regreet";
+      # name = "dms-greeter";
     };
     kde.enable = true;
     hyprland.enable = true;
