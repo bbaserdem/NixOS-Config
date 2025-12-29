@@ -72,7 +72,13 @@
       ];
     };
     kernel.sysctl = {"vm.swappiness" = 0;};
-    kernelModules = ["kvm-amd"];
+    extraModulePackages = with config.boot.kernelPackages; [
+      framework-laptop-kmod
+    ];
+    kernelModules = [
+      "kvm-amd"
+      "framework-laptop-kmod"
+    ];
     loader = {
       efi = {
         canTouchEfiVariables = true;
