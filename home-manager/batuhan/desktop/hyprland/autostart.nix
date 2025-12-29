@@ -3,11 +3,9 @@
 {...}: {
   # Enable programs
   wayland.windowManager.hyprland.settings.exec-once = [
-    # Shell
-    "uwsm app -- dms run"
-    # Password manager
-    "uwsm app -- keepassxc"
-    # Power alert daemon
-    "uwsm app -- poweralertd -s"
+    # Shell - as service for stability
+    "uwsm app -t service -- dms run"
+    # Power alert daemon - background daemon
+    "uwsm app -t service -- poweralertd -s"
   ];
 }

@@ -9,7 +9,7 @@ in {
     systemdTarget = "wayland-session@Hyprland.target";
     settings = {
       general = {
-        before_sleep_cmd = "loginctl lock-session";
+        before_sleep_cmd = "loginctl lock-session && hyprctl dispatch dpms off";
         after_sleep_cmd = "hyprctl dispatch dpms on";
       };
       listener = [
@@ -35,6 +35,11 @@ in {
           # 6:00 - Suspend
           timeout = 360;
           on-timeout = "systemd-ac-power || systemctl suspend";
+        }
+        {
+          # 30:00 - Hibernate
+          timeout = 360;
+          on-timeout = "systemd-ac-power || systemctl hybrid-sleep";
         }
         # POWERED
         {

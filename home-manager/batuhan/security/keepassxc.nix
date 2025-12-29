@@ -43,5 +43,12 @@ lib.mkMerge [
       AlwaysAllowAccess = true;
       AlwaysAllowUpdate = true;
     };
+
+    # Create a drop-in for the XDG autostart service to wait for system tray
+    xdg.configFile."systemd/user/app-org.keepassxc.KeePassXC@autostart.service.d/wait-for-tray.conf".text = ''
+      [Unit]
+      After=tray.target
+      Wants=tray.target
+    '';
   })
 ]

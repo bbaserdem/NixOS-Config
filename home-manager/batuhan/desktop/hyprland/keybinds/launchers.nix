@@ -12,6 +12,13 @@
       # Functionality
       "$mainMod, Escape, exec, loginctl lock-session"
       "$mainMod ALT SHIFT, Escape, exec, uwsm stop"
+      # Screenshot
+      "              , Print, exec, dms screenshot full   --no-clipboard --format png --filename \"$(hostname)_$(date +'%Y-%m-%d_%H-%M-%S')\""
+      "         SHIFT, Print, exec, dms screenshot full   --no-file"
+      "$mainMod      , Print, exec, dms screenshot region --no-clipboard --format png --filename \"$(hostname)_$(date +'%Y-%m-%d_%H-%M-%S')\""
+      "$mainMod SHIFT, Print, exec, dms screenshot region --no-file"
+      "ALT           , Print, exec, dms screenshot all    --no-clipboard --format png --filename \"$(hostname)_$(date +'%Y-%m-%d_%H-%M-%S')\""
+      "ALT      SHIFT, Print, exec, dms screenshot all    --no-file"
     ];
     # l: Want to still work if input is disabled
     # e: Repeatable
