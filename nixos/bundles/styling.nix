@@ -114,7 +114,6 @@ in {
         base16-schemes
         # Fonts
         nerd-fonts.symbols-only
-        noto-fonts-monochrome-emoji # Emoji fonts
         noto-fonts-color-emoji
         _3270font # Monospace
         fira-code # Monospace with ligatures

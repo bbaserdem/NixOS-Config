@@ -39,7 +39,6 @@
     obs.enable = true;
     polkit.enable = true;
     virtualization.enable = true;
-    ibus.enable = true;
 
     # Services
     services = {

@@ -40,13 +40,13 @@ in {
     config = ''
       [general]
       destination = "${outPath}"
-      debounce_time_ms = 1500
+      debounce_time_ms = 500
 
       [notifications]
       timeout_ms = 2000
 
       [hot_reload_section]
-      debounce_time_ms = 1000
+      debounce_time_ms = 500
 
       [fallback_profile]
       config_file = "${confName}/generic.conf"

@@ -21,6 +21,48 @@
     };
   };
 
+  stylix.targets.fcitx5 = {
+    enable = true;
+    colors.enable = true;
+    fonts.enable = true;
+  };
+
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      addons = with pkgs; [
+        kdePackages.fcitx5-qt
+        libsForQt5.fcitx5-qt
+        fcitx5-gtk
+      ];
+      quickPhrase = {
+        # Emojis
+        ":evilsmirk:" = "😈";
+      };
+      settings.addons = {
+        quickphrase = {
+          globalSection = {
+            "Choose Modifier" = "None";
+            Spell = true;
+            FallbackSpellLanguage = "en";
+          };
+          sections = {
+            TriggerKey = {
+              "0" = "Control+period";
+              "1" = "Super+grave";
+            };
+          };
+        };
+      };
+    };
+  };
+  home.packages = with pkgs; [
+    kdePackages.fcitx5-qt
+    libsForQt5.fcitx5-qt
+    fcitx5-gtk
+  ];
+
   # Dconf settings
   dconf.settings = {
     # IBUS related options (for emoji and utf input)

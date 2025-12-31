@@ -28,6 +28,11 @@
       "$mainMod, right, movefocus, r"
       "$mainMod, up,    movefocus, u"
       "$mainMod, down,  movefocus, d"
+      # Move active window
+      "$mainMod SHIFT, left,  movewindow, l"
+      "$mainMod SHIFT, right, movewindow, r"
+      "$mainMod SHIFT, up,    movewindow, u"
+      "$mainMod SHIFT, down,  movewindow, d"
     ];
     bindm = [
       "$mainMod, mouse:272, movewindow"
