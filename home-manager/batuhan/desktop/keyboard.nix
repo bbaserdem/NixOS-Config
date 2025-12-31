@@ -21,45 +21,6 @@
     };
   };
 
-  # fcitx5 for emoji and glyphs
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5 = {
-      waylandFrontend = true;
-      addons = with pkgs; [
-        fcitx5-qt5
-        fcitx5-qt6
-        fcitx5-gtk
-        kdePackages.fcitx5-chinese-addons
-      ];
-      quickPhrase = {
-        lenny = "( ͡° ͜ʖ ͡°)";
-        shrug = "¯\\_(ツ)_/¯";
-        shruglol = "¯\(°_o)/¯";
-        tableflip = "(╯°□°）╯︵ ┻━┻";
-        tableflip2 = "┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻";
-        uwu = "UωU";
-      };
-      settings = {
-        globalOptions = {
-          "Hotkey/TriggerKeys" = {
-            "0" = "Control+Space";
-          };
-          extraConfig = {
-            emoji = {
-              "TriggerKey" = "Control+period";
-            };
-            unicode = {
-              "TriggerKey" = "Control+Shift+u";
-              "DirectUnicodeMode" = "Control+Shift+u";
-            };
-          };
-        };
-      };
-    };
-  };
-
   # Dconf settings
   dconf.settings = {
     # IBUS related options (for emoji and utf input)
