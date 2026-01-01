@@ -18,10 +18,10 @@
           propagatedBuildInputs = [pkgs.python3Packages.beets-alternatives];
         };
         # TODO: Marked as broken, fix this
-        # copyartifacts = {
-        #   enable = true;
-        #   propagatedBuildInputs = [pkgs.python3Packages.beets-copyartifacts];
-        # };
+        copyartifacts = {
+          enable = true;
+          propagatedBuildInputs = [pkgs.python3Packages.beets-copyartifacts];
+        };
       };
     };
     mpdIntegration = {
