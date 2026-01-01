@@ -32,6 +32,7 @@ in {
       name = "Snow-Capped Mountain";
       extension = "jpg";
     };
+    hyprland.enable = true;
 
     # Features
     bluetooth.enable = true;
@@ -40,7 +41,6 @@ in {
       enable = true;
       flavor = "dark";
     };
-    hyprland.enable = true;
     keymap.enable = true;
     obs.enable = true;
     polkit.enable = true;
