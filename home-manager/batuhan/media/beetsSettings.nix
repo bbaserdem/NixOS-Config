@@ -72,6 +72,11 @@
       "label"
     ];
     genre = true;
+    external_ids = {
+      discogs = "yes";
+      bandcamp = "yes";
+      deezer = "yes";
+    };
     user = "silverbluep";
     pass = "";
   };

@@ -55,11 +55,6 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # ----- Desktop ----- #
-    # Caelestia Shell; based on quickshell
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     # Hyprland dynamic monitor setup
     hyprdynamicmonitors = {
       url = "github:fiffeek/hyprdynamicmonitors";

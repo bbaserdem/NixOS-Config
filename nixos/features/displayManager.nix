@@ -17,14 +17,9 @@ in {
         "gdm"
         "sddm"
         "regreet"
-        "dms-greeter"
       ];
     };
   };
-
-  imports = [
-    inputs.dms.nixosModules.greeter
-  ];
 
   config = lib.mkMerge [
     # GDM config
@@ -69,17 +64,6 @@ in {
       };
       programs.regreet = {
         enable = true;
-      };
-    })
-    (lib.mkIf (cfg.displayManager.name == "dms-greeter") {
-      programs.dankMaterialShell.greeter = {
-        enable = true;
-        compositor.name = "hyprland";
-        configHome = homeDir;
-        logs = {
-          save = true;
-          path = "/tmp/dms-greeter.log";
-        };
       };
     })
   ];

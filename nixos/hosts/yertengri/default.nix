@@ -22,12 +22,12 @@ in {
   # Module toggles
   myNixOS = {
     # Desktop
-    userDesktop = "plasma";
+    userDesktop = "hyprland-uwsm";
     displayManager = {
       enable = true;
-      name = "sddm";
+      name = "gdm";
     };
-    kde.enable = true;
+    gnome.enable = true;
     wallpaper = {
       name = "Snow-Capped Mountain";
       extension = "jpg";
