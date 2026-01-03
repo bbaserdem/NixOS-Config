@@ -10,7 +10,7 @@
     # Shell - as service for stability
     "uwsm app -t service -- ${config.programs.hyprpanel.package}/bin/hyprpanel"
     # Power alert daemon - background daemon
-    "uwsm app -t service -- ${config.programs.poweralertd.package}/bin/poweralertd -s"
+    "uwsm app -t service -- ${config.services.poweralertd.package}/bin/poweralertd -s"
     # Inhibit power button handling by logind so we can show a login script
     "systemd-inhibit --what=handle-power-key --who=hyprland --why='Handled by Hyprland keybinds' --mode=block sleep infinity"
 
@@ -24,6 +24,9 @@
   stylix.targets.hyprpaper = {
     enable = true;
     image.enable = true;
+  };
+  services.hyprpaper = {
+    enable = true;
   };
   systemd.user.services.hyprpaper = {
     Install.WantedBy = lib.mkForce ["wayland-session@Hyprland.target"];
