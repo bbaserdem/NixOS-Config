@@ -26,6 +26,9 @@ in {
 
   home.hyprdynamicmonitors = {
     enable = true;
+    extraFlags = ["--enable-lid-events"];
+    systemdTarget = "wayland-session@Hyprland.target";
+
     extraFiles = {
       "${hdmName}/${confName}/generic.conf" = ./generic.conf;
       "${hdmName}/${confName}/home-left.conf" = ./home-left.conf;
@@ -36,7 +39,6 @@ in {
       "${hdmName}/${confName}/yel-ana_home-left.tmpl" = ./yel-ana_home-left.tmpl;
       "${hdmName}/${confName}/yel-ana_home-right.tmpl" = ./yel-ana_home-right.tmpl;
     };
-    extraFlags = ["--enable-lid-events"];
     config = ''
       [general]
       destination = "${outPath}"

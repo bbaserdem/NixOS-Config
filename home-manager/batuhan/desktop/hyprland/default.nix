@@ -6,14 +6,15 @@
   ...
 }: {
   imports = [
-    ./autostart.nix
-    ./settings.nix
-    ./idle.nix
-    ./launcher.nix
     ./keybinds
     ./monitors
-    ./shell
-    ./plugins
+    ./autostart.nix
+    ./idle.nix
+    ./launcher.nix
+    ./lock.nix
+    ./plugins.nix
+    ./settings.nix
+    ./shell.nix
   ];
 
   # Styling
