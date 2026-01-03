@@ -4,9 +4,6 @@
   bctl = "${pkgs.brightnessctl}/bin/brightnessctl";
 in {
   services.hypridle = {
-    enable = true;
-    # Launch when the uwsm unit launches
-    systemdTarget = "wayland-session@Hyprland.target";
     settings = {
       general = {
         lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
