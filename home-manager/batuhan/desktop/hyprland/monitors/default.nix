@@ -10,10 +10,6 @@
   hdmName = "hyprdynamicmonitors";
   confName = "hyprconfigs";
 in {
-  imports = [
-    inputs.hyprdynamicmonitors.homeManagerModules.default
-  ];
-
   # Include us in binary list
   home.packages = [
     inputs.hyprdynamicmonitors.packages.${arch}.default
@@ -25,10 +21,7 @@ in {
   ];
 
   home.hyprdynamicmonitors = {
-    enable = true;
     extraFlags = ["--enable-lid-events"];
-    systemdTarget = "wayland-session@Hyprland.target";
-
     extraFiles = {
       "${hdmName}/${confName}/generic.conf" = ./generic.conf;
       "${hdmName}/${confName}/home-left.conf" = ./home-left.conf;

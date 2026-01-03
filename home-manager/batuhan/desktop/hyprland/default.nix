@@ -3,11 +3,16 @@
 {
   config,
   pkgs,
+  host,
+  inputs,
   ...
 }: {
   imports = [
-    ./keybinds
+    # External
+    inputs.hyprdynamicmonitors.homeManagerModules.default
+    # Internal
     ./monitors
+    ./keybinds.nix
     ./autostart.nix
     ./idle.nix
     ./launcher.nix
@@ -40,4 +45,13 @@
     brightnessctl
     poweralertd
   ];
+
+  # Utilities
+  programs = {
+    # Screenshot utility
+    hyprshot = {
+      enable = true;
+      saveLocation = "${config.xdg.userDirs.pictures}/Screenshots/${host}/";
+    };
+  };
 }

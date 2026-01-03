@@ -8,6 +8,9 @@
   # Stylix color scheme
   stylix.targets.kitty.enable = true;
 
+  # Set as default terminale
+  home.sessionVariables.TERMINAL = "${config.programs.kitty.package}/bin/kitty";
+
   programs.kitty = {
     enable = true;
 

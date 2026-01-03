@@ -43,22 +43,5 @@ lib.mkMerge [
       AlwaysAllowAccess = true;
       AlwaysAllowUpdate = true;
     };
-
-    # Create a drop-in for the XDG autostart service to wait for system tray
-    xdg.configFile."systemd/user/app-org.keepassxc.KeePassXC@autostart.service.d/wait-for-tray.conf".text = ''
-      [Unit]
-      After=tray.target
-      Wants=tray.target
-      
-      [Service]
-      # Work around race condition with tray providers in Hyprland
-      ExecStartPre=${pkgs.writeShellScript "keepassxc-wait-tray" ''
-        # Only delay in Hyprland where dms needs time to initialize
-        if [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && [ -n "$WAYLAND_DISPLAY" ]; then
-          # Wait a bit for dms tray to initialize
-          sleep 2
-        fi
-      ''}
-    '';
   })
 ]
