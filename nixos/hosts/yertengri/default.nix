@@ -27,7 +27,7 @@ in {
       enable = true;
       name = "sddm";
     };
-    gnome.enable = true;
+    # gnome.enable = true;
     kde.enable = true;
     wallpaper = {
       name = "Snow-Capped Mountain";
