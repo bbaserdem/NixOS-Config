@@ -25,9 +25,10 @@ in {
     userDesktop = "hyprland-uwsm";
     displayManager = {
       enable = true;
-      name = "gdm";
+      name = "sddm";
     };
     gnome.enable = true;
+    kde.enable = true;
     wallpaper = {
       name = "Snow-Capped Mountain";
       extension = "jpg";

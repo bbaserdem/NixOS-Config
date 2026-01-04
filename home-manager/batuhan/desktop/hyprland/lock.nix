@@ -93,7 +93,7 @@ in {
           # Music
           monitor = "";
           text = "cmd[update:1000] ${hyprlockPlayerStatus}";
-          color = config.programs.hyprlock.settings.input_field.font_color;
+          color = config.programs.hyprlock.settings.input-field.font_color;
           font_size = 16;
           font_family = "Monospace";
           position = "0, -30";
@@ -104,9 +104,9 @@ in {
           # Date
           monitor = "";
           text = "cmd[update:1000] echo \"$(date +\"%A, %d %B %Y\")\"";
-          color = config.programs.hyprlock.settings.input_field.font_color;
+          color = config.programs.hyprlock.settings.input-field.font_color;
           font_size = 20;
-          font_family = "Serif";
+          font_family = "Sans";
           position = "0, 405";
           halign = "center";
           valign = "center";
@@ -115,9 +115,9 @@ in {
           # Time
           monitor = "";
           text = "cmd[update:1000] echo \"$(date +\"%H:%M\")\"";
-          color = config.programs.hyprlock.settings.input_field.font_color;
+          color = config.programs.hyprlock.settings.input-field.font_color;
           font_size = 93;
-          font_family = "Serif";
+          font_family = "Sans";
           position = "0, 310";
           halign = "center";
           valign = "center";
@@ -126,9 +126,9 @@ in {
           # User
           monitor = "";
           text = "$USER";
-          color = config.programs.hyprlock.settings.input_field.font_color;
+          color = config.programs.hyprlock.settings.input-field.font_color;
           font_size = 16;
-          font_family = "Serif";
+          font_family = "Sans";
           position = "0, 30";
           halign = "center";
           valign = "bottom";

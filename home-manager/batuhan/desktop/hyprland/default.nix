@@ -28,8 +28,21 @@
     enable = true;
   };
 
-  # Systemd fix for uwsm
-  xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+  # Systemd fix for uwsm, and env variables for hyprland
+  xdg.configFile = {
+    # Systemd fix for uwsm
+    "uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+    # Env vars for hyprland
+    "uwsm/env-hyprland".text = ''
+      export HYPRCURSOR_SIZE=24
+      export QT_QPA_PLATFORMTHEME=qt6ct
+      export QT_QPA_PLATFORM=wayland
+      export QT_IM_MODULE="fcitx"
+      export QT_IM_MODULES="wayland;fcitx;ibus"
+      unset GTK_IM_MODULE
+    '';
+  };
+  # Environment variables for hyprland
 
   # Enable hyprland
   wayland.windowManager.hyprland = {
@@ -44,7 +57,7 @@
     playerctl
     brightnessctl
     poweralertd
-    unstable.runapp
+    # unstable.runapp  # Using uwsm app instead
   ];
 
   # Utilities

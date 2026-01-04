@@ -4,14 +4,6 @@
   # Enable hyprland
   wayland.windowManager.hyprland.settings = {
     monitor = ",preferred,auto,auto";
-    env = [
-      "XCURSOR_SIZE,24"
-      "HYPRCURSOR_SIZE,24"
-      "QT_QPA_PLATFORMTHEME,qt6ct"
-      "QT_QPA_PLATFORM,wayland"
-      "QT_IM_MODULE,"
-      "GTK_IM_MODULE,"
-    ];
     general = {
       gaps_in = 5;
       gaps_out = 20;

@@ -11,7 +11,7 @@
   hyprpanel = "${config.programs.hyprpanel.package}/bin/hyprpanel";
   fuzzel = "${config.programs.fuzzel.package}/bin/fuzzel";
   # Binaries from pkgs
-  runapp = "${pkgs.unstable.runapp}/bin/runapp";
+  # runapp = "${pkgs.unstable.runapp}/bin/runapp";  # Using uwsm app instead
   uwsm = "${pkgs.uwsm}/bin/uwsm";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
@@ -88,17 +88,17 @@ in {
       "$mainMod SHIFT, up,    movewindow, u"
       "$mainMod SHIFT, down,  movewindow, d"
       # COMMANDS
-      "$mainMod, Return,            exec, ${runapp} --scope ${kitty}"
-      "$mainMod, Space,             exec, ${runapp} --scope ${fuzzel}"
+      "$mainMod, Return,            exec, ${uwsm} app -- ${kitty}"
+      "$mainMod, Space,             exec, ${uwsm} app -- ${fuzzel}"
       "$mainMod ALT SHIFT,  Escape, exec, ${uwsm} stop"
       "$mainMod,            Escape, exec, loginctl lock-session"
       # Screenshot
-      "              , Print, exec, ${runapp} --scope ${hyprshot} --mode active --mode output --filename \"$(hostname)_$(date +'%Y-%m-%d_%H-%M-%S')\""
-      "         SHIFT, Print, exec, ${runapp} --scope ${hyprshot} --mode active --mode output --clipboard-only"
-      "$mainMod      , Print, exec, ${runapp} --scope ${hyprshot} --mode region --filename \"$(hostname)_$(date +'%Y-%m-%d_%H-%M-%S')\""
-      "$mainMod SHIFT, Print, exec, ${runapp} --scope ${hyprshot} --mode region --clipboard-only"
-      "ALT           , Print, exec, ${runapp} --scope ${hyprshot} --mode window --filename \"$(hostname)_$(date +'%Y-%m-%d_%H-%M-%S')\""
-      "ALT      SHIFT, Print, exec, ${runapp} --scope ${hyprshot} --mode window --clipboard-only"
+      "              , Print, exec, ${uwsm} app -- ${hyprshot} --mode active --mode output --filename \"$(hostname)_$(date +'%Y-%m-%d_%H-%M-%S')\""
+      "         SHIFT, Print, exec, ${uwsm} app -- ${hyprshot} --mode active --mode output --clipboard-only"
+      "$mainMod      , Print, exec, ${uwsm} app -- ${hyprshot} --mode region --filename \"$(hostname)_$(date +'%Y-%m-%d_%H-%M-%S')\""
+      "$mainMod SHIFT, Print, exec, ${uwsm} app -- ${hyprshot} --mode region --clipboard-only"
+      "ALT           , Print, exec, ${uwsm} app -- ${hyprshot} --mode window --filename \"$(hostname)_$(date +'%Y-%m-%d_%H-%M-%S')\""
+      "ALT      SHIFT, Print, exec, ${uwsm} app -- ${hyprshot} --mode window --clipboard-only"
     ];
     bindm = [
       "$mainMod, mouse:272, movewindow"
