@@ -44,6 +44,7 @@
     playerctl
     brightnessctl
     poweralertd
+    unstable.runapp
   ];
 
   # Utilities

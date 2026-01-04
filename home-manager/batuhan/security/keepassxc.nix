@@ -43,5 +43,14 @@ lib.mkMerge [
       AlwaysAllowAccess = true;
       AlwaysAllowUpdate = true;
     };
+    
+    xdg.configFile."systemd/user/app-org.keepassxc.KeePassXC@autostart.service.d/wait-for-tray.conf".text = ''
+      [Unit]
+      After=tray.target
+      Wants=tray.target
+      
+      [Service]
+      ExecStartPre=/run/current-system/sw/bin/sleep 5
+    '';
   })
 ]

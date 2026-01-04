@@ -16,7 +16,7 @@
       main = {
         dpi-aware = "auto";
         minimal-lines = false;
-        launch-prefix = "uwsm app --";
+        launch-prefix = "runapp ";
       };
     };
   };

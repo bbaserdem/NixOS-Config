@@ -6,6 +6,7 @@
   ...
 }: let
   xdg-open = "${pkgs.xdg-utils}/bin/xdg-open";
+  runapp = "${pkgs.unstable.runapp}/bin/runapp";
   uwsm = "${pkgs.uwsm}/bin/uwsm";
   kitty = "${config.programs.kitty.package}/bin/kitty";
 in {
@@ -63,13 +64,13 @@ in {
         stats.enable_gpu = true;
         directories = {
           right = {
-            directory1.command = "${xdg-open} ${config.xdg.userDirs.documents}";
-            directory2.command = "${xdg-open} ${config.xdg.userDirs.pictures}";
+            directory1.command = "${runapp} --scope ${xdg-open} ${config.xdg.userDirs.documents}";
+            directory2.command = "${runapp} --scope ${xdg-open} ${config.xdg.userDirs.pictures}";
           };
           left = {
-            directory3.command = "${xdg-open} ${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}";
-            directory2.command = "${xdg-open} ${config.xdg.userDirs.videos}";
-            directory1.command = "${xdg-open} ${config.xdg.userDirs.download}";
+            directory3.command = "${runapp} --scope ${xdg-open} ${config.xdg.userDirs.extraConfig.XDG_PROJECTS_DIR}";
+            directory2.command = "${runapp} --scope ${xdg-open} ${config.xdg.userDirs.videos}";
+            directory1.command = "${runapp} --scope ${xdg-open} ${config.xdg.userDirs.download}";
           };
         };
       };

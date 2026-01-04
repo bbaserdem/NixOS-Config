@@ -31,6 +31,7 @@
     enable = true;
     type = "fcitx5";
     fcitx5 = {
+      waylandFrontend = true;
       addons = with pkgs; [
         kdePackages.fcitx5-qt
         libsForQt5.fcitx5-qt
