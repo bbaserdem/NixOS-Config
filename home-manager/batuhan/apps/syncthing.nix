@@ -8,7 +8,7 @@
     tray = {
       enable = true;
       package = pkgs.syncthingtray;
-      command = "syncthingtray";
+      command = "syncthingtray --wait";
     };
   };
 
