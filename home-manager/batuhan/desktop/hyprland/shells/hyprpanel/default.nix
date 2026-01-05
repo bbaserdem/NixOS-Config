@@ -3,6 +3,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   xdg-open = "${pkgs.xdg-utils}/bin/xdg-open";
@@ -21,8 +22,22 @@ in {
     ", XF86PowerOff, exec, ${hyprpanel} toggleWindow powerdropdownmenu"
   ];
 
+  # Override systemd unit
+  systemd.user.services.hyprpanel = {
+    Install.WantedBy = lib.mkForce ["wayland-session@Hyprland.target"];
+    Unit = {
+      After = lib.mkForce ["wayland-session@Hyprland.target"];
+      PartOf = lib.mkForce [
+        "wayland-session@Hyprland.target"
+        "tray.target"
+      ];
+    };
+  };
+
   # Config
   programs.hyprpanel = {
+    enable = true;
+    systemd.enable = true;
     settings = {
       theme = {
         font = {
