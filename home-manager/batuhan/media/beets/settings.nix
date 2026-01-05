@@ -135,13 +135,7 @@ in {
     # Plugin configs
     advancedrewrite = [
       {
-        match = "albumartist:King Gizzard";
-        replacements = {
-          albumartist = "King Gizzard & The Lizard Wizard";
-        };
-      }
-      {
-        match = "albumartist: Oh Sees";
+        match = "artist:\"Oh Sees\"";
         replacements = {
           albumartist = "Osees";
         };

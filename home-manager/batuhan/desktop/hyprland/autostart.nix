@@ -1,10 +1,6 @@
 # home-manager/batuhan/desktop/hyprland/autostart.nix
 # Hyprland autostart;
-{
-  config,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   # Enable programs
   wayland.windowManager.hyprland.settings.exec-once = [
     # Inhibit power button handling by logind so we can show a login script
@@ -32,22 +28,6 @@
       After = lib.mkForce ["wayland-session@Hyprland.target"];
       PartOf = lib.mkForce ["wayland-session@Hyprland.target"];
     };
-  };
-
-  # Override Hyprpanel systemd service to depend on hyprland uwsm
-  systemd.user.services.hyprpanel = {
-    Install.WantedBy = lib.mkForce ["wayland-session@Hyprland.target"];
-    Unit = {
-      After = lib.mkForce ["wayland-session@Hyprland.target"];
-      PartOf = lib.mkForce [
-        "wayland-session@Hyprland.target"
-        "tray.target"
-      ];
-    };
-  };
-  programs.hyprpanel = {
-    enable = true;
-    systemd.enable = true;
   };
 
   # Hyprdynamicmonitors, no settings here; look at monitors for the settings
