@@ -85,6 +85,7 @@ in {
         rounding = 15;
 
         font_family = "Monospace";
+        placeholder_text = "";
         fail_text = "$FAIL ($ATTEMPTS)";
       };
 
