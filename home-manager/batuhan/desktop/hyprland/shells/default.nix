@@ -2,6 +2,7 @@
 # Chooses the default shell implementation, this way I can switch easily.
 {...}: {
   imports = [
-    ./hyprpanel
+    # ./hyprpanel
+    ./noctalia.nix
   ];
 }

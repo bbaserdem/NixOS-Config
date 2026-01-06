@@ -61,6 +61,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    # Noctalia shell
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     # ----- Flair and small functionality ----- #
     # Nixifying theming and styling
