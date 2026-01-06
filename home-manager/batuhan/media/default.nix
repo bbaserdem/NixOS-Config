@@ -7,8 +7,8 @@
 }: {
   # Import our modules
   imports = [
+    ./beets
     ./applist.nix
-    ./beets.nix
     ./fluidsynth.nix
     ./listenbrainz.nix
     ./mpd.nix

@@ -29,6 +29,7 @@
   '';
   hyprlockPlayerStatus = "${playerStatusScript}/bin/hyprlock-player-status";
 in {
+  # Styling
   stylix.targets.hyprlock = {
     enable = true;
     colors.enable = true;
@@ -36,8 +37,11 @@ in {
     useWallpaper = true;
   };
 
+  # Register us as the lock command
+  services.hypridle.settings.general.lock_cmd = "${config.programs.hyprlock.package}/bin/hyprlock";
+
+  # Configure hyprlock
   programs.hyprlock = {
-    # Enable hyprpanel
     enable = true;
     settings = {
       general = {

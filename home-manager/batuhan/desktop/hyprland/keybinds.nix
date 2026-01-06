@@ -8,7 +8,6 @@
   # Binaries from config
   hyprshot = "${config.programs.hyprshot.package}/bin/hyprshot";
   kitty = "${config.programs.kitty.package}/bin/kitty";
-  hyprpanel = "${config.programs.hyprpanel.package}/bin/hyprpanel";
   fuzzel = "${config.programs.fuzzel.package}/bin/fuzzel";
   # Binaries from pkgs
   # runapp = "${pkgs.unstable.runapp}/bin/runapp";  # Using uwsm app instead
@@ -117,7 +116,6 @@ in {
       ", XF86AudioPause,        exec, ${playerctl} play-pause"
       ", XF86AudioPlay,         exec, ${playerctl} play-pause"
       ", XF86AudioPrev,         exec, ${playerctl} previous"
-      ", XF86PowerOff,          exec, ${hyprpanel} toggleWindow powerdropdownmenu"
     ];
   };
 }

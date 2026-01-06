@@ -12,14 +12,13 @@
     inputs.hyprdynamicmonitors.homeManagerModules.default
     # Internal
     ./monitors
+    ./shells
     ./keybinds.nix
     ./autostart.nix
     ./idle.nix
     ./launcher.nix
-    ./lock.nix
     ./plugins.nix
     ./settings.nix
-    ./shell.nix
   ];
 
   # Styling

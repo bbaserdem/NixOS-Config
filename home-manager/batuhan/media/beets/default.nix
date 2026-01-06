@@ -5,6 +5,10 @@
   lib,
   ...
 }: {
+  imports = [
+    ./settings.nix
+  ];
+
   # Link our plugin from the correct folder
   home.file.".local/share/beets/beetsplug".source = ./beetsplug;
 
@@ -22,7 +26,7 @@
           rev = "v${version}";
           hash = "sha256-fMnXuMwxylO9Q7EFPpkgwwNeBuviUa8HduRrqrqdMaI=";
         };
-        meta = old.meta // { broken = false; };
+        meta = old.meta // {broken = false;};
         # Disable tests as they're incompatible with newer beets versions
         doCheck = false;
       });
@@ -54,17 +58,19 @@
         };
       }).overrideAttrs (oldAttrs: {
         # Work around nixpkgs bug where plugin dependencies aren't properly included
-        propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [
-          beets-alternatives-updated
-          beets-copyartifacts-updated
-        ];
+        # Also ensure musicbrainzngs is available for MusicBrainz API access
+        propagatedBuildInputs =
+          oldAttrs.propagatedBuildInputs
+          ++ [
+            beets-alternatives-updated
+            beets-copyartifacts-updated
+            py.musicbrainzngs
+          ];
       });
     mpdIntegration = {
       enableStats = true;
       enableUpdate = true;
     };
-
-    settings = (import ./beetsSettings.nix) {inherit config pkgs;};
   };
 
   # Tagger

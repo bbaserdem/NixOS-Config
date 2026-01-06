@@ -6,7 +6,6 @@ in {
   services.hypridle = {
     settings = {
       general = {
-        lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
         before_sleep_cmd = "loginctl lock-session && hyprctl dispatch dpms off";
         after_sleep_cmd = "sleep 2 && hyprctl dispatch dpms on && ${bctl} -r";
       };
