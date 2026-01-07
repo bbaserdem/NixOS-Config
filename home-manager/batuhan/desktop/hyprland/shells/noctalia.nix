@@ -34,6 +34,18 @@ in {
     ", XF86PowerOff, exec, ${noctalia-session}"
   ];
 
+  # Integrate generated themes
+  programs.kitty.extraConfig = lib.mkOrder 2000 ''
+    include ${config.xdg.configHome}/kitty/themes/noctalia.conf
+  '';
+  wayland.windowManager.hyprland.extraConfig = lib.mkOrder 2000 ''
+    source ${config.xdg.configHome}/hypr/noctalia/noctalia-colors.conf
+  '';
+  programs.fuzzel.settings = {
+    colors = lib.mkForce {};
+    include = "${config.xdg.configHome}/fuzzel/themes/noctalia";
+  };
+
   # Configure noctalia shell
   programs.noctalia-shell = {
     enable = true;
