@@ -19,6 +19,7 @@
         uget-integrator
         gnome-browser-connector
         kdePackages.plasma-browser-integration
+        pywalfox-native
       ];
   };
 in (lib.mkMerge [
@@ -75,6 +76,7 @@ in (lib.mkMerge [
             open-url-in-container
             plasma-integration
             protondb-for-steam
+            pywalfox
             sponsorblock
             steam-database
             ublock-origin
@@ -422,6 +424,7 @@ in (lib.mkMerge [
       then [
         # Needed connection for VideoDownloadHelper
         pkgs.vdhcoapp
+        pkgs.pywalfox-native
         # Also have chromium available for compatibility
         # ungoogled-chromium
       ]
