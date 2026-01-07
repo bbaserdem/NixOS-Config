@@ -41,7 +41,7 @@ in {
       include ${config.xdg.configHome}/kitty/themes/noctalia.conf
     '';
     wayland.windowManager.hyprland.extraConfig = lib.mkOrder 2000 ''
-      source ${config.xdg.configHome}/hypr/noctalia/noctalia-colors.conf
+      source = ${config.xdg.configHome}/hypr/noctalia/noctalia-colors.conf
     '';
     programs.fuzzel.settings = {
       colors = lib.mkForce {};
