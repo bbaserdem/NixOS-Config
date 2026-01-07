@@ -1,5 +1,5 @@
-# home-manager/batuhan/desktop/hyprland/shells/noctalia.nix
-# Noctalia shell
+# home-manager/batuhan/desktop/hyprland/shells/noctalia/default.nix
+# Noctalia shell config entry
 {
   config,
   inputs,
@@ -12,6 +12,7 @@
 in {
   imports = [
     inputs.noctalia.homeModules.default
+    ./settings.nix
   ];
 
   # Override the targets to hyprland
