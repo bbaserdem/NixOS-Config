@@ -77,7 +77,7 @@ in {
         icons = {
           enable = true;
           package = pkgs.qogir-icon-theme;
-          dark = "Qogir-dark";
+          dark = "Qogir-Dark";
           light = "Qogir";
         };
 

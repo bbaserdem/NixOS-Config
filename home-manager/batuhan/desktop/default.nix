@@ -42,6 +42,7 @@
       };
     };
   in {
+    enable = true;
     qt6ctSettings = qtctSettings;
     qt5ctSettings = qtctSettings;
   };
