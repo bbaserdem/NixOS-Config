@@ -1,10 +1,15 @@
 # home-manager/batuhan/desktop/hyprland/shells/noctalia.nix
 # Noctalia shell
 {
+  config,
   inputs,
   lib,
   ...
-}: {
+}: let
+  noctalia-shell = "${config.programs.noctalia-shell.package}/bin/noctalia-shell";
+  noctalia-lock = "${noctalia-shell} ipc call lockScreen lock";
+  noctalia-session = "${noctalia-shell} ipc call sessionMenu toggle";
+in {
   imports = [
     inputs.noctalia.homeModules.default
   ];
@@ -12,11 +17,22 @@
   # Override the targets to hyprland
   systemd.user.services.noctalia-shell = {
     Unit = {
-      PartOf = lib.mkForce ["wayland-session@Hyprland.target"];
       After = lib.mkForce ["wayland-session@Hyprland.target"];
+      PartOf = lib.mkForce [
+        "wayland-session@Hyprland.target"
+        "tray.target"
+      ];
     };
     Install.WantedBy = lib.mkForce ["wayland-session@Hyprland.target"];
   };
+
+  # Register us as the lock command
+  services.hypridle.settings.general.lock_cmd = noctalia-lock;
+
+  # Register the power menu with hyprland
+  wayland.windowManager.hyprland.settings.bindl = [
+    ", XF86PowerOff, exec, ${noctalia-session}"
+  ];
 
   # Configure noctalia shell
   programs.noctalia-shell = {
