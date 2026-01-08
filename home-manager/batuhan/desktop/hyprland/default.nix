@@ -56,6 +56,7 @@
     playerctl
     brightnessctl
     poweralertd
+    pavucontrol
     # unstable.runapp  # Using uwsm app instead
   ];
 
