@@ -40,4 +40,5 @@
   # Extra dev shells
   ags = import ./ags.nix {inherit pkgs inputs system;};
   python = import ./python.nix {inherit pkgs inputs system;};
+  typescript = import ./typescript.nix {inherit pkgs inputs system;};
 }
