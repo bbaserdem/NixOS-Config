@@ -30,26 +30,12 @@
         # Disable tests as they're incompatible with newer beets versions
         doCheck = false;
       });
-      # Override beets-alternatives to version 0.14.0
-      beets-alternatives-updated = py.beets-alternatives.overridePythonAttrs (old: rec {
-        version = "0.14.0";
-        src = pkgs.fetchFromGitHub {
-          owner = "geigerzaehler";
-          repo = "beets-alternatives";
-          rev = "v${version}";
-          hash = "sha256-leZYXf6Oo/jAKbnJbP+rTnuRsh9P1BQXYAbthMNT60A=";
-        };
-        # Remove patches since the fix should be mainlined in v0.14.0
-        patches = [];
-        # v0.14.0 uses hatchling as build system
-        build-system = [py.hatchling];
-      });
     in
       (py.beets.override {
         pluginOverrides = {
           alternatives = {
             enable = true;
-            propagatedBuildInputs = [beets-alternatives-updated];
+            propagatedBuildInputs = [py.beets-alternatives];
           };
           copyartifacts = {
             enable = true;
@@ -62,7 +48,7 @@
         propagatedBuildInputs =
           oldAttrs.propagatedBuildInputs
           ++ [
-            beets-alternatives-updated
+            py.beets-alternatives
             beets-copyartifacts-updated
             py.musicbrainzngs
           ];
