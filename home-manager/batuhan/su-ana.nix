@@ -54,6 +54,9 @@
     phone.enable = false;
   };
 
+  # Symlinks
+  home.file."Work/SuperBuilders/Projects".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/SuperBuilders";
+
   # Add this directory for mac ports
   home.sessionPath = [
     "/opt/local/bin"
