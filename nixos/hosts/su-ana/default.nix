@@ -94,6 +94,7 @@ in {
       "zotero"
       "google-chrome"
       "keepassxc"
+      "mactex"
 
       # Utility Tools
       "appcleaner"
