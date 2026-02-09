@@ -6,6 +6,7 @@
     inputs.nixcord.homeModules.nixcord
     ./applist.nix
     # ./bittorrent.nix
+    # ./claude
     ./discord.nix
     ./firefox.nix
     ./foliate.nix
