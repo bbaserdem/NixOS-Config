@@ -69,6 +69,7 @@ in {
     enable = true;
     brews = [
       "mas"
+      "git-lfs"
     ];
     casks = [
       # AI tools
@@ -81,6 +82,7 @@ in {
       "discord"
       "google-drive"
       "defguard-client"
+      "zoom"
 
       # Programming
       "iterm2"
