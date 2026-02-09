@@ -21,6 +21,7 @@
     # Git settings
     git = {
       enable = true;
+      lfs.enable = true;
       settings = {
         alias = {
           pu = "push";

@@ -69,7 +69,6 @@ in {
     enable = true;
     brews = [
       "mas"
-      "git-lfs"
     ];
     casks = [
       # AI tools
