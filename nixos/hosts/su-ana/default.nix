@@ -88,6 +88,7 @@ in {
       "kitty"
       "github"
       "bitwarden"
+      "orbstack"
 
       # Other apps
       "obsidian"
