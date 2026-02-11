@@ -13,5 +13,9 @@
     #memory.source = ./CLAUDE.md;
     mcpServers = {
     };
+
+    settings = {
+      includeCoAuthoredBy = false;
+    };
   };
 }
