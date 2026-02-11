@@ -6,13 +6,13 @@
 """
 Pre-tool use hook for Claude Code to guide UV usage in Python projects.
 
-Since PreToolUse hooks cannot modify commands (Claude Code limitation),
-this hook provides helpful guidance when Python commands are used in UV projects.
+Uses exit code 2 + stderr to block commands (current Claude Code API).
+Exit 0 allows the command to proceed.
 """
 
 import json
-import os
 import re
+import shutil
 import sys
 from pathlib import Path
 from typing import Any, Dict
@@ -28,20 +28,19 @@ class UVCommandHandler:
 
     def check_uv_available(self) -> bool:
         """Check if UV is available in PATH."""
-        return os.system("which uv > /dev/null 2>&1") == 0
+        return shutil.which("uv") is not None
 
     def check_in_project(self) -> bool:
         """Check if we're in a Python project with pyproject.toml."""
         return (self.project_root / "pyproject.toml").exists()
 
-    def analyze_command(self, command: str) -> dict[str, Any]:
+    def analyze_command(self, command: str) -> Dict[str, Any]:
         """Analyze command to determine how to handle it."""
         # Check if command already uses uv
         if command.strip().startswith("uv"):
-            return {"action": "approve", "reason": "Already using uv"}
+            return {"action": "allow", "reason": "Already using uv"}
 
         # Skip non-Python commands entirely
-        # Common commands that should never be blocked
         skip_prefixes = [
             "git ",
             "cd ",
@@ -54,121 +53,145 @@ class UVCommandHandler:
             "rm ",
             "cp ",
             "mv ",
+            "curl ",
+            "wget ",
+            "which ",
+            "touch ",
+            "chmod ",
+            "chown ",
+            "ln ",
+            "tar ",
+            "zip ",
+            "unzip ",
+            "head ",
+            "tail ",
+            "less ",
+            "more ",
+            "wc ",
+            "sort ",
+            "diff ",
+            "sed ",
+            "awk ",
+            "cut ",
+            "tr ",
+            "xargs ",
+            "tee ",
+            "date ",
+            "pwd ",
+            "whoami ",
+            "env ",
+            "export ",
+            "source ",
+            ".",
+            "npm ",
+            "npx ",
+            "node ",
+            "yarn ",
+            "pnpm ",
+            "cargo ",
+            "rustc ",
+            "go ",
+            "make ",
+            "cmake ",
+            "docker ",
+            "kubectl ",
+            "brew ",
+            "apt ",
+            "apt-get ",
+            "yum ",
+            "dnf ",
+            "pacman ",
         ]
         if any(command.strip().startswith(prefix) for prefix in skip_prefixes):
-            return {"action": "approve", "reason": "Not a Python command"}
+            return {"action": "allow", "reason": "Not a Python command"}
 
-        # Check for actual Python command execution (not just mentions)
+        # Check for actual Python command execution
         python_exec_patterns = [
-            r"^python3?\s+",  # python script.py
-            r"^python3?\s*$",  # just python
-            r"\|\s*python3?\s+",  # piped to python
-            r";\s*python3?\s+",  # after semicolon
-            r"&&\s*python3?\s+",  # after &&
-            r"^pip3?\s+",  # pip commands
-            r"\|\s*pip3?\s+",  # piped pip
-            r";\s*pip3?\s+",  # after semicolon
-            r"&&\s*pip3?\s+",  # after &&
-            r"^(pytest|ruff|mypy|black|flake8|isort|ty)\s+",  # dev tools
-            r";\s*(pytest|ruff|mypy|black|flake8|isort|ty)\s+",
-            r"&&\s*(pytest|ruff|mypy|black|flake8|isort|ty)\s+",
+            r"^python3?\s+",
+            r"^python3?\s*$",
+            r"\|\s*python3?\s+",
+            r";\s*python3?\s+",
+            r"&&\s*python3?\s+",
+            r"^pip3?\s+",
+            r"\|\s*pip3?\s+",
+            r";\s*pip3?\s+",
+            r"&&\s*pip3?\s+",
         ]
 
-        is_python_exec = any(re.search(pattern, command) for pattern in python_exec_patterns)
+        is_python_exec = any(
+            re.search(pattern, command) for pattern in python_exec_patterns
+        )
 
         if not is_python_exec:
-            return {"action": "approve", "reason": "Not a Python execution command"}
+            return {"action": "allow", "reason": "Not a Python execution command"}
 
-        # If we're in a UV project, provide guidance
+        # If we're in a UV project, block and provide guidance
         if self.has_uv and self.in_project:
-            # Parse command to provide better suggestions
             suggestion = self.suggest_uv_command(command)
             return {
                 "action": "block",
                 "reason": f"This project uses UV for Python management. {suggestion}",
             }
 
-        # Otherwise, let it through
-        return {"action": "approve", "reason": "UV not required"}
+        return {"action": "allow", "reason": "UV not required"}
 
     def suggest_uv_command(self, command: str) -> str:
         """Provide UV command suggestions."""
-        # Handle compound commands (e.g., cd && python)
         if "&&" in command:
             parts = command.split("&&")
             transformed_parts = []
-
             for part in parts:
                 part = part.strip()
-                # Only transform the Python-related parts
-                if re.search(r"\b(python3?|pip3?|pytest|ruff|mypy|black|ty)\b", part):
+                if re.search(
+                    r"\b(python3?|pip3?)\b",
+                    part,
+                ):
                     transformed_parts.append(self._transform_single_command(part))
                 else:
                     transformed_parts.append(part)
-
             return f"Try: {' && '.join(transformed_parts)}"
-
-        # Simple commands
         return f"Try: {self._transform_single_command(command)}"
 
     def _transform_single_command(self, command: str) -> str:
         """Transform a single Python command to use UV."""
-        # Python execution
         if re.match(r"^python3?\s+", command):
             return re.sub(r"^python3?\s+", "uv run python ", command)
-
-        # Package installation
         elif re.match(r"^pip3?\s+install\s+", command):
             return re.sub(r"^pip3?\s+install\s+", "uv add ", command)
-
-        # Other pip commands
         elif re.match(r"^pip3?\s+", command):
             return re.sub(r"^pip3?\s+", "uv pip ", command)
-
-        # Development tools
-        elif re.match(r"^(pytest|ruff|mypy|black|flake8|isort|ty)\s+", command):
-            return f"uv run {command}"
-
         return command
 
 
 def main():
     """Main hook function."""
     try:
-        # Read input from Claude Code
         input_data = json.loads(sys.stdin.read())
 
-        # Only process Bash/Run commands
         tool_name = input_data.get("tool_name", "")
         if tool_name not in ["Bash", "Run"]:
-            # Approve non-Bash tools
-            output = {"decision": "approve"}
-            print(json.dumps(output))
-            return
+            sys.exit(0)  # Allow non-Bash tools
 
-        # Get the command
         tool_input = input_data.get("tool_input", {})
         command = tool_input.get("command", "")
 
         if not command:
-            # Approve empty commands
-            output = {"decision": "approve"}
-            print(json.dumps(output))
-            return
+            sys.exit(0)  # Allow empty commands
 
-        # Analyze command
         handler = UVCommandHandler()
         result = handler.analyze_command(command)
 
-        # Return decision
-        output = {"decision": result["action"], "reason": result["reason"]}
+        if result["action"] == "block":
+            # Exit 2 + stderr message blocks the command (current API)
+            print(result["reason"], file=sys.stderr)
+            sys.exit(2)
 
-        print(json.dumps(output))
+        sys.exit(0)  # Allow
 
     except Exception as e:
-        # On error, approve to avoid blocking workflow
-        output = {"decision": "approve", "reason": f"Hook error: {str(e)}"}
-        print(json.dumps(output))
+        # On error, allow to avoid blocking workflow
+        print(f"Hook error (allowing): {e!s}", file=sys.stderr)
+        sys.exit(0)
 
 
 if __name__ == "__main__":

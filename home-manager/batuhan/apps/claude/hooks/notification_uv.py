@@ -8,7 +8,6 @@ Notification hook for UV-related reminders.
 """
 
 import json
-import re
 import sys
 
 
@@ -22,9 +21,7 @@ def main():
         # Check for Python-related permission requests
         python_keywords = ["python", "pip", "install", "package", "dependency"]
         if any(keyword in message.lower() for keyword in python_keywords):
-            reminder = (
-                "\\n💡 Reminder: Use UV commands (uv run, uv add) instead of pip/python directly."
-            )
+            reminder = "\\n💡 Reminder: Use UV commands (uv run, uv add) instead of pip/python directly."
 
             # Provide context-specific suggestions
             if "install" in message.lower():
