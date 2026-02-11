@@ -17,6 +17,7 @@
   '';
   zshConfig = lib.mkOrder 1000 ''
     #--START--ZSH Config
+
     # Function to get nix program location
     nix-getPackage () {
       this_link="$(which "''${1}")"
@@ -37,14 +38,22 @@
 
     # Run arbitrary binaries, needed for mason in neovim (not needed with nixCats)
     # export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
+
     #---END---ZSH Config
 
   '';
   zshConfigAfter = lib.mkOrder 1500 ''
     #--START--ZSH Config after everything else
-    # Load our exported secrets, this has to be here
+
+    # Load our exported secrets, this has to be here, can't be through setting env
     export GH_TOKEN="$(cat ${config.sops.secrets.gh-auth.path})"
     export GITHUB_TOKEN="''${GH_TOKEN}"
+
+    # Setup homebrew if it exists
+    if [ -x "/opt/homebrew/bin/brew" ]; then
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+
     #---END---ZSH Config after everything else
   '';
 in {
