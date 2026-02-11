@@ -9,7 +9,7 @@
         hooks = [
           {
             type = "command";
-            command = "uv run ~/.claude/hooks/pre_tool_use.py";
+            command = "uv run ~/.claude/hooks/pre_tool_use_uv.py";
             timeout = 10;
           }
         ];
