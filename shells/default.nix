@@ -10,7 +10,6 @@
     packages = with pkgs; [
       # Default stuff needed
       nix
-      home-manager
       git
       # Encryption
       sops
