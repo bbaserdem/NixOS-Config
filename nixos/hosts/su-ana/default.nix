@@ -86,6 +86,7 @@ in {
       # Programming
       "iterm2"
       "kitty"
+      "ghostty"
       "github"
       "bitwarden"
       "orbstack"
