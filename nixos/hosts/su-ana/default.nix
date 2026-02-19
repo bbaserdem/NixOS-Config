@@ -69,6 +69,7 @@ in {
     enable = true;
     brews = [
       "mas"
+      "aoe"
     ];
     casks = [
       # AI tools
