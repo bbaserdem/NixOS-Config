@@ -61,6 +61,10 @@
     jujutsu = {
       enable = true;
       settings = {
+        user = {
+          name = "Batuhan Baserdem";
+          email = "baserdemb@gmail.com";
+        };
       };
     };
 

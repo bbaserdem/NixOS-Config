@@ -1,6 +1,6 @@
 # =============================================================================
 # Nix Flake .gitignore
-# Comprehensive ignore patterns for python development
+# Comprehensive ignore patterns for nix system configuration development
 # =============================================================================
 # Git stuff
 /worktrees/
