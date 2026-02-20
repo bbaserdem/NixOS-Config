@@ -57,6 +57,29 @@
       };
     };
 
+    # Jujutsu settings
+    jujutsu = {
+      enable = true;
+      settings = {
+      };
+    };
+
+    # jjui settings
+    jjui = {
+      enable = true;
+      settings = {
+      };
+    };
+
+    # Delta pager for diffs
+    delta = {
+      enable = true;
+      options = {
+      };
+      enableGitIntegration = true;
+      enableJujutsuIntegration = true;
+    };
+
     # Github cli
     gh = {
       enable = true;

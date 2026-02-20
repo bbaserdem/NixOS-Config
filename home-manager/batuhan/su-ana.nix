@@ -28,11 +28,11 @@
     ./shell/bash.nix
     ./shell/direnv.nix
     ./shell/environment.nix
-    ./shell/git.nix
     ./shell/man.nix
     ./shell/pnpm.nix
     ./shell/tmux.nix
     ./shell/yazi.nix
+    ./shell/vcs.nix
     ./shell/zsh.nix
     ./theming/stylix.nix
     ./theming/starship.nix
