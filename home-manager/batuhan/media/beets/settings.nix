@@ -101,8 +101,8 @@ in {
       "musicbrainz"
       "discogs"
       "deezer"
-      "beatport"
-      "spotify"
+      #"beatport"
+      #"spotify"
       # Builtin plugins
       "advancedrewrite"
       "albumtypes"

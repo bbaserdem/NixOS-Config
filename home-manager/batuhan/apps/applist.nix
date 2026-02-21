@@ -20,8 +20,6 @@
     # Programming
     octaveFull
     gitg
-    # Gaming
-    nexusmods-app-unfree
     # Utilities
     kdePackages.dolphin # File browser
     virt-manager # Virtual machine manager
