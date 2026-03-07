@@ -17,34 +17,13 @@
       enable = true;
       flatpakSupport.enable = true;
     };
-    # KDE and qt are not mutually compatible in stylix
-    kde = {enable = true;};
-    # qt = {
-    #   enable = true;
-    #   platform = "qtct";
-    # };
-  };
-
-  # Configure qtct settings manually from stylix, for now.
-  # Plasma sets qt.style to 'kde', and if it's set to qtct it breaks KDE
-  # Stylix is only compatible with qtct, and won't apply qtct config w/out setting the style
-  qt = let
-    qtctSettings = {
-      Appearance = {
-        custom_palette = true;
-        standard_dialogs = "default";
-        style = "breeze";
-        icon_theme = config.stylix.icons.dark;
-      };
-      Fonts = {
-        fixed = ''"${config.stylix.fonts.monospace.name},${toString config.stylix.fonts.sizes.applications}"'';
-        general = ''"${config.stylix.fonts.sansSerif.name},${toString config.stylix.fonts.sizes.applications}"'';
-      };
+    qt = {
+      enable = true;
+      platform = "qtct";
+      standardDialogs = "default";
     };
-  in {
-    enable = true;
-    qt6ctSettings = qtctSettings;
-    qt5ctSettings = qtctSettings;
+    # KDE and qt are not mutually compatible in stylix, but trying anyway
+    kde = {enable = true;};
   };
 
   # Enable autostarting stuff
