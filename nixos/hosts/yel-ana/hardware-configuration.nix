@@ -90,15 +90,6 @@
       };
     };
 
-    # Fixes for AMD Phoenix APU (Framework 7040 series) MST issues
-    kernelParams = [
-      "amdgpu.sg_display=0" # Disable scatter-gather for Phoenix APU display corruption
-      "amdgpu.tmz=0" # Disable Trusted Memory Zone
-      "amdgpu.sched_policy=2" # Use static queue assignment
-      "amdgpu.noretry=1" # Don't retry on page faults
-      "amdgpu.lockup_timeout=0" # Disable GPU lockup detection
-      "video=DP-2:1920x1080@60" # Force lower resolution on second display
-    ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
   # Use crypttab to unlock partition after init
