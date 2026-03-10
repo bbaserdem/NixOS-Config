@@ -91,6 +91,7 @@ in {
       "github"
       "bitwarden"
       "orbstack"
+      "utm"
 
       # Other apps
       "obsidian"
