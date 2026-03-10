@@ -16,7 +16,7 @@
     # Load syncthing from the main modules directory, it should mirror hm module
     ../../nixos/services/syncthing.nix
     # My modules to load, we do this separately
-    ./apps/claude.nix
+    #./apps/claude.nix
     ./apps/neovim.nix
     ./apps/kitty.nix
     #./apps/syncthing-darwin.nix
