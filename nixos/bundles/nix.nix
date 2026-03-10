@@ -68,6 +68,10 @@
                 Weekday = 7;
               }
             ];
+
+            # Enable cross-comp
+            linux-builder.enable = true;
+            settings.trusted-users = ["@admin"];
           };
         }
       ))
