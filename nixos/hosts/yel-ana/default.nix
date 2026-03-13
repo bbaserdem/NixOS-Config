@@ -39,6 +39,7 @@
     obs.enable = true;
     polkit.enable = true;
     virtualization.enable = true;
+    gaming.enable = true;
 
     # Services
     services = {
