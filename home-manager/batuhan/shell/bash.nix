@@ -6,7 +6,7 @@
   ...
 }: {
   # Integrations
-  home.shell.enableZshIntegration = true;
+  home.shell.enableBashIntegration = true;
   programs.fzf.enableBashIntegration = true;
   programs.direnv.enableBashIntegration = true;
   programs.kitty.shellIntegration.enableBashIntegration = true;

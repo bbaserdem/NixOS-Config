@@ -58,7 +58,7 @@
   '';
 in {
   # Integrations
-  home.shell.enableBashIntegration = true;
+  home.shell.enableZshIntegration = true;
   programs.fzf.enableZshIntegration = true;
   programs.direnv.enableZshIntegration = true;
   programs.kitty.shellIntegration.enableZshIntegration = true;
