@@ -6,16 +6,14 @@
   ];
 
   # Customize package
-  config = {
-    wrappers.neovim = {
-      # Set default theme
-      settings = {
-        colorscheme = {
-          dark = "onedark";
-          light = "kanagawa-lotus";
-          translucent = false;
-          default = "dark";
-        };
+  wrappers.neovim = {
+    # Set default theme
+    settings = {
+      colorscheme = {
+        dark = "onedark";
+        light = "kanagawa-lotus";
+        translucent = false;
+        default = "dark";
       };
     };
   };
