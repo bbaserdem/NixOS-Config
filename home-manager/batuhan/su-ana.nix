@@ -57,6 +57,7 @@
 
   # Symlinks
   home.file."Work/SuperBuilders/Projects".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/SuperBuilders";
+  targets.darwin.copyApps.enable = true;
 
   # Add this directory for mac ports
   home.sessionPath = [
@@ -64,7 +65,7 @@
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
   # Define wallpaper
   myHome.wallpaper.name = "Photo by SpaceX";
