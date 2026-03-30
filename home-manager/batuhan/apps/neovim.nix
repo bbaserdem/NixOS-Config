@@ -14,8 +14,12 @@
     config.lib.stylix.colors.withHashtag;
   nvimPkg = config.nixCats.out.packages.nixCats;
   nvimExe = "${nvimPkg}/bin/${nvimPkg.nixCats_packageName}";
-in (
-  lib.mkMerge [
+in {
+  imports = [
+    inputs.dendriticFlake.modules.homeManager.neovim
+  ];
+  config = lib.mkMerge [
+    # Main module
     {
       # Neovim nixCats
       nixCats = {
@@ -46,6 +50,21 @@ in (
       # Make us the default
       home.sessionVariables.EDITOR = nvimExe;
     }
+    # New neovim
+    {
+      wrappers.neovim = {...}: {
+        enable = true;
+        # Set default theme
+        settings = {
+          colorscheme = {
+            dark = "onedark";
+            light = "kanagawa-lotus";
+            translucent = false;
+            default = "dark";
+          };
+        };
+      };
+    }
     (lib.mkIf (pkgs.stdenv.hostPlatform.isLinux) {
       # Enable neovide; ide for neovim
       stylix.targets.neovide.enable = true;
@@ -63,5 +82,5 @@ in (
         };
       };
     })
-  ]
-)
+  ];
+}
