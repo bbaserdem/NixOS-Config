@@ -42,6 +42,8 @@
       url = "github:bbaserdem/NixCats";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    # My new flake
+    dendriticFlake.url = "github:bbaserdem/NixOS-Config-Dendritic";
 
     # ----- MacOS ----- #
     # Nix darwin
