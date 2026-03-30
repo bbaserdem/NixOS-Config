@@ -50,7 +50,6 @@
           ++ [
             py.beets-alternatives
             beets-copyartifacts-updated
-            py.musicbrainzngs
           ];
       });
     mpdIntegration = {
