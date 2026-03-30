@@ -179,11 +179,11 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1774885460,
-        "narHash": "sha256-u14+on9g50uwFvgNjeVtrdr1G7CRfVK8obBzfnKJibA=",
+        "lastModified": 1774898254,
+        "narHash": "sha256-StRIpcjT1Hqi6CQwqInJss5FK1ECfzKpSw+K/dTeQlU=",
         "owner": "bbaserdem",
         "repo": "NixOS-Config-Dendritic",
-        "rev": "45b92f3e2b49c2d8daa33a35d981d766a0291f15",
+        "rev": "b0c49b24a553167a663529970bce29ba847dc5c1",
         "type": "github"
       },
       "original": {
