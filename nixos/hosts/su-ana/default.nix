@@ -73,32 +73,23 @@ in {
     ];
     casks = [
       # AI tools
-      "claude"
-      "cursor"
       "repo-prompt"
 
       # Comms
       "slack"
-      "discord"
       "google-drive"
       "defguard-client"
       "zoom"
 
       # Programming
-      "iterm2"
-      "kitty"
       "ghostty"
       "github"
-      "bitwarden"
       "orbstack"
       "utm"
 
       # Other apps
-      "obsidian"
       "zotero"
       "google-chrome"
-      "keepassxc"
-      "mactex"
 
       # Utility Tools
       "appcleaner"
